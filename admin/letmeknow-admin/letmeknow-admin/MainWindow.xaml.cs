@@ -20,9 +20,10 @@ namespace letmeknow_admin
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainWindow()
+        public MainWindow(string username)
         {
             InitializeComponent();
+            title.Content = "欢迎使用，" + username;
         }
 
         private void Tile_Click(object sender, RoutedEventArgs e)

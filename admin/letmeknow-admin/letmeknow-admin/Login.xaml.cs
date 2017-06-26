@@ -26,11 +26,11 @@ namespace letmeknow_admin
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Tile_Click(object sender, RoutedEventArgs e)
         {
             if (AppService.login(username.Text, password.Password))
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(username.Text);
                 mainWindow.Show();
                 this.Close();
             }

@@ -5,14 +5,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:letmeknow_admin"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Letmeknow - 管理登录" Height="350" Width="525">
     <Grid>
-        <Label x:Name="label" Content="用户名" HorizontalAlignment="Left" Margin="102,164,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.255,-0.112"/>
-        <Label x:Name="label1" Content="密码" HorizontalAlignment="Left" Margin="102,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="用户名" HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.255,-0.112"/>
+        <Label x:Name="label1" Content="密码" HorizontalAlignment="Left" Margin="39,219,0,0" VerticalAlignment="Top"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="132" VerticalAlignment="Top" Width="530" Source="F:\letmeknow\admin\letmeknow-admin\img\login.png" Margin="0,-1,-13,0"/>
-        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="200,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="200,206,0,0" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="button" Content="登录" HorizontalAlignment="Left" Margin="200,260,0,0" VerticalAlignment="Top" Width="87" Height="29" Click="button_Click"/>
+        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="137,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="137,221,0,0" VerticalAlignment="Top" Width="225"/>
+        <controls:Tile Title="登录" 
+        	TiltFactor="2"
+        	Width="100" Height="100" 
+        	Margin="394,162,23,57" Click="Tile_Click">
+            <iconPacks:PackIconMaterial Width="30"
+        		Height="30"
+        		Kind="Login" />
+        </controls:Tile>
     </Grid>
 </controls:MetroWindow>

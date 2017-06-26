@@ -58,7 +58,7 @@
                                            Height="30"
                                            Kind="EnvelopeOutline" />
         </controls:Tile>
-        <Label x:Name="label" Content="欢迎使用，Admin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <Label x:Name="title" Content="欢迎使用，Admin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <controls:Tile Title="退出" 
         	TiltFactor="2"
         	Width="100" Height="100" 
@@ -66,6 +66,14 @@
             <iconPacks:PackIconMaterial Width="30"
         		Height="30"
         		Kind="Logout" />
+        </controls:Tile>
+        <controls:Tile Title="举报处理" 
+        	TiltFactor="2"
+        	Width="100" Height="100" 
+        	Margin="522,219,10,10">
+            <iconPacks:PackIconFontAwesome Width="30"
+        		Height="30"
+        		Kind="Exclamation" />
         </controls:Tile>
     </Grid>
 </controls:MetroWindow>
