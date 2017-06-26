@@ -26,15 +26,21 @@ namespace letmeknow_admin
             title.Content = "欢迎使用，" + username;
         }
 
-        private void Tile_Click(object sender, RoutedEventArgs e)
+        private void tileExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Tile_Click_1(object sender, RoutedEventArgs e)
+        private void tileChangePassword_Click(object sender, RoutedEventArgs e)
         {
             ChangePassword changePassword = new ChangePassword();
             changePassword.ShowDialog();
+        }
+
+        private void tileUser_Click(object sender, RoutedEventArgs e)
+        {
+            SearchUser searchUser = new SearchUser();
+            searchUser.Show();
         }
     }
 }

@@ -1,7 +1,6 @@
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\letmeknow-admin.exe.config
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\letmeknow-admin.exe
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\letmeknow-admin.pdb
-F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\letmeknow-admin.csprojResolveAssemblyReference.cache
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\App.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\letmeknow-admin_MarkupCompile.cache
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\letmeknow-admin_MarkupCompile.lref
@@ -24,3 +23,6 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\MahApps.Metro.IconP
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\MahApps.Metro.IconPacks.xml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ChangePassword.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ChangePassword.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\letmeknow-admin.csprojResolveAssemblyReference.cache
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchUser.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchUser.baml
