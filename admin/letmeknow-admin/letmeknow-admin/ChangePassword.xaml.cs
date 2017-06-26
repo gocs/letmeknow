@@ -16,24 +16,22 @@ using MahApps.Metro.Controls;
 namespace letmeknow_admin
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ChangePassword.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class ChangePassword : MetroWindow
     {
-        public MainWindow()
+        public ChangePassword()
         {
             InitializeComponent();
         }
 
-        private void Tile_Click(object sender, RoutedEventArgs e)
+        private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Tile_Click_1(object sender, RoutedEventArgs e)
-        {
-            ChangePassword changePassword = new ChangePassword();
-            changePassword.ShowDialog();
+            if (AppService.changePassword(oldPwd.Password, newPwd.Password))
+            {
+                MessageBox.Show("密码更改成功！");
+                this.Close();
+            }
         }
     }
 }

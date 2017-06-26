@@ -12,5 +12,10 @@ namespace letmeknow_admin
         {
             return true;
         }
+
+        public static Boolean changePassword(string oldPwd, string newPwd)
+        {
+            return true;
+        }
     }
 }

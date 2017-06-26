@@ -22,3 +22,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\MainWindow.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\MahApps.Metro.IconPacks.dll
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\MahApps.Metro.IconPacks.pdb
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\MahApps.Metro.IconPacks.xml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ChangePassword.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ChangePassword.baml

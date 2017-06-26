@@ -12,7 +12,7 @@
         <controls:Tile Title="密码更改" 
                     TiltFactor="2"
                     Width="100" Height="100" 
-                    Margin="417,10,115,217">
+                    Margin="10,220,522,9" Click="Tile_Click_1">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="key" />
@@ -20,39 +20,40 @@
         <controls:Tile Title="申请审核" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,10,10,217">
+        	Margin="417,220,115,9">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="IdCard" />
         </controls:Tile>
-        <controls:Tile Title="用户封禁" 
+        <controls:Tile Title="用户管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="417,115,115,112">
+        	Margin="417,10,115,219">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
-                                           Kind="Ban" />
+                                           Kind="User" />
         </controls:Tile>
-        <controls:Tile Title="通知组封禁" 
+        <controls:Tile Title="通知组管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,115,10,112">
+        	Margin="522,10,10,219">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
-                                           Kind="Ban" />
+                                           Kind="Users" />
         </controls:Tile>
         <controls:Tile Title="查看私信" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="417,220,115,7">
+        	Margin="417,115,115,114">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="EnvelopeOutlinepenOutline" />
         </controls:Tile>
-        <controls:Tile Title="发送私信" 
+        <controls:Tile Title="发送系统消息" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,220,10,7">
+        	Margin="522,115,10,114"
+            TitleFontSize="14">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="EnvelopeOutline" />
@@ -61,7 +62,7 @@
         <controls:Tile Title="退出" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="312,220,220,7" Click="Tile_Click">
+        	Margin="115,220,417,9" Click="Tile_Click">
             <iconPacks:PackIconMaterial Width="30"
         		Height="30"
         		Kind="Logout" />
