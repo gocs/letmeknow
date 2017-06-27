@@ -8,8 +8,8 @@ namespace letmeknow_admin.Models
 {
     class UserSearchResultItem
     {
-        public int UID;
-        public string name;
+        public int UID { get; set; }
+        public string name { get; set; }
 
         public UserSearchResultItem(int UID, string name)
         {

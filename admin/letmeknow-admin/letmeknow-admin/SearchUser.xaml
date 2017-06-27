@@ -10,7 +10,7 @@
         Title="Letmeknow - 用户查询" Height="360" Width="640">
     <Grid>
         <Label x:Name="label" Content="用户查询" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding UID}" ClipboardContentBinding="{x:Null}" Header="UID"/>
                 <DataGridTextColumn Binding="{Binding name}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="225"/>

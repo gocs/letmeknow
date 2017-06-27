@@ -23,6 +23,7 @@ namespace letmeknow_admin
         {
             var result = new List<UserSearchResultItem>();
             result.Add(new UserSearchResultItem(1, "testUser"));
+            result.Add(new UserSearchResultItem(2, "testUser2"));
             return result;
         }
 
@@ -30,6 +31,7 @@ namespace letmeknow_admin
         {
             var result = new List<UserSearchResultItem>();
             result.Add(new UserSearchResultItem(1, "testUser"));
+            result.Add(new UserSearchResultItem(2, "testUser2"));
             return result;
         }
     }

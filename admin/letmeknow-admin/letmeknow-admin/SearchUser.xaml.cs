@@ -32,7 +32,25 @@ namespace letmeknow_admin
 
         private void tileSearchUserByName_Click(object sender, RoutedEventArgs e)
         {
+            //var t = AppService.searchUser("123");
             dataGrid.ItemsSource = AppService.searchUser(usrInfo.Text);
+            for (int i = 0; i < dataGrid.Items.Count; i++)
+            {
+                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+                if (row == null)
+                {
+                    dataGrid.UpdateLayout();
+                    dataGrid.ScrollIntoView(dataGrid.Items[i]);
+                    row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+                }
+                if (row != null)
+                {
+                    row.MouseDoubleClick += (_sender, _e) =>
+                    {
+                        MessageBox.Show((((DataGridRow)_sender).Item as Models.UserSearchResultItem).name);
+                    };
+                }
+            }
         }
     }
 }
