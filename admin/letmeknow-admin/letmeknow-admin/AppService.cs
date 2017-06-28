@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using letmeknow_admin.Models;
 using System.Windows.Media.Imaging;
+using System.Collections.ObjectModel;
 
 namespace letmeknow_admin
 {
@@ -20,19 +21,19 @@ namespace letmeknow_admin
             return true;
         }
 
-        public static List<UserSearchResultItem> searchUser(string name)
+        public static List<User> searchUser(string name)
         {
-            var result = new List<UserSearchResultItem>();
-            result.Add(new UserSearchResultItem(1, "testUser"));
-            result.Add(new UserSearchResultItem(2, "testUser2"));
+            var result = new List<User>();
+            result.Add(new User(1, "testUser"));
+            result.Add(new User(2, "testUser2"));
             return result;
         }
 
-        public static List<UserSearchResultItem> searchUser(int UID)
+        public static List<User> searchUser(int UID)
         {
-            var result = new List<UserSearchResultItem>();
-            result.Add(new UserSearchResultItem(1, "testUser"));
-            result.Add(new UserSearchResultItem(2, "testUser2"));
+            var result = new List<User>();
+            result.Add(new User(1, "testUser"));
+            result.Add(new User(2, "testUser2"));
             return result;
         }
 
@@ -67,12 +68,17 @@ namespace letmeknow_admin
             user.status = UserStatus.NORMAL;
         }
 
-        public static List<NotificationSearchResultItem> SearchNotificationByUser(int UID)
+        public static ObservableCollection<Notification> SearchNotificationByUser(int UID)
         {
-            var SearchResult = new List<NotificationSearchResultItem>();
-            SearchResult.Add(new NotificationSearchResultItem(1, new DateTime(2017, 6, 28, 17, 11, 0), "testContent"));
-            SearchResult.Add(new NotificationSearchResultItem(2, new DateTime(2017, 6, 28, 17, 12, 0), "testContent"));
+            var SearchResult = new ObservableCollection<Notification>();
+            SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
+            SearchResult.Add(new Notification(2, new DateTime(2017, 6, 28, 17, 12, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
             return SearchResult;
+        }
+
+        public static void deleteNotification(Notification notification)
+        {
+            notification.status = NotificationStatus.DELETED;
         }
     }
 }

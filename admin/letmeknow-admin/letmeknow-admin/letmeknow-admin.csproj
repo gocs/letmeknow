@@ -70,9 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\NotificationSearchResultItem.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserSearchResultItem.cs" />
     <Compile Include="NotificationList.xaml.cs">
       <DependentUpon>NotificationList.xaml</DependentUpon>
     </Compile>

@@ -12,7 +12,7 @@
         <controls:Tile x:Name="tileChangePassword" Title="密码更改" 
                     TiltFactor="2"
                     Width="100" Height="100" 
-                    Margin="10,220,522,9" Click="tileChangePassword_Click">
+                    Margin="10,114,522,115" Click="tileChangePassword_Click">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="key" />
@@ -63,7 +63,7 @@
         <controls:Tile x:Name="tileExit" Title="退出" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="115,220,417,9" Click="tileExit_Click">
+        	Margin="10,220,522,9" Click="tileExit_Click">
             <iconPacks:PackIconMaterial Width="30"
         		Height="30"
         		Kind="Logout" />
@@ -71,10 +71,18 @@
         <controls:Tile x:Name="tileHandleReport" Title="举报处理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,219,10,10">
+        	Margin="522,220,10,9">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Exclamation" />
+        </controls:Tile>
+        <controls:Tile x:Name="tileVerify_Copy" Title="通知管理" 
+        	TiltFactor="2"
+        	Width="100" Height="100" 
+        	Margin="312,220,220,9">
+            <iconPacks:PackIconModern Width="30"
+        		Height="30"
+        		Kind="Notification" />
         </controls:Tile>
     </Grid>
 </controls:MetroWindow>

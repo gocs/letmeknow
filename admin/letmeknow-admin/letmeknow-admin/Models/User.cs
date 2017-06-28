@@ -18,6 +18,12 @@ namespace letmeknow_admin.Models
         public UserCategory category { set; get; }
         public string iconURL { set; get; }
 
+        public User(int UID, string name)
+        {
+            this.UID = UID;
+            this.name = name;
+        }
+
         public User(int UID, string name, DateTime registerTime, UserStatus status, 
             UserCategory category, string iconURL)
         {

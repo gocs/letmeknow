@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
+using System.Collections.ObjectModel;
 
 namespace letmeknow_admin
 {
@@ -21,11 +22,44 @@ namespace letmeknow_admin
     /// </summary>
     public partial class NotificationList : MetroWindow
     {
-        public NotificationList(string title, List<NotificationSearchResultItem> SearchResult)
+        private ObservableCollection<Notification> dataList;
+
+        public NotificationList(string title, ObservableCollection<Notification> SearchResult)
         {
             InitializeComponent();
             dataGrid.ItemsSource = SearchResult;
+            dataList = SearchResult;
             lblTitle.Content = title;
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var notification = (sender as DataGrid).SelectedItem as Notification;
+            if (notification == null)
+            {
+                lblSender.Content = "";
+                lblGroup.Content = "";
+                lblTime.Content = "";
+                NotificationContent.Text = "";
+            }
+            else
+            {
+                lblSender.Content = notification.user_name;
+                lblGroup.Content = notification.group_name;
+                lblTime.Content = notification.time;
+                NotificationContent.Text = notification.content;
+            }
+        }
+
+        private void tileSender_Click(object sender, RoutedEventArgs e)
+        {
+            var userDetail = new UserDetail((dataGrid.SelectedItem as Notification).user_id);
+            userDetail.Show();
+        }
+
+        private void tileDelete_Click(object sender, RoutedEventArgs e)
+        {
+            dataList.RemoveAt(dataGrid.SelectedIndex);
         }
     }
 }
