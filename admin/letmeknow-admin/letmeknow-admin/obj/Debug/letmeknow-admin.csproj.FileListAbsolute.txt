@@ -26,3 +26,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ChangePassword.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\letmeknow-admin.csprojResolveAssemblyReference.cache
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchUser.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchUser.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\UserDetail.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\UserDetail.baml

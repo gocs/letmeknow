@@ -40,7 +40,9 @@ namespace letmeknow_admin
         private void tileUser_Click(object sender, RoutedEventArgs e)
         {
             SearchUser searchUser = new SearchUser();
-            searchUser.Show();
+            this.Hide();
+            searchUser.ShowDialog();
+            this.Show();
         }
     }
 }

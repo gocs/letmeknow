@@ -54,7 +54,8 @@
         	Width="100" Height="100" 
         	Margin="522,115,10,114"
             TitleFontSize="14">
-            <iconPacks:PackIconFontAwesome Width="30"
+            <iconPacks:PackIconFontAwesome 
+                                           Width="30"
                                            Height="30"
                                            Kind="EnvelopeOutline" />
         </controls:Tile>

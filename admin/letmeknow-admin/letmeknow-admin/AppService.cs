@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using letmeknow_admin.Models;
+using System.Windows.Media.Imaging;
 
 namespace letmeknow_admin
 {
@@ -33,6 +34,37 @@ namespace letmeknow_admin
             result.Add(new UserSearchResultItem(1, "testUser"));
             result.Add(new UserSearchResultItem(2, "testUser2"));
             return result;
+        }
+
+        public static BitmapImage getImage(string URI)
+        {
+            return new BitmapImage(new Uri("F:\\letmeknow\\admin\\letmeknow-admin\\img\\usericon.png", UriKind.Absolute));
+        }
+
+        public static User getUser(int UID)
+        {
+            User user = new User(UID, "testUser", new DateTime(2017, 6, 28, 15, 13, 0), UserStatus.DELETED, UserCategory.ADMINISTRATOR, "");
+            return user;
+        }
+
+        public static void deleteUser(User user)
+        {
+            user.status = UserStatus.DELETED;
+        }
+
+        public static void recoverUser(User user)
+        {
+            user.status = UserStatus.NORMAL;
+        }
+
+        public static void banUser(User user)
+        {
+            user.status = UserStatus.BANNED;
+        }
+
+        public static void unblockUser(User user)
+        {
+            user.status = UserStatus.NORMAL;
         }
     }
 }

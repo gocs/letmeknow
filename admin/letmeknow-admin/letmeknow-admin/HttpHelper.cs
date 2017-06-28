@@ -10,10 +10,11 @@ namespace letmeknow_admin
 {
     class HttpHelper
     {
+        private static CookieContainer cookie = new CookieContainer();
+
         public static string Post(string url, string postStr)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            CookieContainer cookie = new CookieContainer();
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = Encoding.UTF8.GetByteCount(postStr);
@@ -53,6 +54,7 @@ namespace letmeknow_admin
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + (getStr == "" ? "" : "?") + getStr);
             request.Method = "GET";
             request.ContentType = "text/html;charset=UTF-8";
+            request.CookieContainer = cookie;
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream myResponseStream = response.GetResponseStream();

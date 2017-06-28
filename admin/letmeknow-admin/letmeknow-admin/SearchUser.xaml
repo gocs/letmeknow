@@ -16,7 +16,7 @@
                 <DataGridTextColumn Binding="{Binding name}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="225"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="usrInfo" HorizontalAlignment="Left" Height="23" Margin="18,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+        <TextBox x:Name="usrInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
         <controls:Tile x:Name="tileSearchUserByUID" Title="根据UID查询" 
         	TiltFactor="2"
         	Width="100" Height="100" 
@@ -35,5 +35,6 @@
         		Height="30"
         		Kind="Search" />
         </controls:Tile>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="18,71,0,0" TextWrapping="Wrap" Text="输入用户的ID或者名称，双击搜索结果以查看详细信息" VerticalAlignment="Top" Height="44" Width="255" FontSize="16"/>
     </Grid>
 </controls:MetroWindow>
