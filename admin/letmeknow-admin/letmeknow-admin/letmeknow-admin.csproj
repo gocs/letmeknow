@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="NotificationList.xaml.cs">
@@ -77,6 +78,9 @@
     </Compile>
     <Compile Include="SearchNotification.xaml.cs">
       <DependentUpon>SearchNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchGroup.xaml.cs">
+      <DependentUpon>SearchGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchUser.xaml.cs">
       <DependentUpon>SearchUser.xaml</DependentUpon>
@@ -117,6 +121,10 @@
     <Page Include="SearchNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SearchUser.xaml">
       <SubType>Designer</SubType>

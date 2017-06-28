@@ -88,5 +88,15 @@ namespace letmeknow_admin
         {
             notification.status = NotificationStatus.DELETED;
         }
+
+        public static void toAdmin(User user)
+        {
+            user.category = UserCategory.ADMINISTRATOR;
+        }
+
+        public static void toNormalUser(User user)
+        {
+            user.category = UserCategory.USER;
+        }
     }
 }

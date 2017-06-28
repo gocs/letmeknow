@@ -55,6 +55,18 @@ namespace letmeknow_admin
                 tileDelete.Title = "删除用户";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.SquaredCross;
             }
+            if (user.category == UserCategory.USER)
+            {
+                tileLiftup.Title = "提升为管理员";
+                tileLiftup.TitleFontSize = 14;
+                UpIcon.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.ArrowUp;
+            }
+            else
+            {
+                tileLiftup.Title = "取消管理员权限";
+                tileLiftup.TitleFontSize = 12;
+                UpIcon.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.ArrowDown;
+            }
         }
 
         private void tileDelete_Click(object sender, RoutedEventArgs e)
@@ -79,6 +91,15 @@ namespace letmeknow_admin
         {
             NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.UID));
             notificationList.Show();
+        }
+
+        private void tileLiftup_Click(object sender, RoutedEventArgs e)
+        {
+            if (user.category == UserCategory.USER)
+                AppService.toAdmin(user);
+            else
+                AppService.toNormalUser(user);
+            loadUserInfo();
         }
     }
 }

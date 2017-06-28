@@ -20,7 +20,7 @@
         <controls:Tile x:Name="tileVerify" Title="申请审核" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="417,220,115,9">
+        	Margin="417,10,115,219">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="IdCard" />
@@ -28,7 +28,7 @@
         <controls:Tile x:Name="tileUser" Title="用户管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="417,10,115,219" Click="tileUser_Click">
+        	Margin="417,220,115,9" Click="tileUser_Click">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="User" />
@@ -36,7 +36,7 @@
         <controls:Tile x:Name="tileGroup" Title="通知组管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,10,10,219">
+        	Margin="522,220,10,9">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="Users" />
@@ -71,7 +71,7 @@
         <controls:Tile x:Name="tileHandleReport" Title="举报处理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,220,10,9">
+        	Margin="522,10,10,219">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Exclamation" />

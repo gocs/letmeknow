@@ -32,3 +32,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\NotificationList.g.
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\NotificationList.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchNotification.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchNotification.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchGroup.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchGroup.baml
