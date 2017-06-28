@@ -10,6 +10,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="pm_title_sample">Tom</string>
+    <string name="pm_time_sample">8:00</string>
+    <string name="pm_content_sample">How are you.</string>
+
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
