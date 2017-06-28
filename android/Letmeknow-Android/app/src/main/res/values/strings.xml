@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LetMeKnow</string>
+
+    <string name="drawer_profile">个人资料</string>
+    <string name="drawer_setting">设置</string>
+    <string name="drawer_about">关于Letmeknow</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
