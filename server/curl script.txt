@@ -1,0 +1,2 @@
+
+curl -i -X POST -H "'Content-type':'application/x-www-form-urlencoded', 'charset':'utf-8', 'Accept': 'text/plain'" -d json_data={"username":"aaa","password":"bbb"} http://localhost:8080/letmeknow/login
