@@ -76,10 +76,10 @@
         		Height="30"
         		Kind="Exclamation" />
         </controls:Tile>
-        <controls:Tile x:Name="tileVerify_Copy" Title="通知管理" 
+        <controls:Tile x:Name="tileNotification" Title="通知管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="312,220,220,9">
+        	Margin="312,220,220,9" Click="tileNotification_Click">
             <iconPacks:PackIconModern Width="30"
         		Height="30"
         		Kind="Notification" />

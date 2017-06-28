@@ -14,7 +14,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="通知ID"/>
                 <DataGridTextColumn Binding="{Binding time}" ClipboardContentBinding="{x:Null}" Header="发送时间"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="通知组"/>
+                <DataGridTextColumn Binding="{Binding group_name}" ClipboardContentBinding="{x:Null}" Header="通知组"/>
                 <DataGridTextColumn Binding="{Binding content}" ClipboardContentBinding="{x:Null}" Header="内容"/>
             </DataGrid.Columns>
         </DataGrid>

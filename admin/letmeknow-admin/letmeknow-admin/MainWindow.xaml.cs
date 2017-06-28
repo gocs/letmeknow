@@ -44,5 +44,13 @@ namespace letmeknow_admin
             searchUser.ShowDialog();
             this.Show();
         }
+
+        private void tileNotification_Click(object sender, RoutedEventArgs e)
+        {
+            SearchNotification searchNotification = new SearchNotification();
+            this.Hide();
+            searchNotification.ShowDialog();
+            this.Show();
+        }
     }
 }

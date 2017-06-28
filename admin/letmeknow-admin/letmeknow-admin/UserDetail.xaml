@@ -55,7 +55,7 @@
         <controls:Tile x:Name="tileDeleteIcon" Title="删除头像" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="312,221,220,8" Click="tileNotifications_Click">
+        	Margin="312,221,220,8">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="UserTimes" />

@@ -53,12 +53,15 @@ namespace letmeknow_admin
 
         private void tileSender_Click(object sender, RoutedEventArgs e)
         {
-            var userDetail = new UserDetail((dataGrid.SelectedItem as Notification).user_id);
+            var notification = dataGrid.SelectedItem as Notification;
+            if (notification == null) return;
+            var userDetail = new UserDetail(notification.user_id);
             userDetail.Show();
         }
 
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (dataGrid.SelectedIndex == -1) return;
             dataList.RemoveAt(dataGrid.SelectedIndex);
         }
     }

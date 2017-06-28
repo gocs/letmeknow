@@ -75,6 +75,9 @@
     <Compile Include="NotificationList.xaml.cs">
       <DependentUpon>NotificationList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchNotification.xaml.cs">
+      <DependentUpon>SearchNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchUser.xaml.cs">
       <DependentUpon>SearchUser.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NotificationList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
