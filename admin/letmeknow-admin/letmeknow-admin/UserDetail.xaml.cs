@@ -74,5 +74,11 @@ namespace letmeknow_admin
                 AppService.banUser(user);
             loadUserInfo();
         }
+
+        private void tileNotifications_Click(object sender, RoutedEventArgs e)
+        {
+            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.UID));
+            notificationList.Show();
+        }
     }
 }

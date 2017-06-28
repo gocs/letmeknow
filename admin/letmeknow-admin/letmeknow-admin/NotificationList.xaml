@@ -1,0 +1,30 @@
+﻿<controls:MetroWindow x:Class="letmeknow_admin.NotificationList"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:letmeknow_admin"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Letmeknow - 用户发送的通知" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="lblTitle" Content="Admin发送的通知" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="343" Width="321" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="通知ID"/>
+                <DataGridTextColumn Binding="{Binding time}" ClipboardContentBinding="{x:Null}" Header="发送时间"/>
+                <DataGridTextColumn Binding="{Binding content}" ClipboardContentBinding="{x:Null}" Header="内容"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <controls:Tile x:Name="tileNotifications_Copy" Title="删除通知" 
+        	TiltFactor="2"
+        	Width="100" Height="100" 
+        	Margin="682,309,10,10" Click="tileNotifications_Click">
+            <iconPacks:PackIconMaterial Width="30"
+        		Height="30"
+        		Kind="Delete" />
+        </controls:Tile>
+
+    </Grid>
+</controls:MetroWindow>

@@ -35,10 +35,10 @@
         		Height="30"
         		Kind="SquaredCross" />
         </controls:Tile>
-        <controls:Tile x:Name="tileNotifies" Title="发送的通知" 
+        <controls:Tile x:Name="tileNotifications" Title="发送的通知" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="417,116,115,113">
+        	Margin="417,116,115,113" Click="tileNotifications_Click">
             <iconPacks:PackIconModern Width="30"
         		Height="30"
         		Kind="Information" />
@@ -51,6 +51,14 @@
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Users" />
+        </controls:Tile>
+        <controls:Tile x:Name="tileDeleteIcon" Title="删除头像" 
+        	TiltFactor="2"
+        	Width="100" Height="100" 
+        	Margin="312,221,220,8" Click="tileNotifications_Click">
+            <iconPacks:PackIconFontAwesome Width="30"
+        		Height="30"
+        		Kind="UserTimes" />
         </controls:Tile>
     </Grid>
 </controls:MetroWindow>

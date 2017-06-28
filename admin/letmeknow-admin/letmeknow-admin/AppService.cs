@@ -66,5 +66,13 @@ namespace letmeknow_admin
         {
             user.status = UserStatus.NORMAL;
         }
+
+        public static List<NotificationSearchResultItem> SearchNotificationByUser(int UID)
+        {
+            var SearchResult = new List<NotificationSearchResultItem>();
+            SearchResult.Add(new NotificationSearchResultItem(1, new DateTime(2017, 6, 28, 17, 11, 0), "testContent"));
+            SearchResult.Add(new NotificationSearchResultItem(2, new DateTime(2017, 6, 28, 17, 12, 0), "testContent"));
+            return SearchResult;
+        }
     }
 }
