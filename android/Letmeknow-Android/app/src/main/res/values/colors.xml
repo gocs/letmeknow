@@ -5,4 +5,5 @@
     <color name="colorAccent">#2962FF</color>
     <color name="colorIcon">#210000</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLogoff">#EE2C2C</color>
 </resources>
