@@ -21,6 +21,13 @@
 
     <string name="searchbar_hint">搜索圈子</string>
 
+    <string name="circle_info_intro">概况</string>
+    <string name="circle_info_informer">通知方</string>
+    <string name="circle_info_members">成员</string>
+    <string name="circle_info_intro_brief">圈子简介</string>
+    <string name="circle_info_intro_owner">圈主</string>
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
