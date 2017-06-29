@@ -6,4 +6,19 @@
     <color name="colorIcon">#210000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLogoff">#EE2C2C</color>
+
+    <color name="colorGray1">#EAEAEA</color>
+    <color name="colorGray2">#CDC9C9</color>
+    <color name="colorGray3">#969696</color>
+
+    <color name="colorBlue1">#E0EEEE</color>
+    <color name="colorBlue2">#B2DFEE</color>
+    <color name="colorBlue3">#8DB6CD</color>
+    <color name="colorBlue4">#4876FF</color>
+
+    <color name="colorRed1">#FF8C69</color>
+    <color name="colorRed2">#FF4500</color>
+    <color name="colorRed3">#FF3030</color>
+    <color name="colorRed4">#FF0000</color>
+
 </resources>

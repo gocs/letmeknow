@@ -7,10 +7,16 @@
     <string name="drawer_setting">设置</string>
     <string name="drawer_about">关于Letmeknow</string>
 
+    <string name="notification_title">通知详情</string>
+    <string name="notification_delete">删除通知</string>
+    <string name="notification_confirm">确认收到</string>
+
+    <string name="user_info_title">个人信息</string>
     <string name="user_info_portrait">头像</string>
     <string name="user_info_name">姓名</string>
     <string name="user_info_sex">性别</string>
     <string name="user_info_phone">电话号码</string>
+    <string name="user_info_email">邮箱账号</string>
     <string name="user_info_logoff">退出登录</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
