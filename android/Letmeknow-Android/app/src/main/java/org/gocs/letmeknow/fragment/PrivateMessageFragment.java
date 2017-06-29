@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -50,6 +49,7 @@ public class PrivateMessageFragment extends BaseFragment {
     }
 
     protected void initData(){
+        pmList = new ArrayList<PrivateMessage>();
         PrivateMessage pm1 = new PrivateMessage();
         PrivateMessage pm2 = new PrivateMessage();
         PrivateMessage pm3 = new PrivateMessage();
