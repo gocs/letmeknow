@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/pm_msglist_recycleview"
+        android:id="@+id/recyclerview_pm_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

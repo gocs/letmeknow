@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_pm"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="75dp"
@@ -49,6 +50,7 @@
         android:background="@color/colorWhite">
 
         <TextView
+            android:id="@+id/item_pm_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
