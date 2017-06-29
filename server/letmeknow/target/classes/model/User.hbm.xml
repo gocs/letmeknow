@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="model.User" table="user">
+    <class name="model.User" table="user" dynamic-insert="true">
         <id name="user_id" type="int">
             <column name="user_id" />
             <generator class="identity" />

@@ -17,6 +17,14 @@ public class User {
     private Timestamp updated_at;
     private Timestamp deleted_at;
 
+    public User construct_user(String username, String password, String email, Integer phone_num){
+        this.username=username;
+        this.password=password;
+        this.email=email;
+        this.phone_num=phone_num;
+        return this;
+    }
+
     public int getUser_id() {
         return user_id;
     }

@@ -17,9 +17,18 @@ import java.io.IOException;
  */
 @ParentPackage("json-default")
 public class LoginAction extends BaseAction {
-    private static final long serialVersionUID = 1L;
     private String message;
     private LoginService loginService;
+    private String username;
+    private String password;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void setLoginService(LoginService loginService) {
         this.loginService = loginService;
@@ -29,26 +38,20 @@ public class LoginAction extends BaseAction {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Action(value="login",results={@Result(name=SUCCESS,type="json")})
+    @Action(value = "login", results = {@Result(name = SUCCESS, type = "json")})
     public String login() throws IOException {
-        //测试用逻辑……
+        HttpServletRequest request = request();
+        request.setCharacterEncoding("utf-8");
+        /*测试用逻辑……
         String[] temp=request().getParameterMap().get((Object)"json_data");
         String res="";
         for(String s:temp)
             res+=s;
         Gson gson=new Gson();
         LoginForm form=gson.fromJson(res,LoginForm.class);
-        //end 测试用逻辑
-        if(loginService.login(form))
-        {
-            session().setAttribute("islogin","true");
-            message="success!";
-        }
-        else message="invalid!";
+        end 测试用逻辑*/
+        if (loginService.login(username, password)) message = "success!";
+        else message = "invalid!";
         return SUCCESS;
     }
 }
