@@ -19,7 +19,6 @@ public class UserProfileActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initToolbar();
     }
 
@@ -32,9 +31,12 @@ public class UserProfileActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         // add back arrow to toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //set toolbar title
         getSupportActionBar().setTitle(R.string.user_info_title);
     }
 
