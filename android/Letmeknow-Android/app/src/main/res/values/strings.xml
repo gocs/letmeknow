@@ -27,6 +27,10 @@
     <string name="circle_info_intro_brief">圈子简介</string>
     <string name="circle_info_intro_owner">圈主</string>
 
+    <string name="menu_item_delete_notification">删除通知</string>
+    <string name="menu_item_check_profile">查看对方信息</string>
+    <string name="menu_item_delete_conversation">删除会话</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
