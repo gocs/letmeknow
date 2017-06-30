@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.User" table="user" dynamic-insert="true">
+        <id name="user_id" type="int">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" column="username" type="java.lang.String" />
+        <property name="password" column="password" type="java.lang.String"/>
+        <property name="email" column="email" type="java.lang.String" />
+        <property name="phone_num" column="phone_num" type="int" />
+        <property name="is_admin" column="is_admin" type="java.lang.String" />
+        <property name="status" column="status" type="java.lang.String" />
+        <property name="created_at" column="created_at" type="java.sql.Timestamp" />
+        <property name="updated_at" column="updated_at" type="java.sql.Timestamp" />
+        <property name="deleted_at" column="deleted_at" type="java.sql.Timestamp" />
+    </class>
+</hibernate-mapping>
