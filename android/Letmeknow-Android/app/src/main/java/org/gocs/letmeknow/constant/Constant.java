@@ -9,7 +9,7 @@ import org.gocs.letmeknow.R;
 public class Constant {
     public static final int[] TAB_IMAGE_RES_ID = {
             R.drawable.ic_tab_notifications,
-            R.drawable.ic_tab_group_work,
+            R.drawable.ic_tab_circle,
             R.drawable.ic_tab_message };
 
     public static final int[] CIRCLE_TAB_IMAGE_ID = {

@@ -1,5 +1,6 @@
 package org.gocs.letmeknow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleFragment;
@@ -43,14 +45,17 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
+        //set default title
+        getSupportActionBar().setTitle(R.string.tab_notification);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -85,33 +90,42 @@ public class MainActivity extends BaseActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_profile:
+                Intent profileIntent = new Intent(this, UserProfileActivity.class);
+                this.startActivity(profileIntent);
+                break;
+            case R.id.nav_setting:
+                Intent settingIntent = new Intent(this, SettingActivity.class);
+                this.startActivity(settingIntent);
+                break;
+            case R.id.nav_about:
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                this.startActivity(aboutIntent);
+                break;
+            default:
+                break;
+        }
+
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new NotificationFragment(),getString(R.string.tab_notification));
-        adapter.addFragment(new CircleFragment(),getString(R.string.tab_circle));
-        adapter.addFragment(new PrivateMessageFragment(),getString(R.string.tab_pm));
+        adapter.addFragment(new NotificationFragment());
+        adapter.addFragment(new CircleFragment());
+        adapter.addFragment(new PrivateMessageFragment());
         viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         private ViewPagerAdapter(FragmentManager manager) {
             super(manager);
@@ -127,9 +141,8 @@ public class MainActivity extends BaseActivity
             return mFragmentList.size();
         }
 
-        private void addFragment(Fragment fragment, String title) {
+        private void addFragment(Fragment fragment) {
             mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
         }
 
         @Override
@@ -142,6 +155,35 @@ public class MainActivity extends BaseActivity
         // setup TabLayout first
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 0:
+                        getSupportActionBar().setTitle(R.string.tab_notification);
+                        break;
+                    case 1:
+                        getSupportActionBar().setTitle(R.string.tab_circle);
+                        break;
+                    case 2:
+                        getSupportActionBar().setTitle(R.string.tab_pm);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
 
         // configure icons
         try {
