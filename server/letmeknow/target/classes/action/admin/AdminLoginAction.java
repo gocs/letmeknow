@@ -32,10 +32,9 @@ public class AdminLoginAction extends BaseAction {
         this.loginService = loginService;
     }
 
-    @Action(value="admin/login",results={@Result(type="json",name=SUCCESS)})
+    @Action(value="adminlogin",results={@Result(type="json",name=SUCCESS)})
     public String adminLogin(){
-        if(loginService.adminLogin(username,password)) message="heiheihei";
-        else message="hehe";
+        message=loginService.adminLogin(username,password);
         return SUCCESS;
     }
 }

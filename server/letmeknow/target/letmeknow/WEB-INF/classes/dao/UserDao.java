@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by admin on 2017/6/27.
  */
-public interface UserDao{
+public interface UserDao {
     public Integer save(User user);
 
     public void delete(User user);
@@ -20,4 +20,6 @@ public interface UserDao{
     public List<User> getAllUsers();
 
     public User getUserByName(String username);
+
+    public List<User> getUserByName(String username, int start, int count);
 }

@@ -12,8 +12,12 @@
       </configuration>
       <facet type="Struts2" name="Struts 2">
         <configuration>
-          <fileset id="s2fileset" name="My Fileset " removed="false">
+          <fileset id="s2fileset2" name="My Fileset 2" removed="false">
             <file>file://$MODULE_DIR$/src/main/resources/struts.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-convention-plugin/2.5.10.1/struts2-convention-plugin-2.5.10.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.5.10.1/struts2-core-2.5.10.1.jar!/struts-default.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.5.10.1/struts2-json-plugin-2.5.10.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.5.10.1/struts2-spring-plugin-2.5.10.1.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -24,6 +28,14 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
         </fileset>
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="sessionFactory" value="891e0bc1-6eb1-4a0e-a046-0179b10ac967" />
+        </datasource-map>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>
@@ -92,5 +104,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:3.2.18.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.2" level="project" />
     <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:3.6.10.Final" level="project" />
   </component>
 </module>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.GroupsEntity" table="groups" schema="letmeknow_test">
+        <id name="groupId">
+            <column name="group_id" sql-type="int(11)"/>
+        </id>
+        <property name="groupName">
+            <column name="group_name" sql-type="varchar(45)" length="45"/>
+        </property>
+        <property name="capacity">
+            <column name="capacity" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="icon">
+            <column name="icon" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="createdAt">
+            <column name="created_at" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="updatedAt">
+            <column name="updated_at" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="deletedAt">
+            <column name="deleted_at" sql-type="timestamp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

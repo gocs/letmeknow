@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.MessageEntity" table="message" schema="letmeknow_test">
+        <id name="messageId">
+            <column name="message_id" sql-type="int(11)"/>
+        </id>
+        <property name="content">
+            <column name="content" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="createdAt">
+            <column name="created_at" sql-type="timestamp"/>
+        </property>
+        <property name="updatedAt">
+            <column name="updated_at" sql-type="timestamp"/>
+        </property>
+        <property name="deletedAt">
+            <column name="deleted_at" sql-type="timestamp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

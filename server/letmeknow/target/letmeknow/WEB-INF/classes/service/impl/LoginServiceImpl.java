@@ -1,7 +1,6 @@
 package service.impl;
 
 import dao.UserDao;
-import model.LoginForm;
 import model.User;
 import org.apache.struts2.ServletActionContext;
 import service.LoginService;
@@ -32,25 +31,26 @@ public class LoginServiceImpl implements LoginService{
         return true;
     }
 
-    public boolean register(String username, String password, String email, Integer phone_num) {
+    public int register(String username, String password, String email, Integer phone_num) {
         User user=new User().construct_user(username,password,email,phone_num);
-        if(userDao.save(user)>0) {
+        User target=userDao.getUserByName(username);
+        if(target==null) {
+            int id=userDao.save(user);
             ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUser_id());
             ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
-            return true;
+            return id;
         }
-        return false;
+        return -1;
     }
 
-    public boolean adminLogin(String username, String password) {
+    public String adminLogin(String username, String password) {
         User user=userDao.getUserByName(username);
-        if(user==null) return false;
-        if(!(password.equals(user.getPassword()))) return false;
-        if(!(user.getIs_admin().equals("admin"))) return false;
+        if(user==null||!(password.equals(user.getPassword()))) return "用户名或密码错误";
+        if(!(user.getIs_admin().equals("admin"))) return "权限不足";
         HttpSession session=ServletActionContext.getRequest().getSession();
         session.setAttribute("userid",user.getUser_id());
         session.setAttribute("username",user.getUsername());
         session.setAttribute("isadmin","true");
-        return true;
+        return "登陆成功";
     }
 }

@@ -24,12 +24,15 @@
 		<property name="mappingResources">
 			<list>
 				<value>model/User.hbm.xml</value>
+				<value>model/GroupMemEntity.hbm.xml</value>
+				<value>model/GroupsEntity.hbm.xml</value>
+				<value>model/MessageEntity.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
 		<property name="hibernateProperties">
 			<value>
-				hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
 				hibernate.hbm2ddl.auto=update
 				hibernate.show_sql=true
 				hibernate.format_sql=true
@@ -44,6 +47,10 @@
 
 	<!-- Service Bean -->
 	<bean id="loginService" class="service.impl.LoginServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="userService" class="service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao" />
 	</bean>
 </beans>

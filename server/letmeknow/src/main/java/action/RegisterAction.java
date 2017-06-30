@@ -46,7 +46,7 @@ public class RegisterAction extends BaseAction {
 
     @Action(value = "register", results = {@Result(type = "json", name = SUCCESS)})
     public String register() {
-        if (loginService.register(username, password, email, phone_num)) message = "register succeeded";
+        if (loginService.register(username, password, email, phone_num) > 0) message = "register succeeded";
         else message = "register failed";
         return SUCCESS;
     }

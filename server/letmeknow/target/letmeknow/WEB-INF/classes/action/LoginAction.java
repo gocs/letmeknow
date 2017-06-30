@@ -1,11 +1,8 @@
 package action;
 
-import com.google.gson.Gson;
-import model.LoginForm;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Action;
-import org.hibernate.annotations.Parameter;
 import service.LoginService;
 
 import javax.servlet.http.HttpServletRequest;
