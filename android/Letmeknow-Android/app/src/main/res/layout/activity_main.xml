@@ -52,9 +52,9 @@
         </LinearLayout>
 
         <com.github.clans.fab.FloatingActionMenu
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/fam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             app:menu_fab_size="normal"
@@ -92,7 +92,7 @@
             app:menu_backgroundColor="@android:color/transparent">
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/menu_item_notification"
+                android:id="@+id/fam_item_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_action_menu_notification"
@@ -102,7 +102,7 @@
                 app:fab_size="mini"
                 app:fab_label="未读通知" />
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/menu_item_read"
+                android:id="@+id/fam_item_read"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_action_menu_read"
@@ -112,7 +112,7 @@
                 app:fab_size="mini"
                 app:fab_label="已读通知" />
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/menu_item_sent"
+                android:id="@+id/fam_item_sent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_action_menu_send"

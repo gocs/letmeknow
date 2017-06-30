@@ -2,8 +2,6 @@ package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,10 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
+import com.github.clans.fab.FloatingActionMenu;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleFragment;
@@ -44,6 +42,9 @@ public class MainActivity extends BaseActivity
     TabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+    @BindView(R.id.fam)
+    FloatingActionMenu floatingActionMenu;
+
 
 
     @Override
@@ -61,6 +62,7 @@ public class MainActivity extends BaseActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         initTab();
+        setUpFloatingActionMenu();
     }
 
     @Override
@@ -193,5 +195,9 @@ public class MainActivity extends BaseActivity
         } catch (NullPointerException e) {
             ;
         }
+    }
+
+    private void setUpFloatingActionMenu(){
+        floatingActionMenu.setClosedOnTouchOutside(true);
     }
 }

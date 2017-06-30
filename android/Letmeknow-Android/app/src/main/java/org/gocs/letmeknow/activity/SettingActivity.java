@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_user_profile;
+        return R.layout.activity_setting;
     }
 
     private void initToolbar(){
