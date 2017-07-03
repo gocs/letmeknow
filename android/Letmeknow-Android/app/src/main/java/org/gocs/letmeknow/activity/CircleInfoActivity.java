@@ -24,8 +24,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static org.gocs.letmeknow.constant.Constant.CIRCLE_TAB_IMAGE_ID;
-import static org.gocs.letmeknow.constant.Constant.TAB_NUM;
+import static org.gocs.letmeknow.application.Constant.CIRCLE_TAB_IMAGE_ID;
+import static org.gocs.letmeknow.application.Constant.TAB_NUM;
 
 /**
  * Created by rebas on 2017/6/30.

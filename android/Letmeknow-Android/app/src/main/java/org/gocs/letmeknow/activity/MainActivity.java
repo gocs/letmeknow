@@ -27,8 +27,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static org.gocs.letmeknow.constant.Constant.TAB_IMAGE_RES_ID;
-import static org.gocs.letmeknow.constant.Constant.TAB_NUM;
+import static org.gocs.letmeknow.application.Constant.TAB_IMAGE_RES_ID;
+import static org.gocs.letmeknow.application.Constant.TAB_NUM;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
