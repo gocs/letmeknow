@@ -3,6 +3,7 @@ package org.gocs.letmeknow.activity;
 import org.gocs.letmeknow.R;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -26,11 +27,30 @@ import butterknife.BindView;
 
 public class NotificationDetailActivity extends BaseActivity{
 
-    @BindView(R.id.toolbar_notification_detail)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initToolbar();
+    }
 
     @Override
     protected int getContentViewId() {
         return R.layout.activity_notification_detail;
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //set toolbar title
+        getSupportActionBar().setTitle(R.string.notification_title);
     }
 }

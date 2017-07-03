@@ -6,25 +6,7 @@
     android:layout_height="match_parent"
     android:theme="@style/AppTheme.AppBarOverlay">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_notification_detail"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/AppTheme.PopupOverlay" >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_leftarrow"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notification_title"
-            android:textSize="20sp"
-            android:textColor="@color/colorWhite"
-            android:layout_gravity="center_horizontal"/>
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/item_toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,43 +19,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"/>
+
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_notification_buttons"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal"
-        android:clickable="true">
+        android:layout_height="match_parent"
+        android:layout_gravity="center|center_horizontal|center_vertical">
 
-        <Button
-            android:id="@+id/button_notification_delete"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorGray1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="3dp"
-            android:text="@string/notification_delete"
-            android:textColor="@color/colorRed4"
-            android:textSize="16sp"/>
-        <Button
-            android:id="@+id/button_notification_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorGray1"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/notification_confirm"
-            android:textColor="@color/colorIcon"
-            android:textSize="16sp"/>
-    </LinearLayout>
+        <at.markushi.ui.CircleButton
+            android:id="@+id/circleButton"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/ic_done_48dp"
+            app:cb_color="@color/colorBlue4"
+            app:cb_pressedRingWidth="8dip" />
+
+    </FrameLayout>
 
 </LinearLayout>
