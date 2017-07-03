@@ -28,6 +28,11 @@
     <string name="circle_info_members">成员</string>
     <string name="circle_info_intro_brief">圈子简介</string>
     <string name="circle_info_intro_owner">圈主</string>
+    <string name="circle_menu_share">圈子二维码</string>
+    <string name="circle_menu_quit">退出圈子</string>
+    <string name="circle_menu_kick">踢出圈子成员</string>
+    <string name="circle_menu_edit_intro">编辑概况</string>
+    <string name="circle_menu_designate_informer">添加通知方</string>
 
     <string name="menu_item_delete_notification">删除通知</string>
     <string name="menu_item_check_profile">查看对方信息</string>
