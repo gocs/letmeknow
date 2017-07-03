@@ -32,6 +32,7 @@
     <string name="menu_item_delete_notification">删除通知</string>
     <string name="menu_item_check_profile">查看对方信息</string>
     <string name="menu_item_delete_conversation">删除会话</string>
+    <string name="hint_enter_a_message">输入消息</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
