@@ -1,21 +1,47 @@
 package model;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 /**
  * Created by admin on 2017/6/28.
  */
 public class User {
-    private int user_id;
+    private int userId;
     private String username;
     private String password;
     private String email;
     private Integer phone_num;;
-    private String is_admin;
-    private String status;
+    private Integer is_admin;
+    private Integer status; //2 for active, 1 for disabled, 0 for deleted
     private Timestamp created_at;
     private Timestamp updated_at;
     private Timestamp deleted_at;
+    private String avatar;
+
+    public Integer getIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(Integer is_admin) {
+        this.is_admin = is_admin;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public User construct_user(String username, String password, String email, Integer phone_num){
         this.username=username;
@@ -25,12 +51,12 @@ public class User {
         return this;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -63,22 +89,6 @@ public class User {
 
     public void setPhone_num(Integer phone_num) {
         this.phone_num = phone_num;
-    }
-
-    public String getIs_admin() {
-        return is_admin;
-    }
-
-    public void setIs_admin(String is_admin) {
-        this.is_admin = is_admin;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Timestamp getCreated_at() {

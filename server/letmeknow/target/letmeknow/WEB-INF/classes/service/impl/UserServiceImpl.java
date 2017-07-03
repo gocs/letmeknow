@@ -35,4 +35,24 @@ public class UserServiceImpl implements UserService {
     public User queryUserDetail(int userId) {
         return userDao.getUserById(userId);
     }
+
+    /* deprecated
+    public String PromotePrivilege(int userId) {
+        User user=userDao.getUserById(userId);
+        if(user==null) return "no such user";
+        if(user.getIs_admin().equals("admin")) return "already an admin";
+        user.setIs_admin("admin");
+        userDao.update(user);
+        return "update complete";
+    }
+    */
+
+    public void updateUser(User user){
+        userDao.update(user);
+    }
+
+    public boolean adminExistUser(int userId) {
+        if(userDao.getUserById(userId)!=null) return true;
+        return false;
+    }
 }

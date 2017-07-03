@@ -4,5 +4,37 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
         "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.convention.default.parent.package" value="myPackage"/>
+    <package name="myPackage" extends="convention-default">
+        <!-- json -->
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
+
+        <interceptors>
+            <interceptor name="authInterceptor" class="interceptor.AuthInterceptor"/>
+
+            <!-- json -->
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+            <interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
+
+            <!-- 拦截器栈名采用Struts-json插件的栈名 -->
+            <interceptor-stack name="jsonValidationWorkflowStack">
+                <interceptor-ref name="authInterceptor" />
+                <interceptor-ref name="defaultStack"/>
+
+                <!-- json -->
+                <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="jsonValidation"/>
+                <interceptor-ref name="workflow"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="jsonValidationWorkflowStack"/>
+
+    </package>
 </struts>

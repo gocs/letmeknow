@@ -4,10 +4,15 @@ dao\UserDao.class
 util\TestUtil.class
 model\GroupsEntity.class
 test\AdminLoginTest.class
+test\RemoteAdminModifyUserTest.class
 action\admin\QueryUserAction.class
+interceptor\AuthInterceptor.class
+test\AdminModifyUserTest.class
 service\LoginService.class
 model\User.class
+model\UserQueryForm.class
 test\LoginTest.class
+action\admin\QueryUserDetailAction.class
 util\HttpUtil.class
 action\LoginAction.class
 service\impl\UserServiceImpl.class
@@ -17,6 +22,7 @@ service\UserService.class
 action\BaseAction.class
 dao\impl\UserDaoImpl.class
 model\GroupMemEntity.class
+test\PrivilegeTest.class
 test\RegisterTest.class
 action\admin\AdminLoginAction.class
 model\GroupMemEntityPK.class

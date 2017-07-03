@@ -13,4 +13,7 @@ public interface UserService {
     public List<UserQueryForm> queryUserByName(String username, int start, int count);
     public List<UserQueryForm> queryAllUsers();
     public User queryUserDetail(int userId);
+    //public String PromotePrivilege(int userId);
+    public void updateUser(User user);
+    public boolean adminExistUser(int userId);
 }

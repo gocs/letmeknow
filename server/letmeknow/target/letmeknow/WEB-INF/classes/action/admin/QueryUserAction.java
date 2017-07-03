@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * Created by admin on 2017/6/30.
  */
-@ParentPackage("json-default")
 public class QueryUserAction extends BaseAction {
     private String username;
     private Integer userId;
@@ -52,14 +51,14 @@ public class QueryUserAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value="userId",results={@Result(type="json")})
+    @Action(value="FetchUserById",results={@Result(type="json")})
     public String QueryUserById(){
         if(userId==null) return SUCCESS;
         users=userService.queryUserById(userId);
         return SUCCESS;
     }
 
-    @Action(value="username",results={@Result(type="json")})
+    @Action(value="FetchUserByName",results={@Result(type="json")})
     public String QueryUserByUsername(){
         if(username==null) return SUCCESS;
         users=userService.queryUserByName(username,start,count);

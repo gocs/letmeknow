@@ -12,7 +12,6 @@ import java.io.IOException;
 /**
  * Created by admin on 2017/6/27.
  */
-@ParentPackage("json-default")
 public class LoginAction extends BaseAction {
     private String message;
     private LoginService loginService;
@@ -49,6 +48,13 @@ public class LoginAction extends BaseAction {
         end 测试用逻辑*/
         if (loginService.login(username, password)) message = "success!";
         else message = "invalid!";
+        return SUCCESS;
+    }
+
+    @Action(value="checkLogin", results={@Result(name= SUCCESS, type="json")})
+    public String checkLogin(){
+        if(session().getAttribute("username")!=null) message="the user has logged in";
+        else message="no current users have logged in";
         return SUCCESS;
     }
 }

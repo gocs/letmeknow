@@ -15,7 +15,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
 		p:jdbcUrl="jdbc:mysql://localhost:3306/letmeknow_test" p:user="root"
-		p:password="password" p:maxPoolSize="40" p:minPoolSize="1"
+		p:password="letmeknow" p:maxPoolSize="40" p:minPoolSize="1"
 		p:initialPoolSize="1" p:maxIdleTime="20" />
 
 	<bean id="sessionFactory"
@@ -45,6 +45,10 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<bean id="groupDao" class="dao.impl.GroupDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 	<!-- Service Bean -->
 	<bean id="loginService" class="service.impl.LoginServiceImpl">
 		<property name="userDao" ref="userDao" />
@@ -53,4 +57,9 @@
 	<bean id="userService" class="service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao" />
 	</bean>
+
+	<bean id="groupService" class="service.impl.GroupServiceImpl">
+		<property name="groupDao" ref="groupDao" />
+	</bean>
+
 </beans>

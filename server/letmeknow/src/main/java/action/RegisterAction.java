@@ -11,7 +11,6 @@ import service.LoginService;
  * Created by admin on 2017/6/29.
  */
 
-@ParentPackage("json-default")
 public class RegisterAction extends BaseAction {
     private String username;
     private String password;

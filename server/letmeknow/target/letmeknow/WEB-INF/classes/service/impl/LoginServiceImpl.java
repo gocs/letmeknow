@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService{
         if(user==null) return false;
         if(!(password.equals(user.getPassword()))) return false;
         HttpSession session=ServletActionContext.getRequest().getSession();
-        session.setAttribute("userid",user.getUser_id());
+        session.setAttribute("userid",user.getUserId());
         session.setAttribute("username",user.getUsername());
         return true;
     }
@@ -36,7 +36,7 @@ public class LoginServiceImpl implements LoginService{
         User target=userDao.getUserByName(username);
         if(target==null) {
             int id=userDao.save(user);
-            ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUser_id());
+            ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUserId());
             ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
             return id;
         }
@@ -45,12 +45,12 @@ public class LoginServiceImpl implements LoginService{
 
     public String adminLogin(String username, String password) {
         User user=userDao.getUserByName(username);
-        if(user==null||!(password.equals(user.getPassword()))) return "用户名或密码错误";
-        if(!(user.getIs_admin().equals("admin"))) return "权限不足";
+        if(user==null||!(password.equals(user.getPassword()))) return "0";
+        if(user.getIs_admin()!=1) return "1";
         HttpSession session=ServletActionContext.getRequest().getSession();
-        session.setAttribute("userid",user.getUser_id());
+        session.setAttribute("userid",user.getUserId());
         session.setAttribute("username",user.getUsername());
         session.setAttribute("isadmin","true");
-        return "登陆成功";
+        return "2";
     }
 }

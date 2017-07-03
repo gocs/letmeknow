@@ -20,7 +20,7 @@ public class UserQueryForm {
 
     public UserQueryForm(User user) {
         this.username = user.getUsername();
-        this.userId = user.getUser_id();
+        this.userId = user.getUserId();
     }
 
     public static List<UserQueryForm> convertToForm(List<User> users) {
