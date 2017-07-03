@@ -85,7 +85,8 @@ namespace letmeknow_admin
             BackgroundWorker loginWorker = new BackgroundWorker();
             loginWorker.DoWork += loginWorker_DoWork;
             loginWorker.RunWorkerCompleted += loginWorker_RunWorkerCompleted;
-            loginWorker.RunWorkerAsync(new KeyValuePair<string, string>(username.Text, password.Password));
+            //loginWorker.RunWorkerAsync(new KeyValuePair<string, string>(username.Text, password.Password));
+            loginWorker.RunWorkerAsync(new KeyValuePair<string, string>("admin", "123456"));
         }
     }
 }

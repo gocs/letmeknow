@@ -8,7 +8,7 @@ namespace letmeknow_admin.Models
 {
     public class Group
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public int groupId { get; set; }
+        public string groupName { get; set; }
     }
 }

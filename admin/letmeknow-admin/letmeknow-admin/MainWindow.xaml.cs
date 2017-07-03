@@ -52,5 +52,13 @@ namespace letmeknow_admin
             searchNotification.ShowDialog();
             this.Show();
         }
+
+        private void tileGroup_Click(object sender, RoutedEventArgs e)
+        {
+            SearchGroup searchGroup = new SearchGroup();
+            this.Hide();
+            searchGroup.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace letmeknow_admin
             parameters["username"] = name;
             parameters["start"] = "0";
             parameters["count"] = "32767";
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "username", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchUserByName", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["users"];
             return result;
         }
@@ -44,7 +44,7 @@ namespace letmeknow_admin
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["userId"] = UID.ToString();
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "userId", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchUserById", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["users"];
             return result;
         }
@@ -52,20 +52,20 @@ namespace letmeknow_admin
         public static List<Group> searchGroup(string name)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["groupname"] = name;
+            parameters["groupName"] = name;
             parameters["start"] = "0";
             parameters["count"] = "32767";
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "groupname", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchGroupByName", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Group>>>(JsonString)["groups"];
             return result;
         }
 
-        public static List<User> searchGroup(int id)
+        public static List<Group> searchGroup(int id)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["userId"] = id.ToString();
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "groupId", parameters);
-            var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["groups"];
+            parameters["groupId"] = id.ToString();
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchGroupById", parameters);
+            var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Group>>>(JsonString)["groups"];
             return result;
         }
 

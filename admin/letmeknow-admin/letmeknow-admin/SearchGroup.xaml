@@ -12,8 +12,8 @@
         <Label x:Name="label" Content="通知组查询" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding UID}" ClipboardContentBinding="{x:Null}" Header="ID"/>
-                <DataGridTextColumn Binding="{Binding name}" ClipboardContentBinding="{x:Null}" Header="通知组名称" Width="225"/>
+                <DataGridTextColumn Binding="{Binding groupId}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding groupName}" ClipboardContentBinding="{x:Null}" Header="通知组名称" Width="225"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="groupInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>

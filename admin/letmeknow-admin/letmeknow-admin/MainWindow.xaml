@@ -37,7 +37,7 @@
         <controls:Tile x:Name="tileGroup" Title="通知组管理" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,220,10,9">
+        	Margin="522,220,10,9" Click="tileGroup_Click">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"
                                            Kind="Users" />
@@ -60,7 +60,7 @@
                                            Height="30"
                                            Kind="EnvelopeOutline" />
         </controls:Tile>
-        <Label x:Name="title" Content="欢迎使用，Admin" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <Label x:Name="title" Content="欢迎使用" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <controls:Tile x:Name="tileExit" Title="退出" 
         	TiltFactor="2"
         	Width="100" Height="100" 

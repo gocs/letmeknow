@@ -40,7 +40,7 @@ namespace letmeknow_admin
                 {
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
+                        var userDetail = new GroupDetail((((DataGridRow)_sender).Item as Models.Group).groupId);
                         this.Hide();
                         userDetail.ShowDialog();
                         this.ShowDialog();
