@@ -53,4 +53,11 @@ public class NotificationDetailActivity extends BaseActivity{
         //set toolbar title
         getSupportActionBar().setTitle(R.string.notification_title);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.notification_detail_menu, menu);
+        return true;
+    }
 }
