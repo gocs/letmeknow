@@ -32,11 +32,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.clans:fab:1.6.4'
-<<<<<<< HEAD
     compile 'com.github.markushi:circlebutton:1.1'
-=======
     compile 'com.jakewharton:butterknife:8.6.0'
->>>>>>> b5bb08e99c271d78290bc3b6de01feb171dce9c1
 
 
     compile 'com.squareup.picasso:picasso:2.5.2'
@@ -47,7 +44,7 @@ dependencies {
 
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:(insert latest version)'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
 
