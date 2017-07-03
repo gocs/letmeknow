@@ -3,12 +3,9 @@
 buildscript {
     repositories {
         jcenter()
-<<<<<<< HEAD
         mavenCentral()
         mavenLocal()
-=======
         maven { url "https://jitpack.io" }
->>>>>>> modify login activity ui
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
