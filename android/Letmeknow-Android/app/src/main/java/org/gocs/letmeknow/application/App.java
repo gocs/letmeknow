@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.util;
+package org.gocs.letmeknow.application;
 
 import android.app.Application;
 

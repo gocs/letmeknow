@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.constant;
+package org.gocs.letmeknow.application;
 
 import org.gocs.letmeknow.R;
 
