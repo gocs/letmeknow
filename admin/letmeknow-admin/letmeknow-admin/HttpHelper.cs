@@ -66,6 +66,17 @@ namespace letmeknow_admin
             return retStr;
         }
 
+        public static Stream GetStream(string url, string getStr)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + (getStr == "" ? "" : "?") + getStr);
+            request.Method = "GET";
+            request.ContentType = "text/html;charset=UTF-8";
+            request.CookieContainer = cookie;
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response.GetResponseStream();
+        }
+
         public static string Get(string url, Dictionary<string, string> dataList)
         {
             string getStr = "";

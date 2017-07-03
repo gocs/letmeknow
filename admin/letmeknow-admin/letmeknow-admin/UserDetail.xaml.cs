@@ -31,11 +31,22 @@ namespace letmeknow_admin
 
         private void loadUserInfo()
         {
-            lblTitle.Content = string.Format("{0} (UID: {1})", user.name, user.UID);
-            UserIcon.Source = AppService.getImage(user.iconURL);
-            lblRegisterTime.Content = user.registerTime;
-            lblUserCategory.Content = user.category.ToString();
+            lblTitle.Content = string.Format("{0} (UID: {1})", user.username, user.userId);
+            if (user.avatar == null)
+            {
+                UserIcon.Source = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/usericon.PNG", UriKind.Absolute));
+                tileDeleteIcon.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                UserIcon.Source = AppService.getImage(user.avatar);
+                tileDeleteIcon.Visibility = Visibility.Visible;
+            }
+            lblRegisterTime.Content = user.created_at;
+            lblUserCategory.Content = user.is_admin.ToString();
             lblUserStatus.Content = user.status.ToString();
+            lblEmail.Content = user.email;
+            lblPhone.Content = user.phone_num;
             if (user.status == UserStatus.BANNED)
             {
                 tileBan.Title = "解封用户";
@@ -55,7 +66,7 @@ namespace letmeknow_admin
                 tileDelete.Title = "删除用户";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.SquaredCross;
             }
-            if (user.category == UserCategory.USER)
+            if (user.is_admin == UserCategory.USER)
             {
                 tileLiftup.Title = "提升为管理员";
                 tileLiftup.TitleFontSize = 14;
@@ -72,33 +83,39 @@ namespace letmeknow_admin
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
             if (user.status != UserStatus.DELETED)
-                AppService.deleteUser(user);
+                AppService.deleteUser(ref user);
             else
-                AppService.recoverUser(user);
+                AppService.recoverUser(ref user);
             loadUserInfo();
         }
 
         private void tileBan_Click(object sender, RoutedEventArgs e)
         {
             if (user.status == UserStatus.BANNED)
-                AppService.unblockUser(user);
+                AppService.unblockUser(ref user);
             else
-                AppService.banUser(user);
+                AppService.banUser(ref user);
             loadUserInfo();
         }
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.UID));
+            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.userId));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
-            if (user.category == UserCategory.USER)
-                AppService.toAdmin(user);
+            if (user.is_admin == UserCategory.USER)
+                AppService.toAdmin(ref user);
             else
-                AppService.toNormalUser(user);
+                AppService.toNormalUser(ref user);
+            loadUserInfo();
+        }
+
+        private void tileDeleteIcon_Click(object sender, RoutedEventArgs e)
+        {
+            AppService.deleteIcon(ref user);
             loadUserInfo();
         }
     }

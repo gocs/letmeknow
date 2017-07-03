@@ -10,13 +10,13 @@
         Title="Letmeknow - 用户信息" Height="360" Width="640">
     <Grid>
         <Label x:Name="lblTitle" Content="Admin (UID: 1)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="612"/>
-        <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="150" Margin="50,66,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label x:Name="label1" Content="注册时间：" HorizontalAlignment="Left" Margin="22,221,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy" Content="用户类型：" HorizontalAlignment="Left" Margin="22,251,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy1" Content="用户状态：" HorizontalAlignment="Left" Margin="22,281,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRegisterTime" Content="Label" HorizontalAlignment="Left" Margin="92,221,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblUserCategory" Content="Label" HorizontalAlignment="Left" Margin="92,251,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblUserStatus" Content="Label" HorizontalAlignment="Left" Margin="92,281,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="100" Margin="80,66,0,0" VerticalAlignment="Top" Width="100" Source="pack://siteoforigin:,,,/Resources/usericon.PNG"/>
+        <Label x:Name="label1" Content="注册时间：" HorizontalAlignment="Left" Margin="29,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="用户类型：" HorizontalAlignment="Left" Margin="29,207,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="用户状态：" HorizontalAlignment="Left" Margin="29,237,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblRegisterTime" Content="Label" HorizontalAlignment="Left" Margin="99,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUserCategory" Content="Label" HorizontalAlignment="Left" Margin="99,207,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUserStatus" Content="Label" HorizontalAlignment="Left" Margin="99,237,0,0" VerticalAlignment="Top"/>
         <controls:Tile x:Name="tileBan" Title="封禁用户" 
         	TiltFactor="2"
         	Width="100" Height="100" 
@@ -55,7 +55,7 @@
         <controls:Tile x:Name="tileDeleteIcon" Title="删除头像" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="312,221,220,8">
+        	Margin="312,221,220,8" Click="tileDeleteIcon_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="UserTimes" />
@@ -70,5 +70,9 @@
         		Height="30"
         		Kind="ArrowUp" />
         </controls:Tile>
+        <Label x:Name="label1_Copy2" Content="邮箱：" HorizontalAlignment="Left" Margin="29,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEmail" Content="Label" HorizontalAlignment="Left" Margin="99,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy3" Content="电话：" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPhone" Content="Label" HorizontalAlignment="Left" Margin="99,297,0,0" VerticalAlignment="Top"/>
     </Grid>
 </controls:MetroWindow>

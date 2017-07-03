@@ -6,33 +6,41 @@ using System.Threading.Tasks;
 
 namespace letmeknow_admin.Models
 {
-    enum UserStatus { NORMAL, BANNED, DELETED};
-    enum UserCategory { ADMINISTRATOR, USER};
+    enum UserStatus { NORMAL = 2, BANNED = 1, DELETED = 0};
+    enum UserCategory { ADMINISTRATOR = 1, USER = 0};
 
     class User
     {
-        public int UID { set; get; }
-        public string name { set; get; }
-        public DateTime registerTime { set; get; }
+        public int userId { set; get; }
+        public string username { set; get; }
+        public DateTime created_at { set; get; }
         public UserStatus status { set; get; }
-        public UserCategory category { set; get; }
-        public string iconURL { set; get; }
+        public UserCategory is_admin { set; get; }
+        public string avatar { set; get; }
+        public string email { set; get; }
+        public string phone_num { set; get; }
 
-        public User(int UID, string name)
+        public User()
         {
-            this.UID = UID;
-            this.name = name;
         }
 
-        public User(int UID, string name, DateTime registerTime, UserStatus status, 
-            UserCategory category, string iconURL)
+        public User(int userId, string name)
         {
-            this.UID = UID;
-            this.name = name;
-            this.registerTime = registerTime;
+            this.userId = userId;
+            this.username = username;
+        }
+
+        public User(int userId, string username, DateTime created_at, UserStatus status, 
+            UserCategory is_admin, string avatar, string email, string phone_num)
+        {
+            this.userId = userId;
+            this.username = username;
+            this.created_at = created_at;
             this.status = status;
-            this.category = category;
-            this.iconURL = iconURL;
+            this.is_admin = is_admin;
+            this.avatar = avatar;
+            this.email = email;
+            this.phone_num = phone_num;
         }
     }
 }

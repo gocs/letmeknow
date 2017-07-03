@@ -8,6 +8,6 @@ namespace letmeknow_admin
 {
     class GeneralSetting
     {
-        public static string host = "http://localhost";
+        public static string host = "http://106.15.179.41:8080/letmeknow/";
     }
 }

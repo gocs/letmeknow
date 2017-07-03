@@ -16,21 +16,21 @@
                 <DataGridTextColumn Binding="{Binding name}" ClipboardContentBinding="{x:Null}" Header="通知组名称" Width="225"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="usrInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-        <controls:Tile x:Name="tileSearchUserByUID" Title="根据ID查询" 
+        <TextBox x:Name="groupInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+        <controls:Tile x:Name="tileSearchGroupByID" Title="根据ID查询" 
         	TiltFactor="2"
         	Width="100" Height="100" 
             TitleFontSize="14"
-        	Margin="18,203,514,26" RenderTransformOrigin="0.605,0.303" Click="tileSearchUserByUID_Click">
+        	Margin="18,203,514,26" RenderTransformOrigin="0.605,0.303" Click="tileSearchGroupByID_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Search" />
         </controls:Tile>
-        <controls:Tile x:Name="tileSearchUserByName" Title="根据名称查询" 
+        <controls:Tile x:Name="tileSearchGroupByName" Title="根据名称查询" 
         	TiltFactor="2"
         	Width="100" Height="100" 
         	TitleFontSize="14"
-        	Margin="173,203,359,26" RenderTransformOrigin="0.605,0.303" Click="tileSearchUserByName_Click">
+        	Margin="173,203,359,26" RenderTransformOrigin="0.605,0.303" Click="tileSearchGroupByName_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Search" />

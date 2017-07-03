@@ -12,6 +12,7 @@
         <controls:Tile x:Name="tileChangePassword" Title="密码更改" 
                     TiltFactor="2"
                     Width="100" Height="100" 
+                    Visibility="Hidden"
                     Margin="10,114,522,115" Click="tileChangePassword_Click">
             <iconPacks:PackIconFontAwesome Width="30"
                                            Height="30"

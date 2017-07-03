@@ -58,7 +58,7 @@ namespace letmeknow_admin
                 {
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).UID);
+                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
                         this.Hide();
                         userDetail.ShowDialog();
                         this.ShowDialog();

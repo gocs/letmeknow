@@ -25,24 +25,6 @@ namespace letmeknow_admin
             InitializeComponent();
         }
 
-        private void tileSearchUserByUID_Click(object sender, RoutedEventArgs e)
-        {
-            try {
-                dataGrid.ItemsSource = AppService.searchUser(int.Parse(usrInfo.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            bindActionToRows();
-        }
-
-        private void tileSearchUserByName_Click(object sender, RoutedEventArgs e)
-        {
-            dataGrid.ItemsSource = AppService.searchUser(usrInfo.Text);
-            bindActionToRows();
-        }
-
         private void bindActionToRows()
         {
             for (int i = 0; i < dataGrid.Items.Count; i++)
@@ -58,13 +40,32 @@ namespace letmeknow_admin
                 {
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).UID);
+                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
                         this.Hide();
                         userDetail.ShowDialog();
                         this.ShowDialog();
                     };
                 }
             }
+        }
+
+        private void tileSearchGroupByName_Click(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = AppService.searchGroup(groupInfo.Text);
+            bindActionToRows();
+        }
+
+        private void tileSearchGroupByID_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dataGrid.ItemsSource = AppService.searchGroup(int.Parse(groupInfo.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            bindActionToRows();
         }
     }
 }

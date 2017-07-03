@@ -12,8 +12,8 @@
         <Label x:Name="label" Content="用户查询" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding UID}" ClipboardContentBinding="{x:Null}" Header="UID"/>
-                <DataGridTextColumn Binding="{Binding name}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="225"/>
+                <DataGridTextColumn Binding="{Binding userId}" ClipboardContentBinding="{x:Null}" Header="UID"/>
+                <DataGridTextColumn Binding="{Binding username}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="225"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="usrInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>

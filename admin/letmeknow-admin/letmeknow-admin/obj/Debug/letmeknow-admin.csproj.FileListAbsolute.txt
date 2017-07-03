@@ -34,3 +34,10 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchNotification.
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchNotification.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchGroup.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SearchGroup.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Newtonsoft.Json.dll
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Newtonsoft.Json.xml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Resources\usericon.PNG
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Resources\login.png
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Resources\groupicon.png
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GroupDetail.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GroupDetail.baml
