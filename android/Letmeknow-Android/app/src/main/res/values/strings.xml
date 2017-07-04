@@ -49,6 +49,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="letmeknow_host">http://106.15.179.41:8080/letmeknow/</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
