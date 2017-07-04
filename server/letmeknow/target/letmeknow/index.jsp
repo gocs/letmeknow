@@ -20,5 +20,10 @@ current APIs available:
 <p>/groupDetail</p>
 <p>params:groupId</p>
 <p> return: 0 for invalid groupId | 1 for success</p>
+
+<form action="QuickLogin">
+<button type="submit"> auto login </button type>
+</form>
+
 </body>
 </html>

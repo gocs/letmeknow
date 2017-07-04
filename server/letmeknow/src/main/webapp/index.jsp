@@ -21,12 +21,9 @@ current APIs available:
 <p>params:groupId</p>
 <p> return: 0 for invalid groupId | 1 for success</p>
 
-<button onclick="autologin()"> auto login </button>
+<form action="QuickLogin">
+<button type="submit"> auto login </button>
+</form>
 
-<script>
-    function autologin() {
-        $.GET
-    }
-</script>
 </body>
 </html>
