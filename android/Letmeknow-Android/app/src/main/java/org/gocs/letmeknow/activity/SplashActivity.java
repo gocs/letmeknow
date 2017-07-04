@@ -1,8 +1,8 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import org.gocs.letmeknow.R;
@@ -14,18 +14,19 @@ import java.util.TimerTask;
  * Created by dynamicheart on 7/3/2017.
  */
 
-public class WelcomeActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity {
 
-    private final int STR_SPLASH_TIME = 3000;
+    private final int STR_SPLASH_TIME = 2000;
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_welcome;
+        return R.layout.activity_splash;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        startSplashTimer();
     }
 
     private void startSplashTimer(){
@@ -34,7 +35,13 @@ public class WelcomeActivity extends BaseActivity {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                    SharedPreferences sharedPreferences = SplashActivity.this.getSharedPreferences(SHARED_PREFS_COOKIE_NAME, MODE_PRIVATE);
+                    Intent intent;
+                    if(sharedPreferences.getString("cookie", null) != null){
+                        intent = new Intent(SplashActivity.this, MainActivity.class);
+                    }else{
+                        intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    }
                     startActivity(intent);
                     finish();
                 }
