@@ -13,4 +13,5 @@ public interface GroupService {
     public List<GroupQueryForm>queryGroupById(int groupId);
     public List<GroupQueryForm>queryGroupByName(String groupName, int start, int count);
     public GroupsEntity queryGroupDetail(int groupId);
+    public boolean adminExistGroup(int groupId);
 }

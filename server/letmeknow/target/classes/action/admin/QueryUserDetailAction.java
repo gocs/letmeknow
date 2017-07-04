@@ -34,7 +34,7 @@ public class QueryUserDetailAction extends BaseAction {
         this.userService = userService;
     }
 
-    @Action(value = "userDetail", results = {@Result(type = "json")})
+    @Action(value = "/admin/userDetail", results = {@Result(type = "json")})
     //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
     public String QueryUserDetail() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
@@ -44,7 +44,7 @@ public class QueryUserDetailAction extends BaseAction {
     }
 
     //删头像，改权限，删用户，封用户
-    @Action(value = "promotePrivilege", results = {@Result(type = "json")})
+    @Action(value = "/admin/promotePrivilege", results = {@Result(type = "json")})
     public String promotePrivilege() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -54,7 +54,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "reducePrivilege", results = {@Result(type = "json")})
+    @Action(value = "/admin/reducePrivilege", results = {@Result(type = "json")})
     public String reducePrivilege() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -64,7 +64,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "disableUser", results = {@Result(type = "json")})
+    @Action(value = "/admin/disableUser", results = {@Result(type = "json")})
     public String disableUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -74,7 +74,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "activateUser", results = {@Result(type = "json")})
+    @Action(value = "/admin/activateUser", results = {@Result(type = "json")})
     public String activateUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -84,7 +84,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "deleteUser", results = {@Result(type = "json")})
+    @Action(value = "/admin/deleteUser", results = {@Result(type = "json")})
     public String deleteUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -95,7 +95,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "restoreUser", results = {@Result(type = "json")})
+    @Action(value = "/admin/restoreUser", results = {@Result(type = "json")})
     public String restoreUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
@@ -106,7 +106,7 @@ public class QueryUserDetailAction extends BaseAction {
         return SUCCESS;
     }
 
-    @Action(value = "deleteAvatar", results = {@Result(type = "json")})
+    @Action(value = "/admin/deleteAvatar", results = {@Result(type = "json")})
     public String deleteAvatar(){
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user=userService.queryUserDetail(userId);

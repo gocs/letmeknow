@@ -13,7 +13,7 @@ public class AuthInterceptor extends AbstractInterceptor {
      *
      */
     private static final long serialVersionUID = -5114658085937727056L;
-    private List<String> authActions = Arrays.asList("allGroups", "allUsers", "FetchGroupByName", "/FetchUserByName","/FetchGroupById","/FetchUserById");
+    private List<String> exclusions = Arrays.asList("login");
     private String message = "no privilege!";
 
     public String getMessage() {
@@ -23,12 +23,16 @@ public class AuthInterceptor extends AbstractInterceptor {
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
         String actionName = invocation.getProxy().getActionName();
-        if (!(authActions.contains(actionName)))
+        String nameSpace = invocation.getProxy().getNamespace();
+        if (exclusions.contains(actionName))
             return invocation.invoke();
-        HttpSession session = ServletActionContext.getRequest().getSession();
-        if (session.getAttribute("isadmin") != null && session.getAttribute("isadmin").equals("true"))
-            return invocation.invoke();
-        return "auth";
+        if(nameSpace.equals("/admin")) {
+            HttpSession session = ServletActionContext.getRequest().getSession();
+            if (session.getAttribute("isadmin") != null && session.getAttribute("isadmin").equals("true"))
+                return invocation.invoke();
+            return "auth";
+        }
+        return invocation.invoke();
     }
 
 }

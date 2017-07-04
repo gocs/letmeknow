@@ -35,4 +35,11 @@ public class GroupServiceImpl implements GroupService {
     public GroupsEntity queryGroupDetail(int groupId) {
         return groupDao.getGroupsEntityById(groupId);
     }
+
+    public boolean adminExistGroup(int groupId) {
+        if(groupDao.getGroupsEntityById(groupId)!=null) return true;
+        return false;
+    }
+
+
 }

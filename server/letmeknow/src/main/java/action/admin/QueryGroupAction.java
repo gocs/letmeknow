@@ -43,20 +43,20 @@ public class QueryGroupAction extends BaseAction {
         return groups;
     }
 
-    @Action(value="allGroups",results={@Result(type="json")})
+    @Action(value="/admin/allGroups",results={@Result(type="json")})
     public String QueryAllGroups(){
         groups=groupService.queryallGroups();
         return SUCCESS;
     }
 
-    @Action(value="FetchGroupById",results={@Result(type="json")})
+    @Action(value="/admin/fetchGroupById",results={@Result(type="json")})
     public String QueryUserById(){
         if(groupId==null) return SUCCESS;
         groups=groupService.queryGroupById(groupId);
         return SUCCESS;
     }
 
-    @Action(value="FetchGroupByName",results={@Result(type="json")})
+    @Action(value="/admin/fetchGroupByName",results={@Result(type="json")})
     public String QueryUserByUsername(){
         if(groupName==null) return SUCCESS;
         groups=groupService.queryGroupByName(groupName,start,count);

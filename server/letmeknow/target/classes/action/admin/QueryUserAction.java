@@ -45,20 +45,20 @@ public class QueryUserAction extends BaseAction {
         this.userService = userService;
     }
 
-    @Action(value="allUsers",results={@Result(type="json")})
+    @Action(value="/admin/allUsers",results={@Result(type="json")})
     public String QueryAllUsers(){
         users=userService.queryAllUsers();
         return SUCCESS;
     }
 
-    @Action(value="FetchUserById",results={@Result(type="json")})
+    @Action(value="/admin/fetchUserById",results={@Result(type="json")})
     public String QueryUserById(){
         if(userId==null) return SUCCESS;
         users=userService.queryUserById(userId);
         return SUCCESS;
     }
 
-    @Action(value="FetchUserByName",results={@Result(type="json")})
+    @Action(value="/admin/fetchUserByName",results={@Result(type="json")})
     public String QueryUserByUsername(){
         if(username==null) return SUCCESS;
         users=userService.queryUserByName(username,start,count);
