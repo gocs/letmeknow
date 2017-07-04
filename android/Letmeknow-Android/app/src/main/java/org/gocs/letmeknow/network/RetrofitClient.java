@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.api.LetmeknowApi;
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.util.GsonDateTypeAdapter;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -35,7 +36,7 @@ public class RetrofitClient {
                     .callbackExecutor(executor)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(OkHttpProvider.getInstance())
+                    //.client(OkHttpProvider.getInstance())
                     .build();
 
             letmeknowApi = retrofit.create(LetmeknowApi.class);
