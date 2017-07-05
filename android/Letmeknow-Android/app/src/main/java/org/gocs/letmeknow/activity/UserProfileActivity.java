@@ -28,6 +28,7 @@ public class UserProfileActivity extends BaseActivity {
         initToolbar();
         button.setOnClickListener(view ->{
             Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS_LOGIN_STATUS,MODE_PRIVATE).edit();
             editor.remove("login_status");
@@ -53,7 +54,6 @@ public class UserProfileActivity extends BaseActivity {
         //set toolbar title
         getSupportActionBar().setTitle(R.string.user_info_title);
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
