@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/text_username"
+                    android:id="@+id/text_login_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_username"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/text_password"
+                    android:id="@+id/text_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
@@ -63,6 +63,12 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/sign_in"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="没有账号？点击注册"/>
 
         </LinearLayout>
     </ScrollView>

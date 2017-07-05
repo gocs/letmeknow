@@ -1,19 +1,16 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.model.remote.User;
 import org.gocs.letmeknow.service.ApiService;
 import org.gocs.letmeknow.service.ServeiveGenerator;
 
@@ -28,14 +25,16 @@ import retrofit2.Response;
  */
 
 public class LoginActivity extends BaseActivity{
-    @BindView(R.id.text_username)
+    @BindView(R.id.text_login_username)
     EditText editTextUsername;
-    @BindView(R.id.text_password)
+    @BindView(R.id.text_login_password)
     EditText editTextPassword;
     @BindView(R.id.progress_bar_login)
     ProgressBar progressBar;
     @BindView(R.id.button_login)
     Button buttonLogin;
+    @BindView(R.id.text_register)
+    TextView textRegister;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +63,13 @@ public class LoginActivity extends BaseActivity{
                         Toast.makeText(LoginActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+        textRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
