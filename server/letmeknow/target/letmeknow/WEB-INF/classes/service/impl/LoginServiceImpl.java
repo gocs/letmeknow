@@ -1,11 +1,14 @@
 package service.impl;
 
 import dao.UserDao;
+import model.Reply;
 import model.User;
 import org.apache.struts2.ServletActionContext;
 import service.LoginService;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by admin on 2017/6/28.
@@ -21,26 +24,32 @@ public class LoginServiceImpl implements LoginService{
         this.userDao = userDao;
     }
 
-    public boolean login(String username, String password){
-        User user=userDao.getUserByName(username);
-        if(user==null) return false;
-        if(!(password.equals(user.getPassword()))) return false;
+    public Reply login(User user){
+        String username=user.getUsername();
+        String password=user.getPassword();
+        User target=userDao.getUserByName(username);
+        if(target==null) return new Reply(0,"username/password error",null);
+        if(!(password.equals(target.getPassword()))) return new Reply(0,"username/password error",null);
         HttpSession session=ServletActionContext.getRequest().getSession();
-        session.setAttribute("userid",user.getUserId());
-        session.setAttribute("username",user.getUsername());
-        return true;
+        session.setAttribute("userid",target.getUserId());
+        session.setAttribute("username",target.getUsername());
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("user",(Object)target);
+        return new Reply(1,"login succeed",map);
     }
 
-    public int register(String username, String password, String email, Integer phone_num) {
-        User user=new User().construct_user(username,password,email,phone_num);
-        User target=userDao.getUserByName(username);
-        if(target==null) {
+    public Reply register(User user) {
+        if(user.getPassword().length()<=8) return new Reply(0,"password too short:8 characters needed at least",null);
+        User target=userDao.getUserByName(user.getUsername());
+        if(target==null) {//no such user:register success
             int id=userDao.save(user);
             ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUserId());
             ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
-            return id;
+            Map<String,Object> map=new HashMap<String,Object>();
+            map.put("user",(Object)target);
+            return new Reply(1,"register succeeded",map);
         }
-        return -1;
+        return new Reply(0,"username exists in database",null);
     }
 
     public String adminLogin(String username, String password) {

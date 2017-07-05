@@ -1,7 +1,7 @@
 package dao.impl;
 
 import dao.GroupDao;
-import model.GroupsEntity;
+import model.Groups;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -14,36 +14,36 @@ import java.util.List;
  * Created by admin on 2017/7/3.
  */
 public class GroupDaoImpl extends HibernateDaoSupport implements GroupDao {
-    public Integer save(GroupsEntity group) {
+    public Integer save(Groups group) {
         return (Integer) getHibernateTemplate().save(group);
     }
 
-    public void delete(GroupsEntity group) {
+    public void delete(Groups group) {
         getHibernateTemplate().delete(group);
     }
 
-    public void update(GroupsEntity group) {
+    public void update(Groups group) {
         getHibernateTemplate().update(group);
     }
 
-    public GroupsEntity getGroupsEntityById(int groupId) {
-        List<GroupsEntity> groups = (List<GroupsEntity>) getHibernateTemplate().find("from GroupsEntity as g where g.groupId=?", groupId);
+    public Groups getGroupsById(int groupId) {
+        List<Groups> groups = (List<Groups>) getHibernateTemplate().find("from Groups as g where g.groupId=?", groupId);
         return groups.size() > 0 ? groups.get(0) : null;
     }
 
-    public List<GroupsEntity> getAllGroupsEntitys() {
-        return (List<GroupsEntity>) getHibernateTemplate().find("from GroupsEntity ");
+    public List<Groups> getAllGroupss() {
+        return (List<Groups>) getHibernateTemplate().find("from Groups ");
     }
 
-    public GroupsEntity getGroupsEntityByName(String groupName) {
-        List<GroupsEntity> groups = (List<GroupsEntity>) getHibernateTemplate().find("from GroupsEntity as g where g.groupName=?", groupName);
+    public Groups getGroupsByName(String groupName) {
+        List<Groups> groups = (List<Groups>) getHibernateTemplate().find("from Groups as g where g.groupName=?", groupName);
         return groups.size() > 0 ? groups.get(0) : null;
     }
 
-    public List<GroupsEntity> getGroupsEntityByName(final String groupName, final int start, final int count) {
-        return (List<GroupsEntity>) getHibernateTemplate().executeFind(new HibernateCallback() {
+    public List<Groups> getGroupsByName(final String groupName, final int start, final int count) {
+        return (List<Groups>) getHibernateTemplate().executeFind(new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException, SQLException {
-                return session.createQuery("from GroupsEntity where groupName like '%"+groupName+"%'").setFirstResult(start).setMaxResults(count).list();
+                return session.createQuery("from Groups where groupName like '%"+groupName+"%'").setFirstResult(start).setMaxResults(count).list();
             }
         });
     }

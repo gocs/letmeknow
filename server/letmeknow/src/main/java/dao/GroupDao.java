@@ -1,6 +1,6 @@
 package dao;
 
-import model.GroupsEntity;
+import model.Groups;
 
 import java.util.List;
 
@@ -8,17 +8,17 @@ import java.util.List;
  * Created by admin on 2017/7/3.
  */
 public interface GroupDao {
-    public Integer save(GroupsEntity group);
+    public Integer save(Groups group);
 
-    public void delete(GroupsEntity group);
+    public void delete(Groups group);
 
-    public void update(GroupsEntity group);
+    public void update(Groups group);
 
-    public GroupsEntity getGroupsEntityById(int groupId);
+    public Groups getGroupsById(int groupId);
 
-    public List<GroupsEntity> getAllGroupsEntitys();
+    public List<Groups> getAllGroupss();
 
-    public GroupsEntity getGroupsEntityByName(String groupName);
+    public Groups getGroupsByName(String groupName);
 
-    public List<GroupsEntity> getGroupsEntityByName(String groupName, int start, int count);
+    public List<Groups> getGroupsByName(String groupName, int start, int count);
 }

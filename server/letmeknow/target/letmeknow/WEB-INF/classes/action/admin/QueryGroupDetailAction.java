@@ -1,7 +1,7 @@
 package action.admin;
 
 import action.BaseAction;
-import model.GroupsEntity;
+import model.Groups;
 import model.User;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -19,11 +19,11 @@ public class QueryGroupDetailAction extends BaseAction {
     private String message = "0";
     private GroupService groupService;
 
-    public GroupsEntity getGroup() {
+    public Groups getGroup() {
         return group;
     }
 
-    private GroupsEntity group;
+    private Groups group;
 
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;

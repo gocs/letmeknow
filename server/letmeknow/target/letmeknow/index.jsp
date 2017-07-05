@@ -22,7 +22,7 @@ current APIs available:
 <p> return: 0 for invalid groupId | 1 for success</p>
 
 <form action="QuickLogin">
-<button type="submit"> auto login </button type>
+<button type="submit"> auto login </button>
 </form>
 
 </body>

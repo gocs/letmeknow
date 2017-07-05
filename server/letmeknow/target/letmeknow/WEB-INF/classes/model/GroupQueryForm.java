@@ -26,14 +26,14 @@ public class GroupQueryForm {
         this.groupId = groupId;
     }
 
-    public GroupQueryForm(GroupsEntity group){
+    public GroupQueryForm(Groups group){
         this.groupName=group.getGroupName();
         this.groupId=group.getGroupId();
     }
 
-    public static List<GroupQueryForm> convertToForm(List<GroupsEntity> groups){
+    public static List<GroupQueryForm> convertToForm(List<Groups> groups){
         List<GroupQueryForm> forms=new ArrayList<GroupQueryForm>();
-        for(GroupsEntity group:groups) forms.add(new GroupQueryForm(group));
+        for(Groups group:groups) forms.add(new GroupQueryForm(group));
         return forms;
     }
 }

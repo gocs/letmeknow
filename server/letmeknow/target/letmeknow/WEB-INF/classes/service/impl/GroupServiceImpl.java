@@ -2,7 +2,7 @@ package service.impl;
 
 import dao.GroupDao;
 import model.GroupQueryForm;
-import model.GroupsEntity;
+import model.Groups;
 import service.GroupService;
 
 import java.util.ArrayList;
@@ -19,25 +19,25 @@ public class GroupServiceImpl implements GroupService {
     }
 
     public List<GroupQueryForm> queryallGroups() {
-        return GroupQueryForm.convertToForm(groupDao.getAllGroupsEntitys());
+        return GroupQueryForm.convertToForm(groupDao.getAllGroupss());
     }
 
     public List<GroupQueryForm> queryGroupById(int groupId) {
         List<GroupQueryForm> res = new ArrayList<GroupQueryForm>();
-        res.add(new GroupQueryForm(groupDao.getGroupsEntityById(groupId)));
+        res.add(new GroupQueryForm(groupDao.getGroupsById(groupId)));
         return res;
     }
 
     public List<GroupQueryForm> queryGroupByName(String groupName, int start, int count) {
-        return GroupQueryForm.convertToForm(groupDao.getGroupsEntityByName(groupName, start, count));
+        return GroupQueryForm.convertToForm(groupDao.getGroupsByName(groupName, start, count));
     }
 
-    public GroupsEntity queryGroupDetail(int groupId) {
-        return groupDao.getGroupsEntityById(groupId);
+    public Groups queryGroupDetail(int groupId) {
+        return groupDao.getGroupsById(groupId);
     }
 
     public boolean adminExistGroup(int groupId) {
-        if(groupDao.getGroupsEntityById(groupId)!=null) return true;
+        if(groupDao.getGroupsById(groupId)!=null) return true;
         return false;
     }
 

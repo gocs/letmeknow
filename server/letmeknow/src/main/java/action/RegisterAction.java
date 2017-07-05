@@ -1,10 +1,13 @@
 package action;
 
+import model.Reply;
 import model.User;
-import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import service.LoginService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -18,9 +21,19 @@ public class RegisterAction extends BaseAction {
     private Integer phone_num;
     private LoginService loginService;
     private String message;
+    private Integer code;
+    private Map<String, Object> data = new HashMap<String, Object>();
 
     public String getMessage() {
         return message;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public Map<String, Object> getData() {
+        return data;
     }
 
     public void setUsername(String username) {
@@ -45,8 +58,15 @@ public class RegisterAction extends BaseAction {
 
     @Action(value = "register", results = {@Result(type = "json", name = SUCCESS)})
     public String register() {
-        if (loginService.register(username, password, email, phone_num) > 0) message = "register succeeded";
-        else message = "register failed";
+        if (username == null || password == null || username.equals("") || password.equals("")) {
+            code=0;
+            message="username and password cannot be null";
+            return SUCCESS;
+        }
+        Reply reply= loginService.register(new User().construct_user(username,password,email,phone_num));
+        code=reply.getCode();
+        message=reply.getMessage();
+        data=reply.getData();
         return SUCCESS;
     }
 }

@@ -1,10 +1,13 @@
+D:\project\letmeknow\src\main\java\dao\impl\GroupDaoImpl.java
 D:\project\letmeknow\src\main\java\dao\UserDao.java
 D:\project\letmeknow\src\main\java\test\RemoteAdminModifyUserTest.java
 D:\project\letmeknow\src\main\java\action\admin\QueryUserAction.java
 D:\project\letmeknow\src\main\java\test\PrivilegeTest.java
 D:\project\letmeknow\src\main\java\action\LoginAction.java
 D:\project\letmeknow\src\main\java\model\GroupMemEntityPK.java
+D:\project\letmeknow\src\main\java\action\admin\QuickLoginAction.java
 D:\project\letmeknow\src\main\java\dao\impl\UserDaoImpl.java
+D:\project\letmeknow\src\main\java\model\Reply.java
 D:\project\letmeknow\src\main\java\service\impl\UserServiceImpl.java
 D:\project\letmeknow\src\main\java\util\TestUtil.java
 D:\project\letmeknow\src\main\java\model\MessageEntity.java
@@ -13,7 +16,10 @@ D:\project\letmeknow\src\main\java\model\UserQueryForm.java
 D:\project\letmeknow\src\main\java\interceptor\AuthInterceptor.java
 D:\project\letmeknow\src\main\java\test\AdminLoginTest.java
 D:\project\letmeknow\src\main\java\action\admin\QueryUserDetailAction.java
+D:\project\letmeknow\src\main\java\model\GroupQueryForm.java
+D:\project\letmeknow\src\main\java\action\admin\QueryGroupDetailAction.java
 D:\project\letmeknow\src\main\java\action\RegisterAction.java
+D:\project\letmeknow\src\main\java\action\admin\QueryGroupAction.java
 D:\project\letmeknow\src\main\java\model\GroupsEntity.java
 D:\project\letmeknow\src\main\java\action\BaseAction.java
 D:\project\letmeknow\src\main\java\test\LoginTest.java
@@ -21,7 +27,10 @@ D:\project\letmeknow\src\main\java\util\HttpUtil.java
 D:\project\letmeknow\src\main\java\model\User.java
 D:\project\letmeknow\src\main\java\model\GroupMemEntity.java
 D:\project\letmeknow\src\main\java\action\admin\AdminLoginAction.java
+D:\project\letmeknow\src\main\java\service\impl\GroupServiceImpl.java
 D:\project\letmeknow\src\main\java\test\RegisterTest.java
 D:\project\letmeknow\src\main\java\service\impl\LoginServiceImpl.java
 D:\project\letmeknow\src\main\java\service\LoginService.java
+D:\project\letmeknow\src\main\java\service\GroupService.java
+D:\project\letmeknow\src\main\java\dao\GroupDao.java
 D:\project\letmeknow\src\main\java\service\UserService.java

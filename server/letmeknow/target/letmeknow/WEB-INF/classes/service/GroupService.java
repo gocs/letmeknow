@@ -1,7 +1,7 @@
 package service;
 
 import model.GroupQueryForm;
-import model.GroupsEntity;
+import model.Groups;
 
 import java.util.List;
 
@@ -12,6 +12,6 @@ public interface GroupService {
     public List<GroupQueryForm>queryallGroups();
     public List<GroupQueryForm>queryGroupById(int groupId);
     public List<GroupQueryForm>queryGroupByName(String groupName, int start, int count);
-    public GroupsEntity queryGroupDetail(int groupId);
+    public Groups queryGroupDetail(int groupId);
     public boolean adminExistGroup(int groupId);
 }
