@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.application.App;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,9 +36,9 @@ public class SplashActivity extends BaseActivity {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    SharedPreferences sharedPreferences = SplashActivity.this.getSharedPreferences(SHARED_PREFS_COOKIE_NAME, MODE_PRIVATE);
                     Intent intent;
-                    if(sharedPreferences.getString("cookie", null) != null){
+                    SharedPreferences sharedPreferencesLoginStatus = getSharedPreferences(SHARED_PREFS_LOGIN_STATUS,MODE_PRIVATE);
+                    if(sharedPreferencesLoginStatus.getBoolean("login_status", false)){
                         intent = new Intent(SplashActivity.this, MainActivity.class);
                     }else{
                         intent = new Intent(SplashActivity.this, LoginActivity.class);

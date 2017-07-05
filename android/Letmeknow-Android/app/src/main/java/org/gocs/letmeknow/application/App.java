@@ -12,8 +12,6 @@ public class App extends Application {
     @SuppressWarnings("StaticFieldLeak")
     private static Context context;
 
-    final private static String SharedPrefsCookie = "CookiePersistence";
-
     public static Context getInstance() {
         return context;
     }
@@ -22,10 +20,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-    }
-
-    public static SharedPreferences getSharedPrefsCookie(){
-        return context.getSharedPreferences(SharedPrefsCookie, context.MODE_PRIVATE);
     }
 
 }

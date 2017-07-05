@@ -1,6 +1,7 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -11,10 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.service.ApiService;
-import org.gocs.letmeknow.service.ServeiveGenerator;
+import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.service.LMKService;
+import org.gocs.letmeknow.util.NetworkErrorHandler;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,27 +47,22 @@ public class LoginActivity extends BaseActivity{
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = editTextUsername.getText().toString();
+                String userName = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
-                ApiService apiService = ServeiveGenerator.createService(ApiService.class);
-                Call<Void> call = apiService.login(username,password);
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.isSuccessful()){
+                RetrofitClient.getService().login(userName, password)
+                        .flatMap(NetworkErrorHandler.ErrorFilter)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(response -> {
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                            SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS_LOGIN_STATUS,MODE_PRIVATE).edit();
+                            editor.putBoolean("login_status",true);
+                            editor.apply();
+                        }, NetworkErrorHandler.basicErrorHandler);
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
         textRegister.setOnClickListener(new View.OnClickListener() {
@@ -78,4 +78,6 @@ public class LoginActivity extends BaseActivity{
     protected int getContentViewId() {
         return R.layout.activity_login;
     }
+
+
 }
