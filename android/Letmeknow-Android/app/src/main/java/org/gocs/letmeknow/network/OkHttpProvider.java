@@ -1,8 +1,8 @@
 package org.gocs.letmeknow.network;
 
 /**
- * Created by lenovo on 2017/7/4.
+ * Created by dynamicheart on 7/5/2017.
  */
 
-public class OkHttpProvider {
+public class okHttpProvider {
 }
