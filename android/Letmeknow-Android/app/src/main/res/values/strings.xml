@@ -67,4 +67,16 @@
     <string name="error_incorrect_password">密码不正确</string>
     <string name="error_field_required">此项是必须的</string>
 
+    <!-- Strings related to couchDB -->
+    <string name="err_create_manager">Cannot create manager object</string>
+    <string name="err_db_name">Bad database name</string>
+    <string name="err_no_db_set">Database not set ! Please create database first.</string>
+    <string name="err_no_db">Cannot get database</string>
+    <string name="err_db_write">Cannot write document to database</string>
+    <string name="err_db_update">Cannot update document</string>
+    <string name="err_db_delete">Cannot delete document</string>
+    <string name="err_write_attach">Cannot save attachment</string>
+    <string name="err_read_attach">Cannot read attachment</string>
+    <string name="err_delete_attach">Cannot delete attachment</string>
+
 </resources>
