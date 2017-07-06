@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.model.local.PersistableUser;
+import org.gocs.letmeknow.util.UserManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,8 +39,8 @@ public class SplashActivity extends BaseActivity {
                 @Override
                 public void run() {
                     Intent intent;
-                    SharedPreferences sharedPreferencesLoginStatus = getSharedPreferences(SHARED_PREFS_LOGIN_STATUS,MODE_PRIVATE);
-                    if(sharedPreferencesLoginStatus.getBoolean("login_status", false)){
+                    PersistableUser user = UserManager.getCurrentUser();
+                    if(user != null && user.isLogin()){
                         intent = new Intent(SplashActivity.this, MainActivity.class);
                     }else{
                         intent = new Intent(SplashActivity.this, LoginActivity.class);

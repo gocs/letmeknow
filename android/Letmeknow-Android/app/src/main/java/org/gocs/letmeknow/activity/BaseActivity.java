@@ -11,8 +11,6 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    final protected static String SHARED_PREFS_LOGIN_STATUS = "LOGIN_STATUS";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

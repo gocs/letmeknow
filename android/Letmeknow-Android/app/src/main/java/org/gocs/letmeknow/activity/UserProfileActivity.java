@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.application.Constants;
+import org.gocs.letmeknow.model.remote.User;
+import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;
 
@@ -30,9 +33,7 @@ public class UserProfileActivity extends BaseActivity {
             Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS_LOGIN_STATUS,MODE_PRIVATE).edit();
-            editor.remove("login_status");
-            editor.apply();
+            UserManager.changeLoginStatus(false);
         });
 
     }

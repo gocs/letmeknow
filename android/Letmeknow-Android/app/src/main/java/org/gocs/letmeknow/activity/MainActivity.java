@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -21,14 +22,16 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
+import org.gocs.letmeknow.model.local.PersistableUser;
+import org.gocs.letmeknow.util.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-import static org.gocs.letmeknow.application.Constant.TAB_IMAGE_RES_ID;
-import static org.gocs.letmeknow.application.Constant.TAB_NUM;
+import static org.gocs.letmeknow.application.Constants.TAB_IMAGE_RES_ID;
+import static org.gocs.letmeknow.application.Constants.TAB_NUM;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -44,22 +47,16 @@ public class MainActivity extends BaseActivity
     ViewPager viewPager;
     @BindView(R.id.fam)
     FloatingActionMenu floatingActionMenu;
-
-
+    @BindView(R.id.text_nav_username)
+    TextView textNavUserName;
+    @BindView(R.id.text_nav_email)
+    TextView textNavEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
-        //set default title
         getSupportActionBar().setTitle(R.string.tab_notification);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         initTab();
         setUpFloatingActionMenu();
@@ -151,6 +148,19 @@ public class MainActivity extends BaseActivity
         public CharSequence getPageTitle(int position) {
             return null;
         }
+    }
+
+    private void initDraw(){
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+        PersistableUser user = UserManager.getCurrentUser();
+        textNavUserName.setText(user.getUserName());
+        textNavEmail.setText(user.getEmail());
     }
 
     private void initTab() {
