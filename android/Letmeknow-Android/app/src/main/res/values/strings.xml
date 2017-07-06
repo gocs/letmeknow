@@ -23,6 +23,7 @@
 
     <string name="searchbar_hint">搜索圈子</string>
 
+    <string name="cirlce_info">圈子信息</string>
     <string name="circle_info_intro">概况</string>
     <string name="circle_info_informer">通知方</string>
     <string name="circle_info_members">成员</string>

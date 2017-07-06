@@ -1,6 +1,7 @@
 package org.gocs.letmeknow.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -33,18 +34,23 @@ import static org.gocs.letmeknow.application.Constant.TAB_NUM;
 
 public class CircleInfoActivity extends BaseActivity {
 
+    @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @Nullable
     @BindView(R.id.tablayout_circle_info)
-    TabLayout tablayout_circle_info;
+    TabLayout tablayout;
 
+    @Nullable
     @BindView(R.id.img_portrait_circle_info)
     ImageView img_portrait;
 
+    @Nullable
     @BindView(R.id.text_title_circle_info)
     TextView text_title;
 
+    @Nullable
     @BindView(R.id.viewpager_circle_info)
     ViewPager viewPager;
 
@@ -52,6 +58,7 @@ public class CircleInfoActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.cirlce_info);
 
         initTab();
     }
@@ -85,15 +92,14 @@ public class CircleInfoActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CircleIntroductionFragment(),getString(R.string.circle_info_intro));
-        adapter.addFragment(new CircleInformerFragment(),getString(R.string.circle_info_informer));
-        adapter.addFragment(new CircleMembersFragment(),getString(R.string.circle_info_members));
+        adapter.addFragment(new CircleIntroductionFragment());
+        adapter.addFragment(new CircleInformerFragment());
+        adapter.addFragment(new CircleMembersFragment());
         viewPager.setAdapter(adapter);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter{
         private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         private ViewPagerAdapter(FragmentManager manager) {
             super(manager);
@@ -109,10 +115,7 @@ public class CircleInfoActivity extends BaseActivity {
             return mFragmentList.size();
         }
 
-        private void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
+        private void addFragment(Fragment fragment) { mFragmentList.add(fragment);}
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -123,12 +126,28 @@ public class CircleInfoActivity extends BaseActivity {
     private void initTab(){
         // setup TabLayout first
         setupViewPager(viewPager);
-        tablayout_circle_info.setupWithViewPager(viewPager);
+        tablayout.setupWithViewPager(viewPager);
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         // configure titles
         try {
             for (int i = 0; i < TAB_NUM; i++) {
-                tablayout_circle_info.getTabAt(i).setText(CIRCLE_TAB_IMAGE_ID[i]);
+                tablayout.getTabAt(i).setText(CIRCLE_TAB_IMAGE_ID[i]);
             }
         } catch (NullPointerException e) {
             ;
