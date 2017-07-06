@@ -12,8 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionMenu;
@@ -47,9 +49,9 @@ public class MainActivity extends BaseActivity
     ViewPager viewPager;
     @BindView(R.id.fam)
     FloatingActionMenu floatingActionMenu;
-    @BindView(R.id.text_nav_username)
+
+    //can not bind view
     TextView textNavUserName;
-    @BindView(R.id.text_nav_email)
     TextView textNavEmail;
 
     @Override
@@ -58,6 +60,12 @@ public class MainActivity extends BaseActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.tab_notification);
 
+        //can not inject
+        View header = navigationView.getHeaderView(0);
+        textNavUserName = (TextView) header.findViewById(R.id.text_nav_username);
+        textNavEmail = (TextView) header.findViewById(R.id.text_nav_email);
+
+        initDrawer();
         initTab();
         setUpFloatingActionMenu();
     }
@@ -150,7 +158,7 @@ public class MainActivity extends BaseActivity
         }
     }
 
-    private void initDraw(){
+    private void initDrawer(){
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -159,6 +167,7 @@ public class MainActivity extends BaseActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         PersistableUser user = UserManager.getCurrentUser();
+        Log.d("Navigation",user.toString());
         textNavUserName.setText(user.getUserName());
         textNavEmail.setText(user.getEmail());
     }

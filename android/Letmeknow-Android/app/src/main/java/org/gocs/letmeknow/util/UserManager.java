@@ -21,6 +21,7 @@ public class UserManager {
         ACache aCache = getACacheInstance();
         PersistableUser user = (PersistableUser)aCache.getAsObject(Constants.CURRENT_USER);
         user.setLogin(loginStatus);
+        aCache.put(Constants.CURRENT_USER,user);
     }
 
     public static void saveOrUpdateUser(User user, boolean loginStatus){
