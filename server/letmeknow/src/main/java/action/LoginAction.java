@@ -70,4 +70,19 @@ public class LoginAction extends BaseAction {
         } else code = 0;
         return SUCCESS;
     }
+
+    @Action(value="logout",results={@Result(type="json")})
+    public String logout(){
+        if(session().getAttribute("username")==null){
+            code=0;
+            message="no user has logged in";
+            return SUCCESS;
+        }
+        session().setAttribute("username",null);
+        session().setAttribute("userid",null);
+        session().setAttribute("isadmin",null);
+        code=1;
+        message="logout succeeded";
+        return SUCCESS;
+    }
 }

@@ -3,7 +3,7 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/4 11:00
+    latest update:7/6 10:30
 </p>
 
 
@@ -17,7 +17,7 @@ current APIs available:
 <p> return: 0 for invalid userId | 1 for success</p>
 <p>/allGroups /allUsers /fetchGroupByName /fetchUserByName /fetchGroupById /fetchUserById</p>
 <p> return: a list of current groups/users available</p>
-<p>/groupDetail</p>
+<p>/groupDetail /groupMembers</p>
 <p>params:groupId</p>
 <p> return: 0 for invalid groupId | 1 for success</p>
 
