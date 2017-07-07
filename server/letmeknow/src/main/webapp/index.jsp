@@ -3,7 +3,7 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/7 9:30
+    latest update:7/7 17:30
 </p>
 
 
@@ -27,10 +27,12 @@ current APIs available:
 <p>params:groupId</p>
 <p> return: 0 for invalid groupId | 1 for success</p>
 <p>/allComplaints</p>
-<p>return:a list of current UNCLOSED complaints</p>
+<p>return:a list of currently UNCLOSED complaints</p>
 <p>/closeComplaint</p>
 <p>params:complaintId</p>
 <p>return: 0 for invalid complaint ID, 1 for success</p>
+<p>/allApplications</p>
+<p> return:a list of currently UNCLOSED applications to making a group public</p>
 <form action="QuickLogin">
 <button type="submit"> auto login </button>
 </form>
