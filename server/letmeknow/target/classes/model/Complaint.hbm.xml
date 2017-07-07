@@ -9,19 +9,19 @@
             <column name="report_id" sql-type="int(11)"/>
         </id>
         <property name="reporterId">
-            <column name="reporter_id" sql-type="int(11)"/>
+            <column name="reporter_id" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="verifierId">
-            <column name="verifier_id" sql-type="int(11)"/>
+            <column name="verifier_id" sql-type="int(11)" />
         </property>
         <property name="content">
-            <column name="content" sql-type="varchar(45)" length="45"/>
+            <column name="content" sql-type="varchar(45)" length="45" />
         </property>
         <property name="category">
             <column name="category" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="result">
-            <column name="result" sql-type="int(11)"/>
+            <column name="result" sql-type="int(11)" />
         </property>
         <property name="userId">
             <column name="user_id" sql-type="int(11)" />
@@ -29,8 +29,14 @@
         <property name="groupId">
             <column name="group_id" sql-type="int(11)" />
         </property>
-        <property name="messageId">
-            <column name="message_id" sql-type="int(11)" />
+        <property name="notificationId">
+            <column name="notification_id" sql-type="int(11)" />
+        </property>
+        <property name="createdAt">
+            <column name="created_at" sql-type="timestamp"/>
+        </property>
+        <property name="handledAt">
+            <column name="handled_at" sql-type="timestamp" />
         </property>
     </class>
 </hibernate-mapping>
