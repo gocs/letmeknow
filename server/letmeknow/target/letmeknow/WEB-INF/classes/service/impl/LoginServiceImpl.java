@@ -55,7 +55,7 @@ public class LoginServiceImpl implements LoginService{
     public String adminLogin(String username, String password) {
         User user=userDao.getUserByName(username);
         if(user==null||!(password.equals(user.getPassword()))) return "0";
-        if(user.getIs_admin()!=1) return "1";
+        if(user.getIsAdmin()!=1) return "1";
         HttpSession session=ServletActionContext.getRequest().getSession();
         session.setAttribute("userid",user.getUserId());
         session.setAttribute("username",user.getUsername());

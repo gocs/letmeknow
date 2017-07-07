@@ -7,6 +7,7 @@ import model.*;
 import org.apache.struts2.ServletActionContext;
 import service.GroupService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,6 +70,36 @@ public class GroupServiceImpl implements GroupService {
         for(i=0;i<targets.size();++i)
             res.add(new GroupMemQueryForm(groupMems.get(i),targets.get(i)));
         return res;
+    }
+
+    public GroupDetail setGroupPrivilege(int groupId, int privilege){
+        Groups group=groupDao.getGroupsById(groupId);
+        group.setCategory(privilege);
+        groupDao.update(group);
+        return constructDetail(group);
+    }
+
+    public GroupDetail constructDetail(Groups group){
+        GroupMem master = groupMemDao.findGroupMasterByGroupId(group.getGroupId());
+        String masterName = userDao.getUserById(master.getUserId()).getUsername();
+        List<GroupMem> groupMems=groupMemDao.getGroupMemByGroupId(group.getGroupId());
+        return new GroupDetail(group,masterName,groupMems.size());
+    }
+
+    public GroupDetail setGroupStatus(int groupId, int status){
+        Groups group=groupDao.getGroupsById(groupId);
+        if(status==2&&group.getStatus()==0) group.setDeletedAt(null);
+        if(status==0) group.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+        group.setStatus(status);
+        groupDao.update(group);
+        return constructDetail(group);
+    }
+
+    public GroupDetail deleteGroupIcon(int groupId){
+        Groups group=groupDao.getGroupsById(groupId);
+        group.setIcon(null);
+        groupDao.update(group);
+        return constructDetail(group);
     }
 
     public void setGroupMemDao(GroupMemDao groupMemDao) {

@@ -48,7 +48,7 @@ public class QueryUserDetailAction extends BaseAction {
     public String promotePrivilege() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
-        user.setIs_admin(1);
+        user.setIsAdmin(1);
         userService.updateUser(user);
         message = "1";
         return SUCCESS;
@@ -58,7 +58,7 @@ public class QueryUserDetailAction extends BaseAction {
     public String reducePrivilege() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
-        user.setIs_admin(0);
+        user.setIsAdmin(0);
         userService.updateUser(user);
         message = "1";
         return SUCCESS;
@@ -88,7 +88,7 @@ public class QueryUserDetailAction extends BaseAction {
     public String deleteUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
-        user.setDeleted_at(new Timestamp(System.currentTimeMillis()));
+        user.setDeletedAt(new Timestamp(System.currentTimeMillis()));
         user.setStatus(0);
         userService.updateUser(user);
         message = "1";
@@ -99,7 +99,7 @@ public class QueryUserDetailAction extends BaseAction {
     public String restoreUser() {
         if (!userService.adminExistUser(userId)) return SUCCESS;
         user = userService.queryUserDetail(userId);
-        user.setDeleted_at(null);
+        user.setDeletedAt(null);
         user.setStatus(2);
         userService.updateUser(user);
         message = "1";

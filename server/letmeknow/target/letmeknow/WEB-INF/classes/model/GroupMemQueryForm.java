@@ -4,16 +4,16 @@ package model;
  * Created by admin on 2017/7/6.
  */
 public class GroupMemQueryForm {
-    private Integer user_id;
+    private Integer userId;
     private String username;
     private Integer role;
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer user_id) {
+        this.userId = user_id;
     }
 
     public String getUsername() {
@@ -38,7 +38,7 @@ public class GroupMemQueryForm {
         else if(member.getRole().equals("administrator")) role=1;
         else role=0;
         this.setRole(role);
-        this.setUser_id(member.getUserId());
+        this.setUserId(member.getUserId());
         this.setUsername(user.getUsername());
     }
 }

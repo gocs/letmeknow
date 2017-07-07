@@ -3,6 +3,7 @@ package dao.impl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

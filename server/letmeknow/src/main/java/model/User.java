@@ -1,56 +1,50 @@
 package model;
 
-import java.sql.Blob;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by admin on 2017/6/28.
+ * Created by admin on 2017/7/7.
  */
+@Entity
 public class User {
     private int userId;
     private String username;
     private String password;
     private String email;
-    private Integer phone_num;;
-    private Integer is_admin;
-    private Integer status; //2 for active, 1 for disabled, 0 for deleted
-    private Timestamp created_at;
-    private Timestamp updated_at;
-    private Timestamp deleted_at;
+    private Integer phoneNum;
+    private int isAdmin;
+    private int status;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+    private Timestamp deletedAt;
     private String avatar;
+    private Integer installationId;
 
-    public Integer getIs_admin() {
-        return is_admin;
-    }
-
-    public void setIs_admin(Integer is_admin) {
-        this.is_admin = is_admin;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public User construct_user(String username, String password, String email, Integer phone_num){
+    public User construct_user(String username, String password, String email, Integer phone_num, Integer installationId){
         this.username=username;
         this.password=password;
         this.email=email;
-        this.phone_num=phone_num;
+        this.phoneNum=phone_num;
+        this.installationId=installationId;
         return this;
     }
 
+    @Id
+    @Column(name = "installation_id", nullable = true)
+    public Integer getInstallationId() {
+        return installationId;
+    }
+
+    public void setInstallationId(Integer installationId) {
+        this.installationId = installationId;
+    }
+
+    @Id
+    @Column(name = "user_id", nullable = false)
     public int getUserId() {
         return userId;
     }
@@ -59,6 +53,8 @@ public class User {
         this.userId = userId;
     }
 
+    @Basic
+    @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
     }
@@ -67,6 +63,8 @@ public class User {
         this.username = username;
     }
 
+    @Basic
+    @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
         return password;
     }
@@ -75,6 +73,8 @@ public class User {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "email", nullable = true, length = 255)
     public String getEmail() {
         return email;
     }
@@ -83,35 +83,111 @@ public class User {
         this.email = email;
     }
 
-    public Integer getPhone_num() {
-        return phone_num;
+    @Basic
+    @Column(name = "phone_num", nullable = true)
+    public Integer getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setPhone_num(Integer phone_num) {
-        this.phone_num = phone_num;
+    public void setPhoneNum(Integer phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
-    public Timestamp getCreated_at() {
-        return created_at;
+    @Basic
+    @Column(name = "is_admin", nullable = false)
+    public int getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public Timestamp getUpdated_at() {
-        return updated_at;
+    @Basic
+    @Column(name = "status", nullable = false)
+    public int getStatus() {
+        return status;
     }
 
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public Timestamp getDeleted_at() {
-        return deleted_at;
+    @Basic
+    @Column(name = "created_at", nullable = true)
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDeleted_at(Timestamp deleted_at) {
-        this.deleted_at = deleted_at;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Basic
+    @Column(name = "updated_at", nullable = true)
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Basic
+    @Column(name = "deleted_at", nullable = true)
+    public Timestamp getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Timestamp deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    @Basic
+    @Column(name = "avatar", nullable = true, length = 45)
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (userId != user.userId) return false;
+        if (isAdmin != user.isAdmin) return false;
+        if (status != user.status) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (phoneNum != null ? !phoneNum.equals(user.phoneNum) : user.phoneNum != null) return false;
+        if (createdAt != null ? !createdAt.equals(user.createdAt) : user.createdAt != null) return false;
+        if (updatedAt != null ? !updatedAt.equals(user.updatedAt) : user.updatedAt != null) return false;
+        if (deletedAt != null ? !deletedAt.equals(user.deletedAt) : user.deletedAt != null) return false;
+        if (avatar != null ? !avatar.equals(user.avatar) : user.avatar != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userId;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (phoneNum != null ? phoneNum.hashCode() : 0);
+        result = 31 * result + isAdmin;
+        result = 31 * result + status;
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
+        return result;
     }
 }

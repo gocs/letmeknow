@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Spring Schema -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/data/mongo
-    http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <!-- Bean -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/letmeknow_test" p:user="root"
+          p:password="letmeknow" p:maxPoolSize="40" p:minPoolSize="1"
+          p:initialPoolSize="1" p:maxIdleTime="20"/>
 
-	<!-- Bean -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost:3306/letmeknow_test" p:user="root"
-		p:password="letmeknow" p:maxPoolSize="40" p:minPoolSize="1"
-		p:initialPoolSize="1" p:maxIdleTime="20" />
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+          p:dataSource-ref="dataSource">
+        <property name="mappingResources">
+            <list>
+                <value>model/User.hbm.xml</value>
+                <value>model/Groups.hbm.xml</value>
+                <value>model/GroupMem.hbm.xml</value>
+                <value>model/Message.hbm.xml</value>
+                <value>model/Complaint.hbm.xml</value>
+            </list>
+        </property>
+        <!-- Hibernate SessionFactory -->
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+                hibernate.hbm2ddl.auto=update
+                hibernate.show_sql=true
+                hibernate.format_sql=true
+            </value>
+        </property>
+    </bean>
 
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-		p:dataSource-ref="dataSource">
-		<property name="mappingResources">
-			<list>
-				<value>model/User.hbm.xml</value>
-				<value>model/Groups.hbm.xml</value>
-				<value>model/GroupMem.hbm.xml</value>
-			</list>
-		</property>
-		<!-- Hibernate SessionFactory -->
-		<property name="hibernateProperties">
-			<value>
-				hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
-				hibernate.hbm2ddl.auto=update
-				hibernate.show_sql=true
-				hibernate.format_sql=true
-			</value>
-		</property>
-	</bean>
-	
-	<!-- DAO Bean -->
-	<bean id="userDao" class="dao.impl.UserDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+    <!-- DAO Bean -->
+    <bean id="userDao" class="dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-	<bean id="groupDao" class="dao.impl.GroupDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+    <bean id="groupDao" class="dao.impl.GroupDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-	<bean id="commonDao" class="dao.impl.CommonDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+    <bean id="commonDao" class="dao.impl.CommonDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-	<bean id="groupMemDao" class="dao.impl.GroupMemDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<!-- Service Bean -->
-	<bean id="loginService" class="service.impl.LoginServiceImpl">
-		<property name="userDao" ref="userDao" />
-	</bean>
+    <bean id="groupMemDao" class="dao.impl.GroupMemDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
-	<bean id="userService" class="service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao" />
-	</bean>
+    <bean id="complaintDao" class="dao.impl.ComplaintDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!-- Service Bean -->
+    <bean id="loginService" class="service.impl.LoginServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
 
-	<bean id="groupService" class="service.impl.GroupServiceImpl">
-		<property name="groupDao" ref="groupDao" />
-		<property name="groupMemDao" ref="groupMemDao"/>
-		<property name="userDao" ref="userDao" />
-	</bean>
+    <bean id="userService" class="service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="groupService" class="service.impl.GroupServiceImpl">
+        <property name="groupDao" ref="groupDao"/>
+        <property name="groupMemDao" ref="groupMemDao"/>
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="complaintService" class="service.impl.ComplaintServiceImpl">
+        <property name="complaintDao" ref="complaintDao"/>
+    </bean>
 
 </beans>

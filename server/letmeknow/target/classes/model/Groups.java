@@ -62,7 +62,7 @@ public class Groups {
     }
 
     @Basic
-    @Column(name = "icon", nullable = false, length = 45)
+    @Column(name = "icon", nullable = true, length = 45)
     public String getIcon() {
         return icon;
     }

@@ -3,7 +3,7 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/6 10:30
+    latest update:7/7 9:30
 </p>
 
 
@@ -17,10 +17,20 @@ current APIs available:
 <p> return: 0 for invalid userId | 1 for success</p>
 <p>/allGroups /allUsers /fetchGroupByName /fetchUserByName /fetchGroupById /fetchUserById</p>
 <p> return: a list of current groups/users available</p>
-<p>/groupDetail /groupMembers</p>
+<p>/groupDetail /groupMembers /deleteGroupIcon</p>
 <p>params:groupId</p>
 <p> return: 0 for invalid groupId | 1 for success</p>
-
+<p>/setGroupToPublic /setGroupToPrivate</p>
+<p>params:groupId</p>
+<p> return: 0 for invalid groupId | 1 for success</p>
+<p>/disableGroup /activateGroup /deleteGroup /restoreGroup</p>
+<p>params:groupId</p>
+<p> return: 0 for invalid groupId | 1 for success</p>
+<p>/allComplaints</p>
+<p>return:a list of current UNCLOSED complaints</p>
+<p>/closeComplaint</p>
+<p>params:complaintId</p>
+<p>return: 0 for invalid complaint ID, 1 for success</p>
 <form action="QuickLogin">
 <button type="submit"> auto login </button>
 </form>

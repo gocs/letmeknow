@@ -27,7 +27,7 @@
             <column name="updated_at" sql-type="timestamp"/>
         </property>
         <property name="deletedAt">
-            <column name="deleted_at" sql-type="timestamp" not-null="true"/>
+            <column name="deleted_at" sql-type="timestamp"/>
         </property>
         <property name="category">
             <column name="category" sql-type="int(11)"/>

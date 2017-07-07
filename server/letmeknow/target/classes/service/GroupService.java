@@ -22,4 +22,9 @@ public interface GroupService {
 
     public List<GroupMemQueryForm> queryGroupMembers(int groupId);
 
+    public GroupDetail setGroupPrivilege(int groupId, int privilege);
+
+    public GroupDetail setGroupStatus(int groupId, int status);
+
+    public GroupDetail deleteGroupIcon(int groupId);
     }

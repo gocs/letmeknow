@@ -1,22 +1,45 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="model.User" table="user" dynamic-insert="true">
-        <id name="userId" type="int">
-            <column name="user_id" />
-            <generator class="identity" />
+
+    <class name="model.User" table="user" schema="letmeknow_test">
+        <id name="userId">
+            <column name="user_id" sql-type="int(11)"/>
         </id>
-        <property name="avatar" column="avatar" type="java.lang.String" />
-        <property name="username" column="username" type="java.lang.String" />
-        <property name="password" column="password" type="java.lang.String"/>
-        <property name="email" column="email" type="java.lang.String" />
-        <property name="phone_num" column="phone_num" type="int" />
-        <property name="is_admin" column="is_admin" type="int" />
-        <property name="status" column="status" type="int" />
-        <property name="created_at" column="created_at" type="java.sql.Timestamp" />
-        <property name="updated_at" column="updated_at" type="java.sql.Timestamp" />
-        <property name="deleted_at" column="deleted_at" type="java.sql.Timestamp" />
+        <property name="username">
+            <column name="username" sql-type="varchar(255)"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(255)"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="phoneNum">
+            <column name="phone_num" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="isAdmin">
+            <column name="is_admin" sql-type="int(11)"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="int(11)"/>
+        </property>
+        <property name="createdAt">
+            <column name="created_at" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="updatedAt">
+            <column name="updated_at" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="deletedAt">
+            <column name="deleted_at" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="avatar">
+            <column name="avatar" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="installationId">
+            <column name="installation_id" sql-type="int(11)"/>
+        </property>
     </class>
 </hibernate-mapping>

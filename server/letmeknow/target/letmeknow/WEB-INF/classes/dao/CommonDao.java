@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface CommonDao<T> {
     public void save(T t);

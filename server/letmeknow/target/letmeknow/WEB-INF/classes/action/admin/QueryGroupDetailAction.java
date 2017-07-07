@@ -38,10 +38,72 @@ public class QueryGroupDetailAction extends BaseAction {
 
     @Action(value = "/admin/groupDetail", results = {@Result(type = "json")})
     //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
-    public String QueryUserDetail() {
+    public String QueryGroupDetail() {
         if (!groupService.adminExistGroup(groupId)) return SUCCESS;
         group=groupService.queryGroupDetail(groupId);
         message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/setGroupToPublic", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String setGroupToPublic() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupPrivilege(groupId,1);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/setGroupToPrivate", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String setGroupToPrivate() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupPrivilege(groupId,0);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/disableGroup", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String disableGroup() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupStatus(groupId,1);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/activateGroup", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String activateGroup() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupStatus(groupId,2);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/deleteGroup", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String deleteGroup() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupStatus(groupId,0);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/restoreGroup", results = {@Result(type = "json")})
+    //@Action(value = "userDetail", results = {@Result(location="/IMG.jsp")})
+    public String restoreGroup() {
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.setGroupStatus(groupId,2);
+        message = "1";
+        return SUCCESS;
+    }
+
+    @Action(value = "/admin/deleteGroupIcon", results = {@Result(type = "json")})
+    public String deleteGroupIcon(){
+        if (!groupService.adminExistGroup(groupId)) return SUCCESS;
+        group=groupService.deleteGroupIcon(groupId);
+        message="1";
         return SUCCESS;
     }
 }
