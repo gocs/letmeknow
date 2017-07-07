@@ -3,7 +3,7 @@ package org.gocs.letmeknow.util;
 import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.local.PersistableUser;
-import org.gocs.letmeknow.model.remote.User;
+import org.gocs.letmeknow.model.remote.RemoteUser;
 
 /**
  * Created by dynamicheart on 7/5/2017.
@@ -24,14 +24,15 @@ public class UserManager {
         aCache.put(Constants.CURRENT_USER,user);
     }
 
-    public static void saveOrUpdateUser(User user, boolean loginStatus){
+    public static void saveOrUpdateUser(RemoteUser remoteUser, boolean loginStatus){
         ACache aCache = getACacheInstance();
         PersistableUser persistableUser = new PersistableUser();
-        persistableUser.setUserName(user.getUserName());
-        persistableUser.setPassword(user.getPassword());
-        persistableUser.setPhoneNumber(user.getPhoneNumber());
-        persistableUser.setEmail(user.getEmail());
-        persistableUser.setAvatarUrl(user.getAvatarUrl());
+        persistableUser.setUserId(remoteUser.getUserId());
+        persistableUser.setUserName(remoteUser.getUserName());
+        persistableUser.setPassword(remoteUser.getPassword());
+        persistableUser.setPhoneNumber(remoteUser.getPhoneNumber());
+        persistableUser.setEmail(remoteUser.getEmail());
+        persistableUser.setAvatarUrl(remoteUser.getAvatarUrl());
         persistableUser.setLogin(loginStatus);
         aCache.put(Constants.CURRENT_USER, persistableUser);
     }

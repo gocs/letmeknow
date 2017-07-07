@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by dynamicheart on 7/5/2017.
  */
 
-public class LMKHttpResponse<T> {
+public class HttpResponse<T> {
     @SerializedName("code")
     private int code;
 

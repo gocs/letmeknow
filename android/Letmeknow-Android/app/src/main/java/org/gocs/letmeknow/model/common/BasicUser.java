@@ -1,17 +1,19 @@
-package org.gocs.letmeknow.model.remote;
+package org.gocs.letmeknow.model.common;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 /**
- * Created by dynamicheart on 7/4/2017.
+ * Created by dynamicheart on 7/7/2017.
  */
 
-public class User implements Serializable{
+public class BasicUser implements Serializable{
 
-    private static final long serialVersionUID = 7204143198020672617L;
+    private static final long serialVersionUID = 6259656613422687857L;
 
+    @SerializedName("userId")
+    private String userId;
     @SerializedName("username")
     private String userName;
     @SerializedName("password")
@@ -22,6 +24,14 @@ public class User implements Serializable{
     private String email;
     @SerializedName("avatar")
     private String avatarUrl;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getUserName() {
         return userName;

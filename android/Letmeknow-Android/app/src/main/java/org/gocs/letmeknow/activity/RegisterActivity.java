@@ -1,7 +1,6 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Button;
@@ -9,9 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.model.remote.User;
+import org.gocs.letmeknow.model.remote.RemoteUser;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
@@ -53,7 +51,7 @@ public class RegisterActivity extends BaseActivity{
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                        UserManager.saveOrUpdateUser((User)response.getData().get(Constants.JSON_KEY_USER),true);
+                        UserManager.saveOrUpdateUser((RemoteUser)response.getData().get(Constants.JSON_KEY_USER),true);
                     },NetworkErrorHandler.basicErrorHandler);
         });
 

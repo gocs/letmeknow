@@ -1,42 +1,30 @@
 package org.gocs.letmeknow.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;
 
 /**
- * Created by dynamicheart on 6/30/2017.
+ * Created by dynamicheart on 7/7/2017.
  */
 
-public class UserProfileActivity extends BaseActivity {
+public class NotificationEditActivity extends BaseActivity{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.button_logoff)
-    Button button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar();
-        button.setOnClickListener(view ->{
-            Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            UserManager.changeLoginStatus(false);
-        });
-
     }
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_user_profile;
+        return R.layout.activity_notification_edit;
     }
 
     private void initToolbar(){
@@ -49,7 +37,7 @@ public class UserProfileActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //set toolbar title
-        getSupportActionBar().setTitle(R.string.user_info_title);
+        getSupportActionBar().setTitle(R.string.setting_title);
     }
 
     @Override

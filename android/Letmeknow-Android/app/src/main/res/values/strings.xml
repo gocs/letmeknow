@@ -7,6 +7,8 @@
     <string name="drawer_setting">设置</string>
     <string name="drawer_about">关于Letmeknow</string>
 
+    <string name="notification_edit_title">新的通知</string>
+
     <string name="setting_title">设置</string>
 
     <string name="notification_title">通知详情</string>

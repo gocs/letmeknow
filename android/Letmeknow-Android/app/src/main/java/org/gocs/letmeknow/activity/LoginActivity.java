@@ -1,7 +1,6 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -12,20 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.model.remote.User;
+import org.gocs.letmeknow.model.remote.RemoteUser;
 import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.service.LMKService;
 import org.gocs.letmeknow.util.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 /**
@@ -61,7 +55,7 @@ public class LoginActivity extends BaseActivity{
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
-                            UserManager.saveOrUpdateUser((User)response.getData().get(Constants.JSON_KEY_USER),true);
+                            UserManager.saveOrUpdateUser((RemoteUser)response.getData().get(Constants.JSON_KEY_USER),true);
                         }, NetworkErrorHandler.basicErrorHandler);
 
             }

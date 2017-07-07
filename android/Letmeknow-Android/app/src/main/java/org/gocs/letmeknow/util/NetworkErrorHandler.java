@@ -4,7 +4,7 @@ package org.gocs.letmeknow.util;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.application.App;
-import org.gocs.letmeknow.model.common.LMKHttpResponse;
+import org.gocs.letmeknow.model.common.HttpResponse;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
@@ -23,7 +23,7 @@ public class NetworkErrorHandler {
 
     static public final Consumer<Throwable> basicErrorHandler = throwable -> onError(throwable);
 
-    static public final Function<LMKHttpResponse, Observable<LMKHttpResponse>> ErrorFilter =
+    static public final Function<HttpResponse, Observable<HttpResponse>> ErrorFilter =
             response->{
                 if(response.getCode() == 1){
                     return Observable.just(response);

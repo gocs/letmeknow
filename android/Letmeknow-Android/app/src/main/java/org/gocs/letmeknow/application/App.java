@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.avos.avoscloud.AVOSCloud;
+
 /**
  * Created by dynamicheart on 6/26/2017.
  */
@@ -20,6 +22,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+        initLeanCloud();
     }
 
+    private void initLeanCloud(){
+        AVOSCloud.initialize(this, Constants.APP_ID, Constants.APP_KEY);
+        AVOSCloud.setDebugLogEnabled(true);
+    }
 }
