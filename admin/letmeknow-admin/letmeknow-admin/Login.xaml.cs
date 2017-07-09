@@ -43,7 +43,7 @@ namespace letmeknow_admin
             {
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    progressRing.IsActive = false;
+                    progressBar.IsIndeterminate = false;
                 }));
                 return;
             }
@@ -61,7 +61,7 @@ namespace letmeknow_admin
                 MessageBox.Show("用户名或密码错误！");
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    progressRing.IsActive = false;
+                    progressBar.IsIndeterminate = false;
                 }));
             }
             else
@@ -69,7 +69,7 @@ namespace letmeknow_admin
                 MessageBox.Show("该用户没有足够的权限");
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    progressRing.IsActive = false;
+                    progressBar.IsIndeterminate = false;
                 }));
             }
         }
@@ -81,7 +81,7 @@ namespace letmeknow_admin
 
         private void Tile_Click(object sender, RoutedEventArgs e)
         {
-            progressRing.IsActive = true;
+            progressBar.IsIndeterminate = true;
             BackgroundWorker loginWorker = new BackgroundWorker();
             loginWorker.DoWork += loginWorker_DoWork;
             loginWorker.RunWorkerCompleted += loginWorker_RunWorkerCompleted;

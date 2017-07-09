@@ -41,3 +41,8 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Resources\login.png
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\bin\Debug\Resources\groupicon.png
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GroupDetail.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GroupDetail.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\UserInGroup.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\UserInGroup.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.baml

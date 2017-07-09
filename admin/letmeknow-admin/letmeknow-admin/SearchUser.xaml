@@ -6,16 +6,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:localcontrols="clr-namespace:letmeknow_admin.Controls"
         mc:Ignorable="d"
         Title="Letmeknow - 用户查询" Height="360" Width="640">
     <Grid>
         <Label x:Name="label" Content="用户查询" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327" AutoGenerateColumns="False" IsReadOnly="True">
+        <localcontrols:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Height="309" Margin="295,10,0,0" VerticalAlignment="Top" Width="327" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding userId}" ClipboardContentBinding="{x:Null}" Header="UID"/>
                 <DataGridTextColumn Binding="{Binding username}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="225"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </localcontrols:DataGridPlus>
         <TextBox x:Name="usrInfo" HorizontalAlignment="Left" Height="23" Margin="18,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
         <controls:Tile x:Name="tileSearchUserByUID" Title="根据UID查询" 
         	TiltFactor="2"

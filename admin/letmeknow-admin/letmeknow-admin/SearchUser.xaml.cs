@@ -23,6 +23,7 @@ namespace letmeknow_admin
         public SearchUser()
         {
             InitializeComponent();
+            dataGrid.Sorted += (sender, e) => bindActionToRows();
         }
 
         private void tileSearchUserByUID_Click(object sender, RoutedEventArgs e)

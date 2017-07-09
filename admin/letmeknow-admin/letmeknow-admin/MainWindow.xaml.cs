@@ -60,5 +60,13 @@ namespace letmeknow_admin
             searchGroup.ShowDialog();
             this.Show();
         }
+
+        private void tileHandleReport_Click(object sender, RoutedEventArgs e)
+        {
+            ComplaintManager complaintManager = new ComplaintManager();
+            this.Hide();
+            complaintManager.ShowDialog();
+            this.Show();
+        }
     }
 }

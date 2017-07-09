@@ -22,6 +22,6 @@
         		Height="30"
         		Kind="Login" />
         </controls:Tile>
-        <controls:ProgressRing x:Name="progressRing" IsActive="False" Margin="235,269,242,10" Height="40" Width="40" />
+        <controls:MetroProgressBar x:Name="progressBar" Margin="0,125,10,177" Height="17" Foreground="#FF41B1E1" IsIndeterminate="False"/>
     </Grid>
 </controls:MetroWindow>

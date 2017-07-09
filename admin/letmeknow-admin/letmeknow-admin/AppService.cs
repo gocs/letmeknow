@@ -12,15 +12,15 @@ namespace letmeknow_admin
 {
     class AppService
     {
-        public enum LoginResult { SUCCESS = 2, WRONG = 0, NOAUTH = 1};
+        public enum LoginResult { SUCCESS = 2, WRONG = 0, NOAUTH = 1 };
 
         public static LoginResult login(string username, string password)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["username"] = username;
             parameters["password"] = password;
-            string JsonString = HttpHelper.Post(GeneralSetting.host + "adminlogin", parameters);
-            var result = (LoginResult) int.Parse(JObject.Parse(JsonString)["message"].ToString());
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "login", parameters);
+            var result = (LoginResult)int.Parse(JObject.Parse(JsonString)["message"].ToString());
             return result;
         }
 
@@ -35,7 +35,7 @@ namespace letmeknow_admin
             parameters["username"] = name;
             parameters["start"] = "0";
             parameters["count"] = "32767";
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchUserByName", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "fetchUserByName", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["users"];
             return result;
         }
@@ -44,7 +44,7 @@ namespace letmeknow_admin
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["userId"] = UID.ToString();
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchUserById", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "fetchUserById", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["users"];
             return result;
         }
@@ -55,7 +55,7 @@ namespace letmeknow_admin
             parameters["groupName"] = name;
             parameters["start"] = "0";
             parameters["count"] = "32767";
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchGroupByName", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "fetchGroupByName", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Group>>>(JsonString)["groups"];
             return result;
         }
@@ -64,18 +64,21 @@ namespace letmeknow_admin
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["groupId"] = id.ToString();
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "FetchGroupById", parameters);
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "fetchGroupById", parameters);
             var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Group>>>(JsonString)["groups"];
             return result;
         }
 
         public static BitmapImage getImage(string url)
         {
+            if (url == null) return null;
             var re = new BitmapImage();
-            var ss = HttpHelper.GetStream(GeneralSetting.host + url, "");
+            var ss = HttpHelper.GetStream(GeneralSetting.host + "../" + url, "");
             re.BeginInit();
             re.StreamSource = ss;
             re.EndInit();
+            re.DownloadCompleted += (sender, e) => 
+                re.StreamSource.Close();            
             return re;
         }
 
@@ -87,6 +90,16 @@ namespace letmeknow_admin
             var resultObj = new { message = string.Empty, user = new User() };
             User user = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).user;
             return user;
+        }
+
+        public static Group getGroup(int id)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = id.ToString();
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "groupDetail", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            Group group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+            return group;
         }
 
         public static void deleteUser(ref User user)
@@ -125,7 +138,52 @@ namespace letmeknow_admin
             user = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).user;
         }
 
+        public static void deleteGroup(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "deleteGroup", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static void recoverGroup(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "restoreGroup", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static void banGroup(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "disableGroup", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static void unblockGroup(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "activateGroup", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
         public static ObservableCollection<Notification> SearchNotificationByUser(int UID)
+        {
+            var SearchResult = new ObservableCollection<Notification>();
+            SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
+            SearchResult.Add(new Notification(2, new DateTime(2017, 6, 28, 17, 12, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
+            return SearchResult;
+        }
+
+
+        public static ObservableCollection<Notification> SearchNotificationByGroup(int id)
         {
             var SearchResult = new ObservableCollection<Notification>();
             SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
@@ -149,7 +207,7 @@ namespace letmeknow_admin
         public static void toAdmin(ref User user)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["userId"] = user.userId.ToString();            
+            parameters["userId"] = user.userId.ToString();
             string JsonString = HttpHelper.Post(GeneralSetting.host + "promotePrivilege", parameters);
             var resultObj = new { message = string.Empty, user = new User() };
             user = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).user;
@@ -158,19 +216,67 @@ namespace letmeknow_admin
         public static void toNormalUser(ref User user)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["userId"] = user.userId.ToString();            
+            parameters["userId"] = user.userId.ToString();
             string JsonString = HttpHelper.Post(GeneralSetting.host + "reducePrivilege", parameters);
             var resultObj = new { message = string.Empty, user = new User() };
             user = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).user;
         }
 
-        public static void deleteIcon(ref User user)
+        public static void toPublic(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "setGroupToPublic", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static void toPrivate(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "setGroupToPrivate", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static void deleteIcon(ref User user)      
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["userId"] = user.userId.ToString();
             string JsonString = HttpHelper.Post(GeneralSetting.host + "deleteAvatar", parameters);
             var resultObj = new { message = string.Empty, user = new User() };
             user = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).user;
+        }
+
+        public static void deleteIcon(ref Group group)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = group.groupId.ToString();
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "deleteGroupIcon", parameters);
+            var resultObj = new { message = string.Empty, group = new Group() };
+            group = JsonHelper.DeserializeAnonymousType(JsonString, resultObj).group;
+        }
+
+        public static List<User> getGroupMembers(int id)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = id.ToString();
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "groupMembers", parameters);
+            return JsonHelper.DeserializeJsonToObject<Dictionary<string, List<User>>>(JsonString)["members"];
+        }
+
+        public static ObservableCollection<Complaint> getAllComplaints()
+        {
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "allComplaints", string.Empty);
+            return new ObservableCollection<Complaint>(JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Complaint>>>(JsonString)["complaints"]);
+        }
+
+        public static void closeComplaint(Complaint complaint)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["reportId"] = complaint.reportId.ToString();
+            HttpHelper.Post(GeneralSetting.host + "closeComplaint", parameters);
         }
     }
 }

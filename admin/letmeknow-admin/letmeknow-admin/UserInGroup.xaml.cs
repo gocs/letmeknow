@@ -12,17 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using letmeknow_admin.Models;
+using System.Drawing;
 
 namespace letmeknow_admin
 {
     /// <summary>
-    /// SearchUser.xaml 的交互逻辑
+    /// UserInGroup.xaml 的交互逻辑
     /// </summary>
-    public partial class SearchGroup : MetroWindow
+    public partial class UserInGroup : MetroWindow
     {
-        public SearchGroup()
+        public UserInGroup(Group group)
         {
             InitializeComponent();
+            dataGrid.ItemsSource = AppService.getGroupMembers(group.groupId);
+            lblTitle.Content = string.Format("\"{0}\"的成员", group.groupName);
+            dataGrid.Loaded += (sender, e) => bindActionToRows();
             dataGrid.Sorted += (sender, e) => bindActionToRows();
         }
 
@@ -39,34 +44,20 @@ namespace letmeknow_admin
                 }
                 if (row != null)
                 {
+                    if ((row.Item as User).role == UserRole.MASTER)
+                    {
+                        row.FontWeight = FontWeights.Bold;
+                        row.Foreground = System.Windows.Media.Brushes.Blue;
+                    }
+                    else if ((row.Item as User).role == UserRole.ADMIN)
+                        row.FontWeight = FontWeights.Bold;
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        var userDetail = new GroupDetail((((DataGridRow)_sender).Item as Models.Group).groupId);
-                        this.Hide();
-                        userDetail.ShowDialog();
-                        this.ShowDialog();
+                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
+                        userDetail.Show();
                     };
                 }
             }
-        }
-
-        private void tileSearchGroupByName_Click(object sender, RoutedEventArgs e)
-        {
-            dataGrid.ItemsSource = AppService.searchGroup(groupInfo.Text);
-            bindActionToRows();
-        }
-
-        private void tileSearchGroupByID_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                dataGrid.ItemsSource = AppService.searchGroup(int.Parse(groupInfo.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            bindActionToRows();
         }
     }
 }

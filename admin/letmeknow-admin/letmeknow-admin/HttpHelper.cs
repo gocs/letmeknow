@@ -51,13 +51,7 @@ namespace letmeknow_admin
 
         public static string Get(string url, string getStr)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + (getStr == "" ? "" : "?") + getStr);
-            request.Method = "GET";
-            request.ContentType = "text/html;charset=UTF-8";
-            request.CookieContainer = cookie;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream myResponseStream = response.GetResponseStream();
+            var myResponseStream = GetStream(url, getStr);
             StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
             string retStr = myStreamReader.ReadToEnd();
             myStreamReader.Close();

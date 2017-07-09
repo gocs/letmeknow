@@ -76,7 +76,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ComplaintManager.xaml.cs">
+      <DependentUpon>ComplaintManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridPlus.cs" />
     <Compile Include="JsonHelper.cs" />
+    <Compile Include="Models\Complaint.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\User.cs" />
@@ -98,7 +103,14 @@
     <Compile Include="UserDetail.xaml.cs">
       <DependentUpon>UserDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserInGroup.xaml.cs">
+      <DependentUpon>UserInGroup.xaml</DependentUpon>
+    </Compile>
     <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComplaintManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +157,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

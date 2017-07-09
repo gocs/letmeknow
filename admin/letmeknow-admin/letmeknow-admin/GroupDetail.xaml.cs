@@ -17,55 +17,64 @@ using letmeknow_admin.Models;
 namespace letmeknow_admin
 {
     /// <summary>
-    /// UserDetail.xaml 的交互逻辑
+    /// GroupDetail.xaml 的交互逻辑
     /// </summary>
     public partial class GroupDetail : MetroWindow
     {
-        private User user;
-        public GroupDetail(int UID)
+        private Group group;
+        public GroupDetail(int id)
         {
             InitializeComponent();
-            user = AppService.getUser(UID);
-            loadUserInfo();
+            group = AppService.getGroup(id);
+            loadGroupInfo();
 
         }
-        private void loadUserInfo()
+        private void loadGroupInfo()
         {
-            lblTitle.Content = string.Format("{0} (UID: {1})", user.username, user.userId);
-            UserIcon.Source = AppService.getImage(user.avatar);
-            lblRegisterTime.Content = user.created_at;
-            lblUserCategory.Content = user.is_admin.ToString();
-            lblUserStatus.Content = user.status.ToString();
-            lblEmail.Content = user.email;
-            lblPhone.Content = user.phone_num;
-            if (user.status == UserStatus.BANNED)
+            lblTitle.Content = string.Format("{0} (GroupID: {1})", group.groupName, group.groupId);
+            if (group.icon == null)
             {
-                tileBan.Title = "解封用户";
+                GroupIcon.Source = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/groupicon.PNG", UriKind.Absolute));
+                tileDeleteIcon.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                GroupIcon.Source = AppService.getImage(group.icon);
+                tileDeleteIcon.Visibility = Visibility.Visible;
+            }
+            lblCreateTime.Content = group.createdAt;
+            lblCategory.Content = group.category;
+            lblStatus.Content = group.status.ToString();
+            lblMaster.Content = group.master;
+            lblMemberNum.Content = group.members;
+            if (group.status == GroupStatus.BANNED)
+            {
+                tileBan.Title = "解冻通知组";
                 BanIcon.Kind = MahApps.Metro.IconPacks.PackIconMaterialKind.Undo;
             }
-            else if (user.status == UserStatus.DELETED)
+            else if (group.status == GroupStatus.DELETED)
             {
                 tileBan.Visibility = Visibility.Hidden;
-                tileDelete.Title = "恢复用户";
+                tileDelete.Title = "恢复通知组";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.LevelUp;
             }
             else
             {
-                tileBan.Title = "封禁用户";
+                tileBan.Title = "冻结通知组";
                 BanIcon.Kind = MahApps.Metro.IconPacks.PackIconMaterialKind.BlockHelper;
                 tileBan.Visibility = Visibility.Visible;
-                tileDelete.Title = "删除用户";
+                tileDelete.Title = "删除通知组";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.SquaredCross;
             }
-            if (user.is_admin == UserCategory.USER)
+            if (group.category == GroupCategory.PRIVATE)
             {
-                tileLiftup.Title = "提升为管理员";
+                tileLiftup.Title = "设置为公开组";
                 tileLiftup.TitleFontSize = 14;
                 UpIcon.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.ArrowUp;
             }
             else
             {
-                tileLiftup.Title = "取消管理员权限";
+                tileLiftup.Title = "设置为私密组";
                 tileLiftup.TitleFontSize = 12;
                 UpIcon.Kind = MahApps.Metro.IconPacks.PackIconFontAwesomeKind.ArrowDown;
             }
@@ -73,35 +82,47 @@ namespace letmeknow_admin
 
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (user.status != UserStatus.DELETED)
-                AppService.deleteUser(ref user);
+            if (group.status != GroupStatus.DELETED)
+                AppService.deleteGroup(ref group);
             else
-                AppService.recoverUser(ref user);
-            loadUserInfo();
+                AppService.recoverGroup(ref group);
+            loadGroupInfo();
         }
 
         private void tileBan_Click(object sender, RoutedEventArgs e)
         {
-            if (user.status == UserStatus.BANNED)
-                AppService.unblockUser(ref user);
+            if (group.status == GroupStatus.BANNED)
+                AppService.unblockGroup(ref group);
             else
-                AppService.banUser(ref user);
-            loadUserInfo();
+                AppService.banGroup(ref group);
+            loadGroupInfo();
         }
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.userId));
+            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByGroup(group.groupId));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
-            if (user.is_admin == UserCategory.USER)
-                AppService.toAdmin(ref user);
+            if (group.category == GroupCategory.PRIVATE)
+                AppService.toPublic(ref group);
             else
-                AppService.toNormalUser(ref user);
-            loadUserInfo();
+                AppService.toPrivate(ref group);
+            loadGroupInfo();
+        }
+
+        private void tileDeleteIcon_Click(object sender, RoutedEventArgs e)
+        {
+            AppService.deleteIcon(ref group);
+            loadGroupInfo();
+        }
+
+        private void tileGroups_Click(object sender, RoutedEventArgs e)
+        {
+            var userInGroup = new UserInGroup(group);
+            userInGroup.Show();
         }
     }
 }

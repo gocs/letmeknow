@@ -8,6 +8,7 @@ namespace letmeknow_admin.Models
 {
     enum UserStatus { NORMAL = 2, BANNED = 1, DELETED = 0};
     enum UserCategory { ADMINISTRATOR = 1, USER = 0};
+    enum UserRole { MEMBER = 0, ADMIN = 1, MASTER = 2};
 
     class User
     {
@@ -19,6 +20,7 @@ namespace letmeknow_admin.Models
         public string avatar { set; get; }
         public string email { set; get; }
         public string phone_num { set; get; }
+        public UserRole role { set; get; }
 
         public User()
         {

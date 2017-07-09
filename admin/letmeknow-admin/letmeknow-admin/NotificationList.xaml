@@ -37,7 +37,7 @@
         <controls:Tile x:Name="tileGroup" Title="通知组信息" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="682,204,10,115">
+        	Margin="682,204,10,115" Click="tileGroup_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Users" />

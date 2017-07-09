@@ -64,5 +64,13 @@ namespace letmeknow_admin
             if (dataGrid.SelectedIndex == -1) return;
             dataList.RemoveAt(dataGrid.SelectedIndex);
         }
+
+        private void tileGroup_Click(object sender, RoutedEventArgs e)
+        {
+            var notification = dataGrid.SelectedItem as Notification;
+            if (notification == null) return;
+            var groupDetail = new GroupDetail(notification.user_id);
+            groupDetail.Show();
+        }
     }
 }

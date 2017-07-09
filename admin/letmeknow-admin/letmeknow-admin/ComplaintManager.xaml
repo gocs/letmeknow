@@ -1,0 +1,35 @@
+﻿<controls:MetroWindow
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:letmeknow_admin"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.ComplaintManager"
+        mc:Ignorable="d"
+        Title="Letmeknow - 举报处理" Height="360" Width="640">
+    <Grid>
+        <Label x:Name="lblTitle" Content="待处理的举报" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.26,0.038" FontSize="32" Width="612"/>
+
+        <Controls:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="253" Width="324" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+            <Controls:DataGridPlus.Columns>
+                <DataGridTextColumn Binding="{Binding reportId}" ClipboardContentBinding="{x:Null}" Header="序号"/>
+                <DataGridTextColumn Binding="{Binding reporterName}" ClipboardContentBinding="{x:Null}" Header="举报人"/>
+                <DataGridTextColumn Binding="{Binding createdAt}" ClipboardContentBinding="{x:Null}" Header="举报时间"/>
+                <DataGridTextColumn Binding="{Binding categoryName}" ClipboardContentBinding="{x:Null}" Header="举报类型"/>
+            </Controls:DataGridPlus.Columns>
+        </Controls:DataGridPlus>
+        <controls:Tile x:Name="tileClose" Title="关闭举报" HorizontalAlignment="Left" Margin="522,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileClose_Click">
+            <iconPacks:PackIconEntypo Width="30" Height="30" Kind="Cross" />
+        </controls:Tile>
+        <controls:Tile x:Name="tileDetail" Title="被举报对象详细信息" TitleFontSize="12" HorizontalAlignment="Left" Margin="417,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileDetail_Click">
+            <iconPacks:PackIconFontAwesome Width="30" Height="30" Kind="ListAlt" />
+        </controls:Tile>
+        <Label x:Name="label1" Content="举报对象：" HorizontalAlignment="Left" Margin="339,66,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="举报原因：" HorizontalAlignment="Left" Margin="339,91,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="345,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="93" Width="277"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="414,66,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</controls:MetroWindow>

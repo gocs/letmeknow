@@ -10,13 +10,13 @@
         Title="Letmeknow - 通知组信息" Height="360" Width="640">
     <Grid>
         <Label x:Name="lblTitle" Content="TestGroup (id: 1)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="612"/>
-        <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="100" Margin="80,66,0,0" VerticalAlignment="Top" Width="100" Source="Resources/groupicon.png"/>
-        <Label x:Name="label1" Content="注册时间：" HorizontalAlignment="Left" Margin="29,177,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy" Content="用户类型：" HorizontalAlignment="Left" Margin="29,207,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy1" Content="用户状态：" HorizontalAlignment="Left" Margin="29,237,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRegisterTime" Content="Label" HorizontalAlignment="Left" Margin="99,177,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblUserCategory" Content="Label" HorizontalAlignment="Left" Margin="99,207,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblUserStatus" Content="Label" HorizontalAlignment="Left" Margin="99,237,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="GroupIcon" HorizontalAlignment="Left" Height="100" Margin="96,66,0,0" VerticalAlignment="Top" Width="100" Source="Resources/groupicon.png"/>
+        <Label x:Name="label1" Content="创建时间：" HorizontalAlignment="Left" Margin="29,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="通知组类型：" HorizontalAlignment="Left" Margin="29,207,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="通知组状态：" HorizontalAlignment="Left" Margin="29,237,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCreateTime" Content="Label" HorizontalAlignment="Left" Margin="106,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCategory" Content="Label" HorizontalAlignment="Left" Margin="106,207,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStatus" Content="Label" HorizontalAlignment="Left" Margin="106,237,0,0" VerticalAlignment="Top"/>
         <controls:Tile x:Name="tileBan" Title="冻结通知组" 
         	TiltFactor="2"
         	Width="100" Height="100" 
@@ -46,8 +46,7 @@
         <controls:Tile x:Name="tileGroups" Title="组内用户" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-            TitleFontSize="14"
-        	Margin="417,221,115,8">
+        	Margin="417,221,115,8" Click="tileGroups_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Users" />
@@ -55,7 +54,7 @@
         <controls:Tile x:Name="tileDeleteIcon" Title="删除头像" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="312,221,220,8">
+        	Margin="312,221,220,8" Click="tileDeleteIcon_Click">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="UserTimes" />
@@ -70,9 +69,9 @@
         		Height="30"
         		Kind="ArrowUp" />
         </controls:Tile>
-        <Label x:Name="label1_Copy2" Content="邮箱：" HorizontalAlignment="Left" Margin="29,267,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEmail" Content="Label" HorizontalAlignment="Left" Margin="99,267,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy3" Content="电话：" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPhone" Content="Label" HorizontalAlignment="Left" Margin="99,297,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy2" Content="组长：" HorizontalAlignment="Left" Margin="29,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMaster" Content="Label" HorizontalAlignment="Left" Margin="106,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy3" Content="组内人数：" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMemberNum" Content="Label" HorizontalAlignment="Left" Margin="106,297,0,0" VerticalAlignment="Top"/>
     </Grid>
 </controls:MetroWindow>
