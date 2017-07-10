@@ -18,6 +18,34 @@ public class Application {
     private Integer result;
     private int category;
 
+    private String applierName;
+    private String verifierName;
+    private String groupName;
+
+    public String getApplierName() {
+        return applierName;
+    }
+
+    public void setApplierName(String applierName) {
+        this.applierName = applierName;
+    }
+
+    public String getVerifierName() {
+        return verifierName;
+    }
+
+    public void setVerifierName(String verifierName) {
+        this.verifierName = verifierName;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
     @Id
     @Column(name = "application_id", nullable = false)
     public int getApplicationId() {

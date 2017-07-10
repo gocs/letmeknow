@@ -3,7 +3,7 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/7 17:30
+    latest update:7/10 11:30
 </p>
 
 
@@ -29,7 +29,7 @@ current APIs available:
 <p>/allComplaints</p>
 <p>return:a list of currently UNCLOSED complaints</p>
 <p>/closeComplaint</p>
-<p>params:complaintId</p>
+<p>params:reportId</p>
 <p>return: 0 for invalid complaint ID, 1 for success</p>
 <p>/allApplications</p>
 <p> return:a list of currently UNCLOSED applications to making a group public</p>

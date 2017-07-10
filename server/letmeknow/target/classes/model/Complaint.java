@@ -26,7 +26,16 @@ public class Complaint {
     private String username;
     private String groupName;
     private String reporterName;
+	private String notificationSender="lover~~~";
 
+	public String getNotifacationSender(){
+		return notificationSender;
+	}
+	
+	public void setNotificationSender(String notificationSender){
+		this.notificationSender=notificationSender;
+	}
+	
     public String getReporterName() {
         return reporterName;
     }

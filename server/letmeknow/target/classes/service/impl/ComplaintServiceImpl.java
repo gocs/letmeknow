@@ -46,7 +46,7 @@ public class ComplaintServiceImpl implements ComplaintService{
         Complaint complaint=complaintDao.getComplaintById(complaintId);
         if(complaint==null) return null;
         complaint.setResult(1);
-        complaint.setReporterName(userDao.getUserById(complaint.getUserId()).getUsername());
+        complaint.setReporterName(userDao.getUserById(complaint.getReporterId()).getUsername());
         if(complaint.getUserId()!=null)complaint.setUsername(userDao.getUserById(complaint.getUserId()).getUsername());
         if(complaint.getGroupId()!=null) complaint.setGroupName(groupDao.getGroupsById(complaint.getGroupId()).getGroupName());
         complaintDao.update(complaint);

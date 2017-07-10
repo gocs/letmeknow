@@ -87,6 +87,8 @@
 
     <bean id="applicationService" class="service.impl.ApplicationServiceImpl">
         <property name="applicationDao" ref="applicationDao"/>
+        <property name="userDao" ref="userDao" />
+        <property name="groupDao" ref="groupDao" />
     </bean>
 
 </beans>
