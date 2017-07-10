@@ -46,3 +46,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\UserInGroup.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\GeneratedInternalTypeHelper.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ApplicationManager.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ApplicationManager.baml

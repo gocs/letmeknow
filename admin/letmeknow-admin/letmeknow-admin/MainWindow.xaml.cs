@@ -24,6 +24,11 @@ namespace letmeknow_admin
         {
             InitializeComponent();
             title.Content = "欢迎使用，" + username;
+            this.Closing += (sender, e) =>
+            {
+                if (MessageBox.Show("确认退出程序吗？", "确认退出", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                    e.Cancel = true;
+            };
         }
 
         private void tileExit_Click(object sender, RoutedEventArgs e)
@@ -66,6 +71,14 @@ namespace letmeknow_admin
             ComplaintManager complaintManager = new ComplaintManager();
             this.Hide();
             complaintManager.ShowDialog();
+            this.Show();
+        }
+
+        private void tileVerify_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationManager applicationManager = new ApplicationManager();
+            this.Hide();
+            applicationManager.ShowDialog();
             this.Show();
         }
     }

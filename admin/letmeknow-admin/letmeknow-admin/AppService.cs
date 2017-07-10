@@ -269,7 +269,7 @@ namespace letmeknow_admin
         public static ObservableCollection<Complaint> getAllComplaints()
         {
             string JsonString = HttpHelper.Get(GeneralSetting.host + "allComplaints", string.Empty);
-            return new ObservableCollection<Complaint>(JsonHelper.DeserializeJsonToObject<Dictionary<string, List<Complaint>>>(JsonString)["complaints"]);
+            return JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Complaint>>>(JsonString)["complaints"];
         }
 
         public static void closeComplaint(Complaint complaint)
@@ -277,6 +277,26 @@ namespace letmeknow_admin
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["reportId"] = complaint.reportId.ToString();
             HttpHelper.Post(GeneralSetting.host + "closeComplaint", parameters);
+        }
+
+        public static ObservableCollection<Application> getAllApplications()
+        {
+            string JsonString = HttpHelper.Get(GeneralSetting.host + "allApplications", string.Empty);
+            return JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Application>>>(JsonString)["applications"];
+        }
+
+        public static void approveApplication(Application application)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["applicationId"] = application.applicationId.ToString();
+            HttpHelper.Post(GeneralSetting.host + "passApplication", parameters);
+        }
+
+        public static void rejectApplication(Application application)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["applicationId"] = application.applicationId.ToString();
+            HttpHelper.Post(GeneralSetting.host + "denyApplication", parameters);
         }
     }
 }

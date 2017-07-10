@@ -1,0 +1,36 @@
+﻿<controls:MetroWindow
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:letmeknow_admin"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.ApplicationManager"
+        mc:Ignorable="d"
+        Title="Letmeknow - 申请审核" Height="360" Width="702.158">
+    <Grid>
+        <Label x:Name="lblTitle" Content="待处理的申请" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.26,0.038" FontSize="32" Width="612"/>
+
+        <Controls:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="253" Width="324" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+            <Controls:DataGridPlus.Columns>
+                <DataGridTextColumn Binding="{Binding applicationId}" ClipboardContentBinding="{x:Null}" Header="序号"/>
+                <DataGridTextColumn Binding="{Binding applierName}" ClipboardContentBinding="{x:Null}" Header="申请人"/>
+                <DataGridTextColumn Binding="{Binding createdAt}" ClipboardContentBinding="{x:Null}" Header="申请时间"/>
+                <DataGridTextColumn Binding="{Binding groupName}" ClipboardContentBinding="{x:Null}" Header="申请通知组"/>
+            </Controls:DataGridPlus.Columns>
+        </Controls:DataGridPlus>
+        <controls:Tile x:Name="tileReject" Title="拒绝申请" HorizontalAlignment="Left" Margin="584,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileReject_Click">
+            <iconPacks:PackIconEntypo Width="30" Height="30" Kind="Cross" />
+        </controls:Tile>
+        <controls:Tile x:Name="tileDetail" Title="通知组信息" HorizontalAlignment="Left" Margin="374,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileDetail_Click">
+            <iconPacks:PackIconFontAwesome Width="30" Height="30" Kind="ListAlt" />
+        </controls:Tile>
+        <Label x:Name="label1_Copy" Content="申请理由：" HorizontalAlignment="Left" Margin="339,66,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="345,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="118" Width="339"/>
+        <controls:Tile x:Name="tileApprove" Title="同意申请" HorizontalAlignment="Left" Margin="479,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileApprove_Click">
+            <iconPacks:PackIconEntypo Width="30" Height="30" Kind="Check" />
+        </controls:Tile>
+
+    </Grid>
+</controls:MetroWindow>

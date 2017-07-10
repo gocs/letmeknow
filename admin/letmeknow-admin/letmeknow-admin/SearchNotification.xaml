@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:letmeknow_admin"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Letmeknow - 通知搜索" Height="149" Width="400">
+        Title="Letmeknow - 通知搜索" Height="149" Width="400" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="label" Content="通知搜索" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <controls:Tile x:Name="tileSearch" Title="搜索" 
@@ -18,7 +18,7 @@
         		Height="30"
         		Kind="Search" />
         </controls:Tile>
-        <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+        <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" BorderThickness="0,0,0,1" BorderBrush="Black"/>
 
     </Grid>
 </controls:MetroWindow>
