@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -25,7 +26,7 @@ namespace letmeknow_admin
         public GroupDetail(int id)
         {
             InitializeComponent();
-            group = AppService.getGroup(id);
+            group = GroupService.getGroup(id);
             loadGroupInfo();
 
         }
@@ -39,7 +40,7 @@ namespace letmeknow_admin
             }
             else
             {
-                GroupIcon.Source = AppService.getImage(group.icon);
+                GroupIcon.Source = GroupService.getImage(group.icon);
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
             lblCreateTime.Content = group.createdAt;
@@ -83,39 +84,39 @@ namespace letmeknow_admin
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
             if (group.status != GroupStatus.DELETED)
-                AppService.deleteGroup(ref group);
+                GroupService.deleteGroup(ref group);
             else
-                AppService.recoverGroup(ref group);
+                GroupService.recoverGroup(ref group);
             loadGroupInfo();
         }
 
         private void tileBan_Click(object sender, RoutedEventArgs e)
         {
             if (group.status == GroupStatus.BANNED)
-                AppService.unblockGroup(ref group);
+                GroupService.unblockGroup(ref group);
             else
-                AppService.banGroup(ref group);
+                GroupService.banGroup(ref group);
             loadGroupInfo();
         }
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByGroup(group.groupId));
+            NotificationList notificationList = new NotificationList("Admin发送的通知", NotificationService.SearchNotificationByGroup(group.groupId));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
             if (group.category == GroupCategory.PRIVATE)
-                AppService.toPublic(ref group);
+                GroupService.toPublic(ref group);
             else
-                AppService.toPrivate(ref group);
+                GroupService.toPrivate(ref group);
             loadGroupInfo();
         }
 
         private void tileDeleteIcon_Click(object sender, RoutedEventArgs e)
         {
-            AppService.deleteIcon(ref group);
+            GroupService.deleteIcon(ref group);
             loadGroupInfo();
         }
 

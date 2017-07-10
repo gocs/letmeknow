@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -27,7 +28,7 @@ namespace letmeknow_admin
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            if (AppService.changePassword(oldPwd.Password, newPwd.Password))
+            if (AccountService.changePassword(oldPwd.Password, newPwd.Password))
             {
                 MessageBox.Show("密码更改成功！");
                 this.Close();

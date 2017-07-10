@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -25,7 +26,7 @@ namespace letmeknow_admin
         public UserDetail(int UID)
         {
             InitializeComponent();
-            user = AppService.getUser(UID);
+            user = UserService.getUser(UID);
             loadUserInfo();
         }
 
@@ -39,7 +40,7 @@ namespace letmeknow_admin
             }
             else
             {
-                UserIcon.Source = AppService.getImage(user.avatar);
+                UserIcon.Source = GroupService.getImage(user.avatar);
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
             lblRegisterTime.Content = user.created_at;
@@ -83,39 +84,39 @@ namespace letmeknow_admin
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
             if (user.status != UserStatus.DELETED)
-                AppService.deleteUser(ref user);
+                UserService.deleteUser(ref user);
             else
-                AppService.recoverUser(ref user);
+                UserService.recoverUser(ref user);
             loadUserInfo();
         }
 
         private void tileBan_Click(object sender, RoutedEventArgs e)
         {
             if (user.status == UserStatus.BANNED)
-                AppService.unblockUser(ref user);
+                UserService.unblockUser(ref user);
             else
-                AppService.banUser(ref user);
+                UserService.banUser(ref user);
             loadUserInfo();
         }
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", AppService.SearchNotificationByUser(user.userId));
+            NotificationList notificationList = new NotificationList("Admin发送的通知", NotificationService.SearchNotificationByUser(user.userId));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
             if (user.is_admin == UserCategory.USER)
-                AppService.toAdmin(ref user);
+                UserService.toAdmin(ref user);
             else
-                AppService.toNormalUser(ref user);
+                UserService.toNormalUser(ref user);
             loadUserInfo();
         }
 
         private void tileDeleteIcon_Click(object sender, RoutedEventArgs e)
         {
-            AppService.deleteIcon(ref user);
+            UserService.deleteIcon(ref user);
             loadUserInfo();
         }
     }

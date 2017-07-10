@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -29,7 +30,7 @@ namespace letmeknow_admin
         private void tileSearchUserByUID_Click(object sender, RoutedEventArgs e)
         {
             try {
-                dataGrid.ItemsSource = AppService.searchUser(int.Parse(usrInfo.Text));
+                dataGrid.ItemsSource = UserService.searchUser(int.Parse(usrInfo.Text));
             }
             catch (Exception ex)
             {
@@ -40,7 +41,7 @@ namespace letmeknow_admin
 
         private void tileSearchUserByName_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = AppService.searchUser(usrInfo.Text);
+            dataGrid.ItemsSource = UserService.searchUser(usrInfo.Text);
             bindActionToRows();
         }
 

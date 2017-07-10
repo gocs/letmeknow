@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -28,7 +29,7 @@ namespace letmeknow_admin
         private void tileSearch_Click(object sender, RoutedEventArgs e)
         {
             NotificationList notificationList = new NotificationList("搜索结果：" + keyword.Text,
-                AppService.SearchNotificationByKeyword(keyword.Text));
+                NotificationService.SearchNotificationByKeyword(keyword.Text));
             this.Hide();
             notificationList.ShowDialog();
             this.Close();

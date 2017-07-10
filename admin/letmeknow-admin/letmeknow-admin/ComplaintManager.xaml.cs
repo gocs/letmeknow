@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
 using System.Collections.ObjectModel;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -27,7 +28,7 @@ namespace letmeknow_admin
         public ComplaintManager()
         {
             InitializeComponent();
-            complaintList = AppService.getAllComplaints();
+            complaintList = ComplaintService.getAllComplaints();
             foreach (var i in complaintList)
             {
                 switch (i.category)
@@ -73,7 +74,7 @@ namespace letmeknow_admin
         private void tileClose_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItem == null) return;
-            AppService.closeComplaint(dataGrid.SelectedItem as Complaint);
+            ComplaintService.closeComplaint(dataGrid.SelectedItem as Complaint);
             complaintList.Remove(dataGrid.SelectedItem as Complaint);
         }
 

@@ -25,7 +25,7 @@ namespace letmeknow_admin
         public UserInGroup(Group group)
         {
             InitializeComponent();
-            dataGrid.ItemsSource = AppService.getGroupMembers(group.groupId);
+            dataGrid.ItemsSource = GroupService.getGroupMembers(group.groupId);
             lblTitle.Content = string.Format("\"{0}\"的成员", group.groupName);
             dataGrid.Loaded += (sender, e) => bindActionToRows();
             dataGrid.Sorted += (sender, e) => bindActionToRows();

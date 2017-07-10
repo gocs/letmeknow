@@ -104,6 +104,11 @@
     <Compile Include="GroupDetail.xaml.cs">
       <DependentUpon>GroupDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ApplicationService.cs" />
+    <Compile Include="Services\ComplaintService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="UserDetail.xaml.cs">
       <DependentUpon>UserDetail.xaml</DependentUpon>
     </Compile>
@@ -130,7 +135,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppService.cs" />
+    <Compile Include="Services\GroupService.cs" />
     <Compile Include="ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>

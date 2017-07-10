@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.Reflection;
 
 namespace letmeknow_admin
 {
@@ -38,47 +39,40 @@ namespace letmeknow_admin
 
         private void tileChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            ChangePassword changePassword = new ChangePassword();
-            changePassword.ShowDialog();
+            openWindow("ChangePassword");
         }
 
         private void tileUser_Click(object sender, RoutedEventArgs e)
         {
-            SearchUser searchUser = new SearchUser();
-            this.Hide();
-            searchUser.ShowDialog();
-            this.Show();
+            openWindow("SearchUser");
         }
 
         private void tileNotification_Click(object sender, RoutedEventArgs e)
         {
-            SearchNotification searchNotification = new SearchNotification();
-            this.Hide();
-            searchNotification.ShowDialog();
-            this.Show();
+            openWindow("SearchNotification");
         }
 
         private void tileGroup_Click(object sender, RoutedEventArgs e)
         {
-            SearchGroup searchGroup = new SearchGroup();
-            this.Hide();
-            searchGroup.ShowDialog();
-            this.Show();
+            openWindow("SearchGroup"); 
         }
 
         private void tileHandleReport_Click(object sender, RoutedEventArgs e)
         {
-            ComplaintManager complaintManager = new ComplaintManager();
-            this.Hide();
-            complaintManager.ShowDialog();
-            this.Show();
+            openWindow("ComplaintManager");
         }
 
         private void tileVerify_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationManager applicationManager = new ApplicationManager();
+            openWindow("ApplicationManager");
+        }
+
+        private void openWindow (string windowType)
+        {
+            var window = (MetroWindow) Assembly.Load("letmeknow-admin")
+                                               .CreateInstance("letmeknow_admin." + windowType);
             this.Hide();
-            applicationManager.ShowDialog();
+            window.ShowDialog();
             this.Show();
         }
     }

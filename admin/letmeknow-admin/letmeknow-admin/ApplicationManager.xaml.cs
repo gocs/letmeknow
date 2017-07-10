@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
 using System.Collections.ObjectModel;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -27,7 +28,7 @@ namespace letmeknow_admin
         public ApplicationManager()
         {
             InitializeComponent();
-            applicationList = AppService.getAllApplications();
+            applicationList = ApplicationService.getAllApplications();
             dataGrid.ItemsSource = applicationList;
         }
 
@@ -45,14 +46,14 @@ namespace letmeknow_admin
         private void tileReject_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItem == null) return;
-            AppService.rejectApplication(dataGrid.SelectedItem as Models.Application);
+            ApplicationService.rejectApplication(dataGrid.SelectedItem as Models.Application);
             applicationList.Remove(dataGrid.SelectedItem as Models.Application);
         }
 
         private void tileApprove_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItem == null) return;
-            AppService.approveApplication(dataGrid.SelectedItem as Models.Application);
+            ApplicationService.approveApplication(dataGrid.SelectedItem as Models.Application);
             applicationList.Remove(dataGrid.SelectedItem as Models.Application);
         }
 

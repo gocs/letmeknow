@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -52,7 +53,7 @@ namespace letmeknow_admin
 
         private void tileSearchGroupByName_Click(object sender, RoutedEventArgs e)
         {
-            dataGrid.ItemsSource = AppService.searchGroup(groupInfo.Text);
+            dataGrid.ItemsSource = GroupService.searchGroup(groupInfo.Text);
             bindActionToRows();
         }
 
@@ -60,7 +61,7 @@ namespace letmeknow_admin
         {
             try
             {
-                dataGrid.ItemsSource = AppService.searchGroup(int.Parse(groupInfo.Text));
+                dataGrid.ItemsSource = GroupService.searchGroup(int.Parse(groupInfo.Text));
             }
             catch (Exception ex)
             {
