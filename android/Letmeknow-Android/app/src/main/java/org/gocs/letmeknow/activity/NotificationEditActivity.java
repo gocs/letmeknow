@@ -37,7 +37,7 @@ public class NotificationEditActivity extends BaseActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //set toolbar title
-        getSupportActionBar().setTitle(R.string.setting_title);
+        getSupportActionBar().setTitle(R.string.edit_titile);
     }
 
     @Override

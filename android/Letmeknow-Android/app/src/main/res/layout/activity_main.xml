@@ -36,6 +36,14 @@
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:icon="@drawable/ic_tab_read"/>
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/ic_tab_send"/>
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:icon="@drawable/ic_tab_circle"/>
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
@@ -92,36 +100,25 @@
             app:menu_backgroundColor="@android:color/transparent">
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fam_item_notification"
+                android:id="@+id/fam_item_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_menu_notification"
+                android:src="@drawable/ic_action_button_create"
                 app:fab_colorNormal="#FFB805"
                 app:fab_colorPressed="#F2AB00"
                 app:fab_colorRipple="#D99200"
                 app:fab_size="mini"
-                app:fab_label="未读通知" />
+                app:fab_label="通知" />
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fam_item_read"
+                android:id="@+id/fam_item_drafts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_menu_read"
+                android:src="@drawable/ic_action_button_drafts"
                 app:fab_colorNormal="#43A047"
                 app:fab_colorPressed="#2E7D32"
                 app:fab_colorRipple="#1B5E20"
                 app:fab_size="mini"
-                app:fab_label="已读通知" />
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fam_item_sent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_menu_send"
-                app:fab_colorNormal="#1565C0"
-                app:fab_colorPressed="#2272CD"
-                app:fab_colorRipple="#62B2FF"
-                app:fab_size="mini"
-                app:fab_label="已发通知" />
-
+                app:fab_label="草稿" />
         </com.github.clans.fab.FloatingActionMenu>
 
     </android.support.design.widget.CoordinatorLayout>

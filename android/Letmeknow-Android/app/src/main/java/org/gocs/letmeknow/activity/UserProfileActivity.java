@@ -5,11 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by dynamicheart on 6/30/2017.
@@ -25,13 +31,19 @@ public class UserProfileActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar();
-        button.setOnClickListener(view ->{
-            Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            UserManager.changeLoginStatus(false);
+        button.setOnClickListener(view -> {
+            RetrofitClient.getService().logout()
+                    .flatMap(NetworkErrorHandler.ErrorFilter)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(response -> {
+                        Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        UserManager.changeLoginStatus(false);
+                        Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
+                    });
         });
-
     }
 
     @Override

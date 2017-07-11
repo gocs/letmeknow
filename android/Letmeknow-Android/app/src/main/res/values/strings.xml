@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">LetMeKnow</string>
-    <string name="tab_notification">通知</string>
+    <string name="tab_notification">未读通知</string>
+    <string name="tab_send">已发通知</string>
+    <string name="tab_read">已读通知</string>
     <string name="tab_circle">圈子</string>
     <string name="tab_pm">私信</string>
     <string name="drawer_profile">个人资料</string>
@@ -10,6 +12,7 @@
     <string name="notification_edit_title">新的通知</string>
 
     <string name="setting_title">设置</string>
+    <string name="edit_titile">编辑新通知</string>
 
     <string name="notification_title">通知详情</string>
     <string name="notification_delete">删除通知</string>

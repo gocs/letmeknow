@@ -9,6 +9,8 @@ import org.gocs.letmeknow.R;
 public class Constants {
     public static final int[] TAB_IMAGE_RES_ID = {
             R.drawable.ic_tab_notifications,
+            R.drawable.ic_tab_read,
+            R.drawable.ic_tab_send,
             R.drawable.ic_tab_circle,
             R.drawable.ic_tab_message };
 
@@ -17,7 +19,7 @@ public class Constants {
             R.string.circle_info_informer,
             R.string.circle_info_members};
 
-    public static final int TAB_NUM = 3;
+    public static final int TAB_NUM = 5;
 
     public static final String CURRENT_USER = "CURRENT_USER";
     public static final String USER_AVATAR = "USER_AVATAR";
@@ -29,5 +31,10 @@ public class Constants {
 
     public static final String DEFAULT_CONVERSATION_NAME = "DEFAULT_CONVERSATION";
 
+    public enum TabStatus{
+        NOTIFICATION,
+        SEND,
+        READ
+    }
 
 }

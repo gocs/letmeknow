@@ -1,12 +1,13 @@
 package org.gocs.letmeknow.activity;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -18,12 +19,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
+import org.gocs.letmeknow.fragment.ReadFragment;
+import org.gocs.letmeknow.fragment.SendFragment;
 import org.gocs.letmeknow.model.local.PersistableUser;
 import org.gocs.letmeknow.util.UserManager;
 
@@ -49,6 +53,10 @@ public class MainActivity extends BaseActivity
     ViewPager viewPager;
     @BindView(R.id.fam)
     FloatingActionMenu floatingActionMenu;
+    @BindView(R.id.fam_item_create)
+    FloatingActionButton floatingActionButtonCreate;
+    @BindView(R.id.fam_item_drafts)
+    FloatingActionButton floatingActionButtonDrafts;
 
     //can not bind view
     TextView textNavUserName;
@@ -125,13 +133,16 @@ public class MainActivity extends BaseActivity
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         adapter.addFragment(new NotificationFragment());
+        adapter.addFragment(new ReadFragment());
+        adapter.addFragment(new SendFragment());
         adapter.addFragment(new CircleFragment());
         adapter.addFragment(new PrivateMessageFragment());
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
 
         private ViewPagerAdapter(FragmentManager manager) {
@@ -184,9 +195,15 @@ public class MainActivity extends BaseActivity
                         getSupportActionBar().setTitle(R.string.tab_notification);
                         break;
                     case 1:
-                        getSupportActionBar().setTitle(R.string.tab_circle);
+                        getSupportActionBar().setTitle(R.string.tab_read);
                         break;
                     case 2:
+                        getSupportActionBar().setTitle(R.string.tab_send);
+                        break;
+                    case 3:
+                        getSupportActionBar().setTitle(R.string.tab_circle);
+                        break;
+                    case 4:
                         getSupportActionBar().setTitle(R.string.tab_pm);
                         break;
                     default:
@@ -218,5 +235,9 @@ public class MainActivity extends BaseActivity
 
     private void setUpFloatingActionMenu(){
         floatingActionMenu.setClosedOnTouchOutside(true);
+        floatingActionButtonCreate.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, NotificationEditActivity.class);
+            startActivity(intent);
+        });
     }
 }
