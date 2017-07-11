@@ -12,7 +12,7 @@ import retrofit2.http.Query;
  * Created by dynamicheart on 7/4/2017.
  */
 
-public interface LMKService {
+public interface RESTService {
     @POST("letmeknow/login")
     Observable<HttpResponse<RemoteUser>> login(@Query("username") String username, @Query("password") String password);
 

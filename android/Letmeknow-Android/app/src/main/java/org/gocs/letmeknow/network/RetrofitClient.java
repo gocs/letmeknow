@@ -1,6 +1,6 @@
 package org.gocs.letmeknow.network;
 
-import org.gocs.letmeknow.service.LMKService;
+import org.gocs.letmeknow.service.RESTService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -15,9 +15,9 @@ public class RetrofitClient {
 
     private static Retrofit client;
 
-    private static LMKService service;
+    private static RESTService service;
 
-    public static LMKService getService(){
+    public static RESTService getService(){
         if(client == null){
             client = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -27,7 +27,7 @@ public class RetrofitClient {
                     .build();
         }
         if(service == null){
-            service = client.create(LMKService.class);
+            service = client.create(RESTService.class);
         }
         return service;
     }
