@@ -1,6 +1,5 @@
 package org.gocs.letmeknow.couchdb;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,13 +9,15 @@ import java.util.Map;
 import com.couchbase.lite.*;
 import com.couchbase.lite.android.AndroidContext;
 import com.couchbase.lite.replicator.Replication;
-import com.couchbase.lite.util.Log;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import android.app.Application;
-import android.content.Context;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
+import org.gocs.letmeknow.model.Notification;
+import org.gocs.letmeknow.model.component.Choice;
+import org.gocs.letmeknow.model.component.Receipt;
 
 /**
  * Created by lenovo on 2017/7/6.
@@ -42,7 +43,7 @@ public class DBWrapper {
         return database;
     }
 
-    private static Manager getManagerInstance(){
+    public static Manager getManagerInstance(){
         if(manager == null){
             try{
                 manager = new Manager(new AndroidContext(App.getInstance()), Manager.DEFAULT_OPTIONS);
@@ -153,8 +154,30 @@ public class DBWrapper {
         return doc.getId();
     }
 
-    public String test_create(){
-        Map<String, Object> resultformat = new HashMap<String, Object>();
+    public static String test_create(){
+        Notification notification = new Notification();
+
+        List<Choice> choiceList = new ArrayList<>();
+        Choice choice1  = new Choice();
+        choice1.setName("something");
+        choiceList.add(choice1);
+
+        notification.setGroupId("1234");
+        notification.setSenderId("4321");
+
+        notification.setChoiceList(choiceList);
+
+        String receipent = "3212";
+        Map<String,Receipt> receiptMap = new HashMap<>();
+        Receipt receipt = new Receipt();
+        receipt.setStatus(true);
+        receiptMap.put(receipent,receipt);
+
+        notification.setReceiptMap(receiptMap);
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> doc = mapper.convertValue(notification, new TypeReference<Map<String, Object>>() {});
+
+        /*Map<String, Object> resultformat = new HashMap<String, Object>();
         resultformat.put("option1","hold the meeting today");
         resultformat.put("option2","hold the meeting tomorrow");
         Map<String, Object> currentresult = new HashMap<String, Object>();
@@ -172,7 +195,7 @@ public class DBWrapper {
         doc.put("attachment",null);
         doc.put("resultformat",resultformat);
         doc.put("result",result);
-        doc.put("type","notification");
+        doc.put("type","notification");*/
         Document document = getCouchDBInstance().createDocument();
         try{
             document.putProperties(doc);
@@ -337,7 +360,7 @@ public class DBWrapper {
                         emitter.emit(document.get("group_id"), document);
                 }
             };
-            view.setMap(mapper, "3.0");
+            view.setMap(mapper, "3.1");
         }
         return view;
     }
@@ -352,7 +375,7 @@ public class DBWrapper {
                         emitter.emit(document.get("sender_id"), document);
                 }
             };
-            view.setMap(mapper, "3.0");
+            view.setMap(mapper, "3.1");
         }
         return view;
     }
@@ -364,12 +387,12 @@ public class DBWrapper {
                 public void map(Map<String, Object> document, Emitter emitter) {
                     String type = (String)document.get("type");
                     if ("notification".equals(type)){
-                        Map<String,Object> result = (Map<String,Object>)document.get("result");
+                        Map<String,Object> result = (Map<String,Object>)document.get("receipts");
                         emitter.emit(result.get("receiver"),document);
                     }
                 }
             };
-            view.setMap(mapper, "3.0");
+            view.setMap(mapper, "3.1");
         }
         return view;
     }

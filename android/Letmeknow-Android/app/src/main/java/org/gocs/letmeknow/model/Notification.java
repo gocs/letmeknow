@@ -1,5 +1,8 @@
 package org.gocs.letmeknow.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.gocs.letmeknow.model.component.Choice;
@@ -13,8 +16,10 @@ import java.util.Map;
  * Created by dynamicheart on 7/11/2017.
  */
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Notification {
-    @JsonProperty("id")
+    @JsonProperty("_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
 
     @JsonProperty("group_id")
@@ -25,6 +30,9 @@ public class Notification {
 
     @JsonProperty("content")
     private String content;
+
+    @JsonProperty("type")
+    private String type = "notification";
 
     @JsonProperty("notification_type")
     private NotificationType notificationType = NotificationType.NORMAL;
@@ -89,5 +97,13 @@ public class Notification {
 
     public void setNotificationType(NotificationType notificationType) {
         this.notificationType = notificationType;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

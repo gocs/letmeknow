@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.couchdb.DBWrapper;
@@ -12,6 +16,8 @@ import org.gocs.letmeknow.couchdb.DBWrapper;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static org.gocs.letmeknow.couchdb.DBWrapper.test_create;
 
 /**
  * Created by dynamicheart on 7/3/2017.
@@ -29,12 +35,23 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //String docID = App.getCouchDB().test_create();
+//        Manager manager = DBWrapper.getManagerInstance();
+//        Database database = getCouchDBInstance();
+//        try{
+//            database.delete();
+//        }catch (Exception ignore){
+//        }
+        String docID = test_create();
         //Map<String, Object> resultByDocId = App.getCouchDB().read(docID);
 
-        List<Object> resultByGid = DBWrapper.getDocByGroupId("6666");
-        List<Object> resultBySid = DBWrapper.getDocBySenderId("5555");
-        List<Object> resultByRid = DBWrapper.getDocByReceiverId("2333");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES,false);
+
+
+        List<Object> resultByGid = DBWrapper.getDocByGroupId("1234");
+        Notification Notification = objectMapper.convertValue(resultByGid.get(0),Notification.class);
+        //List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
+        //List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
         startSplashTimer();
     }
 
