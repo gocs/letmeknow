@@ -37,6 +37,6 @@ public class Constants {
         READ
     }
 
-    public static final String COUCHDB_NAME = "Letmeknow";
+    public static final String COUCHDB_NAME = "testdb";
 
 }

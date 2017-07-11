@@ -199,8 +199,8 @@ public class DBWrapper {
         return doc.getProperties();
     }
 
-    public List<Object> getDocByGroupId(String gid){
-        final Query query = this.getGroupIdView().createQuery();
+    public static List<Object> getDocByGroupId(String gid){
+        final Query query = getGroupIdView().createQuery();
 
         //List<Object> startKeys = new ArrayList<Object>();
         //startKeys.add(gid);
@@ -222,8 +222,8 @@ public class DBWrapper {
         return resultList;
     }
 
-    public List<Object> getDocBySenderId(String sid){
-        final Query query = this.getSenderIdView().createQuery();
+    public static List<Object> getDocBySenderId(String sid){
+        final Query query = getSenderIdView().createQuery();
         query.setStartKey(sid);
         query.setEndKey(sid);
 
@@ -240,8 +240,8 @@ public class DBWrapper {
         return resultList;
     }
 
-    public List<Object> getDocByReceiverId(String rid){
-        final Query query = this.getReceiverIdView().createQuery();
+    public static List<Object> getDocByReceiverId(String rid){
+        final Query query = getReceiverIdView().createQuery();
         query.setStartKey(rid);
         query.setEndKey(rid);
 
@@ -327,7 +327,7 @@ public class DBWrapper {
      * Database View
      */
 
-    public View getGroupIdView() {
+    public static View getGroupIdView() {
         View view = getCouchDBInstance().getView("group_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
@@ -342,7 +342,7 @@ public class DBWrapper {
         return view;
     }
 
-    public View getSenderIdView() {
+    public static View getSenderIdView() {
         View view = getCouchDBInstance().getView("sender_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
@@ -357,7 +357,7 @@ public class DBWrapper {
         return view;
     }
 
-    public View getReceiverIdView() {
+    public static View getReceiverIdView() {
         View view = getCouchDBInstance().getView("receiver_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
