@@ -9,7 +9,11 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.model.local.PersistableUser;
 import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.couchdb.DBWrapper;
+import org.gocs.letmeknow.couchdb.DBService;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,6 +33,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //DBWrapper db = DBService.getService("testdb",App.getInstance());
+        //String docID = App.getCouchDB().test_create();
+        //Map<String, Object> resultByDocId = App.getCouchDB().read(docID);
+        List<Object> resultByGid = App.getCouchDB().getDocByGroupId("6666");
+        List<Object> resultBySid = App.getCouchDB().getDocBySenderId("5555");
+        List<Object> resultByRid = App.getCouchDB().getDocByReceiverId("2333");
         startSplashTimer();
     }
 
