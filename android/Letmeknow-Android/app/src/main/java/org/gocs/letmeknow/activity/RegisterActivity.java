@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.model.remote.RemoteUser;
+import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
@@ -51,7 +51,9 @@ public class RegisterActivity extends BaseActivity{
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                        UserManager.saveOrUpdateUser((RemoteUser)response.getData().get(Constants.JSON_KEY_USER),true);
+                        User user = (User)response.getData().get(Constants.JSON_KEY_USER);
+                        user.setLogin(true);
+                        UserManager.saveOrUpdateUser(user);
                     },NetworkErrorHandler.basicErrorHandler);
         });
 

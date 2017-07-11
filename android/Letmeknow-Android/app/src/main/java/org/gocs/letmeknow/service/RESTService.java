@@ -1,8 +1,8 @@
 package org.gocs.letmeknow.service;
 
 
-import org.gocs.letmeknow.model.common.HttpResponse;
-import org.gocs.letmeknow.model.remote.RemoteUser;
+import org.gocs.letmeknow.model.HttpResponse;
+import org.gocs.letmeknow.model.User;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -15,10 +15,10 @@ import retrofit2.http.Query;
 
 public interface RESTService {
     @POST("letmeknow/login")
-    Observable<HttpResponse<RemoteUser>> login(@Query("username") String username, @Query("password") String password);
+    Observable<HttpResponse<User>> login(@Query("username") String username, @Query("password") String password);
 
     @POST("letmeknow/register")
-    Observable<HttpResponse<RemoteUser>> register(@Query("username") String username, @Query("password") String password);
+    Observable<HttpResponse<User>> register(@Query("username") String username, @Query("password") String password);
 
     @GET("letmeknow/logout")
     Observable<HttpResponse<Void>> logout();

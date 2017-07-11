@@ -1,6 +1,5 @@
 package org.gocs.letmeknow.activity;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -28,7 +27,7 @@ import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
 import org.gocs.letmeknow.fragment.ReadFragment;
 import org.gocs.letmeknow.fragment.SendFragment;
-import org.gocs.letmeknow.model.local.PersistableUser;
+import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.util.UserManager;
 
 import java.util.ArrayList;
@@ -177,7 +176,7 @@ public class MainActivity extends BaseActivity
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        PersistableUser user = UserManager.getCurrentUser();
+        User user = UserManager.getCurrentUser();
         Log.d("Navigation",user.toString());
         textNavUserName.setText(user.getUserName());
         textNavEmail.setText(user.getEmail());

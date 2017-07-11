@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.model.remote;
+package org.gocs.letmeknow.model;
 
 import java.sql.Timestamp;
 

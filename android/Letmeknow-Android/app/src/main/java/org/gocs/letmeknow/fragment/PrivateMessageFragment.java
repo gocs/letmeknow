@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.model.remote.PrivateMessage;
+import org.gocs.letmeknow.model.PrivateMessage;
 
 import butterknife.ButterKnife;
 

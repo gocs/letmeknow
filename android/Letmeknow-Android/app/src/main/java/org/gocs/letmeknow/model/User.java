@@ -1,29 +1,36 @@
-package org.gocs.letmeknow.model.common;
+package org.gocs.letmeknow.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 /**
- * Created by dynamicheart on 7/7/2017.
+ * Created by dynamicheart on 7/6/2017.
  */
 
-public class BasicUser implements Serializable{
+public class User implements Serializable{
 
-    private static final long serialVersionUID = 6259656613422687857L;
+    private static final long serialVersionUID = -1421969003346399347L;
 
     @SerializedName("userId")
     private String userId;
+
     @SerializedName("username")
     private String userName;
+
     @SerializedName("password")
     private String password;
+
     @SerializedName("phone_num")
     private String phoneNumber;
+
     @SerializedName("email")
     private String email;
+
     @SerializedName("avatar")
     private String avatarUrl;
+
+    private boolean isLogin;
 
     public String getUserId() {
         return userId;
@@ -71,5 +78,13 @@ public class BasicUser implements Serializable{
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
     }
 }

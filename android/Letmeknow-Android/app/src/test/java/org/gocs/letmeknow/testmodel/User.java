@@ -1,5 +1,7 @@
 package org.gocs.letmeknow.testmodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import java.util.Map;
 
 public class User {
 
+    @JsonProperty("fuck")
     private String name;
 
     private Map<String,Object> phones;

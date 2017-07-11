@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.model.common;
+package org.gocs.letmeknow.model;
 
 import com.google.gson.annotations.SerializedName;
 

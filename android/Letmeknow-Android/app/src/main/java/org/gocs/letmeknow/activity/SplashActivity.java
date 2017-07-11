@@ -1,18 +1,15 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.App;
-import org.gocs.letmeknow.model.local.PersistableUser;
+import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.couchdb.DBWrapper;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -48,7 +45,7 @@ public class SplashActivity extends BaseActivity {
                 @Override
                 public void run() {
                     Intent intent;
-                    PersistableUser user = UserManager.getCurrentUser();
+                    User user = UserManager.getCurrentUser();
                     if(user != null && user.isLogin()){
                         intent = new Intent(SplashActivity.this, MainActivity.class);
                     }else{
