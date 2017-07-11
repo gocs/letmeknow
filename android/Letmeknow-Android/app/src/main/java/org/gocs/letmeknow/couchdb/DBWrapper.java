@@ -15,6 +15,8 @@ import com.couchbase.lite.util.Log;
 import android.app.Application;
 import android.content.Context;
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.application.Constants;
 
 /**
  * Created by lenovo on 2017/7/6.
@@ -22,45 +24,35 @@ import org.gocs.letmeknow.R;
 
 public class DBWrapper {
 
-    private Database database;
+    private static Database database;
     private android.content.Context ctx;
-    private Manager manager;
-    // keep a reference to a running replication to avoid GC
-    private Replication replica;
+    private static Manager manager;
 
-    /**
-     * Ctor
-     * @param dbname
-     * @param context
-     */
-    public DBWrapper(String dbname, Context context){
+    public static Database getCouchDBInstance(){
+        if(database == null){
+            try {
+                Manager manager = getManagerInstance();
+                if ( manager != null) {
+                    database = manager.getDatabase(Constants.COUCHDB_NAME);
+                }
+            }catch (Exception ignore){
 
-        this.ctx = context;
-		/* Manages access to databases */
-        try {
-            manager = new Manager( new AndroidContext(ctx), Manager.DEFAULT_OPTIONS );
+            }
         }
-        catch (IOException e) {
-            ErrorChecker.ShowException(ctx, R.string.err_create_manager, e );
-            return;
-        }
-        // create a name for the database and make sure the name is legal
-        // Only the following characters are valid:
-        // abcdefghijklmnopqrstuvwxyz0123456789_$()+-/
-        if ( ! Manager.isValidDatabaseName(dbname)) {
-            ErrorChecker.showError(ctx, R.string.err_db_name);
-            return;
-        }
-        // get existing db with that name
-        // or create a new one if it doesn't exist
-        try {
-            database = manager.getDatabase(dbname);
-        }
-        catch (CouchbaseLiteException e) {
-            ErrorChecker.ShowException(ctx, R.string.err_no_db, e );
-            return;
-        }
+        return database;
     }
+
+    private static Manager getManagerInstance(){
+        if(manager == null){
+            try{
+                manager = new Manager(new AndroidContext(App.getInstance()), Manager.DEFAULT_OPTIONS);
+            }catch (Exception e){
+                return null;
+            }
+        }
+        return manager;
+    };
+
 
     /** Release all resources and close all Databases. */
     public void close(){
@@ -92,7 +84,7 @@ public class DBWrapper {
                                 String mimeType, InputStream in){
 
         try {
-            Document doc = database.getDocument(docId);
+            Document doc = getCouchDBInstance().getDocument(docId);
             UnsavedRevision newRev = doc.getCurrentRevision().createRevision();
             newRev.setAttachment(attachName, mimeType, in);
             newRev.save();
@@ -111,7 +103,7 @@ public class DBWrapper {
      */
     public Attachment getAttachment(String docId, String attachName){
 
-        Document doc = database.getDocument(docId);
+        Document doc = getCouchDBInstance().getDocument(docId);
         Revision rev = doc.getCurrentRevision();
         return rev.getAttachment(attachName);
     }
@@ -124,7 +116,7 @@ public class DBWrapper {
     public void deleteAttachment(String docId, String attachName){
 
         try {
-            Document doc = database.getDocument(docId);
+            Document doc = getCouchDBInstance().getDocument(docId);
             UnsavedRevision newRev = doc.getCurrentRevision().createRevision();
             newRev.removeAttachment(attachName);
             // (You could also update newRev.properties while you're here)
@@ -145,11 +137,11 @@ public class DBWrapper {
      */
     public String create( Map<String, Object> docContent ){
 
-        if( ! ErrorChecker.checkDb(ctx, database)){
+        if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return "";
         }
         // create an empty document
-        Document doc = database.createDocument();
+        Document doc = getCouchDBInstance().createDocument();
         // add content to document and write the document to the database
         try {
             doc.putProperties(docContent);
@@ -181,7 +173,7 @@ public class DBWrapper {
         doc.put("resultformat",resultformat);
         doc.put("result",result);
         doc.put("type","notification");
-        Document document = database.createDocument();
+        Document document = getCouchDBInstance().createDocument();
         try{
             document.putProperties(doc);
             return document.getId();
@@ -198,11 +190,11 @@ public class DBWrapper {
      */
     public Map<String, Object> read(String docId){
 
-        if( ! ErrorChecker.checkDb(ctx, database)){
+        if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return new HashMap<String, Object>();//empty
         }
         // retrieve the document from the database
-        Document doc = database.getDocument(docId);
+        Document doc = getCouchDBInstance().getDocument(docId);
         // display the retrieved document
         return doc.getProperties();
     }
@@ -276,12 +268,12 @@ public class DBWrapper {
      */
     public boolean update( final String key, final Object value, String docId ){
 
-        if( ! ErrorChecker.checkDb(ctx, database)){
+        if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return false;
         }
         // update the document
         try {
-            Document doc = database.getDocument(docId);
+            Document doc = getCouchDBInstance().getDocument(docId);
 
             // this alternative way is better for handling write conflicts
             doc.update(new Document.DocumentUpdater() {
@@ -316,13 +308,13 @@ public class DBWrapper {
      */
     public boolean delete(String docId){
 
-        if( ! ErrorChecker.checkDb(ctx, database)){
+        if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return false;
         }
         Document doc = null;
         // delete the document
         try {
-            doc = database.getDocument(docId);
+            doc = getCouchDBInstance().getDocument(docId);
             doc.delete();
         }
         catch (CouchbaseLiteException e) {
@@ -336,7 +328,7 @@ public class DBWrapper {
      */
 
     public View getGroupIdView() {
-        View view = database.getView("group_id_view");
+        View view = getCouchDBInstance().getView("group_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
                 public void map(Map<String, Object> document, Emitter emitter) {
@@ -351,7 +343,7 @@ public class DBWrapper {
     }
 
     public View getSenderIdView() {
-        View view = database.getView("sender_id_view");
+        View view = getCouchDBInstance().getView("sender_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
                 public void map(Map<String, Object> document, Emitter emitter) {
@@ -366,7 +358,7 @@ public class DBWrapper {
     }
 
     public View getReceiverIdView() {
-        View view = database.getView("receiver_id_view");
+        View view = getCouchDBInstance().getView("receiver_id_view");
         if(view.getMap() == null){
             Mapper mapper = new Mapper(){
                 public void map(Map<String, Object> document, Emitter emitter) {

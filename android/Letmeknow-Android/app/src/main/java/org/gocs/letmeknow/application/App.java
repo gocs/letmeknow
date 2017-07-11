@@ -16,8 +16,6 @@ public class App extends Application {
     @SuppressWarnings("StaticFieldLeak")
     private static Context context;
 
-    private static DBWrapper Database;
-
     public static Context getInstance() {
         return context;
     }
@@ -27,7 +25,6 @@ public class App extends Application {
         super.onCreate();
         context = this;
         initLeanCloud();
-        initCouchDB();
     }
 
     private void initLeanCloud(){
@@ -35,11 +32,4 @@ public class App extends Application {
         AVOSCloud.setDebugLogEnabled(true);
     }
 
-    private void initCouchDB(){
-        Database = new DBWrapper("testdb",context);
-    }
-
-    public static DBWrapper getCouchDB(){
-        return Database;
-    }
 }
