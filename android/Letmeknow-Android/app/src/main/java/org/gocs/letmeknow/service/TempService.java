@@ -5,6 +5,7 @@ import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
 import com.couchbase.lite.QueryRow;
 import com.couchbase.lite.View;
+import com.couchbase.lite.util.Log;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.gocs.letmeknow.couchdb.DBWrapper;
@@ -41,13 +42,15 @@ public class TempService {
                     ObjectMapper objectMapper = new ObjectMapper();
                     while(resultSet.hasNext()){
                         QueryRow row = resultSet.next();
-                        Notification notification = objectMapper.convertValue(row.getDocumentProperties(),Notification.class);
+                        Notification notification = objectMapper.convertValue(row.getValue(),Notification.class);
                         notification.setDocument(row.getDocumentProperties());
                         notifications.add(notification);
                     }
                     subscriber.onNext(notifications);
                     subscriber.onComplete();
                 }catch (Exception e) {
+                    Log.d("rxjava",e.toString());
+                    e.printStackTrace();
                     subscriber.onError(e);
                 }
             }

@@ -48,7 +48,14 @@ public class NotificationServiceImpl implements NotificationService {
 
     public List<Notification> getDocByRecipientId(String recipient_id){
         List<Object> docList = DBWrapper.getDocByReceiverId(recipient_id);
-
+        ObjectMapper mapper = new ObjectMapper();
+        List<Notification> notifications = new ArrayList<>();
+        for(int i = 0; i < docList.size(); i++){
+            Notification notification = mapper.convertValue(docList.get(i),Notification.class);
+            notification.setDocument((Map<String,Object>)docList.get(i));
+            notifications.add(notification);
+        }
+        return notifications;
     }
 
     public boolean update(final String key, final Object value, String id){
