@@ -3,7 +3,7 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/10 11:30
+    latest update:7/12 10:00
 </p>
 
 
@@ -36,6 +36,7 @@ current APIs available:
 <p>/passApplication /denyApplication</p>
 <p>params:applicationId</p>
 <p>return:0 for invalid application ID, 1 for success</p>
+<p>/lougout</p>
 <form action="QuickLogin">
 <button type="submit"> auto login </button>
 </form>

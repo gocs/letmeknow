@@ -28,13 +28,13 @@
             <column name="status" sql-type="int(11)"/>
         </property>
         <property name="createdAt" not-null="true">
-            <column name="created_at" sql-type="timestamp" />
+            <column name="created_at" sql-type="java.sql.Timestamp" />
         </property>
         <property name="updatedAt" not-null="true">
-            <column name="updated_at" sql-type="timestamp" />
+            <column name="updated_at" sql-type="java.sql.Timestamp" />
         </property>
         <property name="deletedAt">
-            <column name="deleted_at" sql-type="timestamp" />
+            <column name="deleted_at" sql-type="java.sql.Timestamp" />
         </property>
         <property name="avatar">
             <column name="avatar" sql-type="varchar(45)" length="45" />

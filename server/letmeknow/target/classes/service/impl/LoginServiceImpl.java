@@ -29,6 +29,7 @@ public class LoginServiceImpl implements LoginService{
         String password=user.getPassword();
         User target=userDao.getUserByName(username);
         if(target==null) return new Reply(0,"username/password error",null);
+        if(target.getStatus()!=2) return new Reply(0,"user is disabled or deleted",null);
         if(!(password.equals(target.getPassword()))) return new Reply(0,"username/password error",null);
         HttpSession session=ServletActionContext.getRequest().getSession();
         session.setAttribute("userid",target.getUserId());
@@ -43,6 +44,7 @@ public class LoginServiceImpl implements LoginService{
         User target=userDao.getUserByName(user.getUsername());
         if(target==null) {//no such user:register success
             int id=userDao.save(user);
+            user=userDao.getUserById(id);
             ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUserId());
             ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
             Map<String,Object> map=new HashMap<String,Object>();
@@ -55,6 +57,7 @@ public class LoginServiceImpl implements LoginService{
     public String adminLogin(String username, String password) {
         User user=userDao.getUserByName(username);
         if(user==null||!(password.equals(user.getPassword()))) return "0";
+        if(user.getStatus()!=2) return "0";
         if(user.getIsAdmin()!=1) return "1";
         HttpSession session=ServletActionContext.getRequest().getSession();
         session.setAttribute("userid",user.getUserId());

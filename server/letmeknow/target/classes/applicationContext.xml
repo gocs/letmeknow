@@ -10,6 +10,7 @@
 	 http://www.springframework.org/schema/data/couchbase
 	 http://www.springframework.org/schema/data/couchbase/spring-couchbase.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--
     <context:component-scan base-package="action,dao,service"></context:component-scan>
 
     <couchbase:env connectTimeout="20000" computationPoolSize="10" />
@@ -17,9 +18,10 @@
     <couchbase:cluster>
         <couchbase:node>127.0.0.1</couchbase:node>
     </couchbase:cluster>
-
+    -->
     <!-- This is needed to probe the server for N1QL support -->
     <!-- Can be either cluster credentials or a bucket credentials -->
+   <!--
     <couchbase:clusterInfo login="Administrator" password="password"/>
 
     <couchbase:bucket bucketName="default" bucketPassword=""/>
@@ -29,7 +31,7 @@
     <couchbase:template/>
 
     <couchbase:indexManager/>
-
+    -->
     <!-- Bean -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
