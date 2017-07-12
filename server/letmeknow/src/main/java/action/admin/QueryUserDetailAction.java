@@ -46,72 +46,49 @@ public class QueryUserDetailAction extends BaseAction {
     //删头像，改权限，删用户，封用户
     @Action(value = "/admin/promotePrivilege", results = {@Result(type = "json")})
     public String promotePrivilege() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setIsAdmin(1);
-        userService.updateUser(user);
+        if((user=userService.SetUserPrivilege(userId,1))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/reducePrivilege", results = {@Result(type = "json")})
     public String reducePrivilege() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setIsAdmin(0);
-        userService.updateUser(user);
+        if((user=userService.SetUserPrivilege(userId,0))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/disableUser", results = {@Result(type = "json")})
     public String disableUser() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setStatus(1);
-        userService.updateUser(user);
+        if((user=userService.setUserStatus(userId,1))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/activateUser", results = {@Result(type = "json")})
     public String activateUser() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setStatus(2);
-        userService.updateUser(user);
+        if((user=userService.setUserStatus(userId,2))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/deleteUser", results = {@Result(type = "json")})
     public String deleteUser() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setDeletedAt(new Timestamp(System.currentTimeMillis()));
-        user.setStatus(0);
-        userService.updateUser(user);
+        if((user=userService.setUserStatus(userId,0))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/restoreUser", results = {@Result(type = "json")})
     public String restoreUser() {
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user = userService.queryUserDetail(userId);
-        user.setDeletedAt(null);
-        user.setStatus(2);
-        userService.updateUser(user);
+        if((user=userService.setUserStatus(userId,2))==null) return SUCCESS;
         message = "1";
         return SUCCESS;
     }
 
     @Action(value = "/admin/deleteAvatar", results = {@Result(type = "json")})
     public String deleteAvatar(){
-        if (!userService.adminExistUser(userId)) return SUCCESS;
-        user=userService.queryUserDetail(userId);
-        user.setAvatar(null);
-        userService.updateUser(user);
+        if((user=userService.deleteAvatar(userId))==null) return SUCCESS;
         message="1";
         return SUCCESS;
     }

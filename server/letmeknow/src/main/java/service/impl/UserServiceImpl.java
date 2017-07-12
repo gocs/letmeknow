@@ -5,6 +5,7 @@ import model.User;
 import model.UserQueryForm;
 import service.UserService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,33 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user){
         userDao.update(user);
     }
+
+    public User setUserStatus(int userId, int status){
+        User user;
+        if((user=userDao.getUserById(userId))==null) return null;
+        if(status==0) user.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+        if(status==2&&user.getStatus()==0) user.setDeletedAt(null);
+        user.setStatus(status);
+        userDao.update(user);
+        return user;
+    }
+
+    public User deleteAvatar(int userId){
+        User user;
+        if((user=userDao.getUserById(userId))==null) return null;
+        user.setAvatar(null);
+        userDao.update(user);
+        return user;
+    }
+
+    public User SetUserPrivilege(int userId, int privilege){
+        User user;
+        if((user=userDao.getUserById(userId))==null) return null;
+        user.setIsAdmin(privilege);
+        userDao.update(user);
+        return user;
+    }
+
 
     public boolean adminExistUser(int userId) {
         if(userDao.getUserById(userId)!=null) return true;
