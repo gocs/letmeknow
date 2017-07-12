@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.gocs.letmeknow.model.component.Choice;
 import org.gocs.letmeknow.model.component.NotificationType;
 import org.gocs.letmeknow.model.component.Receipt;
+import org.gocs.letmeknow.util.exception.ConversionExceptipon;
 
 import java.util.List;
 import java.util.Map;
@@ -43,13 +47,9 @@ public class Notification {
     @JsonProperty("receipts")
     private Map<String,Receipt> receiptMap;
 
-    public String getId() {
-        return id;
-    }
+    @JsonIgnore
+    private Map<String, Object> document;
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getGroupId() {
         return groupId;
@@ -105,5 +105,23 @@ public class Notification {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Map<String, Object> getDocument() throws ConversionExceptipon{
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+        if(id == null){
+            return mapper.convertValue(this, new TypeReference<Map<String,Object>>() {});
+        }else if (document != null){
+            Map<String,Object> newProperties = mapper.convertValue(this, new TypeReference<Map<String,Object>>() {});
+            document.putAll(newProperties);
+            return document;
+        }else {
+            throw new ConversionExceptipon();
+        }
+    }
+
+    public void setDocument(Map<String, Object> document) {
+        this.document = document;
     }
 }
