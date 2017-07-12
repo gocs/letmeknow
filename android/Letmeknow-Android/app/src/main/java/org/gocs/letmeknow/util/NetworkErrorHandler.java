@@ -4,7 +4,7 @@ package org.gocs.letmeknow.util;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.application.App;
-import org.gocs.letmeknow.model.HttpResponse;
+import org.gocs.letmeknow.model.common.HttpResponse;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;

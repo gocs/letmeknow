@@ -1,7 +1,7 @@
 package org.gocs.letmeknow.service;
 
 
-import org.gocs.letmeknow.model.HttpResponse;
+import org.gocs.letmeknow.model.common.HttpResponse;
 import org.gocs.letmeknow.model.User;
 
 import io.reactivex.Observable;

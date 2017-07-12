@@ -34,7 +34,6 @@ public class JacksonMapperTest {
         phones.put("phone2",phone2);
 
         User user = new User();
-        user.setName("test");
         user.setPhones(phones);
 
         Map<String, Object> map = mapper.convertValue(user, new TypeReference<Map<String, Object>>() {});
