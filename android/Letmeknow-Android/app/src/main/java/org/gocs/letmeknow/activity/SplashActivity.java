@@ -3,6 +3,7 @@ package org.gocs.letmeknow.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -10,12 +11,17 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
+import org.gocs.letmeknow.service.TempService;
+import org.gocs.letmeknow.util.NetworkErrorHandler;
+import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.couchdb.DBWrapper;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import static org.gocs.letmeknow.couchdb.DBWrapper.test_create;
 
@@ -52,6 +58,13 @@ public class SplashActivity extends BaseActivity {
         Notification Notification = objectMapper.convertValue(resultByGid.get(0),Notification.class);
         //List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
         //List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
+        TempService.listByGroupId("1234")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(notifications -> {
+                    Log.d("test",notifications.toString());
+                    ToastUtils.showShortToast("rxjava query database succeed!");
+
+                }, NetworkErrorHandler.basicErrorHandler);
         startSplashTimer();
     }
 

@@ -109,7 +109,6 @@ public class Notification {
 
     public Map<String, Object> getDocument() throws ConversionExceptipon{
         ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
         if(id == null){
             return mapper.convertValue(this, new TypeReference<Map<String,Object>>() {});
         }else if (document != null){
