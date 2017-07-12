@@ -14,7 +14,7 @@ public class ComplaintDaoImpl extends CommonDaoImpl<Complaint> implements Compla
     }
 
     public Complaint getComplaintById(int complaintId){
-        List<Complaint> res=getHibernateTemplate().find("from Complaint as c where c.reportId=? and c.result=0",complaintId);
+        List<Complaint> res=(List<Complaint>)getHibernateTemplate().find("from Complaint as c where c.reportId=? and c.result=0",complaintId);
         return res.size()==0?null:res.get(0);
     }
 }

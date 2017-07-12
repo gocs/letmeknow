@@ -4,9 +4,10 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
- * Created by admin on 2017/7/7.
+ * Created by admin on 2017/7/10.
  */
 @Entity
 public class Application {
@@ -17,9 +18,10 @@ public class Application {
     private int groupId;
     private Integer result;
     private int category;
+    private Timestamp createdAt;
+    private Timestamp handledAt;
 
     private String applierName;
-    private String verifierName;
     private String groupName;
 
     public String getApplierName() {
@@ -28,14 +30,6 @@ public class Application {
 
     public void setApplierName(String applierName) {
         this.applierName = applierName;
-    }
-
-    public String getVerifierName() {
-        return verifierName;
-    }
-
-    public void setVerifierName(String verifierName) {
-        this.verifierName = verifierName;
     }
 
     public String getGroupName() {
@@ -116,6 +110,26 @@ public class Application {
         this.category = category;
     }
 
+    @Basic
+    @Column(name = "created_at", nullable = false)
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Basic
+    @Column(name = "handled_at", nullable = true)
+    public Timestamp getHandledAt() {
+        return handledAt;
+    }
+
+    public void setHandledAt(Timestamp handledAt) {
+        this.handledAt = handledAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -130,6 +144,8 @@ public class Application {
         if (verifierId != null ? !verifierId.equals(that.verifierId) : that.verifierId != null) return false;
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         if (result != null ? !result.equals(that.result) : that.result != null) return false;
+        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
+        if (handledAt != null ? !handledAt.equals(that.handledAt) : that.handledAt != null) return false;
 
         return true;
     }
@@ -143,6 +159,8 @@ public class Application {
         result1 = 31 * result1 + groupId;
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + category;
+        result1 = 31 * result1 + (createdAt != null ? createdAt.hashCode() : 0);
+        result1 = 31 * result1 + (handledAt != null ? handledAt.hashCode() : 0);
         return result1;
     }
 }

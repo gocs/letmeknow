@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ApplicationDao extends CommonDao<Application> {
     public List<Application> getAllApplications();
-}
+
+    public Application getApplicationById(int applicationId);
+    }

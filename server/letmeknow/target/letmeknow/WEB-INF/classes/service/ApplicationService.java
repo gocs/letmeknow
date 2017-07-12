@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ApplicationService {
     public List<Application> queryAllApplications();
-}
+
+    public boolean setApplicationResult(int applicationId,int result);
+    }

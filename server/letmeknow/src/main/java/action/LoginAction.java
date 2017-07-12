@@ -16,16 +16,11 @@ import java.util.Map;
  */
 public class LoginAction extends BaseAction {
     private LoginService loginService;
-    private Integer installationId;
     private String username;
     private String password;
     private String message="You've already logged in";
     private Integer code=0;
     private Map<String, Object> data = new HashMap<String, Object>();
-
-    public void setInstallationId(Integer installationId) {
-        this.installationId = installationId;
-    }
 
     public String getMessage() {
         return message;
@@ -59,7 +54,7 @@ public class LoginAction extends BaseAction {
             message="username and password cannot be null";
             return SUCCESS;
         }
-        User user = new User().construct_user(username, password, null, null,installationId);
+        User user = new User().construct_user(username, password, null, null);
         Reply reply = loginService.login(user);
         code = reply.getCode();
         message = reply.getMessage();

@@ -33,6 +33,9 @@ current APIs available:
 <p>return: 0 for invalid complaint ID, 1 for success</p>
 <p>/allApplications</p>
 <p> return:a list of currently UNCLOSED applications to making a group public</p>
+<p>/passApplication /denyApplication</p>
+<p>params:applicationId</p>
+<p>return:0 for invalid application ID, 1 for success</p>
 <form action="QuickLogin">
 <button type="submit"> auto login </button>
 </form>

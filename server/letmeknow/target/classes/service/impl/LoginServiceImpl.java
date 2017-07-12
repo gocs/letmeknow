@@ -39,14 +39,14 @@ public class LoginServiceImpl implements LoginService{
     }
 
     public Reply register(User user) {
-        if(user.getPassword().length()<=8) return new Reply(0,"password too short:8 characters needed at least",null);
+        if(user.getPassword().length()<8) return new Reply(0,"password too short:8 characters needed at least",null);
         User target=userDao.getUserByName(user.getUsername());
         if(target==null) {//no such user:register success
             int id=userDao.save(user);
             ServletActionContext.getRequest().getSession().setAttribute("userid",user.getUserId());
             ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
             Map<String,Object> map=new HashMap<String,Object>();
-            map.put("user",(Object)target);
+            map.put("user",(Object)user);
             return new Reply(1,"register succeeded",map);
         }
         return new Reply(0,"username exists in database",null);

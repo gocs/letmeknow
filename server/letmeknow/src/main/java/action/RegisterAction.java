@@ -68,7 +68,7 @@ public class RegisterAction extends BaseAction {
             message="username and password cannot be null";
             return SUCCESS;
         }
-        Reply reply= loginService.register(new User().construct_user(username,password,email,phone_num,installationId));
+        Reply reply= loginService.register(new User().construct_user(username,password,email,phone_num));
         code=reply.getCode();
         message=reply.getMessage();
         data=reply.getData();

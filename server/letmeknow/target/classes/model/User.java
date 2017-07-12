@@ -22,25 +22,13 @@ public class User {
     private Timestamp updatedAt;
     private Timestamp deletedAt;
     private String avatar;
-    private Integer installationId;
 
-    public User construct_user(String username, String password, String email, Integer phone_num, Integer installationId){
-        this.username=username;
-        this.password=password;
-        this.email=email;
-        this.phoneNum=phone_num;
-        this.installationId=installationId;
+    public User construct_user(String username, String password, String email, Integer phone_num) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phoneNum = phone_num;
         return this;
-    }
-
-    @Id
-    @Column(name = "installation_id", nullable = true)
-    public Integer getInstallationId() {
-        return installationId;
-    }
-
-    public void setInstallationId(Integer installationId) {
-        this.installationId = installationId;
     }
 
     @Id
