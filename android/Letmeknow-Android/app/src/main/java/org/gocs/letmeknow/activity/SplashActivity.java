@@ -18,6 +18,7 @@ import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.couchdb.DBWrapper;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -48,7 +49,7 @@ public class SplashActivity extends BaseActivity {
 //        }catch (Exception ignore){
 //        }
         String docID = test_create();
-        //Map<String, Object> resultByDocId = App.getCouchDB().read(docID);
+        Object resultByDocId = DBWrapper.read(docID);
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES,false);
@@ -56,6 +57,7 @@ public class SplashActivity extends BaseActivity {
 
         List<Object> resultByGid = DBWrapper.getDocByGroupId("1234");
         Notification Notification = objectMapper.convertValue(resultByGid.get(0),Notification.class);
+<<<<<<< HEAD
         //List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
         //List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
         TempService.listByGroupId("1234")
@@ -65,6 +67,10 @@ public class SplashActivity extends BaseActivity {
                     ToastUtils.showShortToast("rxjava query database succeed!");
 
                 }, NetworkErrorHandler.basicErrorHandler);
+=======
+        List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
+        List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
+>>>>>>> add notificationService
         startSplashTimer();
     }
 

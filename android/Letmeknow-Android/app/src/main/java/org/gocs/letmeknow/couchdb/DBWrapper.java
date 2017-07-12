@@ -26,7 +26,7 @@ import org.gocs.letmeknow.model.component.Receipt;
 public class DBWrapper {
 
     private static Database database;
-    private android.content.Context ctx;
+    private static android.content.Context ctx;
     private static Manager manager;
 
     public static Database getCouchDBInstance(){
@@ -136,7 +136,7 @@ public class DBWrapper {
      * @param docContent
      * @return docId
      */
-    public String create( Map<String, Object> docContent ){
+    public static String create( Map<String, Object> docContent ){
 
         if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return "";
@@ -211,7 +211,7 @@ public class DBWrapper {
      * @param docId
      * @return Doc content
      */
-    public Map<String, Object> read(String docId){
+    public static Object read(String docId){
 
         if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return new HashMap<String, Object>();//empty
@@ -289,7 +289,7 @@ public class DBWrapper {
      * @param docId
      * @return success or failure
      */
-    public boolean update( final String key, final Object value, String docId ){
+    public static boolean update( final String key, final Object value, String docId ){
 
         if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return false;
@@ -329,7 +329,7 @@ public class DBWrapper {
      * @param docId
      * @return
      */
-    public boolean delete(String docId){
+    public static boolean delete(String docId){
 
         if( ! ErrorChecker.checkDb(ctx, getCouchDBInstance())){
             return false;
