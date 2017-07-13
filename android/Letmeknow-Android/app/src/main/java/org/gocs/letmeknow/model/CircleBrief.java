@@ -2,6 +2,8 @@ package org.gocs.letmeknow.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.gocs.letmeknow.model.component.CircleRoleType;
+
 /**
  * Created by lenovo on 2017/7/13.
  */
@@ -14,8 +16,8 @@ public class CircleBrief {
     @SerializedName("groupName")
     private String groupName;
 
-    @SerializedName("permission")
-    private String permission;
+    @SerializedName("role")
+    private CircleRoleType role;
 
     public String getGroupId() { return groupId; }
 
@@ -31,7 +33,11 @@ public class CircleBrief {
         this.groupName = groupName;
     }
 
-    public String getPermission() { return permission; }
+    public CircleRoleType getRole() {
+        return role;
+    }
 
-    public void setPermission(String permission) { this.permission = permission; }
+    public void setRole(CircleRoleType role) {
+        this.role = role;
+    }
 }
