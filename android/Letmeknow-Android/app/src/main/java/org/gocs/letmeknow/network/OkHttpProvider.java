@@ -21,7 +21,7 @@ public class OkHttpProvider {
         if(client == null){
             client = new OkHttpClient.Builder()
                     .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance())))
-                    .addInterceptor(new HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT))
+                    .addInterceptor(new HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).setLevel(HttpLoggingInterceptor.Level.HEADERS))
                     .build();
         }
         return client;

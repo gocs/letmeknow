@@ -6,7 +6,7 @@
     android:background="@color/colorWhite">
 
     <ImageView
-        android:id="@+id/image_member_briefcard"
+        android:id="@+id/item_cm_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -14,6 +14,7 @@
         android:src="@mipmap/ic_launcher_round"/>
 
     <TextView
+        android:id="@+id/item_cm_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"

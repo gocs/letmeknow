@@ -14,9 +14,10 @@ public class CircleBrief {
     @SerializedName("group_name")
     private String groupName;
 
-    public String getGroupId() {
-        return groupId;
-    }
+    @SerializedName("permission")
+    private String permission;
+
+    public String getGroupId() { return groupId; }
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
@@ -29,4 +30,8 @@ public class CircleBrief {
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
+
+    public String getPermission() { return permission; }
+
+    public void setPermission(String permission) { this.permission = permission; }
 }

@@ -19,6 +19,7 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleInformerFragment;
 import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
 import org.gocs.letmeknow.fragment.CircleMembersFragment;
+import org.gocs.letmeknow.model.CircleBrief;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +50,14 @@ public class CircleInfoActivity extends BaseActivity {
     @BindView(R.id.viewpager_circle_info)
     ViewPager viewPager;
 
+    CircleBrief circleBrief;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.cirlce_info);
+
 
         initTab();
     }
