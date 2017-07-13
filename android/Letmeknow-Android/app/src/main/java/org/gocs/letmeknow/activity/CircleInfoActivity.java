@@ -55,11 +55,23 @@ public class CircleInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.cirlce_info);
+        initToolbar();
 
 
         initTab();
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //set toolbar title
+        getSupportActionBar().setTitle(R.string.cirlce_info);
     }
 
     @Override
