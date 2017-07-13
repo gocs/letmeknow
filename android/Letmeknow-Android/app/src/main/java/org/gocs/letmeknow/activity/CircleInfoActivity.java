@@ -1,5 +1,6 @@
 package org.gocs.letmeknow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -35,6 +36,8 @@ import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
 
 public class CircleInfoActivity extends BaseActivity {
 
+    public static final String CIRCLE_SERIALIZABLE = "CIRCLE_SERIALIZABLE";
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -50,13 +53,15 @@ public class CircleInfoActivity extends BaseActivity {
     @BindView(R.id.viewpager_circle_info)
     ViewPager viewPager;
 
-    CircleBrief circleBrief;
+    private CircleBrief circleBrief;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         initToolbar();
 
+        Intent intent = getIntent();
+        circleBrief = (CircleBrief)intent.getSerializableExtra(CIRCLE_SERIALIZABLE);
 
         initTab();
     }

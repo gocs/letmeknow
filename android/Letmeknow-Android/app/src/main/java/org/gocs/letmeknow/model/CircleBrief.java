@@ -4,11 +4,15 @@ import com.google.gson.annotations.SerializedName;
 
 import org.gocs.letmeknow.model.component.CircleRoleType;
 
+import java.io.Serializable;
+
 /**
  * Created by lenovo on 2017/7/13.
  */
 
-public class CircleBrief {
+public class CircleBrief implements Serializable{
+
+    private static final long serialVersionUID = 3259352510977190164L;
 
     @SerializedName("groupId")
     private String groupId;

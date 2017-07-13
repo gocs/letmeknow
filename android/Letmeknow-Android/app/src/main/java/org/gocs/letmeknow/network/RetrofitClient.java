@@ -25,7 +25,7 @@ public class RetrofitClient {
         return service;
     }
 
-    public static Retrofit getClient(){
+    private static Retrofit getClient(){
         if(client == null){
             client = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
