@@ -26,7 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_IMAGE_ID;
-import static org.gocs.letmeknow.application.Constants.TAB_NUM;
+import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
 
 /**
  * Created by rebas on 2017/6/30.
@@ -34,23 +34,18 @@ import static org.gocs.letmeknow.application.Constants.TAB_NUM;
 
 public class CircleInfoActivity extends BaseActivity {
 
-    @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @Nullable
     @BindView(R.id.tablayout_circle_info)
     TabLayout tablayout;
 
-    @Nullable
     @BindView(R.id.img_portrait_circle_info)
     ImageView img_portrait;
 
-    @Nullable
     @BindView(R.id.text_title_circle_info)
     TextView text_title;
 
-    @Nullable
     @BindView(R.id.viewpager_circle_info)
     ViewPager viewPager;
 
@@ -66,7 +61,7 @@ public class CircleInfoActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.circle_menu_default, menu);
         return true;
     }
 
@@ -87,7 +82,7 @@ public class CircleInfoActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_circle_profile;
     }
 
     private void setupViewPager(ViewPager viewPager){
@@ -98,7 +93,7 @@ public class CircleInfoActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter{
+    private class ViewPagerAdapter extends FragmentPagerAdapter{
         private final List<Fragment> mFragmentList = new ArrayList<>();
 
         private ViewPagerAdapter(FragmentManager manager) {
@@ -146,7 +141,7 @@ public class CircleInfoActivity extends BaseActivity {
 
         // configure titles
         try {
-            for (int i = 0; i < TAB_NUM; i++) {
+            for (int i = 0; i < CIRCLE_TAB_NUM; i++) {
                 tablayout.getTabAt(i).setText(CIRCLE_TAB_IMAGE_ID[i]);
             }
         } catch (NullPointerException e) {
