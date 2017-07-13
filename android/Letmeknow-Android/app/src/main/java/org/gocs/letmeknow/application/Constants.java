@@ -26,9 +26,10 @@ public class Constants {
     public static final String USER_AVATAR = "USER_AVATAR";
 
     public static final String JSON_KEY_USER = "user";
+    public static final String JSON_KEY_CIRCLES = "groups";
 
-    public static final String APP_ID = "nKnmFRBCNvLX5WuKyTacpA8z-gzGzoHsz";
-    public static final String APP_KEY = "4vMC3eTbD3KhBCO5Mmz4Wtg5";
+    static final String APP_ID = "nKnmFRBCNvLX5WuKyTacpA8z-gzGzoHsz";
+    static final String APP_KEY = "4vMC3eTbD3KhBCO5Mmz4Wtg5";
 
     public static final String DEFAULT_CONVERSATION_NAME = "DEFAULT_CONVERSATION";
 

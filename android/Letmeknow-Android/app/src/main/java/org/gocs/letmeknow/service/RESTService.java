@@ -1,8 +1,12 @@
 package org.gocs.letmeknow.service;
 
 
+import org.gocs.letmeknow.model.Circle;
+import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.common.HttpResponse;
 import org.gocs.letmeknow.model.User;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -22,4 +26,7 @@ public interface RESTService {
 
     @GET("letmeknow/logout")
     Observable<HttpResponse<Void>> logout();
+
+    @GET("letmeknow/common/allGroups")
+    Observable<HttpResponse<List<CircleBrief>>> getCircles();
 }

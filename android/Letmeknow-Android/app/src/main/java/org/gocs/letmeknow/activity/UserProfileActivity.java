@@ -9,8 +9,9 @@ import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.network.OkHttpProvider;
 import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.NetworkErrorHandler;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;
@@ -32,17 +33,19 @@ public class UserProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         initToolbar();
         button.setOnClickListener(view -> {
+            Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            UserManager.changeLoginStatus(false);
+            OkHttpProvider.clearCookie();
+
             RetrofitClient.getService().logout()
                     .flatMap(NetworkErrorHandler.ErrorFilter)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
-                        Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        UserManager.changeLoginStatus(false);
                         Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
-                    });
+                    }, NetworkErrorHandler.basicErrorHandler);
         });
     }
 

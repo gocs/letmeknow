@@ -14,7 +14,7 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.NetworkErrorHandler;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
 
 import butterknife.BindView;

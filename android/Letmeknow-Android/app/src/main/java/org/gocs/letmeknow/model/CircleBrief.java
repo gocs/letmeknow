@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class CircleBrief {
 
-    @SerializedName("group_id")
+    @SerializedName("groupId")
     private String groupId;
 
-    @SerializedName("group_name")
+    @SerializedName("groupName")
     private String groupName;
 
     @SerializedName("permission")

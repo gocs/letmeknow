@@ -18,6 +18,14 @@ public class RetrofitClient {
     private static RESTService service;
 
     public static RESTService getService(){
+
+        if(service == null){
+            service = getClient().create(RESTService.class);
+        }
+        return service;
+    }
+
+    public static Retrofit getClient(){
         if(client == null){
             client = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -26,12 +34,6 @@ public class RetrofitClient {
                     .client(OkHttpProvider.getInstance())
                     .build();
         }
-        if(service == null){
-            service = client.create(RESTService.class);
-        }
-        return service;
+        return client;
     }
-
-
-
 }

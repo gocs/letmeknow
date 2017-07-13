@@ -3,29 +3,13 @@ package org.gocs.letmeknow.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.service.NotificationServiceImpl;
-import org.gocs.letmeknow.service.TempService;
-import org.gocs.letmeknow.util.NetworkErrorHandler;
-import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.UserManager;
-import org.gocs.letmeknow.couchdb.DBWrapper;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-
-import static org.gocs.letmeknow.couchdb.DBWrapper.test_create;
 
 /**
  * Created by dynamicheart on 7/3/2017.
@@ -43,27 +27,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NotificationServiceImpl ns = new NotificationServiceImpl();
-        String docID = test_create();
-        //Object resultByDocId = DBWrapper.read(docID);
-        Notification noti1 = ns.getDocById(docID);
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES,false);
-
-
-        List<Object> resultByGid = DBWrapper.getDocByGroupId("1234");
-        Notification Notification = objectMapper.convertValue(resultByGid.get(0),Notification.class);
-        //List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
-        //List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
-        TempService.listByGroupId("1234")
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(notifications -> {
-                    Log.d("test",notifications.toString());
-                    ToastUtils.showShortToast("rxjava query database succeed!");
-
-                }, NetworkErrorHandler.basicErrorHandler);
-        List<Object> resultBySid = DBWrapper.getDocBySenderId("4321");
-        List<Object> resultByRid = DBWrapper.getDocByReceiverId("3212");
         startSplashTimer();
     }
 

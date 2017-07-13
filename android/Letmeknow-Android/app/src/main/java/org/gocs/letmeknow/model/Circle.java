@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by lenovo on 2017/7/13.
  */
 
-public class Circle  {
+public class Circle {
 
     @SerializedName("group_id")
     private String groupId;

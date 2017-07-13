@@ -17,14 +17,27 @@ public class OkHttpProvider {
 
     private static OkHttpClient client;
 
-    public static OkHttpClient getInstance(){
+    private static PersistentCookieJar persistentCookieJar;
+
+    static OkHttpClient getInstance(){
         if(client == null){
             client = new OkHttpClient.Builder()
-                    .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance())))
-                    .addInterceptor(new HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).setLevel(HttpLoggingInterceptor.Level.HEADERS))
+                    .cookieJar(getPersistentCookieJar())
+                    .addInterceptor(new HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).setLevel(HttpLoggingInterceptor.Level.BODY))
                     .build();
         }
         return client;
+    }
+
+    private static PersistentCookieJar getPersistentCookieJar(){
+        if(persistentCookieJar == null){
+            persistentCookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance()));
+        }
+        return persistentCookieJar;
+    }
+
+    public static void clearCookie(){
+        getPersistentCookieJar().clear();
     }
 
 }
