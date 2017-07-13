@@ -22,4 +22,9 @@ public interface UserDao {
     public User getUserByName(String username);
 
     public List<User> getUserByName(String username, int start, int count);
-}
+
+    public User getCommonUserById(int id);
+
+    public List<User> getCommonUserListByGroupId(int groupId);
+
+    }

@@ -18,9 +18,14 @@ public class LoginAction extends BaseAction {
     private LoginService loginService;
     private String username;
     private String password;
+    private String installationId;
     private String message="You've already logged in";
     private Integer code=0;
     private Map<String, Object> data = new HashMap<String, Object>();
+
+    public void setInstallationId(String installationId) {
+        this.installationId = installationId;
+    }
 
     public String getMessage() {
         return message;
@@ -54,7 +59,7 @@ public class LoginAction extends BaseAction {
             message="username and password cannot be null";
             return SUCCESS;
         }
-        User user = new User().construct_user(username, password, null, null);
+        User user = new User().construct_user(username, password, null, null,installationId);
         Reply reply = loginService.login(user);
         code = reply.getCode();
         message = reply.getMessage();
@@ -78,9 +83,7 @@ public class LoginAction extends BaseAction {
             message="no user has logged in";
             return SUCCESS;
         }
-        session().setAttribute("username",null);
-        session().setAttribute("userid",null);
-        session().setAttribute("isadmin",null);
+        session().invalidate();
         code=1;
         message="logout succeeded";
         return SUCCESS;

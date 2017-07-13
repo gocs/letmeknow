@@ -22,10 +22,10 @@ public class RegisterAction extends BaseAction {
     private LoginService loginService;
     private String message;
     private Integer code;
-    private Integer installationId;
+    private String installationId;
     private Map<String, Object> data = new HashMap<String, Object>();
 
-    public void setInstallationId(Integer installationId) {
+    public void setInstallationId(String installationId) {
         this.installationId = installationId;
     }
 
@@ -68,7 +68,7 @@ public class RegisterAction extends BaseAction {
             message="username and password cannot be null";
             return SUCCESS;
         }
-        Reply reply= loginService.register(new User().construct_user(username,password,email,phone_num));
+        Reply reply= loginService.register(new User().construct_user(username,password,email,phone_num,installationId));
         code=reply.getCode();
         message=reply.getMessage();
         data=reply.getData();

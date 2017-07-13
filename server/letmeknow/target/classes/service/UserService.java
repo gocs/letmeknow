@@ -27,4 +27,8 @@ public interface UserService {
     public User deleteAvatar(int userId);
 
     public User SetUserPrivilege(int userId, int privilege);
+
+    public User queryCommonUserById(int userId);
+
+    public void updateUser(int userId,String username,String avatar,String email,Integer phoneNum);
     }

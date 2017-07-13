@@ -83,4 +83,17 @@ public class UserServiceImpl implements UserService {
         if(userDao.getUserById(userId)!=null) return true;
         return false;
     }
+
+    public User queryCommonUserById(int userId){
+        return userDao.getCommonUserById(userId);
+    }
+
+    public void updateUser(int userId,String username,String avatar,String email,Integer phoneNum){
+        User user=userDao.getUserById(userId);
+        if(username!=null&&!(username.equals(""))) user.setUsername(username);
+        if(avatar!=null&&!(avatar.equals(""))) user.setAvatar(avatar);
+        if(email!=null&&!(email.equals(""))) user.setEmail(email);
+        if(phoneNum!=null&&phoneNum!=0) user.setPhoneNum(phoneNum);
+        userDao.update(user);
+    }
 }

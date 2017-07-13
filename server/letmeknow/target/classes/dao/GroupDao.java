@@ -1,5 +1,6 @@
 package dao;
 
+import model.GroupWithRole;
 import model.Groups;
 
 import java.util.List;
@@ -21,4 +22,9 @@ public interface GroupDao {
     public Groups getGroupsByName(String groupName);
 
     public List<Groups> getGroupsByName(String groupName, int start, int count);
+
+    public List<Groups> getGroupsByIdList(final List<Integer> groupId);
+
+    public List<GroupWithRole> getGroupsByUserId(int userId);
+
 }

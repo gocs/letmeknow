@@ -35,5 +35,6 @@ public class GroupDetail extends Groups{
         this.setStatus(group.getStatus());
         this.setMembers(members);
         this.setMaster(master);
+        this.setIntroduction(group.getIntroduction());
     }
 }

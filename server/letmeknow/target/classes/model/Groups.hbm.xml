@@ -32,5 +32,8 @@
         <property name="category">
             <column name="category" sql-type="int(11)"/>
         </property>
+        <property name="introduction">
+            <column name="introduction" sql-type="varchar(255)"/>
+        </property>
     </class>
 </hibernate-mapping>

@@ -39,5 +39,8 @@
         <property name="avatar">
             <column name="avatar" sql-type="varchar(45)" length="45" />
         </property>
+        <property name="installationId">
+            <column name="installation_id" sql-type="varchar(45)" length="45" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,5 +49,19 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
                 return session.createQuery("from User where username like '%"+username+"%'").setFirstResult(start).setMaxResults(count).list();
             }
         });
+    }
+
+    public User getCommonUserById(int userId){
+        List<User> users = (List<User>) getHibernateTemplate().find("from User as u where u.userId=? and u.status=2", userId);
+        return users.size() > 0 ? users.get(0) : null;
+    }
+
+    public List<User> getCommonUserListByGroupId(int groupId){
+        List<Object[]> users=(List<Object[]>)getHibernateTemplate().find("from User as u,GroupMem as gm where u.userId=gm.userId and gm.groupId=? and u.status!=0 and gm.deletedAt is null",groupId);
+        List<User> res=new ArrayList<User>();
+        for(Object[] compound:users){
+            res.add((User)compound[0]);
+        }
+        return res;
     }
 }

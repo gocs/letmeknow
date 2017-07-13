@@ -1,8 +1,6 @@
 package service;
 
-import model.GroupDetail;
-import model.GroupMemQueryForm;
-import model.GroupQueryForm;
+import model.*;
 
 import java.util.List;
 
@@ -27,4 +25,16 @@ public interface GroupService {
     public GroupDetail setGroupStatus(int groupId, int status);
 
     public GroupDetail deleteGroupIcon(int groupId);
+
+    public List<GroupWithRole> CommonGetGroups(int userId);
+
+    public List<GroupMemWithAvatar> queryGroupNotifiers(int groupId);
+
+    public List<GroupMemWithAvatar> queryCommonGroupMembers(int groupId);
+
+    public List<User> queryCommonUserListByGroupId(int groupId);
+
+    public User queryCommonUserByUserId(int userId);
+
+    public void updateGroup(int groupId, String introduction, String avatar, String groupName);
     }

@@ -22,12 +22,14 @@ public class User {
     private Timestamp updatedAt;
     private Timestamp deletedAt;
     private String avatar;
+    private String installationId;
 
-    public User construct_user(String username, String password, String email, Integer phone_num) {
+    public User construct_user(String username, String password, String email, Integer phone_num,String installationId) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.phoneNum = phone_num;
+        this.installationId=installationId;
         return this;
     }
 
@@ -139,6 +141,16 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Basic
+    @Column(name = "installation_id", nullable = true, length = 45)
+    public String getInstallationId() {
+        return installationId;
+    }
+
+    public void setInstallationId(String installationId) {
+        this.installationId = installationId;
     }
 
     @Override

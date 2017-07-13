@@ -3,11 +3,27 @@
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/12 17:00
+    latest update:7/13 17:00
 </p>
 
 
 current APIs available:
+<h1>namespace:/common</h1>
+<p>allGroups</p>
+<p>groupDetail?groupId=</p>
+<p>groupMember?groupId=</p>
+<p>groupNotifier?groupId=</p>
+<p>groupMemberDetail?userId=</p>
+<p>groupMemberDetailList?groupId=</p>
+<p>updateGroupIntroduction?groupId= introduction=</p>
+<p>updateGroupAvatar?groupId= avatar=</p>
+<p>updateGroupName?groupId= name=</p>
+<p>updateUsername?userId= username=</p>
+<p>updateUserEmail?userId= email=</p>
+<p>updateUserAvatar?userId= avatar=</p>
+<p>updateUserPhoneNum?userId= phoneNum=</p>
+
+<br/><br/>
 <h1>namespace: /admin</h1>
 <p>/login</p>
 <p> params:username password</p>

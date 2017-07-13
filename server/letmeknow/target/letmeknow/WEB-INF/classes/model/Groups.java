@@ -20,6 +20,7 @@ public class Groups {
     private Timestamp updatedAt;
     private Timestamp deletedAt;
     private int category;
+    private String introduction;
 
     @Id
     @Column(name = "group_id", nullable = false)
@@ -109,6 +110,16 @@ public class Groups {
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    @Basic
+    @Column(name = "introduction", nullable = true)
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     @Override

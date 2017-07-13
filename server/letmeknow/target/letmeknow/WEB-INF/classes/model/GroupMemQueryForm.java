@@ -35,7 +35,7 @@ public class GroupMemQueryForm {
     public GroupMemQueryForm(GroupMem member, User user){
         int role;
         if(member.getRole().equals("master")) role=2;
-        else if(member.getRole().equals("administrator")) role=1;
+        else if(member.getRole().equals("notifier")) role=1;
         else role=0;
         this.setRole(role);
         this.setUserId(member.getUserId());

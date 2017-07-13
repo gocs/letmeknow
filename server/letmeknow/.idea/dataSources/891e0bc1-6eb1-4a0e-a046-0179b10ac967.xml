@@ -241,66 +241,66 @@
       <DataType>timestamp|0</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
     </column>
-    <column id="67" parent="16" name="userId">
-      <Position>7</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="68" parent="16" name="PRIMARY">
+    <key id="67" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>group_id
 user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="69" parent="17" name="group_id">
+    <column id="68" parent="17" name="group_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="70" parent="17" name="group_name">
+    <column id="69" parent="17" name="group_name">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <DefaultExpression>&apos;newgroup&apos;</DefaultExpression>
     </column>
-    <column id="71" parent="17" name="capacity">
+    <column id="70" parent="17" name="capacity">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;100&apos;</DefaultExpression>
     </column>
-    <column id="72" parent="17" name="status">
+    <column id="71" parent="17" name="status">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;2&apos;</DefaultExpression>
     </column>
-    <column id="73" parent="17" name="icon">
+    <column id="72" parent="17" name="icon">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="74" parent="17" name="created_at">
+    <column id="73" parent="17" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="75" parent="17" name="updated_at">
+    <column id="74" parent="17" name="updated_at">
       <Position>7</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="76" parent="17" name="deleted_at">
+    <column id="75" parent="17" name="deleted_at">
       <Position>8</Position>
       <DataType>timestamp|0</DataType>
       <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
     </column>
-    <column id="77" parent="17" name="category">
+    <column id="76" parent="17" name="category">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="77" parent="17" name="introduction">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;Hello,World&apos;</DefaultExpression>
     </column>
     <key id="78" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -404,17 +404,19 @@ user_id</ColNames>
     </column>
     <column id="98" parent="19" name="created_at">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
     <column id="99" parent="19" name="updated_at">
       <Position>7</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
     <column id="100" parent="19" name="deleted_at">
       <Position>8</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>timestamp|0</DataType>
     </column>
     <column id="101" parent="19" name="avatar">
       <Position>9</Position>
@@ -422,7 +424,7 @@ user_id</ColNames>
     </column>
     <column id="102" parent="19" name="installation_id">
       <Position>12</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(45)|0</DataType>
     </column>
     <index id="103" parent="19" name="username">
       <ColNames>username</ColNames>
