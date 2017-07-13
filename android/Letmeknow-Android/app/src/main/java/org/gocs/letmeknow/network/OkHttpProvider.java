@@ -1,10 +1,10 @@
 package org.gocs.letmeknow.network;
 
-import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.util.CustomPersistentCookieJar;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -17,7 +17,7 @@ public class OkHttpProvider {
 
     private static OkHttpClient client;
 
-    private static PersistentCookieJar persistentCookieJar;
+    private static CustomPersistentCookieJar persistentCookieJar;
 
     static OkHttpClient getInstance(){
         if(client == null){
@@ -29,9 +29,9 @@ public class OkHttpProvider {
         return client;
     }
 
-    private static PersistentCookieJar getPersistentCookieJar(){
+    private static CustomPersistentCookieJar getPersistentCookieJar(){
         if(persistentCookieJar == null){
-            persistentCookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance()));
+            persistentCookieJar = new CustomPersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance()));
         }
         return persistentCookieJar;
     }
