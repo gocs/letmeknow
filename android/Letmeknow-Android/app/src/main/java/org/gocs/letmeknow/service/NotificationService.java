@@ -34,5 +34,6 @@ public interface NotificationService {
      * cru-D
      */
     public boolean delete(String id);
+    public boolean dropDB();
 
 }

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
+import org.gocs.letmeknow.service.NotificationServiceImpl;
 import org.gocs.letmeknow.service.TempService;
 import org.gocs.letmeknow.util.NetworkErrorHandler;
 import org.gocs.letmeknow.util.ToastUtils;
@@ -42,15 +43,10 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Manager manager = DBWrapper.getManagerInstance();
-//        Database database = getCouchDBInstance();
-//        try{
-//            database.delete();
-//        }catch (Exception ignore){
-//        }
+        NotificationServiceImpl ns = new NotificationServiceImpl();
         String docID = test_create();
-        Object resultByDocId = DBWrapper.read(docID);
-
+        //Object resultByDocId = DBWrapper.read(docID);
+        Notification noti1 = ns.getDocById(docID);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES,false);
 

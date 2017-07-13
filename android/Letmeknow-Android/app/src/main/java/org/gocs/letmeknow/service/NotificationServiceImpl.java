@@ -2,6 +2,7 @@ package org.gocs.letmeknow.service;
 
 import android.os.IBinder;
 
+import com.couchbase.lite.Database;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.gocs.letmeknow.couchdb.DBWrapper;
@@ -64,6 +65,16 @@ public class NotificationServiceImpl implements NotificationService {
 
     public boolean delete(String id){
         return DBWrapper.delete(id);
+    }
+
+    public boolean dropDB(){
+        Database db = DBWrapper.getCouchDBInstance();
+        try{
+            db.delete();
+        }catch(Exception ignore){
+
+        }
+        return true;
     }
 
 }
