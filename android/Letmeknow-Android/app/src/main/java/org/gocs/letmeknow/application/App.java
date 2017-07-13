@@ -2,13 +2,9 @@ package org.gocs.letmeknow.application;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
-import com.avos.avoscloud.im.v2.AVIMMessageManager;
-import com.avos.avoscloud.im.v2.AVIMTypedMessage;
-
-import org.gocs.letmeknow.couchdb.DBWrapper;
 
 /**
  * Created by dynamicheart on 6/26/2017.
@@ -31,6 +27,7 @@ public class App extends Application {
 
     private void initLeanCloud(){
         AVOSCloud.initialize(this, Constants.APP_ID, Constants.APP_KEY);
+        AVInstallation.getCurrentInstallation().getInstallationId();
         AVOSCloud.setDebugLogEnabled(true);
     }
 
