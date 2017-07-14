@@ -23,6 +23,7 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.fragment.CircleFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
@@ -81,6 +82,10 @@ public class MainActivity extends BaseActivity
         initTab();
         setUpFloatingActionMenu();
         detectInstallationIdChange();
+
+        List<String> channels = new ArrayList<>();
+        channels.add(UserManager.getCurrentUser().getUserId());
+        DataBaseClient.startReplication(channels);
     }
 
     private void detectInstallationIdChange(){
@@ -88,7 +93,7 @@ public class MainActivity extends BaseActivity
         String userId = user.getUserId();
         String oldInstallationId = user.getInstallationId();
         String currentInstallationId = AVInstallation.getCurrentInstallation().getInstallationId();
-        if(oldInstallationId.equals(currentInstallationId)){
+        if(oldInstallationId == null || !oldInstallationId.equals(currentInstallationId)){
             RetrofitClient.getService().updateInstallationId(userId, currentInstallationId)
                     .flatMap(NetworkErrorHandler.ErrorFilter)
                     .subscribeOn(Schedulers.io())

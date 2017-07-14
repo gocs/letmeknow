@@ -29,11 +29,16 @@ import org.gocs.letmeknow.util.ToastUtils;
  * Created by lenovo on 2017/7/6.
  */
 
-public class DataBaseClient implements Replication.ChangeListener{
-    public static final String TAG = "Couchbase";
+public class DataBaseClient{
+    private static final String TAG = "Couchbase";
+
+    private static final String SYNC_URL_HTTP = "http://106.14.1.142:4984/notification";
 
     private static Database database;
     private static Manager manager;
+
+    private static Replication pull;
+    private static Replication push;
 
     public static Database getCouchDBInstance(){
         if(database == null){
@@ -135,11 +140,6 @@ public class DataBaseClient implements Replication.ChangeListener{
         }
     }
 
-
-    @Override
-    public void changed(Replication.ChangeEvent event) {
-    }
-
     private static void enableLogging() {
         Manager.enableLogging(TAG, Log.VERBOSE);
         Manager.enableLogging(Log.TAG, Log.VERBOSE);
@@ -149,4 +149,36 @@ public class DataBaseClient implements Replication.ChangeListener{
         Manager.enableLogging(Log.TAG_VIEW, Log.VERBOSE);
         Manager.enableLogging(Log.TAG_DATABASE, Log.VERBOSE);
     }
+
+    private static URL getSyncUrl() {
+        URL url = null;
+        try {
+            url = new URL(SYNC_URL_HTTP);
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "Invalid sync url", e);
+        }
+        return url;
+    }
+
+    public static void startReplication(List<String> channels) {
+        if (pull == null) {
+            pull = getCouchDBInstance().createPullReplication(getSyncUrl());
+            pull.setContinuous(true);
+            pull.setChannels(channels);
+        }
+
+        if (push == null) {
+            push = getCouchDBInstance().createPushReplication(getSyncUrl());
+            push.setContinuous(true);
+            push.setChannels(channels);
+        }
+
+        pull.stop();
+        pull.start();
+
+        push.stop();
+        push.start();
+    }
+
+
 }
