@@ -2,16 +2,20 @@ package org.gocs.letmeknow.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by lenovo on 2017/7/13.
  */
 
-public class Circle {
+public class Circle implements Serializable{
 
-    @SerializedName("group_id")
+    private static final long serialVersionUID = 1201846399401245570L;
+
+    @SerializedName("groupId")
     private String groupId;
 
-    @SerializedName("group_name")
+    @SerializedName("groupName")
     private String groupName;
 
     @SerializedName("master")
@@ -20,7 +24,7 @@ public class Circle {
     @SerializedName("icon")
     private String iconUrl;
 
-    @SerializedName("group_introduction")
+    @SerializedName("introduction")
     private String groupIntroduction;
 
     public String getGroupId() {

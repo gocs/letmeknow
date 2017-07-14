@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,12 +22,19 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleInformerFragment;
 import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
 import org.gocs.letmeknow.fragment.CircleMembersFragment;
+import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.CircleBrief;
+import org.gocs.letmeknow.model.Member;
+import org.gocs.letmeknow.model.component.CircleRoleType;
+import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_IMAGE_ID;
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
@@ -55,15 +64,36 @@ public class CircleInfoActivity extends BaseActivity {
 
     private CircleBrief circleBrief;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    private Circle circleDetail;
 
-        super.onCreate(savedInstanceState);
-        initToolbar();
+    protected void onCreate(Bundle savedInstanceState) {
 
         Intent intent = getIntent();
         circleBrief = (CircleBrief)intent.getSerializableExtra(CIRCLE_SERIALIZABLE);
 
-        initTab();
+        super.onCreate(savedInstanceState);
+        initToolbar();
+        getGroupDetail();
+
+
+
+    }
+
+    private void getGroupDetail(){
+        RetrofitClient.getService()
+                .getCircleDetail(circleBrief.getGroupId())
+                .flatMap(NetworkErrorHandler.ErrorFilter)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response->{
+                    circleDetail = (Circle)response.getData().get("groupDetail");
+                    Intent intent = getIntent();
+                    intent.putExtra(CircleIntroductionFragment.CIRCLE_DETAIL_SERIALIZABLE,circleDetail);
+                    text_title.setText(circleDetail.getGroupName());
+                    //TODO change group avatar.
+
+                    initTab();
+                }, NetworkErrorHandler.basicErrorHandler);
     }
 
     private void initToolbar(){
@@ -81,9 +111,17 @@ public class CircleInfoActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.circle_menu_default, menu);
-        return true;
+        CircleRoleType role = circleBrief.getRole();
+        if(role.equals(CircleRoleType.normal)){//normal member
+            getMenuInflater().inflate(R.menu.circle_menu_default, menu);
+            return true;
+        }else if(role.equals(CircleRoleType.informer)){//informer
+            getMenuInflater().inflate(R.menu.circle_menu_informer, menu);
+            return true;
+        }else{//master
+            getMenuInflater().inflate(R.menu.circle_menu_owner, menu);
+            return true;
+        }
     }
 
     @Override
@@ -168,5 +206,13 @@ public class CircleInfoActivity extends BaseActivity {
         } catch (NullPointerException e) {
             ;
         }
+    }
+
+    public CircleBrief getCircleBrief() {
+        return circleBrief;
+    }
+
+    public void setCircleBrief(CircleBrief circleBrief) {
+        this.circleBrief = circleBrief;
     }
 }

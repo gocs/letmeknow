@@ -12,17 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.application.Constants;
+import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.PrivateMessage;
+import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.model.CircleBrief;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.R.id.item_cm_avatar;
 import static org.gocs.letmeknow.R.id.item_cm_name;
+import static org.gocs.letmeknow.activity.CircleInfoActivity.CIRCLE_SERIALIZABLE;
 
 /**
  * Created by lenovo on 2017/6/30.
@@ -40,13 +48,27 @@ public class CircleMembersFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_circle_info_members, container, false);
         ButterKnife.bind(this, view);
 
-        initData();
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_cm_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new CmAdapter(cmList);
-        mRecyclerView.setAdapter(mAdapter);
+        setupRecyclerView(view);
+
+        //initData();
 
         return view;
+    }
+
+    private void setupRecyclerView(View view){
+        CircleBrief circleBrief = (CircleBrief)(getActivity().getIntent().getSerializableExtra(CIRCLE_SERIALIZABLE));
+        RetrofitClient.getService()
+                .getCircleMembers(circleBrief.getGroupId())
+                .flatMap(NetworkErrorHandler.ErrorFilter)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response->{
+                    cmList = (List<Member>) response.getData().get("groupMember");
+                    mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_cm_list);
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    mAdapter = new CmAdapter(cmList);
+                    mRecyclerView.setAdapter(mAdapter);
+                }, NetworkErrorHandler.basicErrorHandler);
     }
 
     protected void initData(){

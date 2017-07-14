@@ -95,6 +95,7 @@ public class CircleFragment extends BaseFragment {
             holder.mView.setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, CircleInfoActivity.class);
                 intent.putExtra(CircleInfoActivity.CIRCLE_SERIALIZABLE,mCircleBriefList.get(position));
+
                 startActivity(intent);
             });
         }

@@ -12,17 +12,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.PrivateMessage;
+import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.R.id.item_cm_avatar;
 import static org.gocs.letmeknow.R.id.item_cm_name;
+import static org.gocs.letmeknow.activity.CircleInfoActivity.CIRCLE_SERIALIZABLE;
 
 /**
  * Created by lenovo on 2017/6/30.
@@ -40,13 +46,26 @@ public class CircleInformerFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_circle_info_informer, container, false);
         ButterKnife.bind(this, view);
 
-        initData();
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_ci_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new CiAdapter(ciList);
-        mRecyclerView.setAdapter(mAdapter);
+        setupRecyclerView(view);
+        //initData();
 
         return view;
+    }
+
+    private void setupRecyclerView(View view){
+        CircleBrief circleBrief = (CircleBrief)(getActivity().getIntent().getSerializableExtra(CIRCLE_SERIALIZABLE));
+        RetrofitClient.getService()
+                .getCircleInformers(circleBrief.getGroupId())
+                .flatMap(NetworkErrorHandler.ErrorFilter)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response->{
+                    ciList = (List<Member>) response.getData().get("groupNotifier");
+                    mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_ci_list);
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    mAdapter = new CiAdapter(ciList);
+                    mRecyclerView.setAdapter(mAdapter);
+                }, NetworkErrorHandler.basicErrorHandler);
     }
 
     protected void initData(){

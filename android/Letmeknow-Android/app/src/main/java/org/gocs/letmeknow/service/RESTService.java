@@ -3,6 +3,7 @@ package org.gocs.letmeknow.service;
 
 import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.CircleBrief;
+import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.common.HttpResponse;
 import org.gocs.letmeknow.model.User;
 
@@ -29,4 +30,13 @@ public interface RESTService {
 
     @GET("letmeknow/common/allGroups")
     Observable<HttpResponse<List<CircleBrief>>> getCircles();
+
+    @GET("letmeknow/common/groupDetail")
+    Observable<HttpResponse<Circle>> getCircleDetail(@Query("groupId") String groupId);
+
+    @GET("letmeknow/common/groupMember")
+    Observable<HttpResponse<List<Member>>> getCircleMembers(@Query("groupId") String groupId);
+
+    @GET("letmeknow/common/groupNotifier")
+    Observable<HttpResponse<List<Member>>> getCircleInformers(@Query("groupId") String groupId);
 }
