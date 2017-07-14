@@ -27,6 +27,9 @@ public class User implements Serializable{
     @SerializedName("email")
     private String email;
 
+    @SerializedName("installationId")
+    private String installationId;
+
     @SerializedName("avatar")
     private String avatarUrl;
 
@@ -78,6 +81,14 @@ public class User implements Serializable{
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getInstallationId() {
+        return installationId;
+    }
+
+    public void setInstallationId(String installationId) {
+        this.installationId = installationId;
     }
 
     public boolean isLogin() {

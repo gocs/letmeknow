@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVInstallation;
+
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
@@ -46,7 +48,9 @@ public class LoginActivity extends BaseActivity{
             public void onClick(View v) {
                 String userName = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
-                RetrofitClient.getService().login(userName, password)
+                String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+
+                RetrofitClient.getService().login(userName, password, installationId)
                         .flatMap(NetworkErrorHandler.ErrorFilter)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

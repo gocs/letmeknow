@@ -1,6 +1,8 @@
 package org.gocs.letmeknow.couchbase;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +10,9 @@ import java.util.Map;
 
 import com.couchbase.lite.*;
 import com.couchbase.lite.android.AndroidContext;
+import com.couchbase.lite.auth.Authenticator;
 import com.couchbase.lite.replicator.Replication;
+import com.couchbase.lite.util.Log;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,7 +29,8 @@ import org.gocs.letmeknow.util.ToastUtils;
  * Created by lenovo on 2017/7/6.
  */
 
-public class DataBaseClient {
+public class DataBaseClient implements Replication.ChangeListener{
+    public static final String TAG = "Couchbase";
 
     private static Database database;
     private static Manager manager;
@@ -47,6 +52,7 @@ public class DataBaseClient {
     private static Manager getManagerInstance(){
         if(manager == null){
             try{
+                enableLogging();
                 manager = new Manager(new AndroidContext(App.getInstance()), Manager.DEFAULT_OPTIONS);
             }catch (Exception e){
                 return null;
@@ -127,5 +133,21 @@ public class DataBaseClient {
         catch (CouchbaseLiteException e) {
             DatabaseErrorPromptUtils.ShowException(App.getInstance(), R.string.err_delete_attach, e );
         }
+    }
+
+
+    @Override
+    public void changed(Replication.ChangeEvent event) {
+
+    }
+
+    private static void enableLogging() {
+        Manager.enableLogging(TAG, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG_SYNC_ASYNC_TASK, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG_SYNC, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG_QUERY, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG_VIEW, Log.VERBOSE);
+        Manager.enableLogging(Log.TAG_DATABASE, Log.VERBOSE);
     }
 }

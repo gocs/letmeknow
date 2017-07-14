@@ -7,6 +7,7 @@ import com.couchbase.lite.Mapper;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
 import com.couchbase.lite.QueryRow;
+import com.couchbase.lite.Reducer;
 import com.couchbase.lite.UnsavedRevision;
 import com.couchbase.lite.View;
 import com.couchbase.lite.util.Log;
@@ -23,6 +24,7 @@ import org.gocs.letmeknow.util.DatabaseErrorPromptUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,8 +47,14 @@ public class NotificationService {
             public void subscribe(@NonNull ObservableEmitter<String> subscriber) throws Exception {
                 Document doc = getCouchDBInstance().createDocument();
                 try {
-                    Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Notification>() {
-                    });
+                    //set up channels
+                    List<String> channels = new LinkedList<String>();
+                    channels.add(notification.getSenderId());
+                    for(String recipientId:notification.getReceiptMap().keySet()){
+                        channels.add(recipientId);
+                    }
+
+                    Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Map<String, Object>>() {});
                     Document document = getCouchDBInstance().createDocument();
                     document.putProperties(properties);
                     subscriber.onNext(document.getId());
@@ -164,10 +172,12 @@ public class NotificationService {
         private static final String GROUP_KEY = "group_id";
         private static final String RECEIPTS_KEY = "receipts";
         private static final String RECIPIENT_KEY = "recipient";
+        private static final String ID_KEY = "_id";
 
         private static final String SENDER_ID_VIEW = "sender_id_view";
         private static final String GROUP_ID_VIEW = "group_id_view";
         private static final String RECIPIENT_ID_VIEW = "recipient_id_view";
+        private static final String AGGREGATE_VIEW = "aggregate_view";
 
         static View getGroupIdView() {
             View view = getCouchDBInstance().getView(GROUP_ID_VIEW);
@@ -208,11 +218,37 @@ public class NotificationService {
                         String type = (String)document.get(TYPE_KEY);
                         if (TYPE_NOTIFICATION.equals(type)){
                             Map<String,Object> receipts = (Map<String,Object>)document.get(RECEIPTS_KEY);
-                            emitter.emit(receipts.get(RECIPIENT_KEY),document);
+                            for(String recipientId:receipts.keySet()){
+                                emitter.emit(recipientId,document);
+                            }
                         }
                     }
                 };
                 view.setMap(mapper, "1.0");
+            }
+            return view;
+        }
+
+        static View getAggregateView() {
+            View view = getCouchDBInstance().getView(AGGREGATE_VIEW);
+            if(view.getReduce() == null){
+                Mapper mapper = new Mapper(){
+                    public void map(Map<String, Object> document, Emitter emitter) {
+                        String type = (String)document.get(TYPE_KEY);
+                        if (TYPE_NOTIFICATION.equals(type)){
+                            emitter.emit(document.get(ID_KEY),null);
+                        }
+                    }
+                };
+
+                Reducer reducer = new Reducer() {
+                    @Override
+                    public Object reduce(List<Object> keys, List<Object> values, boolean rereduce) {
+
+                        return values.size();
+                    }
+                };
+                view.setMapReduce(mapper,reducer,"1.0");
             }
             return view;
         }

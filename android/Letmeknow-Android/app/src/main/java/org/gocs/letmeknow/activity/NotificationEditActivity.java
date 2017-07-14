@@ -3,8 +3,10 @@ package org.gocs.letmeknow.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.util.ToastUtils;
 
 import butterknife.BindView;
 
@@ -28,6 +30,8 @@ public class NotificationEditActivity extends BaseActivity{
     }
 
     private void initToolbar(){
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_menu_send));
+
         setSupportActionBar(toolbar);
 
         // add back arrow to toolbar
@@ -38,6 +42,12 @@ public class NotificationEditActivity extends BaseActivity{
 
         //set toolbar title
         getSupportActionBar().setTitle(R.string.edit_titile);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        ToastUtils.showShortToast("click");
+        return true;
     }
 
     @Override

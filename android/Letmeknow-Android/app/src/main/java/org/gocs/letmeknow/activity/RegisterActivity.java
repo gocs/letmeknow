@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVInstallation;
+
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
@@ -41,8 +43,9 @@ public class RegisterActivity extends BaseActivity{
         buttonRegister.setOnClickListener(view->{
             String userName = editTextUserName.getText().toString();
             String password = editTextPassword.getText().toString();
+            String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
 
-            RetrofitClient.getService().register(userName, password)
+            RetrofitClient.getService().register(userName, password, installationId)
                     .flatMap(NetworkErrorHandler.ErrorFilter)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

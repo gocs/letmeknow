@@ -4,12 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.avos.avoscloud.AVInstallation;
+
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.couchbase.DataBaseClient;
+import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
+import org.gocs.letmeknow.model.component.Receipt;
+import org.gocs.letmeknow.service.NotificationService;
 import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by dynamicheart on 7/3/2017.
@@ -27,6 +36,21 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Notification notification = new Notification();
+        notification.setGroupId("1");
+        notification.setGroupName("newGroup");
+        notification.setContent("new notification");
+        notification.setSenderId("1");
+        notification.setSenderName("admin");
+
+        Receipt receipt = new Receipt();
+        receipt.setRecipientName("admin");
+        notification.getReceiptMap().put("1",receipt);
+
+        NotificationService.create(notification)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
         startSplashTimer();
     }
 

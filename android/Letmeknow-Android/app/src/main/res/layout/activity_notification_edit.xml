@@ -5,18 +5,14 @@
 
     <include layout="@layout/item_toolbar"/>
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.design.widget.TextInputLayout
+
+    <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
+        <EditText
                 android:layout_width="match_parent"
-                android:gravity="top|left"
                 android:layout_height="match_parent" />
-        </android.support.design.widget.TextInputLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.TextInputLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

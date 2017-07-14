@@ -6,6 +6,10 @@ import android.content.Context;
 import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
 
+import org.gocs.letmeknow.util.UserManager;
+
+import static com.avos.avoscloud.AVInstallation.getCurrentInstallation;
+
 /**
  * Created by dynamicheart on 6/26/2017.
  */
@@ -27,7 +31,6 @@ public class App extends Application {
 
     private void initLeanCloud(){
         AVOSCloud.initialize(this, Constants.APP_ID, Constants.APP_KEY);
-        AVInstallation.getCurrentInstallation().getInstallationId();
         AVOSCloud.setDebugLogEnabled(true);
     }
 

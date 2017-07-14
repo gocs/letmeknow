@@ -27,6 +27,8 @@ import butterknife.BindView;
 
 public class NotificationDetailActivity extends BaseActivity{
 
+    public static final String NOTIFICATION_SERIALIZABLE = "NOTIFICATION_SERIALIZABLE";
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

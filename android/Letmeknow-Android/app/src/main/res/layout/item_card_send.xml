@@ -24,32 +24,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="沈斯杰"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    tools:text="2小时"/>
-            </LinearLayout>
             <TextView
+                android:id="@+id/text_group_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="\@上海交通大学软件学院"/>
             <TextView
+                android:id="@+id/text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Score Publish"/>
             <TextView
+                android:id="@+id/text_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
                 tools:text="The score of Lab10 has been published (full score is 50). Students could query score by logging website.
 NOTE: if you have any questions, please contact your teacher(rongchen@sjtu.edu.cn) before May. 17. 2017"/>
 

@@ -13,6 +13,9 @@ import org.gocs.letmeknow.model.component.NotificationType;
 import org.gocs.letmeknow.model.component.Receipt;
 import org.gocs.letmeknow.util.exception.ConversionExceptipon;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +24,10 @@ import java.util.Map;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Notification {
+public class Notification implements Serializable{
+
+    private static final long serialVersionUID = -7494198463687008568L;
+
     @JsonProperty("_id")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String id;
@@ -29,8 +35,14 @@ public class Notification {
     @JsonProperty("group_id")
     private String groupId;
 
+    @JsonProperty("group_name")
+    private String groupName;
+
     @JsonProperty("sender_id")
     private String senderId;
+
+    @JsonProperty("sender_name")
+    private String senderName;
 
     @JsonProperty("content")
     private String content;
@@ -41,15 +53,25 @@ public class Notification {
     @JsonProperty("notification_type")
     private NotificationType notificationType = NotificationType.NORMAL;
 
+    @JsonProperty("channels")
+    private List<String> channels;
+
     @JsonProperty("choices")
-    private List<Choice> choiceList;
+    private List<Choice> choiceList = new LinkedList<>();
 
     @JsonProperty("receipts")
-    private Map<String,Receipt> receiptMap;
+    private Map<String,Receipt> receiptMap = new HashMap<>();
 
     @JsonIgnore
     private Map<String, Object> document;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getGroupId() {
         return groupId;
@@ -93,6 +115,30 @@ public class Notification {
 
     public NotificationType getNotificationType() {
         return notificationType;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public List<String> getChannels() {
+        return channels;
+    }
+
+    public void setChannels(List<String> channels) {
+        this.channels = channels;
     }
 
     public void setNotificationType(NotificationType notificationType) {

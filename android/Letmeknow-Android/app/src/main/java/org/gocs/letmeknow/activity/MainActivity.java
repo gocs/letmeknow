@@ -75,6 +75,11 @@ public class MainActivity extends BaseActivity
         initDrawer();
         initTab();
         setUpFloatingActionMenu();
+
+    }
+
+    private void setUpDatachangeListener(){
+
     }
 
     @Override

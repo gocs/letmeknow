@@ -9,7 +9,10 @@ import java.io.Serializable;
  * Created by dynamicheart on 7/7/2017.
  */
 
-public class Choice{
+public class Choice implements Serializable{
+
+    private static final long serialVersionUID = 477320811275932164L;
+
     @JsonProperty("name")
     private String name;
 
