@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVInstallation;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -28,12 +29,16 @@ import org.gocs.letmeknow.fragment.PrivateMessageFragment;
 import org.gocs.letmeknow.fragment.ReadFragment;
 import org.gocs.letmeknow.fragment.SendFragment;
 import org.gocs.letmeknow.model.User;
+import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.TAB_IMAGE_RES_ID;
 import static org.gocs.letmeknow.application.Constants.TAB_NUM;
@@ -75,10 +80,24 @@ public class MainActivity extends BaseActivity
         initDrawer();
         initTab();
         setUpFloatingActionMenu();
-
+        detectInstallationIdChange();
     }
 
-    private void setUpDatachangeListener(){
+    private void detectInstallationIdChange(){
+        User user = UserManager.getCurrentUser();
+        String userId = user.getUserId();
+        String oldInstallationId = user.getInstallationId();
+        String currentInstallationId = AVInstallation.getCurrentInstallation().getInstallationId();
+        if(oldInstallationId.equals(currentInstallationId)){
+            RetrofitClient.getService().updateInstallationId(userId, currentInstallationId)
+                    .flatMap(NetworkErrorHandler.ErrorFilter)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(response -> {
+                        user.setInstallationId(currentInstallationId);
+                        UserManager.saveOrUpdateUser(user);
+                    },NetworkErrorHandler.basicErrorHandler);
+        }
 
     }
 
@@ -244,4 +263,5 @@ public class MainActivity extends BaseActivity
             startActivity(intent);
         });
     }
+
 }

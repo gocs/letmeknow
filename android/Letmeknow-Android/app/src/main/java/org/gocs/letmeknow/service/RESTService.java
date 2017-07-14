@@ -45,4 +45,8 @@ public interface RESTService {
 
     @GET("letmeknow/common/updateGroupIntroduction")
     Observable<HttpResponse<Void>> updateCircleIntro(@Query("groupId") String groupId, @Query("introduction") String intro);
+
+    @GET("letmeknow/common/updateUserInstallationId")
+    Observable<HttpResponse<List<Void>>> updateInstallationId(@Query("userId") String userId, @Query("installationId") String installationId);
+
 }
