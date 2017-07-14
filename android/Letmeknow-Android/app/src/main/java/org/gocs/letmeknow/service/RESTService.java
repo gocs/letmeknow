@@ -39,4 +39,10 @@ public interface RESTService {
 
     @GET("letmeknow/common/groupNotifier")
     Observable<HttpResponse<List<Member>>> getCircleInformers(@Query("groupId") String groupId);
+
+    @GET("letmeknow/common/updateGroupName")
+    Observable<HttpResponse<Void>> updateCircleName(@Query("groupId") String groupId, @Query("groupName") String name);
+
+    @GET("letmeknow/common/updateGroupIntroduction")
+    Observable<HttpResponse<Void>> updateCircleIntro(@Query("groupId") String groupId, @Query("introduction") String intro);
 }

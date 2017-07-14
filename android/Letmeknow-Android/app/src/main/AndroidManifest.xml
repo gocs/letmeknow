@@ -48,6 +48,13 @@
 
         </activity>
         <activity android:name=".activity.NotificationEditActivity">
+
+        </activity>
+        <activity android:name=".activity.EditCircleNameActivity">
+
+        </activity>
+        <activity android:name=".activity.EditCircleIntroductionActivity">
+
         </activity>
 
         <!-- 实时通信模块、推送（均需要加入以下声明） START -->

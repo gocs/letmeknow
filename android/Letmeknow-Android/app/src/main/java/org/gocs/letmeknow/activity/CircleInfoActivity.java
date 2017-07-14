@@ -132,8 +132,35 @@ public class CircleInfoActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.menu_item_circle_share:{
+                break;
+            }
+            case R.id.menu_item_circle_send:{
+                break;
+            }
+            case R.id.menu_item_circle_edit_gname:{
+                Intent intent = new Intent(CircleInfoActivity.this, EditCircleNameActivity.class);
+                intent.putExtra(EditCircleNameActivity.GROUP_ID,circleBrief.getGroupId());
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_circle_edit_intro:{
+                Intent intent = new Intent(CircleInfoActivity.this, EditCircleIntroductionActivity.class);
+                intent.putExtra(EditCircleIntroductionActivity.GROUP_ID,circleBrief.getGroupId());
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_circle_kick:{
+                break;
+            }
+            case R.id.menu_item_circle_designate:{
+                break;
+            }
+            case R.id.menu_item_circle_quit:{
+                break;
+            }
+            default:;
         }
 
         return super.onOptionsItemSelected(item);

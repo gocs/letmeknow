@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/item_toolbar" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="输入新的圈子概况"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_gravity="bottom"
+        android:paddingLeft="12dp"/>
+
+    <EditText
+        android:id="@+id/input_circle_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorWhite"
+         />
+
+    <Button
+        android:id="@+id/button_edit_circle_introduction"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:background="@color/colorGray3"
+        android:text="确  定"
+        android:textSize="20sp"/>
+
+</LinearLayout>
