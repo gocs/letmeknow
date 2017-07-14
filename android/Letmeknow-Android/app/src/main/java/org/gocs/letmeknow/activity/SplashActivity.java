@@ -36,21 +36,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Notification notification = new Notification();
-        notification.setGroupId("1");
-        notification.setGroupName("newGroup");
-        notification.setContent("new notification");
-        notification.setSenderId("1");
-        notification.setSenderName("admin");
-
-        Receipt receipt = new Receipt();
-        receipt.setRecipientName("admin");
-        notification.getReceiptMap().put("1",receipt);
-
-        NotificationService.create(notification)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
-
         startSplashTimer();
     }
 

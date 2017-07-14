@@ -138,7 +138,6 @@ public class DataBaseClient implements Replication.ChangeListener{
 
     @Override
     public void changed(Replication.ChangeEvent event) {
-
     }
 
     private static void enableLogging() {
