@@ -50,8 +50,6 @@ public class CircleMembersFragment extends BaseFragment {
 
         setupRecyclerView(view);
 
-        //initData();
-
         return view;
     }
 
@@ -71,21 +69,6 @@ public class CircleMembersFragment extends BaseFragment {
                 }, NetworkErrorHandler.basicErrorHandler);
     }
 
-    protected void initData(){
-        cmList = new ArrayList<Member>();
-        //TODO fill the list with response data.
-
-        /******************  test code  *****************/
-        Member member1 = new Member();
-        member1.setUserName("RongChen");
-        Member member2 = new Member();
-        member2.setUserName("SSJ");
-        Member member3 = new Member();
-        member3.setUserName("SBJ");
-        cmList.add(member1);
-        cmList.add(member2);
-        cmList.add(member3);
-    }
 
     private class CmHolder extends RecyclerView.ViewHolder{
         public ImageView mCmAvatar;
