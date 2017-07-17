@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Reflection;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -29,6 +30,8 @@ namespace letmeknow_admin
             {
                 if (MessageBox.Show("确认退出程序吗？", "确认退出", MessageBoxButton.YesNo) == MessageBoxResult.No)
                     e.Cancel = true;
+                else
+                    AccountService.logout();
             };
         }
 

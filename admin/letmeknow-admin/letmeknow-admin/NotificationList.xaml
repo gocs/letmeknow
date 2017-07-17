@@ -1,4 +1,4 @@
-﻿<controls:MetroWindow x:Class="letmeknow_admin.NotificationList"
+﻿<controls:MetroWindow
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,11 +6,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:letmeknow_admin"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.NotificationList"
         mc:Ignorable="d"
-        Title="Letmeknow - 通知列表" Height="450" Width="800">
+        Title="Letmeknow - 通知列表" Height="641.667" Width="800">
     <Grid>
         <Label x:Name="lblTitle" Content="Admin发送的通知" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="772"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="343" Width="333" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="535" Width="333" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="通知ID"/>
                 <DataGridTextColumn Binding="{Binding time}" ClipboardContentBinding="{x:Null}" Header="发送时间"/>
@@ -19,37 +20,54 @@
             </DataGrid.Columns>
         </DataGrid>
         <controls:Tile x:Name="tileDelete" Title="删除通知" 
-        	TiltFactor="2"
-        	Width="100" Height="100" 
-        	Margin="682,309,10,10" Click="tileDelete_Click">
+			TiltFactor="2"
+			Width="100" Height="100" 
+			Margin="682,501,10,10" Click="tileDelete_Click">
             <iconPacks:PackIconMaterial Width="30"
-        		Height="30"
-        		Kind="Delete" />
+				Height="30"
+				Kind="Delete" />
         </controls:Tile>
         <Label x:Name="label" Content="发送者：" HorizontalAlignment="Left" Margin="348,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <Label x:Name="label_Copy" Content="发送时间：" HorizontalAlignment="Left" Margin="348,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <Label x:Name="label_Copy1" Content="通知组：" HorizontalAlignment="Left" Margin="348,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <Label x:Name="label_Copy2" Content="通知内容：" HorizontalAlignment="Left" Margin="348,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
-        <TextBlock x:Name="NotificationContent" HorizontalAlignment="Left" Height="203" Margin="357,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="329" RenderTransformOrigin="0.388,0.36"/>
+        <TextBlock x:Name="NotificationContent" HorizontalAlignment="Left" Height="203" Margin="359,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" RenderTransformOrigin="0.498,0.504"/>
         <Label x:Name="lblSender" Content="" HorizontalAlignment="Left" Margin="441,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <Label x:Name="lblTime" Content="" HorizontalAlignment="Left" Margin="441,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <Label x:Name="lblGroup" Content="" HorizontalAlignment="Left" Margin="441,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
         <controls:Tile x:Name="tileGroup" Title="通知组信息" 
-        	TiltFactor="2"
-        	Width="100" Height="100" 
-        	Margin="682,204,10,115" Click="tileGroup_Click">
+			TiltFactor="2"
+			Width="100" Height="100" 
+			Margin="682,396,10,115" Click="tileGroup_Click">
             <iconPacks:PackIconFontAwesome Width="30"
-        		Height="30"
-        		Kind="Users" />
+				Height="30"
+				Kind="Users" />
         </controls:Tile>
         <controls:Tile x:Name="tileSender" Title="发送者信息" 
-        	TiltFactor="2"
-        	Width="100" Height="100" 
-        	Margin="682,99,10,220" Click="tileSender_Click">
+			TiltFactor="2"
+			Width="100" Height="100" 
+			Margin="682,291,10,220" Click="tileSender_Click">
             <iconPacks:PackIconFontAwesome Width="30"
-        		Height="30"
-        		Kind="User" />
+				Height="30"
+				Kind="User" />
         </controls:Tile>
+        <controls:Tile x:Name="tileReceiver" Title="收到通知的人" 
+			TiltFactor="2"
+			Width="100" Height="100" 
+			Margin="682,186,10,325" TitleFontSize="14">
+            <iconPacks:PackIconFontAwesome Width="30"
+				Height="30"
+				Kind="PaperPlane" />
+        </controls:Tile>
+        <Label x:Name="label_Copy3" Content="回执列表：" HorizontalAlignment="Left" Margin="348,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
+
+        <Controls:DataGridPlus x:Name="dataGridPlus" HorizontalAlignment="Left" Margin="348,447,0,0" VerticalAlignment="Top" Height="154" Width="329">
+            <Controls:DataGridPlus.Columns>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="类型"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="描述文字"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="选项"/>
+            </Controls:DataGridPlus.Columns>
+        </Controls:DataGridPlus>
 
     </Grid>
 </controls:MetroWindow>

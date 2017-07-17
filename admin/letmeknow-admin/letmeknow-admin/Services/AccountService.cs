@@ -21,6 +21,11 @@ namespace letmeknow_admin.Services
             return result;
         }
 
+        public static void logout()
+        {
+            string JsonString = HttpHelper.Post(GeneralSetting.host + "logout",string.Empty);
+        }
+
         public static Boolean changePassword(string oldPwd, string newPwd)
         {
             return true;

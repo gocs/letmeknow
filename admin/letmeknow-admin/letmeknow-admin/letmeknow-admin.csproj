@@ -88,6 +88,7 @@
     <Compile Include="Models\Complaint.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="NotificationList.xaml.cs">
       <DependentUpon>NotificationList.xaml</DependentUpon>

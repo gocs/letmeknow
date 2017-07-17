@@ -40,7 +40,7 @@ namespace letmeknow_admin
             }
             else
             {
-                GroupIcon.Source = GroupService.getImage(group.icon);
+                GroupIcon.Source = HttpHelper.getImage(group.icon);
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
             lblCreateTime.Content = group.createdAt;

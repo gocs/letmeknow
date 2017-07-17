@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Letmeknow - 管理主页" Height="360" Width="640" MinWidth="640" MinHeight="360" MaxWidth="640" MaxHeight="360" ShowMaxRestoreButton="False" ResizeMode="NoResize">
+        Title="Letmeknow - 管理主页" Height="360" Width="640" MinWidth="640" MinHeight="360" MaxWidth="640" MaxHeight="360" ShowMaxRestoreButton="False" ResizeMode="NoResize" Background="White">
     <Grid>
         <controls:Tile x:Name="tileChangePassword" Title="密码更改" 
                     TiltFactor="2"
@@ -69,16 +69,6 @@
                 <iconPacks:PackIconFontAwesome Width="30"
             		Height="30"
             		Kind="EnvelopeOutlinepenOutline" />
-            </controls:Tile>
-            <controls:Tile x:Name="tileSendMessage_Copy" Title="发送系统消息" 
-            	TiltFactor="2"
-            	Width="100" Height="100" 
-            	Margin="0"
-            	TitleFontSize="14" Canvas.Left="210" Canvas.Top="105">
-                <iconPacks:PackIconFontAwesome 
-            		Width="30"
-            		Height="30"
-            		Kind="EnvelopeOutline" />
             </controls:Tile>
             <controls:Tile x:Name="tileVerify" Title="申请审核" 
             	TiltFactor="2"

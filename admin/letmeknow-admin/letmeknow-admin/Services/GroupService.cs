@@ -32,19 +32,6 @@ namespace letmeknow_admin.Services
             return result;
         }
 
-        public static BitmapImage getImage(string url)
-        {
-            if (url == null) return null;
-            var re = new BitmapImage();
-            var ss = HttpHelper.GetStream(GeneralSetting.host + "../" + url, "");
-            re.BeginInit();
-            re.StreamSource = ss;            
-            re.DownloadCompleted += (sender, e) => 
-                re.StreamSource.Close();
-            re.EndInit();
-            return re;
-        }      
-
         public static Group getGroup(int id)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();

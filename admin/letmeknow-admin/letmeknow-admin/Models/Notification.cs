@@ -18,6 +18,7 @@ namespace letmeknow_admin.Models
         public string group_name { set; get; }
         public string content { set; get; }
         public NotificationStatus status { set; get; }
+        public List<Receipt> receipts { set; get; }
 
         public Notification(int id, DateTime time, int user_id, string user_name, 
             int group_id, string group_name, string content, NotificationStatus status)

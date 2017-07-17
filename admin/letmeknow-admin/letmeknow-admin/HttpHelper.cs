@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace letmeknow_admin
 {
@@ -83,6 +84,19 @@ namespace letmeknow_admin
                 getStr += i.Key + "=" + i.Value;
             }
             return Get(url, getStr);
+        }
+
+        public static BitmapImage getImage(string url)
+        {
+            if (url == null) return null;
+            var re = new BitmapImage();
+            var ss = HttpHelper.GetStream(GeneralSetting.host + "../" + url, "");
+            re.BeginInit();
+            re.StreamSource = ss;
+            re.DownloadCompleted += (sender, e) =>
+                re.StreamSource.Close();
+            re.EndInit();
+            return re;
         }
     }
 }
