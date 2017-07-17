@@ -28,6 +28,11 @@
         android:title="@string/circle_menu_kick"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_item_circle_quit"
+        android:orderInCategory="1"
+        android:title="@string/circle_menu_quit"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_item_circle_designate"
         android:orderInCategory="1"
         android:title="@string/circle_menu_designate_informer"

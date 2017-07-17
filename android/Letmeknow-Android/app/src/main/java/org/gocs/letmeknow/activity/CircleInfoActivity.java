@@ -1,10 +1,12 @@
 package org.gocs.letmeknow.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -137,6 +139,7 @@ public class CircleInfoActivity extends BaseActivity {
                 break;
             }
             case R.id.menu_item_circle_send:{
+
                 break;
             }
             case R.id.menu_item_circle_edit_gname:{
@@ -158,6 +161,32 @@ public class CircleInfoActivity extends BaseActivity {
                 break;
             }
             case R.id.menu_item_circle_quit:{
+                AlertDialog.Builder builder = new AlertDialog.Builder(CircleInfoActivity.this);
+                builder.setMessage("确定要退出圈子？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+                        Intent intent = new Intent(CircleInfoActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        RetrofitClient.getService()
+                                .quitGroup(circleBrief.getGroupId())
+                                .flatMap(NetworkErrorHandler.ErrorFilter)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(response->{
+
+                                }, NetworkErrorHandler.basicErrorHandler);
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
                 break;
             }
             default:;
