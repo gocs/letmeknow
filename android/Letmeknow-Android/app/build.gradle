@@ -63,6 +63,8 @@ dependencies {
     compile 'com.couchbase.lite:couchbase-lite-android:1.4.0'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
 
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
     compile 'com.android.support:multidex:1.0.1'
 
     // LeanCloud 基础包

@@ -24,6 +24,7 @@ import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class SelectMemberActivity extends BaseActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
-            case R.id.menu_select_circle:
+            case R.id.menu_confirm_select:
                 if(multiSelector.getSelectedPositions().size() == 0){
                     return true;
                 }
@@ -101,8 +102,9 @@ public class SelectMemberActivity extends BaseActivity{
                 for(int position : multiSelector.getSelectedPositions()){
                     selectedMembers.add(allMembers.get(position));
                 }
+                ToastUtils.showShortToast(selectedMembers.toString());
                 intent.putExtra(NotificationEditActivity.MEMBER_LIST_SERIALIZABLE, selectedMembers);
-                intent.putExtra(GROUP_BRIEF, getIntent().getStringExtra(GROUP_BRIEF));
+                intent.putExtra(GROUP_BRIEF, getIntent().getSerializableExtra(GROUP_BRIEF));
                 startActivity(intent);
                 break;
             default:
