@@ -32,18 +32,19 @@ import io.reactivex.schedulers.Schedulers;
 public class SelectCircleActivity extends BaseActivity{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.recyclerview_circle_list)
+    @BindView(R.id.recyclerview_select_circle_list)
     RecyclerView recyclerViewCircleList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar();
+        setupRecyclerView();
     }
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_select_circler;
+        return R.layout.activity_select_circle;
     }
 
     private void initToolbar(){

@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.widget.ImageButton;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.util.ToastUtils;
 
 import butterknife.BindView;
 
@@ -18,6 +17,8 @@ import butterknife.BindView;
 public class NotificationEditActivity extends BaseActivity{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.imagebutton_select_circle)
+    ImageButton buttonAdd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,8 +32,6 @@ public class NotificationEditActivity extends BaseActivity{
     }
 
     private void initToolbar(){
-        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_menu_send));
-
         setSupportActionBar(toolbar);
 
         // add back arrow to toolbar
@@ -42,12 +41,10 @@ public class NotificationEditActivity extends BaseActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         //set toolbar title
         getSupportActionBar().setTitle(R.string.edit_titile);
-    }
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
-        startActivity(intent);
-        return super.onMenuOpened(featureId, menu);
+        buttonAdd.setOnClickListener(v -> {
+            Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
+            startActivity(intent);
+        });
     }
 }
