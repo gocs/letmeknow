@@ -5,6 +5,7 @@
                 android:background="@android:color/transparent"
                 android:orientation="vertical">
 
+
     <SurfaceView
         android:id="@+id/capture_preview"
         android:layout_width="match_parent"

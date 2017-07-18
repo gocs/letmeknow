@@ -35,15 +35,32 @@ public class QRDiplayActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        String groupName = getIntent().getExtras().getString("groupName");
         Bitmap logoBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round);
         Bitmap bitmap= EncodingUtils.createQRCode("fuck you", 500, 500, logoBitmap);
+        circleTitle.setText(groupName);
         qrCode.setImageBitmap(bitmap);
+
+        initToolbar();
 
     }
 
     @Override
     protected int getContentViewId() {
         return R.layout.activity_qrcode_display;
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //set toolbar title
+        getSupportActionBar().setTitle(R.string.circle_title_join);
     }
 
 }

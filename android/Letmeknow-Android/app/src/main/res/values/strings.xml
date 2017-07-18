@@ -43,6 +43,7 @@
     <string name="circle_menu_designate_informer">添加通知方</string>
     <string name="circle_menu_send_notification">发送通知</string>
     <string name="circle_menu_edit_gname">编辑圈子名</string>
+    <string name="circle_title_join">扫码加入圈子</string>
 
     <string name="menu_item_delete_notification">删除通知</string>
     <string name="menu_item_check_profile">查看对方信息</string>
