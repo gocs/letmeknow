@@ -30,12 +30,16 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.fragment.CircleFragment;
+import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
 import org.gocs.letmeknow.fragment.ReadFragment;
 import org.gocs.letmeknow.fragment.SendFragment;
+import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.QRCodeUtils;
+import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
@@ -186,6 +190,20 @@ public class MainActivity extends BaseActivity
         if(resultCode== this.RESULT_OK){
             Bundle bundle = data.getExtras();
             String res = bundle.getString("result");
+            String groupId = QRCodeUtils.decodeQR(res);
+            RetrofitClient.getService()
+                    .joinGroup(groupId)
+                    .flatMap(NetworkErrorHandler.ErrorFilter)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(response->{
+                        String result = (String)response.getMessage();
+                        if(result.equals("success")){
+                            ToastUtils.showShortToast("成功加入圈子");
+                        }else{
+                            ToastUtils.showShortToast("圈子不存在或您已在该圈子中");
+                        }
+                    }, NetworkErrorHandler.basicErrorHandler);
         }
     }
 

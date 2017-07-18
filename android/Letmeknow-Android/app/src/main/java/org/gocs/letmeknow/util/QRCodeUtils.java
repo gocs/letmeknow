@@ -12,6 +12,6 @@ public class QRCodeUtils {
 
     public static String decodeQR(String qrStr){
         String[] list = qrStr.split("/");
-        return list[2];
+        return list[1];
     }
 }
