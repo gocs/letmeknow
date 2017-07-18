@@ -1,0 +1,410 @@
+[
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_circle.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_circle.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_circle.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_select_circle.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notification.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_notification.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_read.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_read.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_selectable_member.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_selectable_member.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_member_briefcard.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_member_briefcard.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_nav_header.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_nav_header.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notification_detail.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_notification_detail.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_private_msg.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_private_msg.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_toolbar.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_toolbar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_card_notification.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_card_notification.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_circle_edit_name.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_circle_edit_name.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_about.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_about.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_incoming_text_message.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_incoming_text_message.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_qrcode_display.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_qrcode_display.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_launch.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_launch.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_circle_edit_introduction.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_circle_edit_introduction.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_members.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_select_members.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_circler.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_select_circler.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\bundles\\default\\res\\layout\\activity_capture.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user_profile.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_user_profile.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_circle_info_informer.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_circle_info_informer.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avoscloud_feedback_user_reply.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\d19a6aa4475335ac354e3e092aa876b537cb05b8\\output\\res\\layout\\avoscloud_feedback_user_reply.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notification_edit.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_notification_edit.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dialog.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\\output\\res\\layout\\item_dialog.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_outcoming_image_message.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\\output\\res\\layout\\item_outcoming_image_message.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_private_msglist.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_private_msglist.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_member_list.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_member_list.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avoscloud_feedback_dev_reply.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\d19a6aa4475335ac354e3e092aa876b537cb05b8\\output\\res\\layout\\avoscloud_feedback_dev_reply.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_register.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_setting.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_outcoming_text_message.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_outcoming_text_message.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_incoming_image_message.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\\output\\res\\layout\\item_incoming_image_message.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avoscloud_feedback_activity_conversation.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\d19a6aa4475335ac354e3e092aa876b537cb05b8\\output\\res\\layout\\avoscloud_feedback_activity_conversation.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_circle_profile.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_circle_profile.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_circle_info_introduction.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_circle_info_introduction.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_circle_info_members.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_circle_info_members.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_send.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\fragment_send.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_message_input.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\\output\\res\\layout\\view_message_input.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_card_send.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_card_send.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_searchbar.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_searchbar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_date_header.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\\output\\res\\layout\\item_date_header.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_qrcode_scan.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_qrcode_scan.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avoscloud_feedback_thread_actionbar.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\d19a6aa4475335ac354e3e092aa876b537cb05b8\\output\\res\\layout\\avoscloud_feedback_thread_actionbar.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_conversation.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\activity_conversation.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\a86be28fba1fdde083f533029cf0ca4d776a70eb\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_member_namecard.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\layout\\item_member_namecard.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\chen__000\\.android\\build-cache\\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\\output\\res\\layout\\notification_template_lines_media.xml"
+    }
+]

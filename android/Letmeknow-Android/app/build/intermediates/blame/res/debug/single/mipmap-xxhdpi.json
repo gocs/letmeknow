@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    }
+]

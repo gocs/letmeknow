@@ -1,0 +1,247 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:2:1-99:12
+	package
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:3:5-33
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+service#com.avos.avoscloud.PushService
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:5:5-62
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:5:14-59
+uses-role
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:7:5-69
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:7:16-66
+uses-permission#android.permission.CAMERA
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:12:5-65
+MERGED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:11:5-65
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:12:22-62
+uses-feature#android.hardware.camera
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:13:5-60
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:13:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:14:5-69
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:14:19-67
+application
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:16:5-97:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\chen__000\.android\build-cache\185acd34817205c5c05375288710053d10e6f793\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\8494f2f21786d6f5bee489c370575d0f2453b023\output\AndroidManifest.xml:26:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\chen__000\.android\build-cache\86cf750ddb9f93d4328a8a52d1d67a75cd9b02ca\output\AndroidManifest.xml:9:5-20
+MERGED from [com.github.clans:fab:1.6.4] C:\Users\chen__000\.android\build-cache\35e46a07358816e141314c9e7b29aa73d27754b3\output\AndroidManifest.xml:12:5-20
+MERGED from [com.github.markushi:circlebutton:1.1] C:\Users\chen__000\.android\build-cache\54302d7a94e84bff2049a888ee48ad6ac11206fb\output\AndroidManifest.xml:9:5-20
+MERGED from [com.github.stfalcon:chatkit:0.2.2] C:\Users\chen__000\.android\build-cache\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\output\AndroidManifest.xml:11:5-13:38
+MERGED from [com.android.support:design:25.3.1] C:\Users\chen__000\.android\build-cache\a86be28fba1fdde083f533029cf0ca4d776a70eb\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\chen__000\.android\build-cache\43adb6d8a5046952673c9772cc4730f78668fbb1\output\AndroidManifest.xml:26:5-20
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\chen__000\.android\build-cache\4a2030e8ad6ffea4459bbf8eef7572a1c4904017\output\AndroidManifest.xml:12:5-20
+MERGED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:14:5-20
+MERGED from [com.couchbase.lite:couchbase-lite-android-sqlite-custom:1.4.0] C:\Users\chen__000\.android\build-cache\94c31fc3daf485313ccbd91f58b5dacba524c33a\output\AndroidManifest.xml:11:5-20
+MERGED from [com.bignerdranch.android:recyclerview-multiselect:0.2] C:\Users\chen__000\.android\build-cache\6ca2d4af047647984fc74b14626cc6799997d28b\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\chen__000\.android\build-cache\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\445befa7d08fd439894128b3be072d878cf6f988\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\83c984c2e98cc47059e3cd0ff3186d94759eaf9c\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\chen__000\.android\build-cache\3603d4fc04feed115a1669e93def7f63011732e2\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\chen__000\.android\build-cache\9a5441884e400d87f5574320b9d0e3d969781a88\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\chen__000\.android\build-cache\7b45dac30c6ebe5076977af48dd20b55b6070d13\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\chen__000\.android\build-cache\84d85f2a2ea47057e8f2f3901e4aa309588c7bff\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\chen__000\.android\build-cache\567354dcd3de7deb787e21b849c902b2f3fa9fa6\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\chen__000\.android\build-cache\a646cd2d41b646d9819040ada4be5ea2dfa5e891\output\AndroidManifest.xml:29:5-20
+MERGED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:14:5-18:19
+	android:label
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:20:9-41
+	android:supportsRtl
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:22:9-35
+	android:roundIcon
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:21:9-54
+	android:allowBackup
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:18:9-35
+	android:icon
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:19:9-43
+	android:theme
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:23:9-40
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:17:9-40
+activity#org.gocs.letmeknow.activity.SplashActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:24:9-30:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:24:19-58
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:25:13-29:29
+action#android.intent.action.MAIN
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:26:17-69
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:26:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:28:17-77
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:28:27-74
+activity#org.gocs.letmeknow.activity.MainActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:31:9-33:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:31:19-56
+activity#org.gocs.letmeknow.activity.UserProfileActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:34:9-36:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:34:19-63
+activity#org.gocs.letmeknow.activity.LoginActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:37:9-39:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:37:19-57
+activity#org.gocs.letmeknow.activity.SettingActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:40:9-42:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:40:19-59
+activity#org.gocs.letmeknow.activity.AboutActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:43:9-45:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:43:19-57
+activity#org.gocs.letmeknow.activity.NotificationDetailActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:46:9-48:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:46:19-70
+activity#org.gocs.letmeknow.activity.RegisterActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:49:9-51:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:49:19-60
+activity#org.gocs.letmeknow.activity.CircleInfoActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:52:9-54:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:52:19-62
+activity#org.gocs.letmeknow.activity.NotificationEditActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:55:9-57:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:55:19-68
+activity#org.gocs.letmeknow.activity.EditCircleNameActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:58:9-60:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:58:19-66
+activity#org.gocs.letmeknow.activity.EditCircleIntroductionActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:61:9-63:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:61:19-74
+activity#org.gocs.letmeknow.activity.QRDiplayActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:64:9-66:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:64:19-60
+activity#org.gocs.letmeknow.activity.SelectCircleActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:68:9-70:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:68:19-64
+activity#org.gocs.letmeknow.activity.SelectMemberActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:72:9-74:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:72:19-64
+receiver#org.gocs.letmeknow.receiver.NotificationReceiver
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:80:9-88:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:80:19-64
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE+com.avos.UPDATE_STATUS+com.gocs.letmeknow.action.NOTIFICATION
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:81:13-87:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:82:17-79
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:82:25-76
+action#android.intent.action.USER_PRESENT
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:83:17-77
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:83:25-74
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:84:17-79
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:84:25-76
+action#com.avos.UPDATE_STATUS
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:85:17-65
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:85:25-62
+action#com.gocs.letmeknow.action.NOTIFICATION
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:86:17-81
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:86:25-78
+activity#com.avos.avoscloud.feedback.ThreadActivity
+ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:92:9-94:20
+	android:name
+		ADDED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml:93:13-70
+uses-sdk
+INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] C:\Users\chen__000\.android\build-cache\27c705aef4c38a5cb90c530d2ef41ca8b8e522a4\output\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\chen__000\.android\build-cache\185acd34817205c5c05375288710053d10e6f793\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\8494f2f21786d6f5bee489c370575d0f2453b023\output\AndroidManifest.xml:20:5-43
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\chen__000\.android\build-cache\86cf750ddb9f93d4328a8a52d1d67a75cd9b02ca\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.clans:fab:1.6.4] C:\Users\chen__000\.android\build-cache\35e46a07358816e141314c9e7b29aa73d27754b3\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.markushi:circlebutton:1.1] C:\Users\chen__000\.android\build-cache\54302d7a94e84bff2049a888ee48ad6ac11206fb\output\AndroidManifest.xml:7:5-44
+MERGED from [com.jakewharton:butterknife:8.6.0] C:\Users\chen__000\.android\build-cache\e0552451bf8d41dc0010abadc87f68685b8e43e1\output\AndroidManifest.xml:5:5-43
+MERGED from [com.github.stfalcon:chatkit:0.2.2] C:\Users\chen__000\.android\build-cache\335ae1c2d0d5ba67bc722e5da30b0ab9d1563ba2\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\chen__000\.android\build-cache\a86be28fba1fdde083f533029cf0ca4d776a70eb\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:transition:25.3.1] C:\Users\chen__000\.android\build-cache\43adb6d8a5046952673c9772cc4730f78668fbb1\output\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android:flexbox:0.2.5] C:\Users\chen__000\.android\build-cache\134cf1008a6c492053652dabea1a7fe8359eff52\output\AndroidManifest.xml:23:5-25:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\chen__000\.android\build-cache\463cb2d1a402dc68116c5a262ef282fa613debb1\output\AndroidManifest.xml:19:5-43
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] C:\Users\chen__000\.android\build-cache\4a2030e8ad6ffea4459bbf8eef7572a1c4904017\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.couchbase.lite:couchbase-lite-android-sqlite-custom:1.4.0] C:\Users\chen__000\.android\build-cache\94c31fc3daf485313ccbd91f58b5dacba524c33a\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.bignerdranch.android:recyclerview-multiselect:0.2] C:\Users\chen__000\.android\build-cache\6ca2d4af047647984fc74b14626cc6799997d28b\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\chen__000\.android\build-cache\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\445befa7d08fd439894128b3be072d878cf6f988\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\83c984c2e98cc47059e3cd0ff3186d94759eaf9c\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\0248927ca902a32107996cfdc6d38b8a90560547\output\AndroidManifest.xml:20:5-43
+MERGED from [cn.leancloud.android:avoscloud-push:v4.3.2] C:\Users\chen__000\.android\build-cache\681d55860aa2b13709aeef4bd73af2233fd4b3bf\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\chen__000\.android\build-cache\3603d4fc04feed115a1669e93def7f63011732e2\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\chen__000\.android\build-cache\9a5441884e400d87f5574320b9d0e3d969781a88\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\chen__000\.android\build-cache\7b45dac30c6ebe5076977af48dd20b55b6070d13\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\chen__000\.android\build-cache\84d85f2a2ea47057e8f2f3901e4aa309588c7bff\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\chen__000\.android\build-cache\567354dcd3de7deb787e21b849c902b2f3fa9fa6\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\chen__000\.android\build-cache\a646cd2d41b646d9819040ada4be5ea2dfa5e891\output\AndroidManifest.xml:21:5-23:58
+MERGED from [cn.leancloud.android:avoscloud-feedback:v4.3.2] C:\Users\chen__000\.android\build-cache\d19a6aa4475335ac354e3e092aa876b537cb05b8\output\AndroidManifest.xml:7:5-9:41
+MERGED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\chen__000\.android\build-cache\a86be28fba1fdde083f533029cf0ca4d776a70eb\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\letmeknow\android\Letmeknow-Android\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\8494f2f21786d6f5bee489c370575d0f2453b023\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:design:25.3.1] C:\Users\chen__000\.android\build-cache\a86be28fba1fdde083f533029cf0ca4d776a70eb\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\chen__000\.android\build-cache\43adb6d8a5046952673c9772cc4730f78668fbb1\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\chen__000\.android\build-cache\1acc4fef20b3c275d130c05380ee0eef4d6d7ec8\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\445befa7d08fd439894128b3be072d878cf6f988\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\chen__000\.android\build-cache\83c984c2e98cc47059e3cd0ff3186d94759eaf9c\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\0248927ca902a32107996cfdc6d38b8a90560547\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\chen__000\.android\build-cache\3603d4fc04feed115a1669e93def7f63011732e2\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\chen__000\.android\build-cache\9a5441884e400d87f5574320b9d0e3d969781a88\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\chen__000\.android\build-cache\7b45dac30c6ebe5076977af48dd20b55b6070d13\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\chen__000\.android\build-cache\84d85f2a2ea47057e8f2f3901e4aa309588c7bff\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\chen__000\.android\build-cache\567354dcd3de7deb787e21b849c902b2f3fa9fa6\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\chen__000\.android\build-cache\a646cd2d41b646d9819040ada4be5ea2dfa5e891\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\8494f2f21786d6f5bee489c370575d0f2453b023\output\AndroidManifest.xml:24:9-31
+	android:name
+		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\chen__000\.android\build-cache\8494f2f21786d6f5bee489c370575d0f2453b023\output\AndroidManifest.xml:23:9-47
+uses-permission#android.permission.INTERNET
+ADDED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:11:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from [com.couchbase.lite:couchbase-lite-android:1.4.0] C:\Users\chen__000\.android\build-cache\c64876089cc3e1da3500a16e3a8a3d5b01ed1dad\output\AndroidManifest.xml:12:22-76
+uses-permission#android.permission.VIBRATE
+ADDED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:12:5-66
+	android:name
+		ADDED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:12:22-63
+activity#com.xys.libzxing.zxing.activity.CaptureActivity
+ADDED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:17:9-84
+	android:name
+		ADDED from [Letmeknow-Android:libqrcode:unspecified] F:\letmeknow\android\Letmeknow-Android\libqrcode\build\intermediates\bundles\default\AndroidManifest.xml:17:19-81

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This menu will be attached to activity_conversation -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_item_check_profile"
+        android:orderInCategory="1"
+        android:title="@string/menu_item_check_profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_item_delete_conversation"
+        android:orderInCategory="1"
+        android:title="@string/menu_item_delete_conversation"
+        app:showAsAction="never" />
+</menu>

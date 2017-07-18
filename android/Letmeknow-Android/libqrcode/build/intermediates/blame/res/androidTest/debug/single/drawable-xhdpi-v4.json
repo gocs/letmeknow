@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan_line.png",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan_line.png"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\shadow.png",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\shadow.png"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\qr_code_bg.9.png",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\libqrcode\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\qr_code_bg.9.png"
+    }
+]

@@ -12,27 +12,29 @@ namespace letmeknow_admin.Services
     {
         public static ObservableCollection<Notification> SearchNotificationByUser(int UID)
         {
-            var SearchResult = new ObservableCollection<Notification>();
-            SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
-            SearchResult.Add(new Notification(2, new DateTime(2017, 6, 28, 17, 12, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
-            return SearchResult;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["senderId"] = UID.ToString();
+            string JsonString = HttpHelper.Get("searchNotificationBySenderId", parameters);
+            var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Notification>>>(JsonString)["notifications"];
+            return result;
         }
-
 
         public static ObservableCollection<Notification> SearchNotificationByGroup(int id)
         {
-            var SearchResult = new ObservableCollection<Notification>();
-            SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
-            SearchResult.Add(new Notification(2, new DateTime(2017, 6, 28, 17, 12, 0), 1, "testUser", 1, "testGroup", "testContent", NotificationStatus.NORMAL));
-            return SearchResult;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["groupId"] = id.ToString();
+            string JsonString = HttpHelper.Get("searchNotificationByGroupId", parameters);
+            var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Notification>>>(JsonString)["notifications"];
+            return result;
         }
 
         public static ObservableCollection<Notification> SearchNotificationByKeyword(string key)
         {
-            var SearchResult = new ObservableCollection<Notification>();
-            SearchResult.Add(new Notification(1, new DateTime(2017, 6, 28, 17, 11, 0), 1, "testUser", 1, "testGroup", key, NotificationStatus.NORMAL));
-            SearchResult.Add(new Notification(2, new DateTime(2017, 6, 28, 17, 12, 0), 1, "testUser", 1, "testGroup", key, NotificationStatus.NORMAL));
-            return SearchResult;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters["content"] = key;
+            string JsonString = HttpHelper.Get("searchNotificationByContent", parameters);
+            var result = JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Notification>>>(JsonString)["notifications"];
+            return result;
         }
 
         public static void deleteNotification(Notification notification)

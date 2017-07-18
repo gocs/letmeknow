@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_notification_edit.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\activity_notification_edit.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\circle_menu_owner.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\circle_menu_owner.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_select_members.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\activity_select_members.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\circle_menu_default.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\circle_menu_default.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\private_message_menu.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\private_message_menu.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\notification_detail_menu.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\notification_detail_menu.xml"
+    },
+    {
+        "merged": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\circle_menu_informer.xml",
+        "source": "F:\\letmeknow\\android\\Letmeknow-Android\\app\\src\\main\\res\\menu\\circle_menu_informer.xml"
+    }
+]
