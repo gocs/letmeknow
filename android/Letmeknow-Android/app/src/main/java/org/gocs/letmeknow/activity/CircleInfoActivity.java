@@ -20,6 +20,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleInformerFragment;
 import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
@@ -137,7 +139,7 @@ public class CircleInfoActivity extends BaseActivity {
         switch (id){
             case R.id.menu_item_circle_share:{
                 Intent intent = new Intent(this, QRDiplayActivity.class);
-                intent.putExtra("groupName",circleBrief.getGroupName());
+                intent.putExtra(QRDiplayActivity.CIRCLE_SERIALIZABLE,circleBrief);
                 this.startActivity(intent);
                 break;
             }

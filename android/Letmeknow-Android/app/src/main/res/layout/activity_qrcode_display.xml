@@ -21,16 +21,16 @@
                 android:id="@+id/text_circle_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="8dp"
                 android:text="没有大腿的神秘组织"
-                android:textSize="28sp"/>
+                android:textSize="38sp"/>
         </LinearLayout>
 
         <ImageView
             android:id="@+id/img_circle_qrcode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

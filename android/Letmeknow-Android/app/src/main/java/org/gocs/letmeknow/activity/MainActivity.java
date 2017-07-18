@@ -27,6 +27,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.fragment.CircleFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
@@ -77,11 +78,6 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.tab_notification);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[] {Manifest.permission.CAMERA}, 1);
-            }
-        }
 
         //can not inject
         View header = navigationView.getHeaderView(0);
@@ -146,7 +142,15 @@ public class MainActivity extends BaseActivity
         int id = item.getItemId();
         switch(id){
             case R.id.menu_Item_join:{
-                startActivityForResult(new Intent(this, CaptureActivity.class),0);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[] {Manifest.permission.CAMERA}, Constants.MY_PERMISSIONS_REQUEST_CAMERA);
+                    }else {
+                        startActivityForResult(new Intent(this, CaptureActivity.class),0);
+                    }
+                }else {
+                    startActivityForResult(new Intent(this, CaptureActivity.class),0);
+                }
                 break;
             }
             default:;
@@ -157,15 +161,24 @@ public class MainActivity extends BaseActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case 3:
+            case Constants.MY_PERMISSIONS_REQUEST_CAMERA:
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Start your camera handling here
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startActivityForResult(new Intent(this, CaptureActivity.class),0);
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
 
                 } else {
-                    //permission denied.
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
                 }
+                return;
         }
+
+        // other 'case' lines to check for other
+        // permissions this app might request
     }
 
     @Override
@@ -308,5 +321,6 @@ public class MainActivity extends BaseActivity
             startActivity(intent);
         });
     }
+
 
 }

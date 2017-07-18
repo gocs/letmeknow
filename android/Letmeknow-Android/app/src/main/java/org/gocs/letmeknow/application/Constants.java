@@ -42,4 +42,7 @@ public class Constants {
 
     public static final String COUCHDB_NAME = "testdb";
 
+
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
+
 }

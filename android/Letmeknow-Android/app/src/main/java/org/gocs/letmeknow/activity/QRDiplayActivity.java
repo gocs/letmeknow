@@ -13,14 +13,19 @@ import com.xys.libzxing.zxing.encoding.EncodingUtils;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.CircleBrief;
+import org.gocs.letmeknow.util.QRCodeUtils;
 
 import butterknife.BindView;
+
+import static org.gocs.letmeknow.util.QRCodeUtils.encodeQR;
 
 /**
  * Created by lenovo on 2017/7/18.
  */
 
 public class QRDiplayActivity extends BaseActivity {
+
+    public static final String CIRCLE_SERIALIZABLE = "CIRCLE_SERIALIZABLE";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -31,14 +36,17 @@ public class QRDiplayActivity extends BaseActivity {
     @BindView(R.id.img_circle_qrcode)
     ImageView qrCode;
 
+    private CircleBrief circleBrief;
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        String groupName = getIntent().getExtras().getString("groupName");
+        circleBrief = (CircleBrief)getIntent().getSerializableExtra(CIRCLE_SERIALIZABLE);
+        String qrStr = encodeQR(circleBrief.getGroupId());
         Bitmap logoBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round);
-        Bitmap bitmap= EncodingUtils.createQRCode("fuck you", 500, 500, logoBitmap);
-        circleTitle.setText(groupName);
+        Bitmap bitmap= EncodingUtils.createQRCode(qrStr, 1000, 1000, logoBitmap);
+        circleTitle.setText(circleBrief.getGroupName());
         qrCode.setImageBitmap(bitmap);
 
         initToolbar();
@@ -62,5 +70,6 @@ public class QRDiplayActivity extends BaseActivity {
         //set toolbar title
         getSupportActionBar().setTitle(R.string.circle_title_join);
     }
+
 
 }
