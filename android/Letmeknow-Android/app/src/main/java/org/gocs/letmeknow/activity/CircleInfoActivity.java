@@ -136,6 +136,8 @@ public class CircleInfoActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.menu_item_circle_share:{
+                Intent intent = new Intent(CircleInfoActivity.this, QRDiplayActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.menu_item_circle_send:{

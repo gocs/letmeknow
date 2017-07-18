@@ -1,6 +1,9 @@
 package org.gocs.letmeknow.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -21,6 +24,7 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVInstallation;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.couchbase.DataBaseClient;
@@ -41,6 +45,7 @@ import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.avos.avoscloud.Messages.OpType.result;
 import static org.gocs.letmeknow.application.Constants.TAB_IMAGE_RES_ID;
 import static org.gocs.letmeknow.application.Constants.TAB_NUM;
 
@@ -72,6 +77,11 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.tab_notification);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[] {Manifest.permission.CAMERA}, 1);
+            }
+        }
 
         //can not inject
         View header = navigationView.getHeaderView(0);
@@ -133,7 +143,37 @@ public class MainActivity extends BaseActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        switch(id){
+            case R.id.menu_Item_join:{
+                startActivityForResult(new Intent(this, CaptureActivity.class),0);
+                break;
+            }
+            default:;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 3:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Start your camera handling here
+
+                } else {
+                    //permission denied.
+                }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode== this.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            String res = bundle.getString("result");
+        }
     }
 
     @Override

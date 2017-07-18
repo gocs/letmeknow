@@ -10,6 +10,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -50,14 +51,9 @@ dependencies {
     compile 'com.github.markushi:circlebutton:1.1'
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.github.stfalcon:chatkit:0.2.2'
-
-
     compile 'com.squareup.picasso:picasso:2.5.2'
-
-
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
@@ -65,23 +61,16 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     compile 'com.couchbase.lite:couchbase-lite-android:1.4.0'
-
-
     // LeanCloud 基础包
-    compile ('cn.leancloud.android:avoscloud-sdk:v4.3.2')
-
+    compile 'cn.leancloud.android:avoscloud-sdk:v4.3.2'
     // 推送与实时聊天需要的包
-    compile ('cn.leancloud.android:avoscloud-push:v4.3.2@aar'){transitive = true}
-
+    compile('cn.leancloud.android:avoscloud-push:v4.3.2@aar') { transitive = true }
     // LeanCloud 统计包
-    compile ('cn.leancloud.android:avoscloud-statistics:v4.3.2')
-
+    compile 'cn.leancloud.android:avoscloud-statistics:v4.3.2'
     // LeanCloud 用户反馈包
-    compile ('cn.leancloud.android:avoscloud-feedback:v4.3.2@aar')
-
-
+    compile 'cn.leancloud.android:avoscloud-feedback:v4.3.2@aar'
     compile 'org.greenrobot:eventbus:3.0.0'
-
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile project(':libqrcode')
 }
