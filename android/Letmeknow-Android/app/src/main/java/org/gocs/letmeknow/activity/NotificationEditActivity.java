@@ -49,10 +49,4 @@ public class NotificationEditActivity extends BaseActivity{
         ToastUtils.showShortToast("click");
         return true;
     }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

@@ -51,6 +51,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.github.stfalcon:chatkit:0.2.2'
 
+
     compile 'com.squareup.picasso:picasso:2.5.2'
 
 

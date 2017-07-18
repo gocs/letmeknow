@@ -3,6 +3,7 @@ package org.gocs.letmeknow.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
 
@@ -31,7 +32,10 @@ public class App extends Application {
 
     private void initLeanCloud(){
         AVOSCloud.initialize(this, Constants.APP_ID, Constants.APP_KEY);
+
         AVOSCloud.setDebugLogEnabled(true);
+        AVOSCloud.setLastModifyEnabled(true);
+        AVAnalytics.enableCrashReport(getInstance(), true);
     }
 
 }

@@ -67,9 +67,4 @@ public class UserProfileActivity extends BaseActivity {
         getSupportActionBar().setTitle(R.string.user_info_title);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.gocs.letmeknow">
 
+    <service android:name="com.avos.avoscloud.PushService" />
+
     <uses-role android:name="android.role.WRITE_EXTERNAL_STORAGE" />
     <uses-role android:name="android.role.INTERNET"/>
     <uses-role android:name="android.role.ACCESS_NETWORK_STATE" />
@@ -60,11 +62,14 @@
         <!-- 实时通信模块、推送（均需要加入以下声明） START -->
         <!-- 实时通信模块、推送都要使用 PushService -->
         <service android:name="com.avos.avoscloud.PushService"/>
-        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+
+        <receiver android:name=".receiver.NotificationReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.avos.UPDATE_STATUS" />
+                <action android:name="com.gocs.letmeknow.action.NOTIFICATION" />
             </intent-filter>
         </receiver>
         <!-- 实时通信模块、推送 END -->

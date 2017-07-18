@@ -19,4 +19,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     abstract protected int getContentViewId();
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

@@ -40,11 +40,4 @@ public class SettingActivity extends BaseActivity {
         //set toolbar title
         getSupportActionBar().setTitle(R.string.setting_title);
     }
-
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }
