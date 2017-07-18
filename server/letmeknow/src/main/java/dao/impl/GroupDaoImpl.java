@@ -62,7 +62,7 @@ public class GroupDaoImpl extends HibernateDaoSupport implements GroupDao {
     }
 
     public List<GroupWithRole> getGroupsByUserId( int userId) {
-        List<GroupWithRole> res=GroupWithRole.convertToForm((List<Object[]>)getHibernateTemplate().find("from Groups as g, GroupMem as gm where g.groupId=gm.groupId and gm.userId=? and g.status=2",userId));
+        List<GroupWithRole> res=GroupWithRole.convertToForm((List<Object[]>)getHibernateTemplate().find("from Groups as g, GroupMem as gm where g.groupId=gm.groupId and gm.userId=? and gm.deletedAt is null and g.status=2",userId));
         return res;
     }
 }

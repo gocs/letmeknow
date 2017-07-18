@@ -31,6 +31,8 @@ public class LoginServiceImpl implements LoginService{
         if(target==null) return new Reply(0,"username/password error",null);
         if(target.getStatus()!=2) return new Reply(0,"user is disabled or deleted",null);
         if(!(password.equals(target.getPassword()))) return new Reply(0,"username/password error",null);
+        target.setInstallationId(user.getInstallationId());
+        userDao.update(target);
         HttpSession session=ServletActionContext.getRequest().getSession();
         session.setAttribute("userid",target.getUserId());
         session.setAttribute("username",target.getUsername());

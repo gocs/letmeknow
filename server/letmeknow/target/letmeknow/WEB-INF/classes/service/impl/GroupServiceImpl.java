@@ -105,32 +105,110 @@ public class GroupServiceImpl implements GroupService {
         this.groupMemDao = groupMemDao;
     }
 
-    public List<GroupWithRole> CommonGetGroups(int userId){
-        List<GroupWithRole> groups=groupDao.getGroupsByUserId(userId);
+    public List<GroupWithRole> CommonGetGroups(int userId) {
+        List<GroupWithRole> groups = groupDao.getGroupsByUserId(userId);
         return groups;
     }
 
-    public List<GroupMemWithAvatar> queryGroupNotifiers(int groupId){
+    public List<GroupMemWithAvatar> queryGroupNotifiers(int groupId) {
         return groupMemDao.getNotifiersByGroupId(groupId);
     }
 
-    public List<GroupMemWithAvatar> queryCommonGroupMembers(int groupId){
+    public List<GroupMemWithAvatar> queryCommonGroupMembers(int groupId) {
         return groupMemDao.CommonGetMembersByGroupId(groupId);
     }
 
-    public List<User> queryCommonUserListByGroupId(int groupId){
+    public List<User> queryCommonUserListByGroupId(int groupId) {
         return userDao.getCommonUserListByGroupId(groupId);
     }
 
-    public User queryCommonUserByUserId(int userId){
+    public User queryCommonUserByUserId(int userId) {
         return userDao.getCommonUserById(userId);
     }
 
-    public void updateGroup(int groupId, String introduction, String avatar, String groupName){
-        Groups group=groupDao.getGroupsById(groupId);
-        if(introduction!=null&&!(introduction.equals(""))) group.setIntroduction(introduction);
-        if(avatar!=null&&!(avatar.equals(""))) group.setIcon(avatar);
-        if(groupName!=null&&!(groupName.equals(""))) group.setGroupName(groupName);
+    public void updateGroup(int groupId, String introduction, String avatar, String groupName) {
+        Groups group = groupDao.getGroupsById(groupId);
+        if (introduction != null && !(introduction.equals(""))) group.setIntroduction(introduction);
+        if (avatar != null && !(avatar.equals(""))) group.setIcon(avatar);
+        if (groupName != null && !(groupName.equals(""))) group.setGroupName(groupName);
         groupDao.update(group);
+    }
+
+    public Reply removeGroupMembers(List<Integer> userId, int groupId) {
+        Reply reply = new Reply();
+        List<GroupMem> groupMembers = new ArrayList<GroupMem>();
+        for (Integer id : userId) {
+            GroupMem groupMem = groupMemDao.getMemberByUserGroupId(id, groupId);
+            if (groupMem == null || groupMem.getDeletedAt() != null) {
+                reply.setCode(0);
+                reply.setMessage("abort:user with id " + id + " does not exist in this group");
+                return reply;
+            }
+            groupMem.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+            groupMembers.add(groupMem);
+        }
+        for (GroupMem groupMem : groupMembers)
+            groupMemDao.update(groupMem);
+        reply.setCode(1);
+        reply.setMessage("success");
+        return reply;
+    }
+
+    public void removeGroupMember(int userId, int groupId) {
+        GroupMem member = groupMemDao.getMemberByUserGroupId(userId, groupId);
+        member.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+        groupMemDao.update(member);
+    }
+
+    public Reply addGroupMember(GroupMem groupMem) {
+        GroupMem target = groupMemDao.getMemberByUserGroupId(groupMem.getUserId(), groupMem.getGroupId());
+        Reply reply = new Reply();
+        if (target != null) {
+            if (target.getDeletedAt() == null) { //groupmem already exists
+                reply.setCode(0);
+                reply.setMessage("you ARE in this group");
+                return reply;
+            } else {
+                target.setDeletedAt(null);
+                groupMemDao.update(target);
+            }
+        } else {
+            groupMemDao.save(groupMem);
+        }
+        reply.setCode(1);
+        reply.setMessage("success");
+        return reply;
+    }
+
+    public boolean groupMasterTest(int groupId, int userId) {
+        GroupMem master = groupMemDao.findGroupMasterByGroupId(groupId);
+        return (master != null && master.getUserId() == userId);
+    }
+
+    public Reply addGroupMembers(List<Integer> userId, int groupId) {
+        Reply reply = new Reply();
+        List<GroupMem> groupMems=new ArrayList<GroupMem>();
+        for (Integer id : userId) {
+            GroupMem groupMem = groupMemDao.getMemberByUserGroupId(id, groupId);
+            if (groupMem != null && groupMem.getDeletedAt() == null) {
+                reply.setCode(0);
+                reply.setMessage("abort: userid "+ id +" IS in this group");
+                return reply;
+            }
+            else{
+                if(groupMem==null)
+                    groupMem = new GroupMem(id,groupId,"regular");
+                else groupMem.setDeletedAt(null);
+                groupMems.add(groupMem);
+            }
+        }
+        for(GroupMem groupMem:groupMems){
+            if(groupMem.getCreatedAt()==null)
+                groupMemDao.save(groupMem);
+            else    groupMemDao.update(groupMem);
+        }
+        reply.setCode(1);
+        reply.setMessage("success");
+        return reply;
     }
 }

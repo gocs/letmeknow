@@ -5,10 +5,13 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:couchbase="http://www.springframework.org/schema/data/couchbase"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/data/couchbase
-	 http://www.springframework.org/schema/data/couchbase/spring-couchbase.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	 http://www.springframework.org/schema/data/couchbase/spring-couchbase.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/data/mongo
+    http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
     <!--
     <context:component-scan base-package="action,dao,service"></context:component-scan>
@@ -32,6 +35,15 @@
 
     <couchbase:indexManager/>
     -->
+
+    <mongo:mongo host="127.0.0.1" port="27017" />
+    <mongo:db-factory dbname="notification" />
+    <mongo:mapping-converter id="converter" />
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+    </bean>
+
     <!-- Bean -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
@@ -114,6 +126,14 @@
         <property name="applicationDao" ref="applicationDao"/>
         <property name="userDao" ref="userDao" />
         <property name="groupDao" ref="groupDao" />
+    </bean>
+
+    <bean id="notificationDao" class="dao.impl.NotificationDaoImpl">
+        <property name="mongoTemplate" ref="mongoTemplate"/>
+    </bean>
+
+    <bean id="notificationService" class="service.impl.NotificationServiceImpl">
+        <property name="notificationDao" ref="notificationDao"/>
     </bean>
 
 </beans>

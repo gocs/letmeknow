@@ -1,28 +1,63 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
+<%
+    String path = request.getContextPath();
+%>
+<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="<%=path%>/css/bootstrap-theme.css"
+      rel="stylesheet">
 <body>
 <h2>Hello World!</h2>
 <p>
-    latest update:7/13 17:00
+    latest update:7/14 14:00
 </p>
 
 
 current APIs available:
-<h1>namespace:/common</h1>
-<p>allGroups</p>
-<p>groupDetail?groupId=</p>
-<p>groupMember?groupId=</p>
-<p>groupNotifier?groupId=</p>
-<p>groupMemberDetail?userId=</p>
-<p>groupMemberDetailList?groupId=</p>
-<p>updateGroupIntroduction?groupId= introduction=</p>
-<p>updateGroupAvatar?groupId= avatar=</p>
-<p>updateGroupName?groupId= name=</p>
-<p>updateUsername?userId= username=</p>
-<p>updateUserEmail?userId= email=</p>
-<p>updateUserAvatar?userId= avatar=</p>
-<p>updateUserPhoneNum?userId= phoneNum=</p>
-
+<div class="container">
+    <h1>namespace:/common</h1>
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+        <tr>
+            <td>allGroups</td>
+            <td>groupDetail?groupId=</td>
+            <td>groupMember?groupId=</td>
+            <td>groupNotifier?groupId=</td>
+        </tr>
+        <tr>
+            <td>groupMemberDetail?userId=</td>
+            <td>groupMemberDetailList?groupId=</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>updateGroupIntroduction?groupId= introduction=</td>
+            <td>updateGroupAvatar?groupId= avatar=</td>
+            <td>updateGroupName?groupId= groupName=</td>
+            <td>updateUsername?userId= username=</td>
+        </tr>
+        <tr>
+            <td>updateUserEmail?userId= email=</td>
+            <td>updateUserAvatar?userId= avatar=</td>
+            <td>updateUserPhoneNum?userId= phoneNum=</td>
+            <td>updateUserInstallationId?installationId= userId=?</td>
+        </tr>
+        <tr>
+            <td>joinGroup?groupId=?</td>
+            <td>addToGroup?groupId=? userId=[]</td>
+            <td>quitGroup?groupId=?</td>
+            <td>kickOutFromGroup?groupId= userId=[]</td>
+        </tr>
+        <tr>
+            <td>saveNotification?sender_id= content= receiver_id=[]</td>
+            <td>getNotification?notificationId=</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <br/><br/>
 <h1>namespace: /admin</h1>
 <p>/login</p>
@@ -52,9 +87,9 @@ current APIs available:
 <p>/passApplication /denyApplication</p>
 <p>params:applicationId</p>
 <p>return:0 for invalid application ID, 1 for success</p>
-<p>/lougout</p>
+<p>/logout</p>
 <form action="QuickLogin">
-<button type="submit"> auto login </button>
+    <button type="submit"> auto login</button>
 </form>
 
 </body>

@@ -17,4 +17,8 @@ public interface GroupMemDao extends CommonDao<GroupMem> {
     public List<GroupMemWithAvatar> getNotifiersByGroupId(int groupId);
 
     public List<GroupMemWithAvatar> CommonGetMembersByGroupId(int groupId);
+
+    //public void deleteMembersByUserIdList(final List<Integer> userId, final int groupId);
+
+    public GroupMem getMemberByUserGroupId(int userId, int groupId);
     }

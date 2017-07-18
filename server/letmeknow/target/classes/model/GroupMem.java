@@ -104,4 +104,12 @@ public class GroupMem {
         result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
         return result;
     }
+
+    public GroupMem(int userId,int groupId,String role){
+        this.userId=userId;
+        this.groupId=groupId;
+        this.role=role;
+    }
+
+    public GroupMem(){}
 }

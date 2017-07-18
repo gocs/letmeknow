@@ -2,6 +2,7 @@ package service;
 
 import model.*;
 
+import javax.print.attribute.IntegerSyntax;
 import java.util.List;
 
 /**
@@ -37,4 +38,14 @@ public interface GroupService {
     public User queryCommonUserByUserId(int userId);
 
     public void updateGroup(int groupId, String introduction, String avatar, String groupName);
+
+    public Reply removeGroupMembers(List<Integer> userId, int groupId) ;
+
+    public void removeGroupMember(int userId, int groupId);
+
+    public Reply addGroupMember(GroupMem groupMem) ;
+
+    public boolean groupMasterTest(int groupId, int userId);
+
+    public Reply addGroupMembers(List<Integer> userId, int groupId) ;
     }

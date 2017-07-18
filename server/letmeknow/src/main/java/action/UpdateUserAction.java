@@ -1,5 +1,6 @@
 package action;
 
+import model.User;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import service.GroupService;
@@ -21,6 +22,11 @@ public class UpdateUserAction extends BaseAction{
     private String avatar;
     private String email;
     private Integer phoneNum;
+    private String installationId;
+
+    public void setInstallationId(String installationId) {
+        this.installationId = installationId;
+    }
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -101,6 +107,21 @@ public class UpdateUserAction extends BaseAction{
             return SUCCESS;
         }
         userService.updateUser(userId, null,null,null,phoneNum);
+        code=1;
+        message="success";
+        return SUCCESS;
+    }
+
+    @Action(value="/common/updateUserInstallationId",results={@Result(type="json")})
+    public String updateInstallationId(){
+
+        if(!userService.adminExistUser(userId)) {
+            message="invalid userId";
+            return SUCCESS;
+        }
+        User user=userService.queryUserDetail(userId);
+        user.setInstallationId(installationId);
+        userService.updateUser(user);
         code=1;
         message="success";
         return SUCCESS;
