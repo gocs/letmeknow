@@ -1,5 +1,6 @@
 package org.gocs.letmeknow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -39,14 +40,14 @@ public class NotificationEditActivity extends BaseActivity{
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         //set toolbar title
         getSupportActionBar().setTitle(R.string.edit_titile);
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        ToastUtils.showShortToast("click");
-        return true;
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
+        startActivity(intent);
+        return super.onMenuOpened(featureId, menu);
     }
 }
