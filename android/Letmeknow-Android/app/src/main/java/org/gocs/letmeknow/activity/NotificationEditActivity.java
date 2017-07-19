@@ -141,8 +141,10 @@ public class NotificationEditActivity extends BaseActivity{
                     push.setQuery(query);
 
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("action", "com.gocs.letmeknow.action.NOTIFICATION");
+                    jsonObject.put("action", "com.pushdemo.action");
+                    jsonObject.put("alert", "fuck");
 
+                    push.setMessage("SDfsd");
                     push.setData(jsonObject);
                     push.setPushToAndroid(true);
                     push.sendInBackground(new SendCallback() {

@@ -94,6 +94,7 @@ public class MainActivity extends BaseActivity
         initDrawer();
         initTab();
         setUpFloatingActionMenu();
+        ToastUtils.showShortToast(AVInstallation.getCurrentInstallation().getInstallationId());
         detectInstallationIdChange();
 
         List<String> channels = new ArrayList<>();
