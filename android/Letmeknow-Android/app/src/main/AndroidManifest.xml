@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.gocs.letmeknow">
 
-    <service android:name="com.avos.avoscloud.PushService" />
-
     <uses-role android:name="android.role.WRITE_EXTERNAL_STORAGE" />
     <uses-role android:name="android.role.INTERNET"/>
     <uses-role android:name="android.role.ACCESS_NETWORK_STATE" />
     <uses-role android:name="android.role.READ_PHONE_STATE" />
     <uses-role android:name="android.role.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus"/>
