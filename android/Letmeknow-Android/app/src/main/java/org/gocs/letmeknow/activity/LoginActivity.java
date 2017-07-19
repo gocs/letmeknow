@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,16 +40,20 @@ public class LoginActivity extends BaseActivity{
     Button buttonLogin;
     @BindView(R.id.text_register)
     TextView textRegister;
+    @BindView(R.id.login_background)
+    LinearLayout background;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        background.setBackground(getResources().getDrawable(R.drawable.login_background));
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+
 
                 RetrofitClient.getService().login(userName, password, installationId)
                         .flatMap(NetworkErrorHandler.ErrorFilter)
