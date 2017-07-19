@@ -105,6 +105,7 @@ public class SelectMemberActivity extends BaseActivity{
                 ToastUtils.showShortToast(selectedMembers.toString());
                 intent.putExtra(NotificationEditActivity.MEMBER_LIST_SERIALIZABLE, selectedMembers);
                 intent.putExtra(GROUP_BRIEF, getIntent().getSerializableExtra(GROUP_BRIEF));
+                setResult(RESULT_OK,intent);
                 startActivity(intent);
                 break;
             default:

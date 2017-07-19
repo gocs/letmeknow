@@ -51,6 +51,7 @@ public class NotificationEditActivity extends BaseActivity{
     private ArrayList<Member> memberList;
 
     public static final String MEMBER_LIST_SERIALIZABLE = "MEMBER_LIST_SERIALIZABLE";
+    public static final int REQUEST_CODE_GET_MEMBERS = 0;
 
     @Override
     @SuppressWarnings("unchecked")
@@ -101,13 +102,28 @@ public class NotificationEditActivity extends BaseActivity{
                 break;
             case R.id.menu_select_circle:
                 Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE_GET_MEMBERS);
                 break;
             default:
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case REQUEST_CODE_GET_MEMBERS:
+                Bundle bundle = data.getExtras();
+                memberList = (ArrayList<Member>) bundle.getSerializable(MEMBER_LIST_SERIALIZABLE);
+                break;
+            default:
+                break;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void sendNotification(){
