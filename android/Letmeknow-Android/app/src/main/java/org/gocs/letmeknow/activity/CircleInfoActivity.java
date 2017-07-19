@@ -42,6 +42,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_IMAGE_ID;
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
+import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
 
 /**
  * Created by rebas on 2017/6/30.
@@ -94,8 +95,8 @@ public class CircleInfoActivity extends BaseActivity {
                     Intent intent = getIntent();
                     intent.putExtra(CircleIntroductionFragment.CIRCLE_DETAIL_SERIALIZABLE,circleDetail);
                     text_title.setText(circleDetail.getGroupName());
-                    //TODO change group avatar.
-
+                    String avatarUrl = R.string.letmeknow_host + circleDetail.getIconUrl();
+                    loadImgByInternetUrl(this,avatarUrl,img_portrait);
                     initTab();
                 }, NetworkErrorHandler.basicErrorHandler);
     }
