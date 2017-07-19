@@ -95,7 +95,7 @@ public class CircleInfoActivity extends BaseActivity {
                     Intent intent = getIntent();
                     intent.putExtra(CircleIntroductionFragment.CIRCLE_DETAIL_SERIALIZABLE,circleDetail);
                     text_title.setText(circleDetail.getGroupName());
-                    String avatarUrl = R.string.letmeknow_host + circleDetail.getIconUrl();
+                    String avatarUrl = getString(R.string.letmeknow_host) + circleDetail.getIconUrl();
                     loadImgByInternetUrl(this,avatarUrl,img_portrait);
                     initTab();
                 }, NetworkErrorHandler.basicErrorHandler);
