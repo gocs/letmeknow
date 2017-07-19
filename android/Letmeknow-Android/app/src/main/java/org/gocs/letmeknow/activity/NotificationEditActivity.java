@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 
 import org.gocs.letmeknow.R;
@@ -17,8 +19,6 @@ import butterknife.BindView;
 public class NotificationEditActivity extends BaseActivity{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.imagebutton_select_circle)
-    ImageButton buttonAdd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +42,28 @@ public class NotificationEditActivity extends BaseActivity{
         //set toolbar title
         getSupportActionBar().setTitle(R.string.edit_titile);
 
-        buttonAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
-            startActivity(intent);
-        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_notification_edit, menu);
+        MenuItem selectItem = menu.findItem(R.id.menu_select_circle);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.menu_select_circle:
+                Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <CheckBox
         android:id="@+id/item_selectable_member_checkbox"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"/>
 
     <TextView
-        android:id="@+id/item_selectable_member_text_group_name"
-        android:layout_toStartOf="@id/item_selectable_member_checkbox"
+        android:id="@+id/item_selectable_member_text_member_name"
+        android:layout_toEndOf="@id/item_selectable_member_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:padding="4dp"
-        tools:text="GroupName"/>
+        android:padding="4dp" />
 </RelativeLayout>

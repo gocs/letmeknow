@@ -71,10 +71,10 @@ public class CircleMembersFragment extends BaseFragment {
 
 
     private class CmHolder extends RecyclerView.ViewHolder{
-        public ImageView mCmAvatar;
-        public TextView mCmName;
+        ImageView mCmAvatar;
+        TextView mCmName;
 
-        public CmHolder(View view){
+        CmHolder(View view){
             super(view);
             mCmAvatar = (ImageView)view.findViewById(item_cm_avatar);
             mCmName = (TextView) view.findViewById(item_cm_name);
@@ -84,7 +84,7 @@ public class CircleMembersFragment extends BaseFragment {
     private class CmAdapter extends RecyclerView.Adapter<CmHolder>{
         private List<Member> mCMs;
 
-        public CmAdapter(List<Member> cms){mCMs = cms;}
+        CmAdapter(List<Member> cms){mCMs = cms;}
 
         @Override
         public CmHolder onCreateViewHolder(ViewGroup parent, int viewType){

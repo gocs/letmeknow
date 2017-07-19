@@ -61,6 +61,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     compile 'com.couchbase.lite:couchbase-lite-android:1.4.0'
+    compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
 
     compile 'com.android.support:multidex:1.0.1'
 
