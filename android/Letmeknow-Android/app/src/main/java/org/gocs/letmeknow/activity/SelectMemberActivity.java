@@ -2,17 +2,11 @@ package org.gocs.letmeknow.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.StateSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,15 +16,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
 import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
+import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
@@ -46,7 +39,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SelectMemberActivity extends BaseActivity{
 
-    public static final String GROUP_ID = "GROUP_ID";
+    public static final String GROUP_BRIEF = "GROUP_BRIEF";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -55,6 +48,9 @@ public class SelectMemberActivity extends BaseActivity{
 
     private MultiSelector multiSelector = new MultiSelector();
 
+    private MenuItem menuItemConfirm;
+
+    private List<Member> allMembers;
 
 
     @Override
@@ -83,18 +79,54 @@ public class SelectMemberActivity extends BaseActivity{
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_select_members, menu);
+        menuItemConfirm = menu.getItem(0);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.menu_select_circle:
+                if(multiSelector.getSelectedPositions().size() == 0){
+                    return true;
+                }
+                Intent intent = new Intent(SelectMemberActivity.this, NotificationEditActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+                ArrayList<Member> selectedMembers = new ArrayList<>();
+                for(int position : multiSelector.getSelectedPositions()){
+                    selectedMembers.add(allMembers.get(position));
+                }
+                intent.putExtra(NotificationEditActivity.MEMBER_LIST_SERIALIZABLE, selectedMembers);
+                intent.putExtra(GROUP_BRIEF, getIntent().getStringExtra(GROUP_BRIEF));
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
     @SuppressWarnings("unchecked")
     private void setupRecyclerView(){
         Intent intent = getIntent();
-        String groupId = intent.getStringExtra(GROUP_ID);
+        String groupId = ((CircleBrief)intent.getSerializableExtra(GROUP_BRIEF)).getGroupId();
         RetrofitClient.getService()
                 .getCircleMembers(groupId)
                 .flatMap(NetworkErrorHandler.ErrorFilter)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response->{
+                    allMembers = (List<Member>) response.getData().get(Constants.JSON_KEY_MEMBERS);
+
                     recyclerViewMemberList.setLayoutManager(new LinearLayoutManager(recyclerViewMemberList.getContext()));
-                    recyclerViewMemberList.setAdapter(new SelectMemberRecyclerViewAdapter((List<Member>) response.getData().get(Constants.JSON_KEY_MEMBERS), this));
+                    recyclerViewMemberList.setAdapter(new SelectMemberRecyclerViewAdapter(allMembers, this));
 
                 }, NetworkErrorHandler.basicErrorHandler);
     }
@@ -124,6 +156,12 @@ public class SelectMemberActivity extends BaseActivity{
                     multiSelector.setSelectable(true);
                 }
                 multiSelector.setSelected(this, isChecked);
+                if(multiSelector.getSelectedPositions().size() == 0){
+                    menuItemConfirm.setTitle(R.string.confirm_select);
+                }else {
+                    String title = getString(R.string.confirm_select) + "(" + multiSelector.getSelectedPositions().size() + ")";
+                    menuItemConfirm.setTitle(title);
+                }
             }
         }
 
@@ -149,6 +187,10 @@ public class SelectMemberActivity extends BaseActivity{
         @Override
         public int getItemCount() {
             return mMemberList.size();
+        }
+
+        public List<Member> getList(){
+            return mMemberList;
         }
     }
 

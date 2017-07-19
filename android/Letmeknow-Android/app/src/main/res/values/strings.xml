@@ -13,7 +13,7 @@
 
     <string name="setting_title">设置</string>
     <string name="edit_titile">编辑新通知</string>
-    <string name="select_circle">选择圈子</string>
+    <string name="confirm_select">确认</string>
     <string name="select_members">选择成员</string>
     <string name="send_notification">发送通知</string>
 

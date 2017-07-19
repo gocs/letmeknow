@@ -16,7 +16,7 @@ public class Receipt implements Serializable{
     private String recipientName;
 
     @SerializedName("status")
-    private boolean status;
+    private boolean status = false;
 
     @SerializedName("choice_index")
     private Integer choiceIndex;

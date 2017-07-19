@@ -6,7 +6,14 @@
         android:id="@+id/menu_select_circle"
         android:icon="@drawable/ic_button_select_member"
         app:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/select_circle"
+        android:title="@string/send_notification"
+        />
+
+    <item
+        android:id="@+id/menu_send_notification"
+        android:icon="@drawable/ic_send_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/send_notification"
         />
 
 </menu>

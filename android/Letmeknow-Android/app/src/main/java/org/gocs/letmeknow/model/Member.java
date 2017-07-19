@@ -2,11 +2,15 @@ package org.gocs.letmeknow.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by lenovo on 2017/7/13.
  */
 
-public class Member {
+public class Member implements Serializable{
+
+    private static final long serialVersionUID = 7389250464012466702L;
 
     @SerializedName("userId")
     private String userId;

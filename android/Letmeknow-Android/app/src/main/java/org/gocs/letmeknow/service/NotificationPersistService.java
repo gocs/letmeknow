@@ -40,13 +40,15 @@ import static org.gocs.letmeknow.couchbase.DataBaseClient.getCouchDBInstance;
  * Created by dynamicheart on 7/12/2017.
  */
 
-public class NotificationService {
+public class NotificationPersistService {
     public static Observable<String> create(Notification notification) {
         return Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String> subscriber) throws Exception {
                 Document doc = getCouchDBInstance().createDocument();
                 try {
+                    notification.setType("notification");
+
                     //set up channels
                     List<String> channels = new LinkedList<String>();
                     channels.add(notification.getSenderId());

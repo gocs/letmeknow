@@ -4,21 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.avos.avoscloud.AVInstallation;
-
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
-import org.gocs.letmeknow.model.Notification;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.model.component.Receipt;
-import org.gocs.letmeknow.service.NotificationService;
 import org.gocs.letmeknow.util.UserManager;
-import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by dynamicheart on 7/3/2017.
