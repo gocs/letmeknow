@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import org.gocs.letmeknow.util.UserManager;
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+
+import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
 
 /**
  * Created by dynamicheart on 6/30/2017.
@@ -55,6 +58,9 @@ public class UserProfileActivity extends BaseActivity {
 
     @BindView(R.id.text_user_email)
     TextView text_email;
+
+    @BindView(R.id.image_user_portrait)
+    ImageView image_avatar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,5 +107,6 @@ public class UserProfileActivity extends BaseActivity {
         text_username.setText(user.getUserName());
         text_phone.setText(user.getPhoneNumber());
         text_email.setText(user.getEmail());
+        loadImgByInternetUrl(this,"http://106.15.179.41:8080/letmeknow/img/a.png",image_avatar);
     }
 }

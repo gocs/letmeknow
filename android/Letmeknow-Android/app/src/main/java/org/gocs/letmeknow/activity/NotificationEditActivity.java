@@ -56,9 +56,6 @@ public class NotificationEditActivity extends BaseActivity{
     @SuppressWarnings("unchecked")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent intent = getIntent();
-        memberList = (ArrayList<Member>) intent.getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
         initToolbar();
     }
 
@@ -88,10 +85,14 @@ public class NotificationEditActivity extends BaseActivity{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
             case R.id.menu_send_notification:
+                int ads = getIntent().getIntExtra("1",0);
+                memberList = (ArrayList<Member>) getIntent().getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
+                CircleBrief circleBrief = (CircleBrief) getIntent().getSerializableExtra(SelectMemberActivity.GROUP_BRIEF);
                 if(memberList == null || memberList.size() == 0){
                     ToastUtils.showShortToast("FUCK");
                     return true;

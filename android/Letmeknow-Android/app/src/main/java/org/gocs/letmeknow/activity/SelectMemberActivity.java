@@ -96,7 +96,7 @@ public class SelectMemberActivity extends BaseActivity{
                     return true;
                 }
                 Intent intent = new Intent(SelectMemberActivity.this, NotificationEditActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                 ArrayList<Member> selectedMembers = new ArrayList<>();
                 for(int position : multiSelector.getSelectedPositions()){
