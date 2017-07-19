@@ -336,7 +336,6 @@ public class MainActivity extends BaseActivity
         floatingActionMenu.setClosedOnTouchOutside(true);
         floatingActionButtonCreate.setOnClickListener(v->{
             Intent intent = new Intent(MainActivity.this, NotificationEditActivity.class);
-            intent.putExtra("1",1);
             startActivity(intent);
         });
     }

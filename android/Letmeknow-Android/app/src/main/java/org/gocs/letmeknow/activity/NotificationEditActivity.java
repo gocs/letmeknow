@@ -91,9 +91,6 @@ public class NotificationEditActivity extends BaseActivity{
         int id = item.getItemId();
         switch (id){
             case R.id.menu_send_notification:
-                int ads = getIntent().getIntExtra("1",0);
-                memberList = (ArrayList<Member>) getIntent().getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
-                CircleBrief circleBrief = (CircleBrief) getIntent().getSerializableExtra(SelectMemberActivity.GROUP_BRIEF);
                 if(memberList == null || memberList.size() == 0){
                     ToastUtils.showShortToast("FUCK");
                     return true;
