@@ -31,7 +31,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_portrait_circle_info"
                         android:layout_width="90dp"
                         android:layout_height="90dp"

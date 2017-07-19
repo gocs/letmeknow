@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.event.UserLoginEvent;
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,6 +42,7 @@ public class SplashActivity extends BaseActivity {
                     User user = UserManager.getCurrentUser();
                     if(user != null && user.isLogin()){
                         intent = new Intent(SplashActivity.this, MainActivity.class);
+                        EventBus.getDefault().post(new UserLoginEvent(UserLoginEvent.LoginType.LOGIN));
                     }else{
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
                     }

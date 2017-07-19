@@ -16,6 +16,7 @@ import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.PrivateMessage;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.PicassoImgUtil;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.w3c.dom.Text;
 
@@ -108,8 +109,8 @@ public class CircleInformerFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(CircleInformerFragment.CiHolder holder, int position){
             Member ci = ciList.get(position);
-            //holder.mCiAvatar.setImageDrawable(ci.getAvatar());
-            //TODO 图像如何取回并加载？ 使用picaso？ 是否需要在Member类中加入新的属性？
+            String avatarUrl = ci.getAvatar();
+            PicassoImgUtil.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCiAvatar);
             holder.mCiName.setText(ci.getUserName());
         }
 

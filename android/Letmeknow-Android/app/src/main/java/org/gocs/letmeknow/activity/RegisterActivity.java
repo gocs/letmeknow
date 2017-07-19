@@ -13,8 +13,11 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -43,20 +46,19 @@ public class RegisterActivity extends BaseActivity{
         buttonRegister.setOnClickListener(view->{
             String userName = editTextUserName.getText().toString();
             String password = editTextPassword.getText().toString();
-            String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
 
-            RetrofitClient.getService().register(userName, password, installationId)
+            RetrofitClient.getService().register(userName, password)
                     .flatMap(NetworkErrorHandler.ErrorFilter)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response->{
-                        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         User user = (User)response.getData().get(Constants.JSON_KEY_USER);
-                        user.setLogin(true);
                         UserManager.saveOrUpdateUser(user);
+                        UserManager.changeLoginStatus(true);
+                        EventBus.getDefault().post(new UserLoginEvent(UserLoginEvent.LoginType.REGISTER));
                     },NetworkErrorHandler.basicErrorHandler);
         });
 

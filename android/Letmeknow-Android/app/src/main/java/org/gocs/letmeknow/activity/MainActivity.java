@@ -94,30 +94,6 @@ public class MainActivity extends BaseActivity
         initDrawer();
         initTab();
         setUpFloatingActionMenu();
-        ToastUtils.showShortToast(AVInstallation.getCurrentInstallation().getInstallationId());
-        detectInstallationIdChange();
-
-        List<String> channels = new ArrayList<>();
-        channels.add(UserManager.getCurrentUser().getUserId());
-        DataBaseClient.startReplication(channels);
-    }
-
-    private void detectInstallationIdChange(){
-        User user = UserManager.getCurrentUser();
-        String userId = user.getUserId();
-        String oldInstallationId = user.getInstallationId();
-        String currentInstallationId = AVInstallation.getCurrentInstallation().getInstallationId();
-        if(oldInstallationId == null || !oldInstallationId.equals(currentInstallationId)){
-            RetrofitClient.getService().updateInstallationId(userId, currentInstallationId)
-                    .flatMap(NetworkErrorHandler.ErrorFilter)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(response -> {
-                        user.setInstallationId(currentInstallationId);
-                        UserManager.saveOrUpdateUser(user);
-                    },NetworkErrorHandler.basicErrorHandler);
-        }
-
     }
 
     @Override

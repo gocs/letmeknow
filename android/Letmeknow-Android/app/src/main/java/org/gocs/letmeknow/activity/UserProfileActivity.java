@@ -22,10 +22,13 @@ import org.gocs.letmeknow.network.OkHttpProvider;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.PicassoImgUtil;
 import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.event.UserLogoutEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.io.IOException;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -33,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.RESULT_LOAD_IMAGE;
 import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
+import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByRawUrl;
 
 /**
  * Created by dynamicheart on 6/30/2017.
@@ -40,6 +44,7 @@ import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
 
 public class UserProfileActivity extends BaseActivity {
 
+    private final static float SCALED_IMG_SIZE = 200;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -83,16 +88,18 @@ public class UserProfileActivity extends BaseActivity {
             Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            UserManager.changeLoginStatus(false);
-            OkHttpProvider.clearCookie();
+
 
             RetrofitClient.getService().logout()
                     .flatMap(NetworkErrorHandler.ErrorFilter)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
-                        Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
+                        EventBus.getDefault().post(new UserLogoutEvent());
                     }, NetworkErrorHandler.basicErrorHandler);
+
+            UserManager.changeLoginStatus(false);
+            OkHttpProvider.clearCookie();
         });
         image_avatar.setOnClickListener(view->{
             Intent galleryIntent = new Intent(Intent.ACTION_PICK,
@@ -108,18 +115,22 @@ public class UserProfileActivity extends BaseActivity {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null !=data){
             Uri selectedImageUri = data.getData();
-            String[] projection = {MediaStore.Images.Media.DATA};
-            @SuppressWarnings("deprecation")
-            Cursor cursor = getContentResolver().query(selectedImageUri, projection, null, null, null);
-            cursor.moveToFirst();
+            Bitmap bitmap = null;
+            try{
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+            }catch(IOException ignore){
+                ToastUtils.showShortToast("读取图片失败");
+                return;
+            }
+            float ratio = Math.min(
+                    (float) SCALED_IMG_SIZE / bitmap.getWidth(),
+                    (float) SCALED_IMG_SIZE / bitmap.getHeight());
+            int width = Math.round((float) ratio * bitmap.getWidth());
+            int height = Math.round((float) ratio * bitmap.getHeight());
 
-            int column_index = cursor.getColumnIndex(projection[0]);
-            String imagePath = cursor.getString(column_index);
-            cursor.close();
-            ToastUtils.showShortToast(imagePath);
-
-            File imgFile = new File(imagePath);
-            PicassoImgUtil.loadImgByFile(this,imgFile, image_avatar);
+            bitmap = Bitmap.createScaledBitmap(bitmap, width,
+                    height, true);
+            image_avatar.setImageBitmap(bitmap);
             //TODO send new avatar to server.
             ToastUtils.showShortToast("成功更改头像");
         } else {
@@ -150,6 +161,7 @@ public class UserProfileActivity extends BaseActivity {
         text_username.setText(user.getUserName());
         text_phone.setText(user.getPhoneNumber());
         text_email.setText(user.getEmail());
-        loadImgByInternetUrl(this,"http://106.15.179.41:8080/letmeknow/img/a.png",image_avatar);
+        String rawUrl = UserManager.getCurrentUser().getAvatarUrl();
+        loadImgByRawUrl(this,rawUrl,image_avatar);
     }
 }
