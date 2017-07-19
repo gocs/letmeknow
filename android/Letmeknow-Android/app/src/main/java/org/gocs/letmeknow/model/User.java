@@ -21,7 +21,7 @@ public class User implements Serializable{
     @SerializedName("password")
     private String password;
 
-    @SerializedName("phone_num")
+    @SerializedName("phoneNum")
     private String phoneNumber;
 
     @SerializedName("email")

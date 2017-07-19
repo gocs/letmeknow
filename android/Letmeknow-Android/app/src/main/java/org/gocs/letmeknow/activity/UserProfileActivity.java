@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
+import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.OkHttpProvider;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
@@ -25,13 +28,39 @@ import io.reactivex.schedulers.Schedulers;
 public class UserProfileActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.button_logoff)
     Button button;
+
+    @BindView(R.id.layout_user_username)
+    RelativeLayout layout_username;
+
+    @BindView(R.id.layout_user_name)
+    RelativeLayout layout_name;
+
+    @BindView(R.id.layout_user_phone)
+    RelativeLayout layout_phone;
+
+    @BindView(R.id.layout_user_email)
+    RelativeLayout layout_email;
+
+    @BindView(R.id.text_user_username)
+    TextView text_username;
+
+    @BindView(R.id.text_user_name)
+    TextView text_name;
+
+    @BindView(R.id.text_user_phone)
+    TextView text_phone;
+
+    @BindView(R.id.text_user_email)
+    TextView text_email;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar();
+        initData();
         button.setOnClickListener(view -> {
             Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -67,4 +96,10 @@ public class UserProfileActivity extends BaseActivity {
         getSupportActionBar().setTitle(R.string.user_info_title);
     }
 
+    private void initData(){
+        User user = UserManager.getCurrentUser();
+        text_username.setText(user.getUserName());
+        text_phone.setText(user.getPhoneNumber());
+        text_email.setText(user.getEmail());
+    }
 }
