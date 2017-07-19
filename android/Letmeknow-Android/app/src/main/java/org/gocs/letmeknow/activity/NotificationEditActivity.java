@@ -51,7 +51,6 @@ public class NotificationEditActivity extends BaseActivity{
     private ArrayList<Member> memberList;
 
     public static final String MEMBER_LIST_SERIALIZABLE = "MEMBER_LIST_SERIALIZABLE";
-    public static final int REQUEST_CODE_GET_MEMBERS = 0;
 
     @Override
     @SuppressWarnings("unchecked")
@@ -91,6 +90,7 @@ public class NotificationEditActivity extends BaseActivity{
         int id = item.getItemId();
         switch (id){
             case R.id.menu_send_notification:
+                memberList = (ArrayList<Member>) getIntent().getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
                 if(memberList == null || memberList.size() == 0){
                     ToastUtils.showShortToast("FUCK");
                     return true;
@@ -99,7 +99,7 @@ public class NotificationEditActivity extends BaseActivity{
                 break;
             case R.id.menu_select_circle:
                 Intent intent = new Intent(NotificationEditActivity.this, SelectCircleActivity.class);
-                startActivityForResult(intent,REQUEST_CODE_GET_MEMBERS);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -108,20 +108,6 @@ public class NotificationEditActivity extends BaseActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case REQUEST_CODE_GET_MEMBERS:
-                Bundle bundle = data.getExtras();
-                memberList = (ArrayList<Member>) bundle.getSerializable(MEMBER_LIST_SERIALIZABLE);
-                break;
-            default:
-                break;
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
     private void sendNotification(){
         CircleBrief circleBrief = (CircleBrief) getIntent().getSerializableExtra(SelectMemberActivity.GROUP_BRIEF);
@@ -167,7 +153,11 @@ public class NotificationEditActivity extends BaseActivity{
                         }
                     });
                 }, DatabaseErrorHandler.basicErrorHandler);
+    }
 
-
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 }

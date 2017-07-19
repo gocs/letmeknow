@@ -112,7 +112,6 @@ public class SelectCircleActivity extends BaseActivity{
             holder.mTextView.setText(mCircleBriefList.get(position).getGroupName());
             holder.mView.setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, SelectMemberActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
                 intent.putExtra(SelectMemberActivity.GROUP_BRIEF, mCircleBriefList.get(position));
                 startActivity(intent);
             });
