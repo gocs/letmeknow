@@ -6,6 +6,6 @@ package org.gocs.letmeknow.model.component;
 
 public enum CircleRoleType {
     master,
-    informer,
-    normal
+    notifier,
+    regular
 }

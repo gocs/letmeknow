@@ -23,8 +23,8 @@
 
     <string name="user_info_title">个人信息</string>
     <string name="user_info_portrait">头像</string>
+    <string name="user_info_username">用户名</string>
     <string name="user_info_name">姓名</string>
-    <string name="user_info_sex">性别</string>
     <string name="user_info_phone">电话号码</string>
     <string name="user_info_email">邮箱账号</string>
     <string name="user_info_logoff">退出登录</string>

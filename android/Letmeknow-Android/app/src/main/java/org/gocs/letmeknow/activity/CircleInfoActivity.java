@@ -116,10 +116,10 @@ public class CircleInfoActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         CircleRoleType role = circleBrief.getRole();
-        if(role.equals(CircleRoleType.normal)){//normal member
+        if(role.equals(CircleRoleType.regular)){//normal member
             getMenuInflater().inflate(R.menu.circle_menu_default, menu);
             return true;
-        }else if(role.equals(CircleRoleType.informer)){//informer
+        }else if(role.equals(CircleRoleType.notifier)){//informer
             getMenuInflater().inflate(R.menu.circle_menu_informer, menu);
             return true;
         }else{//master
