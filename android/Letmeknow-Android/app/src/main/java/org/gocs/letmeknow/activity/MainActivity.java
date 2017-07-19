@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVInstallation;
+import com.avos.avoscloud.PushService;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
@@ -82,6 +83,8 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.tab_notification);
+
+        PushService.setDefaultPushCallback(this, MainActivity.class);
 
         //can not inject
         View header = navigationView.getHeaderView(0);
