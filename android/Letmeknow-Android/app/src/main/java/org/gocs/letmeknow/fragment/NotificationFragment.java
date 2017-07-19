@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.adapter.NotificationRecyclerViewAdapter;
 import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.service.NotificationService;
+import org.gocs.letmeknow.service.NotificationPersistService;
 import org.gocs.letmeknow.util.UserManager;
 import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 
@@ -37,7 +37,7 @@ public class NotificationFragment extends BaseFragment {
     }
 
     private void setupRecyclerView(){
-        NotificationService.listByRecipientId(UserManager.getCurrentUser().getUserId())
+        NotificationPersistService.listByRecipientId(UserManager.getCurrentUser().getUserId())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(notifications -> {
                     recyclerViewNoticationList.setLayoutManager(new LinearLayoutManager(recyclerViewNoticationList.getContext()));
