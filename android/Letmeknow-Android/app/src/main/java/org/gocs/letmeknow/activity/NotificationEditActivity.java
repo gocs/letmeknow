@@ -93,6 +93,7 @@ public class NotificationEditActivity extends BaseActivity{
         switch (id){
             case R.id.menu_send_notification:
                 if(memberList == null || memberList.size() == 0){
+                    ToastUtils.showShortToast("FUCK");
                     return true;
                 }
                 sendNotification();
@@ -120,19 +121,14 @@ public class NotificationEditActivity extends BaseActivity{
         notification.setNotificationType(NotificationType.NORMAL);
 
         Map<String,Receipt> receipts = new HashMap<>();
+        List<String> installationIds = new LinkedList<String>();
         for(Member member: memberList){
             Receipt receipt = new Receipt();
             receipt.setRecipientName(member.getUserName());
             receipts.put(member.getUserId(), receipt);
+            installationIds.add(member.getInstallationId());
         }
         notification.setReceiptMap(receipts);
-
-        //set up channels
-        List<String> channels = new LinkedList<String>();
-        channels.add(notification.getSenderId());
-        for(String recipientId:notification.getReceiptMap().keySet()){
-            channels.add(recipientId);
-        }
 
         NotificationPersistService.create(notification)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -141,7 +137,7 @@ public class NotificationEditActivity extends BaseActivity{
 
                     AVQuery<AVInstallation> query = AVInstallation.getQuery();
 
-                    query.whereContainedIn("installationId", channels);
+                    query.whereContainedIn("installationId", installationIds);
                     push.setQuery(query);
 
                     JSONObject jsonObject = new JSONObject();
@@ -153,6 +149,7 @@ public class NotificationEditActivity extends BaseActivity{
                         @Override
                         public void done(AVException e) {
                             ToastUtils.showShortToast("send successfully");
+                            finish();
                         }
                     });
                 }, DatabaseErrorHandler.basicErrorHandler);
