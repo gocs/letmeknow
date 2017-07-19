@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.User" table="user" schema="letmeknow_test">
+        <id name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+            <generator class="increment" />
+        </id>
+        <property name="username" not-null="true">
+            <column name="username" sql-type="varchar(255)"/>
+        </property>
+        <property name="password" not-null="true">
+            <column name="password" sql-type="varchar(255)"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(255)" />
+        </property>
+        <property name="phoneNum">
+            <column name="phone_num" sql-type="int(11)" />
+        </property>
+        <property name="isAdmin" not-null="true">
+            <column name="is_admin" sql-type="int(11)"/>
+        </property>
+        <property name="status" not-null="true">
+            <column name="status" sql-type="int(11)"/>
+        </property>
+        <property name="createdAt" not-null="true">
+            <column name="created_at" sql-type="java.sql.Timestamp" />
+        </property>
+        <property name="updatedAt" not-null="true">
+            <column name="updated_at" sql-type="java.sql.Timestamp" />
+        </property>
+        <property name="deletedAt">
+            <column name="deleted_at" sql-type="java.sql.Timestamp" />
+        </property>
+        <property name="avatar">
+            <column name="avatar" sql-type="varchar(45)" length="45" />
+        </property>
+        <property name="installationId">
+            <column name="installation_id" sql-type="varchar(45)" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
