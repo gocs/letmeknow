@@ -42,7 +42,7 @@ public class SplashActivity extends BaseActivity {
                     User user = UserManager.getCurrentUser();
                     if(user != null && user.isLogin()){
                         intent = new Intent(SplashActivity.this, MainActivity.class);
-                        EventBus.getDefault().post(new UserLoginEvent());
+                        EventBus.getDefault().post(new UserLoginEvent(UserLoginEvent.LoginType.LOGIN));
                     }else{
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
                     }
