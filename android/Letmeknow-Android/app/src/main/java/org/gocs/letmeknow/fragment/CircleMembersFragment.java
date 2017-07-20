@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.CircleBrief;
@@ -18,6 +20,7 @@ import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.PrivateMessage;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.model.CircleBrief;
+import org.gocs.letmeknow.util.PicassoImgUtil;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.w3c.dom.Text;
 
@@ -69,6 +72,10 @@ public class CircleMembersFragment extends BaseFragment {
                 }, NetworkErrorHandler.basicErrorHandler);
     }
 
+    /*
+    * get avatarUrls from cmList and form avatarUrlList
+    */
+
 
     private class CmHolder extends RecyclerView.ViewHolder{
         ImageView mCmAvatar;
@@ -91,14 +98,17 @@ public class CircleMembersFragment extends BaseFragment {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
             View view = layoutInflater
                     .inflate(R.layout.item_member_briefcard, parent, false);
+
+            //view.setOnClickListener(this);
+
             return new CmHolder(view);
         }
 
         @Override
         public void onBindViewHolder(CircleMembersFragment.CmHolder holder, int position){
             Member cm = cmList.get(position);
-            //holder.mCmAvatar.setImageDrawable(cm.getAvatar());
-            //TODO 图像如何取回并加载？ 使用picaso？ 是否需要在Member类中加入新的属性？
+            String avatarUrl = cm.getAvatar();
+            PicassoImgUtil.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCmAvatar);
             holder.mCmName.setText(cm.getUserName());
         }
 

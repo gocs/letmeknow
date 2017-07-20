@@ -43,7 +43,7 @@ public class Constants {
 
     public static final String COUCHDB_NAME = "testdb";
 
-
+    public static final String BASE_IMG_URL = "http://106.15.179.41:8080/letmeknow/";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
 
 }
