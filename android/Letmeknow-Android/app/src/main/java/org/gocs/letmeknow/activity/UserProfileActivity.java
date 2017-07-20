@@ -26,6 +26,7 @@ import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
 
 import java.io.File;
+import java.io.IOException;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,6 +41,7 @@ import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
 
 public class UserProfileActivity extends BaseActivity {
 
+    private final static float SCALED_IMG_SIZE = 200;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -108,18 +110,23 @@ public class UserProfileActivity extends BaseActivity {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null !=data){
             Uri selectedImageUri = data.getData();
-            String[] projection = {MediaStore.Images.Media.DATA};
-            @SuppressWarnings("deprecation")
-            Cursor cursor = getContentResolver().query(selectedImageUri, projection, null, null, null);
-            cursor.moveToFirst();
+            Bitmap bitmap = null;
+            try{
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+            }catch(IOException ignore){
+                ToastUtils.showShortToast("读取图片失败");
+                return;
+            }
+            float ratio = Math.min(
+                    (float) SCALED_IMG_SIZE / bitmap.getWidth(),
+                    (float) SCALED_IMG_SIZE / bitmap.getHeight());
+            int width = Math.round((float) ratio * bitmap.getWidth());
+            int height = Math.round((float) ratio * bitmap.getHeight());
 
-            int column_index = cursor.getColumnIndex(projection[0]);
-            String imagePath = cursor.getString(column_index);
-            cursor.close();
-            ToastUtils.showShortToast(imagePath);
-
-            File imgFile = new File(imagePath);
-            PicassoImgUtil.loadImgByFile(this,imgFile, image_avatar);
+            bitmap = Bitmap.createScaledBitmap(bitmap, width,
+                    height, true);
+            image_avatar.setImageBitmap(bitmap);
+            //PicassoImgUtil.loadImgByUri(this,selectedImageUri,image_avatar);
             //TODO send new avatar to server.
             ToastUtils.showShortToast("成功更改头像");
         } else {

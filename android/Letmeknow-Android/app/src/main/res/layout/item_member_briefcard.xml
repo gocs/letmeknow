@@ -5,7 +5,7 @@
     android:layout_height="@dimen/member_briefcard_height"
     android:background="@color/colorWhite">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_cm_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
