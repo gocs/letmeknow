@@ -15,10 +15,8 @@ import android.widget.TextView;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.activity.NotificationDetailActivity;
 import org.gocs.letmeknow.model.Notification;
-import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.service.NotificationPersistService;
-import org.gocs.letmeknow.util.UserManager;
-import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;

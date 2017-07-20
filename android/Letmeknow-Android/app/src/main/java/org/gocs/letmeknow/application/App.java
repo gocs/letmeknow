@@ -1,6 +1,5 @@
 package org.gocs.letmeknow.application;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.avos.avoscloud.AVAnalytics;
@@ -9,18 +8,23 @@ import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.PushService;
 import com.avos.avoscloud.SaveCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.AVIMMessageManager;
+import com.avos.avoscloud.im.v2.AVIMTypedMessage;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 
 import android.support.multidex.MultiDexApplication;
-import android.widget.Toast;
 
-import org.gocs.letmeknow.activity.LoginActivity;
 import org.gocs.letmeknow.activity.MainActivity;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.couchbase.DataBaseClient;
+import org.gocs.letmeknow.util.manager.leancloud.AVImClientManager;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.ToastUtils;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.gocs.letmeknow.util.event.UserLogoutEvent;
+import org.gocs.letmeknow.util.handler.MessageHandler;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,8 +35,6 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
-import static com.avos.avoscloud.AVInstallation.getCurrentInstallation;
 
 /**
  * Created by dynamicheart on 6/26/2017.
@@ -63,6 +65,10 @@ public class App extends MultiDexApplication {
     private void initLeanCloud(){
         AVOSCloud.initialize(this, Constants.APP_ID, Constants.APP_KEY);
 
+        // 必须在启动的时候注册 MessageHandler
+        // 应用一启动就会重连，服务器会推送离线消息过来，需要 MessageHandler 来处理
+        AVIMMessageManager.registerMessageHandler(AVIMTypedMessage.class, new MessageHandler(this));
+
         AVOSCloud.setDebugLogEnabled(true);
         AVOSCloud.setLastModifyEnabled(true);
         AVAnalytics.enableCrashReport(getInstance(), true);
@@ -89,6 +95,12 @@ public class App extends MultiDexApplication {
                 } else {
                     ToastUtils.showShortToast("推送功能出错");
                 }
+            }
+        });
+        AVImClientManager.getInstance().open(UserManager.getCurrentUser().getUserId(), new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+
             }
         });
         switch (event.getLoginType()){

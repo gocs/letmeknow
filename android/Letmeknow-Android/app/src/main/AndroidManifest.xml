@@ -3,17 +3,15 @@
     package="org.gocs.letmeknow">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-role android:name="android.role.WRITE_EXTERNAL_STORAGE" />
-    <uses-role android:name="android.role.INTERNET"/>
-    <uses-role android:name="android.role.ACCESS_NETWORK_STATE" />
-    <uses-role android:name="android.role.READ_PHONE_STATE" />
-    <uses-role android:name="android.role.ACCESS_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
@@ -77,6 +75,10 @@
 
         </activity>
 
+        <activity android:name=".activity.ConversationActivity">
+
+        </activity>
+
         <!-- 实时通信模块、推送（均需要加入以下声明） START -->
         <!-- 实时通信模块、推送都要使用 PushService -->
         <service android:name="com.avos.avoscloud.PushService"/>
@@ -85,10 +87,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".receiver.CustomReceiver" >
+        <receiver android:name=".util.receiver.CustomReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -97,6 +100,8 @@
                 <action android:name="com.pushdemo.action" />
             </intent-filter>
         </receiver>
+
+        <receiver android:name=".util.NotificationBroadcastReceiver"/>
 
         <!-- 实时通信模块、推送 END -->
 

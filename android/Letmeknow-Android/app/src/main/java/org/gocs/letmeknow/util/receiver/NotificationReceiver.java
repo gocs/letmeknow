@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.receiver;
+package org.gocs.letmeknow.util.receiver;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;

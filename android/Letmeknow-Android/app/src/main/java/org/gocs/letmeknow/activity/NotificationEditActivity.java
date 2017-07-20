@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVInstallation;
@@ -16,8 +15,6 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.SendCallback;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
-import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.Notification;
@@ -25,7 +22,7 @@ import org.gocs.letmeknow.model.component.NotificationType;
 import org.gocs.letmeknow.model.component.Receipt;
 import org.gocs.letmeknow.service.NotificationPersistService;
 import org.gocs.letmeknow.util.ToastUtils;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 import org.json.JSONObject;
 

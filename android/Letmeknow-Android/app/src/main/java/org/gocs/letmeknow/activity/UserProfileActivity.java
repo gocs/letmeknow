@@ -1,9 +1,7 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,21 +11,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.network.OkHttpProvider;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.PicassoImgUtil;
+import org.gocs.letmeknow.util.manager.network.OkHttpProvider;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.event.UserLogoutEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.File;
 import java.io.IOException;
 
 import butterknife.BindView;
@@ -35,8 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.RESULT_LOAD_IMAGE;
-import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
-import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByRawUrl;
+import static org.gocs.letmeknow.util.PicassoImgUtils.loadImgByRawUrl;
 
 /**
  * Created by dynamicheart on 6/30/2017.

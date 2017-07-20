@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import butterknife.BindView;

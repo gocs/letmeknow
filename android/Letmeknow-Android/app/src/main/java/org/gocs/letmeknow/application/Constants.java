@@ -36,15 +36,24 @@ public class Constants {
 
     public static final String DEFAULT_CONVERSATION_NAME = "DEFAULT_CONVERSATION";
 
-    public enum TabStatus{
-        NOTIFICATION,
-        SEND,
-        READ
-    }
-
     public static final String COUCHDB_NAME = "testdb";
 
     public static final String BASE_IMG_URL = "http://106.15.179.41:8080/letmeknow/";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
+
+
+    private static final String LEANMESSAGE_CONSTANTS_PREFIX = "com.leancloud.im.guide";
+
+    public static final String MEMBER_ID = getPrefixConstant("member_id");
+    public static final String CONVERSATION_ID = getPrefixConstant("conversation_id");
+
+    public static final String ACTIVITY_TITLE = getPrefixConstant("activity_title");
+
+
+    public static final String SQUARE_CONVERSATION_ID = "55cd829e60b2b52cda834469";
+
+    private static String getPrefixConstant(String str) {
+        return LEANMESSAGE_CONSTANTS_PREFIX + str;
+    }
 
 }

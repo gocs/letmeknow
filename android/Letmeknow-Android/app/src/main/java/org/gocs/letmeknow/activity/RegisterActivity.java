@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.avos.avoscloud.AVInstallation;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;

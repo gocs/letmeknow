@@ -3,12 +3,9 @@ package org.gocs.letmeknow.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,17 +17,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 
-import com.google.gson.annotations.SerializedName;
-
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.fragment.CircleInformerFragment;
 import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
 import org.gocs.letmeknow.fragment.CircleMembersFragment;
 import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.CircleBrief;
-import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.component.CircleRoleType;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
@@ -42,7 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_IMAGE_ID;
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
-import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
+import static org.gocs.letmeknow.util.PicassoImgUtils.loadImgByInternetUrl;
 
 /**
  * Created by rebas on 2017/6/30.

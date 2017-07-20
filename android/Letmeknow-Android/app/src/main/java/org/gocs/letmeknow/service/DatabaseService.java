@@ -1,6 +1,5 @@
 package org.gocs.letmeknow.service;
 
-import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.Emitter;
 import com.couchbase.lite.Mapper;
@@ -8,23 +7,14 @@ import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
 import com.couchbase.lite.QueryRow;
 import com.couchbase.lite.Reducer;
-import com.couchbase.lite.UnsavedRevision;
 import com.couchbase.lite.View;
 import com.couchbase.lite.replicator.Replication;
-import com.couchbase.lite.util.Log;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.App;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.model.Notification;
-import org.gocs.letmeknow.model.component.Choice;
-import org.gocs.letmeknow.model.component.Receipt;
-import org.gocs.letmeknow.util.DatabaseErrorPromptUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +25,8 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 
-import static org.gocs.letmeknow.couchbase.DataBaseClient.getCouchDBInstance;
-import static org.gocs.letmeknow.couchbase.DataBaseClient.getSyncUrl;
+import static org.gocs.letmeknow.util.manager.couchbase.DataBaseClient.getCouchDBInstance;
+import static org.gocs.letmeknow.util.manager.couchbase.DataBaseClient.getSyncUrl;
 
 /**
  * Created by dynamicheart on 7/12/2017.

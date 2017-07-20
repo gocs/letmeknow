@@ -9,4 +9,7 @@
     <dimen name="circle_info_header">225dp</dimen>
     <dimen name="back_button_margin">16dp</dimen>
     <dimen name="member_briefcard_height">50dp</dimen>
+
+    <dimen name="chat_horizontal_margin">15dp</dimen>
+    <dimen name="chat_horizontal_big_margin">40dp</dimen>
 </resources>

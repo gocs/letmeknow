@@ -1,6 +1,6 @@
 package org.gocs.letmeknow.fragment;
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,13 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.activity.ConversationActivity;
+import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
-import org.gocs.letmeknow.model.PrivateMessage;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.PicassoImgUtil;
+import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
+import org.gocs.letmeknow.util.PicassoImgUtils;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,9 +87,11 @@ public class CircleInformerFragment extends BaseFragment {
     private class CiHolder extends RecyclerView.ViewHolder{
         public ImageView mCiAvatar;
         public TextView mCiName;
+        View mView;
 
         public CiHolder(View view){
             super(view);
+            mView = view;
             mCiAvatar = (ImageView)view.findViewById(item_cm_avatar);
             mCiName = (TextView) view.findViewById(item_cm_name);
         }
@@ -110,8 +114,18 @@ public class CircleInformerFragment extends BaseFragment {
         public void onBindViewHolder(CircleInformerFragment.CiHolder holder, int position){
             Member ci = ciList.get(position);
             String avatarUrl = ci.getAvatar();
-            PicassoImgUtil.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCiAvatar);
+            PicassoImgUtils.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCiAvatar);
             holder.mCiName.setText(ci.getUserName());
+            holder.mView.setOnClickListener(v->{
+                if(mCIs.get(position).getUserId() == UserManager.getCurrentUser().getUserId()){
+                    ToastUtils.showShortToast("不能和自己通话");
+                    return;
+                }
+                Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                intent.putExtra(Constants.MEMBER_ID,mCIs.get(position).getUserId());
+                startActivity(intent);
+            });
+
         }
 
         @Override
