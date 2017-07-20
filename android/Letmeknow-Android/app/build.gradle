@@ -61,6 +61,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     compile 'com.couchbase.lite:couchbase-lite-android:1.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.bignerdranch.android:recyclerview-multiselect:0.2'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
@@ -75,7 +76,7 @@ dependencies {
     compile 'cn.leancloud.android:avoscloud-statistics:v4.3.2'
     // LeanCloud 用户反馈包
     compile 'cn.leancloud.android:avoscloud-feedback:v4.3.2@aar'
-    compile 'org.greenrobot:eventbus:3.0.0'
+
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 

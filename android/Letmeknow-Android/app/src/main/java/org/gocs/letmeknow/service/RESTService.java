@@ -20,10 +20,10 @@ import retrofit2.http.Query;
 
 public interface RESTService {
     @POST("letmeknow/login")
-    Observable<HttpResponse<User>> login(@Query("username") String username, @Query("password") String password, @Query("installationId") String installationId);
+    Observable<HttpResponse<User>> login(@Query("username") String username, @Query("password") String password);
 
     @POST("letmeknow/register")
-    Observable<HttpResponse<User>> register(@Query("username") String username, @Query("password") String password, @Query("installationId") String installationId);
+    Observable<HttpResponse<User>> register(@Query("username") String username, @Query("password") String password);
 
     @GET("letmeknow/logout")
     Observable<HttpResponse<Void>> logout();

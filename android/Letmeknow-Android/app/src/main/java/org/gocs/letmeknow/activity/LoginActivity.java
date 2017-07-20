@@ -16,8 +16,10 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -48,9 +50,8 @@ public class LoginActivity extends BaseActivity{
             public void onClick(View v) {
                 String userName = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
-                String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
 
-                RetrofitClient.getService().login(userName, password, installationId)
+                RetrofitClient.getService().login(userName, password)
                         .flatMap(NetworkErrorHandler.ErrorFilter)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -62,6 +63,7 @@ public class LoginActivity extends BaseActivity{
                             User user = (User)response.getData().get(Constants.JSON_KEY_USER);
                             user.setLogin(true);
                             UserManager.saveOrUpdateUser(user);
+                            EventBus.getDefault().post(new UserLoginEvent());
                         }, NetworkErrorHandler.basicErrorHandler);
 
             }
