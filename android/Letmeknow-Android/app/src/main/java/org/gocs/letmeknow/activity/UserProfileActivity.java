@@ -22,8 +22,10 @@ import org.gocs.letmeknow.network.OkHttpProvider;
 import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.util.PicassoImgUtil;
 import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.event.UserLogoutEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,6 +95,7 @@ public class UserProfileActivity extends BaseActivity {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
+                        EventBus.getDefault().post(new UserLogoutEvent());
                         Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
                     }, NetworkErrorHandler.basicErrorHandler);
         });
