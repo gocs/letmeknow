@@ -18,10 +18,9 @@
     <com.github.clans.fab.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom | center"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_done_white_24dp"
         app:fab_size="normal"/>
-
 
 </android.support.design.widget.CoordinatorLayout>

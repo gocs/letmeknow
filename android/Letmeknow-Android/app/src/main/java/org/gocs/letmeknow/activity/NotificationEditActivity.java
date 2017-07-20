@@ -133,6 +133,7 @@ public class NotificationEditActivity extends BaseActivity{
         NotificationPersistService.create(notification)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(notificationId->{
+
                     AVPush push = new AVPush();
 
                     AVQuery<AVInstallation> query = AVInstallation.getQuery();
@@ -142,7 +143,8 @@ public class NotificationEditActivity extends BaseActivity{
 
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("action", "com.pushdemo.action");
-                    jsonObject.put("alert", "fuck");
+                    jsonObject.put("notificationId", notificationId);
+                    jsonObject.put("alert", "New Message");
 
                     push.setMessage("SDfsd");
                     push.setData(jsonObject);

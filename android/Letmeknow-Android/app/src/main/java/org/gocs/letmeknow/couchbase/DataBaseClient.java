@@ -150,7 +150,7 @@ public class DataBaseClient{
         Manager.enableLogging(Log.TAG_DATABASE, Log.VERBOSE);
     }
 
-    private static URL getSyncUrl() {
+    public static URL getSyncUrl() {
         URL url = null;
         try {
             url = new URL(SYNC_URL_HTTP);
@@ -171,7 +171,7 @@ public class DataBaseClient{
         pull.start();
 
 
-        if (push == null) {
+/*        if (push == null) {
             push = getCouchDBInstance().createPushReplication(getSyncUrl());
             push.setContinuous(true);
             push.setChannels(channels);
@@ -179,15 +179,15 @@ public class DataBaseClient{
         }
 
         push.stop();
-        push.start();
+        push.start();*/
     }
 
     public static void stopReplication(){
         if(pull != null){
             pull.stop();
         }
-        if(push != null){
+/*        if(push != null){
             push.stop();
-        }
+        }*/
     }
 }

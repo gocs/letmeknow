@@ -10,6 +10,7 @@ import com.couchbase.lite.QueryRow;
 import com.couchbase.lite.Reducer;
 import com.couchbase.lite.UnsavedRevision;
 import com.couchbase.lite.View;
+import com.couchbase.lite.replicator.Replication;
 import com.couchbase.lite.util.Log;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +36,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.couchbase.DataBaseClient.getCouchDBInstance;
+import static org.gocs.letmeknow.couchbase.DataBaseClient.getSyncUrl;
 
 /**
  * Created by dynamicheart on 7/12/2017.
@@ -57,8 +59,13 @@ public class DatabaseService {
                     Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Map<String, Object>>() {});
                     Document document = getCouchDBInstance().createDocument();
                     document.putProperties(properties);
-                    subscriber.onNext(document.getId());
-                    subscriber.onComplete();
+
+                    Replication push = getCouchDBInstance().createPushReplication(getSyncUrl());
+                    push.addChangeListener(changeEvent->{
+                        if(changeEvent.getStatus() == Replication.ReplicationStatus.REPLICATION_STOPPED)
+                        subscriber.onNext(document.getId());
+                        subscriber.onComplete();
+                    });
                 } catch (Exception e) {
                     subscriber.onError(e);
                 }
