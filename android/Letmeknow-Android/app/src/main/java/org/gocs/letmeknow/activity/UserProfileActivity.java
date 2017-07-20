@@ -88,8 +88,7 @@ public class UserProfileActivity extends BaseActivity {
             Intent intent = new Intent(UserProfileActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            UserManager.changeLoginStatus(false);
-            OkHttpProvider.clearCookie();
+
 
             RetrofitClient.getService().logout()
                     .flatMap(NetworkErrorHandler.ErrorFilter)
@@ -97,8 +96,10 @@ public class UserProfileActivity extends BaseActivity {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response -> {
                         EventBus.getDefault().post(new UserLogoutEvent());
-                        Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
                     }, NetworkErrorHandler.basicErrorHandler);
+
+            UserManager.changeLoginStatus(false);
+            OkHttpProvider.clearCookie();
         });
         image_avatar.setOnClickListener(view->{
             Intent galleryIntent = new Intent(Intent.ACTION_PICK,
