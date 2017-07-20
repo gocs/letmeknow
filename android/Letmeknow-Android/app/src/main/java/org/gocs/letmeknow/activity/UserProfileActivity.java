@@ -36,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.RESULT_LOAD_IMAGE;
 import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
+import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByRawUrl;
 
 /**
  * Created by dynamicheart on 6/30/2017.
@@ -129,7 +130,6 @@ public class UserProfileActivity extends BaseActivity {
             bitmap = Bitmap.createScaledBitmap(bitmap, width,
                     height, true);
             image_avatar.setImageBitmap(bitmap);
-            //PicassoImgUtil.loadImgByUri(this,selectedImageUri,image_avatar);
             //TODO send new avatar to server.
             ToastUtils.showShortToast("成功更改头像");
         } else {
@@ -160,6 +160,7 @@ public class UserProfileActivity extends BaseActivity {
         text_username.setText(user.getUserName());
         text_phone.setText(user.getPhoneNumber());
         text_email.setText(user.getEmail());
-        loadImgByInternetUrl(this,"http://106.15.179.41:8080/letmeknow/img/a.png",image_avatar);
+        String rawUrl = UserManager.getCurrentUser().getAvatarUrl();
+        loadImgByRawUrl(this,rawUrl,image_avatar);
     }
 }
