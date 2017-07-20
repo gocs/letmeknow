@@ -92,7 +92,7 @@ public class NotificationEditActivity extends BaseActivity{
             case R.id.menu_send_notification:
                 memberList = (ArrayList<Member>) getIntent().getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
                 if(memberList == null || memberList.size() == 0){
-                    ToastUtils.showShortToast("FUCK");
+                    ToastUtils.showShortToast("请选择接收者");
                     return true;
                 }
                 sendNotification();
