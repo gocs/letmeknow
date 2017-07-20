@@ -52,14 +52,13 @@ public class RegisterActivity extends BaseActivity{
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(response->{
-                        ToastUtils.showShortToast("注册成功");
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         User user = (User)response.getData().get(Constants.JSON_KEY_USER);
-                        user.setLogin(true);
                         UserManager.saveOrUpdateUser(user);
-                        EventBus.getDefault().post(new UserLoginEvent());
+                        UserManager.changeLoginStatus(true);
+                        EventBus.getDefault().post(new UserLoginEvent(UserLoginEvent.LoginType.REGISTER));
                     },NetworkErrorHandler.basicErrorHandler);
         });
 

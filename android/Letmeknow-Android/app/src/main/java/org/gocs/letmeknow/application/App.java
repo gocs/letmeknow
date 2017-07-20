@@ -13,6 +13,7 @@ import com.avos.avoscloud.SaveCallback;
 import android.support.multidex.MultiDexApplication;
 import android.widget.Toast;
 
+import org.gocs.letmeknow.activity.LoginActivity;
 import org.gocs.letmeknow.activity.MainActivity;
 import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.network.RetrofitClient;
@@ -90,6 +91,17 @@ public class App extends MultiDexApplication {
                 }
             }
         });
+        switch (event.getLoginType()){
+            case LOGIN:
+                ToastUtils.showShortToast("登录成功");
+                break;
+            case REGISTER:
+                ToastUtils.showShortToast("注册成功");
+                break;
+            default:
+                break;
+        }
+
 
     }
 
@@ -103,7 +115,7 @@ public class App extends MultiDexApplication {
                 },NetworkErrorHandler.basicErrorHandler);
 
         DataBaseClient.stopReplication();
-        Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortToast("注销成功");
     }
 
 

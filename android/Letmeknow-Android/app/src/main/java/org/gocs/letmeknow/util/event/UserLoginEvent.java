@@ -7,4 +7,17 @@ import org.gocs.letmeknow.model.User;
  */
 
 public class UserLoginEvent {
+    private LoginType loginType;
+
+    public UserLoginEvent(LoginType loginType) {
+        this.loginType = loginType;
+    }
+
+    public enum LoginType{
+        LOGIN,REGISTER
+    }
+
+    public LoginType getLoginType() {
+        return loginType;
+    }
 }
