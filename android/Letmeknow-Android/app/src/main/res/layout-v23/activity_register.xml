@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -13,7 +12,7 @@
     android:background="@drawable/login_background">
 
     <ProgressBar
-        android:id="@+id/progress_bar_login"
+        android:id="@+id/progress_bar_register"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,12 +33,12 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/text_login_username"
+                    android:id="@+id/text_register_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_username"
                     android:inputType="text"
-                    android:maxLines="1"/>
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -48,7 +47,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/text_login_password"
+                    android:id="@+id/text_register_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
@@ -58,19 +57,13 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/button_login"
+                android:id="@+id/button_register"
                 style="@android:style/Widget.Material.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/sign_in"
+                android:text="@string/register"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="没有账号？点击注册"/>
 
         </LinearLayout>
     </ScrollView>

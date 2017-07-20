@@ -42,13 +42,10 @@ public class LoginActivity extends BaseActivity{
     Button buttonLogin;
     @BindView(R.id.text_register)
     TextView textRegister;
-    @BindView(R.id.login_background)
-    LinearLayout background;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        background.setBackground(getResources().getDrawable(R.drawable.login_background));
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
