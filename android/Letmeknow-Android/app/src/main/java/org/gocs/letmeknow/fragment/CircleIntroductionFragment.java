@@ -10,16 +10,9 @@ import android.widget.TextView;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.Circle;
-import org.gocs.letmeknow.model.CircleBrief;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-
-import static org.gocs.letmeknow.activity.CircleInfoActivity.CIRCLE_SERIALIZABLE;
 
 /**
  * Created by lenovo on 2017/6/30.

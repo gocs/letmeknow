@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.network;
+package org.gocs.letmeknow.util.manager.network;
 
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;

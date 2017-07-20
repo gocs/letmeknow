@@ -1,28 +1,18 @@
-package org.gocs.letmeknow.couchbase;
+package org.gocs.letmeknow.util.manager.couchbase;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.couchbase.lite.*;
 import com.couchbase.lite.android.AndroidContext;
-import com.couchbase.lite.auth.Authenticator;
 import com.couchbase.lite.replicator.Replication;
 import com.couchbase.lite.util.Log;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.model.Notification;
-import org.gocs.letmeknow.model.component.Choice;
-import org.gocs.letmeknow.model.component.Receipt;
-import org.gocs.letmeknow.util.DatabaseErrorPromptUtils;
 import org.gocs.letmeknow.util.ToastUtils;
 
 /**
@@ -103,7 +93,7 @@ public class DataBaseClient{
             newRev.save();
         }
         catch (CouchbaseLiteException e) {
-            DatabaseErrorPromptUtils.ShowException(App.getInstance(), R.string.err_write_attach, e);
+            ToastUtils.showShortToast(App.getInstance().getString(R.string.err_write_attach));
         }
     }
 
@@ -136,7 +126,7 @@ public class DataBaseClient{
             newRev.save();
         }
         catch (CouchbaseLiteException e) {
-            DatabaseErrorPromptUtils.ShowException(App.getInstance(), R.string.err_delete_attach, e );
+            ToastUtils.showShortToast(App.getInstance().getString(R.string.err_delete_attach));
         }
     }
 
@@ -150,7 +140,7 @@ public class DataBaseClient{
         Manager.enableLogging(Log.TAG_DATABASE, Log.VERBOSE);
     }
 
-    private static URL getSyncUrl() {
+    public static URL getSyncUrl() {
         URL url = null;
         try {
             url = new URL(SYNC_URL_HTTP);
@@ -164,7 +154,6 @@ public class DataBaseClient{
         if (pull == null) {
             pull = getCouchDBInstance().createPullReplication(getSyncUrl());
             pull.setContinuous(true);
-            pull.setChannels(channels);
         }
 
         pull.stop();
@@ -174,8 +163,6 @@ public class DataBaseClient{
         if (push == null) {
             push = getCouchDBInstance().createPushReplication(getSyncUrl());
             push.setContinuous(true);
-            push.setChannels(channels);
-
         }
 
         push.stop();

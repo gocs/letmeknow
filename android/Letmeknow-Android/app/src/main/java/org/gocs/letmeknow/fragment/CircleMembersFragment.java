@@ -1,6 +1,6 @@
 package org.gocs.letmeknow.fragment;
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,20 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import org.gocs.letmeknow.R;
+import org.gocs.letmeknow.activity.ConversationActivity;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
-import org.gocs.letmeknow.model.PrivateMessage;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.model.CircleBrief;
-import org.gocs.letmeknow.util.PicassoImgUtil;
+import org.gocs.letmeknow.util.ToastUtils;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
+import org.gocs.letmeknow.util.PicassoImgUtils;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -74,11 +71,13 @@ public class CircleMembersFragment extends BaseFragment {
 
 
     private class CmHolder extends RecyclerView.ViewHolder{
+        View mView;
         ImageView mCmAvatar;
         TextView mCmName;
 
         CmHolder(View view){
             super(view);
+            mView = view;
             mCmAvatar = (ImageView)view.findViewById(item_cm_avatar);
             mCmName = (TextView) view.findViewById(item_cm_name);
         }
@@ -104,8 +103,17 @@ public class CircleMembersFragment extends BaseFragment {
         public void onBindViewHolder(CircleMembersFragment.CmHolder holder, int position){
             Member cm = cmList.get(position);
             String avatarUrl = cm.getAvatar();
-            PicassoImgUtil.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCmAvatar);
+            PicassoImgUtils.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCmAvatar);
             holder.mCmName.setText(cm.getUserName());
+            holder.mView.setOnClickListener(v->{
+                if(mCMs.get(position).getUserId().equals(UserManager.getCurrentUser().getUserId())){
+                    ToastUtils.showShortToast("不能和自己通话");
+                    return;
+                }
+                Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                intent.putExtra(Constants.MEMBER_ID,mCMs.get(position).getUserId());
+                startActivity(intent);
+            });
         }
 
         @Override

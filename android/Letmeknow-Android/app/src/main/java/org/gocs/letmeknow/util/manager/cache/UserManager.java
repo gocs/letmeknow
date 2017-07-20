@@ -1,8 +1,9 @@
-package org.gocs.letmeknow.util;
+package org.gocs.letmeknow.util.manager.cache;
 
 import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
+import org.gocs.letmeknow.util.ACache;
 
 /**
  * Created by dynamicheart on 7/5/2017.

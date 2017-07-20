@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVInstallation;
@@ -16,8 +15,6 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.SendCallback;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
-import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
 import org.gocs.letmeknow.model.Notification;
@@ -25,7 +22,7 @@ import org.gocs.letmeknow.model.component.NotificationType;
 import org.gocs.letmeknow.model.component.Receipt;
 import org.gocs.letmeknow.service.NotificationPersistService;
 import org.gocs.letmeknow.util.ToastUtils;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 import org.json.JSONObject;
 
@@ -92,7 +89,7 @@ public class NotificationEditActivity extends BaseActivity{
             case R.id.menu_send_notification:
                 memberList = (ArrayList<Member>) getIntent().getSerializableExtra(MEMBER_LIST_SERIALIZABLE);
                 if(memberList == null || memberList.size() == 0){
-                    ToastUtils.showShortToast("FUCK");
+                    ToastUtils.showShortToast("请选择接收者");
                     return true;
                 }
                 sendNotification();
@@ -133,6 +130,7 @@ public class NotificationEditActivity extends BaseActivity{
         NotificationPersistService.create(notification)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(notificationId->{
+
                     AVPush push = new AVPush();
 
                     AVQuery<AVInstallation> query = AVInstallation.getQuery();
@@ -142,7 +140,8 @@ public class NotificationEditActivity extends BaseActivity{
 
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("action", "com.pushdemo.action");
-                    jsonObject.put("alert", "fuck");
+                    jsonObject.put("notificationId", notificationId);
+                    jsonObject.put("alert", "New Message");
 
                     push.setMessage("SDfsd");
                     push.setData(jsonObject);

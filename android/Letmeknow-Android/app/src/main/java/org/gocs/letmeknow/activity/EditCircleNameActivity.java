@@ -6,13 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.gocs.letmeknow.R;
-import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.network.RetrofitClient;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import butterknife.BindView;

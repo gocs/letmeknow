@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.receiver;
+package org.gocs.letmeknow.util.receiver;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +11,8 @@ import com.avos.avoscloud.AVOSCloud;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.activity.MainActivity;
+import org.gocs.letmeknow.activity.NotificationDetailActivity;
+import org.gocs.letmeknow.service.NotificationPersistService;
 import org.json.JSONObject;
 
 public class CustomReceiver extends BroadcastReceiver {
@@ -20,8 +22,10 @@ public class CustomReceiver extends BroadcastReceiver {
     try {
       if (intent.getAction().equals("com.pushdemo.action")) {
         JSONObject json = new JSONObject(intent.getExtras().getString("com.avos.avoscloud.Data"));
+        String dbNotificationId = json.getString("notificationId");
         final String message = json.getString("alert");
-        Intent resultIntent = new Intent(AVOSCloud.applicationContext, MainActivity.class);
+        Intent resultIntent = new Intent(AVOSCloud.applicationContext, NotificationDetailActivity.class);
+        resultIntent.putExtra("notificationId", dbNotificationId);
         PendingIntent pendingIntent =
             PendingIntent.getActivity(AVOSCloud.applicationContext, 0, resultIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);

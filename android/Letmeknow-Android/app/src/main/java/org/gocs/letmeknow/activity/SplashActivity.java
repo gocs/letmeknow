@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.greenrobot.eventbus.EventBus;
 

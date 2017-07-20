@@ -23,7 +23,7 @@ import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.CircleBrief;
 import org.gocs.letmeknow.model.Member;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;

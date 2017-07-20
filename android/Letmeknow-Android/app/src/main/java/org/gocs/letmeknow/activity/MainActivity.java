@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.PushService;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -29,19 +28,16 @@ import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.couchbase.DataBaseClient;
 import org.gocs.letmeknow.fragment.CircleFragment;
-import org.gocs.letmeknow.fragment.CircleIntroductionFragment;
 import org.gocs.letmeknow.fragment.NotificationFragment;
 import org.gocs.letmeknow.fragment.PrivateMessageFragment;
 import org.gocs.letmeknow.fragment.ReadFragment;
 import org.gocs.letmeknow.fragment.SendFragment;
-import org.gocs.letmeknow.model.Circle;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.QRCodeUtils;
 import org.gocs.letmeknow.util.ToastUtils;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 
 import java.util.ArrayList;
@@ -51,7 +47,6 @@ import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.avos.avoscloud.Messages.OpType.result;
 import static org.gocs.letmeknow.application.Constants.TAB_IMAGE_RES_ID;
 import static org.gocs.letmeknow.application.Constants.TAB_NUM;
 

@@ -15,10 +15,8 @@ import android.widget.TextView;
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.activity.NotificationDetailActivity;
 import org.gocs.letmeknow.model.Notification;
-import org.gocs.letmeknow.network.RetrofitClient;
 import org.gocs.letmeknow.service.NotificationPersistService;
-import org.gocs.letmeknow.util.UserManager;
-import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class NotificationFragment extends BaseFragment {
     @BindView(R.id.recyclerView_notification)
-    RecyclerView recyclerViewNoticationList;
+    RecyclerView recyclerViewNotificationList;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -49,9 +47,9 @@ public class NotificationFragment extends BaseFragment {
     }
 
     private void setupRecyclerView(){
-        recyclerViewNoticationList.setLayoutManager(new LinearLayoutManager(recyclerViewNoticationList.getContext()));
+        recyclerViewNotificationList.setLayoutManager(new LinearLayoutManager(recyclerViewNotificationList.getContext()));
         notificationRecyclerViewAdapter = new NotificationRecyclerViewAdapter(getActivity());
-        recyclerViewNoticationList.setAdapter(notificationRecyclerViewAdapter);
+        recyclerViewNotificationList.setAdapter(notificationRecyclerViewAdapter);
 
         // Setup refresh listener which triggers new data loading
         swipeRefreshLayout.setOnRefreshListener(()->{

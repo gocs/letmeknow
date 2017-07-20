@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.network;
+package org.gocs.letmeknow.util.manager.network;
 
 import org.gocs.letmeknow.service.RESTService;
 

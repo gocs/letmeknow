@@ -9,17 +9,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.avos.avoscloud.AVInstallation;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
 import org.gocs.letmeknow.model.User;
-import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.manager.network.RetrofitClient;
 import org.gocs.letmeknow.util.event.UserLoginEvent;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
-import org.gocs.letmeknow.util.UserManager;
+import org.gocs.letmeknow.util.manager.cache.UserManager;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
