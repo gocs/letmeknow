@@ -72,10 +72,6 @@ public class CircleMembersFragment extends BaseFragment {
                 }, NetworkErrorHandler.basicErrorHandler);
     }
 
-    /*
-    * get avatarUrls from cmList and form avatarUrlList
-    */
-
 
     private class CmHolder extends RecyclerView.ViewHolder{
         ImageView mCmAvatar;

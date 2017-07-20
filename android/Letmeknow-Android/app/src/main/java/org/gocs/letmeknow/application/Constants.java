@@ -21,6 +21,7 @@ public class Constants {
 
     public static final int TAB_NUM = 5;
     public static final int CIRCLE_TAB_NUM = 3;
+    public static final int RESULT_LOAD_IMAGE = 6;
 
     public static final String INSTALLATION_ID = "INSTALLATION_ID";
     public static final String CURRENT_USER = "CURRENT_USER";

@@ -1,7 +1,12 @@
 package org.gocs.letmeknow.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
@@ -15,13 +20,18 @@ import org.gocs.letmeknow.application.App;
 import org.gocs.letmeknow.model.User;
 import org.gocs.letmeknow.network.OkHttpProvider;
 import org.gocs.letmeknow.network.RetrofitClient;
+import org.gocs.letmeknow.util.PicassoImgUtil;
+import org.gocs.letmeknow.util.ToastUtils;
 import org.gocs.letmeknow.util.handler.NetworkErrorHandler;
 import org.gocs.letmeknow.util.UserManager;
+
+import java.io.File;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static org.gocs.letmeknow.application.Constants.RESULT_LOAD_IMAGE;
 import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
 
 /**
@@ -29,6 +39,8 @@ import static org.gocs.letmeknow.util.PicassoImgUtil.loadImgByInternetUrl;
  */
 
 public class UserProfileActivity extends BaseActivity {
+
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -82,6 +94,37 @@ public class UserProfileActivity extends BaseActivity {
                         Toast.makeText(App.getInstance(),"注销成功",Toast.LENGTH_SHORT).show();
                     }, NetworkErrorHandler.basicErrorHandler);
         });
+        image_avatar.setOnClickListener(view->{
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            galleryIntent.setType("image/*");
+            startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null !=data){
+            Uri selectedImageUri = data.getData();
+            String[] projection = {MediaStore.Images.Media.DATA};
+            @SuppressWarnings("deprecation")
+            Cursor cursor = getContentResolver().query(selectedImageUri, projection, null, null, null);
+            cursor.moveToFirst();
+
+            int column_index = cursor.getColumnIndex(projection[0]);
+            String imagePath = cursor.getString(column_index);
+            cursor.close();
+            ToastUtils.showShortToast(imagePath);
+
+            File imgFile = new File(imagePath);
+            PicassoImgUtil.loadImgByFile(this,imgFile, image_avatar);
+            //TODO send new avatar to server.
+            ToastUtils.showShortToast("成功更改头像");
+        } else {
+            ToastUtils.showShortToast("未选择图片");
+        }
     }
 
     @Override
