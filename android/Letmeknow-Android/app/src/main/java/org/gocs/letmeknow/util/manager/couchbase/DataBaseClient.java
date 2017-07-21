@@ -153,6 +153,7 @@ public class DataBaseClient{
     public static void startReplication(List<String> channels) {
         if (pull == null) {
             pull = getCouchDBInstance().createPullReplication(getSyncUrl());
+            pull.setChannels(channels);
             pull.setContinuous(true);
         }
 
@@ -176,5 +177,13 @@ public class DataBaseClient{
         if(push != null){
             push.stop();
         }
+    }
+
+    public static Replication getPullRelication(){
+        return pull;
+    }
+
+    public static Replication getPushReplication(){
+        return push;
     }
 }

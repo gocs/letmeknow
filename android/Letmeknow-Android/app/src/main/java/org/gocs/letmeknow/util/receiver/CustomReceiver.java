@@ -15,6 +15,8 @@ import org.gocs.letmeknow.activity.NotificationDetailActivity;
 import org.gocs.letmeknow.service.NotificationPersistService;
 import org.json.JSONObject;
 
+import static org.gocs.letmeknow.util.manager.couchbase.DataBaseClient.getPushReplication;
+
 public class CustomReceiver extends BroadcastReceiver {
 
   @Override
@@ -38,6 +40,7 @@ public class CustomReceiver extends BroadcastReceiver {
                 .setTicker(message);
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setAutoCancel(true);
+
 
         int mNotificationId = 10086;
         NotificationManager mNotifyMgr =

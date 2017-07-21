@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -25,6 +26,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.util.manager.couchbase.DataBaseClient.getCouchDBInstance;
+import static org.gocs.letmeknow.util.manager.couchbase.DataBaseClient.getPushReplication;
 
 /**
  * Created by dynamicheart on 7/12/2017.
@@ -37,6 +39,8 @@ public class NotificationPersistService {
             public void subscribe(@NonNull ObservableEmitter<String> subscriber) throws Exception {
                 Document doc = getCouchDBInstance().createDocument();
                 try {
+                    int count = 0;
+
                     //set up channels
                     List<String> channels = new LinkedList<String>();
                     channels.add(notification.getSenderId());
@@ -48,6 +52,13 @@ public class NotificationPersistService {
                     Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Map<String, Object>>() {});
                     Document document = getCouchDBInstance().createDocument();
                     document.putProperties(properties);
+                    while (getPushReplication().getPendingDocumentIDs().contains(document.getId())){
+                        Thread.sleep(100);
+                        if(count ++ > 50){
+                            subscriber.onError(new Exception("time out"));
+                            return;
+                        }
+                    }
                     subscriber.onNext(document.getId());
                     subscriber.onComplete();
                 } catch (Exception e) {
@@ -55,6 +66,39 @@ public class NotificationPersistService {
                 }
             }
         }).subscribeOn(Schedulers.io());
+    }
+
+    public static Observable<Notification> waitUtilSync(String notificationId){
+        return Observable.create(new ObservableOnSubscribe<Notification>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Notification> subscriber) throws Exception {
+                try{
+                    int count = 0;
+
+                    Query query = NotificationViewUtils.getIdView().createQuery();
+                    query.setStartKey(notificationId);
+                    query.setEndKey(notificationId);
+                    QueryEnumerator enumerator;
+                    do{
+                        Thread.sleep(100);
+                        enumerator = query.run();
+                        if(count++ >  3000){
+                            subscriber.onError(new Exception("time out"));
+                            return;
+                        }
+                    }while (enumerator.getCount() == 0);
+
+                    QueryRow row = enumerator.next();
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    Notification notification = objectMapper.convertValue(row.getValue(),Notification.class);
+                    notification.setDocument(row.getDocumentProperties());
+                    subscriber.onNext(notification);
+                    subscriber.onComplete();
+                }catch (Exception e){
+                    subscriber.onError(e);
+                }
+            }
+        });
     }
 
     public static Observable<Notification> findOne(String id){
@@ -165,6 +209,7 @@ public class NotificationPersistService {
         private static final String RECIPIENT_KEY = "recipient";
         private static final String ID_KEY = "_id";
 
+        private static final String ID_VIEW = "id_view";
         private static final String SENDER_ID_VIEW = "sender_id_view";
         private static final String GROUP_ID_VIEW = "group_id_view";
         private static final String RECIPIENT_ID_VIEW = "recipient_id_view";
@@ -214,6 +259,23 @@ public class NotificationPersistService {
                                     emitter.emit(recipientId,document);
                                 }
                             }
+                        }
+                    }
+                };
+                view.setMap(mapper, "1.0");
+            }
+            return view;
+        }
+
+        static View getIdView(){
+            View view = getCouchDBInstance().getView(ID_VIEW);
+            if(view.getMap() == null){
+                Mapper mapper = new Mapper() {
+                    @Override
+                    public void map(Map<String, Object> document, Emitter emitter) {
+                        String type = (String)document.get(TYPE_KEY);
+                        if (TYPE_NOTIFICATION.equals(type)){
+                            emitter.emit(document.get(ID_KEY), null);
                         }
                     }
                 };

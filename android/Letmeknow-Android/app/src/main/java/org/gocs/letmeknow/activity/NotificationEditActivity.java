@@ -34,6 +34,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by dynamicheart on 7/7/2017.
@@ -128,7 +129,7 @@ public class NotificationEditActivity extends BaseActivity{
         notification.setReceiptMap(receipts);
 
         NotificationPersistService.create(notification)
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
                 .subscribe(notificationId->{
 
                     AVPush push = new AVPush();
@@ -150,10 +151,11 @@ public class NotificationEditActivity extends BaseActivity{
                         @Override
                         public void done(AVException e) {
                             ToastUtils.showShortToast("send successfully");
-                            finish();
                         }
                     });
                 }, DatabaseErrorHandler.basicErrorHandler);
+
+        finish();
     }
 
     @Override

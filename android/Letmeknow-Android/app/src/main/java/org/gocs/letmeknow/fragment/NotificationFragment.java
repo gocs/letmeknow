@@ -70,6 +70,7 @@ public class NotificationFragment extends BaseFragment {
 
         });
 
+
         NotificationPersistService.listByRecipientId(UserManager.getCurrentUser().getUserId())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(notifications -> {
