@@ -54,7 +54,7 @@ public class NotificationPersistService {
                     document.putProperties(properties);
                     while (getPushReplication().getPendingDocumentIDs() != null && getPushReplication().getPendingDocumentIDs().contains(document.getId())){
                         Thread.sleep(100);
-                        if(count ++ > 50){
+                        if(count ++ > 5000){
                             subscriber.onError(new Exception("time out"));
                             return;
                         }
