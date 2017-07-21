@@ -52,7 +52,7 @@ public class NotificationPersistService {
                     Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Map<String, Object>>() {});
                     Document document = getCouchDBInstance().createDocument();
                     document.putProperties(properties);
-                    while (getPushReplication().getPendingDocumentIDs().contains(document.getId())){
+                    while (getPushReplication().getPendingDocumentIDs() != null && getPushReplication().getPendingDocumentIDs().contains(document.getId())){
                         Thread.sleep(100);
                         if(count ++ > 50){
                             subscriber.onError(new Exception("time out"));
