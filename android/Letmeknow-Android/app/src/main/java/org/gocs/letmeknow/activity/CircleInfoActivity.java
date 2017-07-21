@@ -36,6 +36,8 @@ import io.reactivex.schedulers.Schedulers;
 
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_IMAGE_ID;
 import static org.gocs.letmeknow.application.Constants.CIRCLE_TAB_NUM;
+import static org.gocs.letmeknow.application.Constants.OPERATION_DESIGNATE;
+import static org.gocs.letmeknow.application.Constants.OPERATION_KICK;
 import static org.gocs.letmeknow.util.PicassoImgUtils.loadImgByInternetUrl;
 
 /**
@@ -139,7 +141,9 @@ public class CircleInfoActivity extends BaseActivity {
                 break;
             }
             case R.id.menu_item_circle_send:{
-
+                Intent intent = new Intent(this, SelectMemberActivity.class);
+                intent.putExtra(SelectMemberActivity.GROUP_BRIEF, circleBrief);
+                startActivity(intent);
                 break;
             }
             case R.id.menu_item_circle_edit_gname:{
@@ -155,9 +159,17 @@ public class CircleInfoActivity extends BaseActivity {
                 break;
             }
             case R.id.menu_item_circle_kick:{
+                Intent intent = new Intent(CircleInfoActivity.this, SelectCircleMemberActivity.class);
+                intent.putExtra(SelectCircleMemberActivity.GROUP_BRIEF,circleBrief);
+                intent.putExtra(SelectCircleMemberActivity.OPERATION_FLAG,OPERATION_KICK);
+                startActivity(intent);
                 break;
             }
             case R.id.menu_item_circle_designate:{
+                Intent intent = new Intent(CircleInfoActivity.this, SelectCircleMemberActivity.class);
+                intent.putExtra(SelectCircleMemberActivity.GROUP_BRIEF,circleBrief);
+                intent.putExtra(SelectCircleMemberActivity.OPERATION_FLAG,OPERATION_DESIGNATE);
+                startActivity(intent);
                 break;
             }
             case R.id.menu_item_circle_quit:{

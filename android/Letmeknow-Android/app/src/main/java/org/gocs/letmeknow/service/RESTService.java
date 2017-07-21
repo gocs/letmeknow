@@ -54,4 +54,10 @@ public interface RESTService {
 
     @GET("letmeknow/common/joinGroup")
     Observable<HttpResponse<Void>> joinGroup(@Query("groupId") String groupId);
+
+    @GET("letmeknow/common/kickOutFromGroup")
+    Observable<HttpResponse<Void>> kickOut(@Query("groupId") String groupId, @Query("userId") String userId);
+
+    @GET("letmeknow/common/changeToNotifier")
+    Observable<HttpResponse<Void>> designate(@Query("groupId") String groupId, @Query("userId") String userId);
 }
