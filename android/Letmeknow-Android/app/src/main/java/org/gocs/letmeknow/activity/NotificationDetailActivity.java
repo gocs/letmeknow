@@ -2,6 +2,8 @@ package org.gocs.letmeknow.activity;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.model.Notification;
+import org.gocs.letmeknow.service.NotificationPersistService;
+import org.gocs.letmeknow.util.handler.DatabaseErrorHandler;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by dynamicheart on 6/30/2017.
@@ -32,6 +35,8 @@ import butterknife.BindView;
 public class NotificationDetailActivity extends BaseActivity{
 
     public static final String NOTIFICATION_SERIALIZABLE = "NOTIFICATION_SERIALIZABLE";
+
+    public static final String NOTIFICATION_ID = "notificationId";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -45,7 +50,16 @@ public class NotificationDetailActivity extends BaseActivity{
 
         Intent intent = getIntent();
         Notification notification = (Notification) intent.getSerializableExtra(NOTIFICATION_SERIALIZABLE);
-        textViewNotificationContent.setText(notification.getContent());
+        if(notification != null){
+            textViewNotificationContent.setText(notification.getContent());
+        }else {
+            String notificationId = intent.getStringExtra(NOTIFICATION_ID);
+            NotificationPersistService.findOne(notificationId)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(dbNotification ->{
+                        textViewNotificationContent.setText(dbNotification.getContent());
+                    }, DatabaseErrorHandler.basicErrorHandler);
+        }
     }
 
     @Override

@@ -154,30 +154,27 @@ public class DataBaseClient{
         if (pull == null) {
             pull = getCouchDBInstance().createPullReplication(getSyncUrl());
             pull.setContinuous(true);
-            pull.setChannels(channels);
         }
 
         pull.stop();
         pull.start();
 
 
-/*        if (push == null) {
+        if (push == null) {
             push = getCouchDBInstance().createPushReplication(getSyncUrl());
             push.setContinuous(true);
-            push.setChannels(channels);
-
         }
 
         push.stop();
-        push.start();*/
+        push.start();
     }
 
     public static void stopReplication(){
         if(pull != null){
             pull.stop();
         }
-/*        if(push != null){
+        if(push != null){
             push.stop();
-        }*/
+        }
     }
 }

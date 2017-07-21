@@ -101,7 +101,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".util.NotificationBroadcastReceiver"/>
+        <receiver android:name=".util.receiver.NotificationBroadcastReceiver"/>
 
         <!-- 实时通信模块、推送 END -->
 

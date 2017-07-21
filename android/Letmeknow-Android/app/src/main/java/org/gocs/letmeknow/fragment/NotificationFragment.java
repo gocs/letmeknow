@@ -31,7 +31,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class NotificationFragment extends BaseFragment {
     @BindView(R.id.recyclerView_notification)
-    RecyclerView recyclerViewNoticationList;
+    RecyclerView recyclerViewNotificationList;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -47,9 +47,9 @@ public class NotificationFragment extends BaseFragment {
     }
 
     private void setupRecyclerView(){
-        recyclerViewNoticationList.setLayoutManager(new LinearLayoutManager(recyclerViewNoticationList.getContext()));
+        recyclerViewNotificationList.setLayoutManager(new LinearLayoutManager(recyclerViewNotificationList.getContext()));
         notificationRecyclerViewAdapter = new NotificationRecyclerViewAdapter(getActivity());
-        recyclerViewNoticationList.setAdapter(notificationRecyclerViewAdapter);
+        recyclerViewNotificationList.setAdapter(notificationRecyclerViewAdapter);
 
         // Setup refresh listener which triggers new data loading
         swipeRefreshLayout.setOnRefreshListener(()->{

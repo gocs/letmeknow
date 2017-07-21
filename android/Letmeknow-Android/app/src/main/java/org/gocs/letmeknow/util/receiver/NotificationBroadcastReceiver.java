@@ -1,4 +1,4 @@
-package org.gocs.letmeknow.util;
+package org.gocs.letmeknow.util.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

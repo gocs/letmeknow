@@ -37,14 +37,13 @@ public class NotificationPersistService {
             public void subscribe(@NonNull ObservableEmitter<String> subscriber) throws Exception {
                 Document doc = getCouchDBInstance().createDocument();
                 try {
-                    notification.setType("notification");
-
                     //set up channels
                     List<String> channels = new LinkedList<String>();
                     channels.add(notification.getSenderId());
                     for(String recipientId:notification.getReceiptMap().keySet()){
                         channels.add(recipientId);
                     }
+                    notification.setChannels(channels);
 
                     Map<String, Object> properties = new ObjectMapper().convertValue(notification, new TypeReference<Map<String, Object>>() {});
                     Document document = getCouchDBInstance().createDocument();

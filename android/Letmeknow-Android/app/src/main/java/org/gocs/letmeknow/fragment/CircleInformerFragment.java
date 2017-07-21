@@ -117,7 +117,7 @@ public class CircleInformerFragment extends BaseFragment {
             PicassoImgUtils.loadImgByRawUrl(getActivity(),avatarUrl,holder.mCiAvatar);
             holder.mCiName.setText(ci.getUserName());
             holder.mView.setOnClickListener(v->{
-                if(mCIs.get(position).getUserId() == UserManager.getCurrentUser().getUserId()){
+                if(mCIs.get(position).getUserId().equals(UserManager.getCurrentUser().getUserId())){
                     ToastUtils.showShortToast("不能和自己通话");
                     return;
                 }

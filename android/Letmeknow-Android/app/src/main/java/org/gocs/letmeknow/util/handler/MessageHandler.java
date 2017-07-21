@@ -11,7 +11,7 @@ import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
 
 import org.gocs.letmeknow.R;
 import org.gocs.letmeknow.application.Constants;
-import org.gocs.letmeknow.util.NotificationBroadcastReceiver;
+import org.gocs.letmeknow.util.receiver.NotificationBroadcastReceiver;
 import org.gocs.letmeknow.util.event.ImTypeMessageEvent;
 import org.gocs.letmeknow.util.manager.leancloud.AVImClientManager;
 import org.gocs.letmeknow.util.NotificationBoxUtils;
