@@ -209,8 +209,10 @@ public class NotificationPersistService {
                         String type = (String)document.get(TYPE_KEY);
                         if (TYPE_NOTIFICATION.equals(type)){
                             Map<String,Object> receipts = (Map<String,Object>)document.get(RECEIPTS_KEY);
-                            for(String recipientId:receipts.keySet()){
-                                emitter.emit(recipientId,document);
+                            if(receipts != null && receipts.size() > 0){
+                                for(String recipientId:receipts.keySet()){
+                                    emitter.emit(recipientId,document);
+                                }
                             }
                         }
                     }
