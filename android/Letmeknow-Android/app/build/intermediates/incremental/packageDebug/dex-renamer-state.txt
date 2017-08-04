@@ -1,7 +1,0 @@
-#Wed Jul 19 03:05:15 CST 2017
-base.0=F\:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=F\:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
-base.1=F\:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-file.0=F\:\\letmeknow\\android\\Letmeknow-Android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes2.dex
