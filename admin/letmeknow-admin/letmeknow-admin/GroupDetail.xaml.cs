@@ -23,7 +23,7 @@ namespace letmeknow_admin
     public partial class GroupDetail : MetroWindow
     {
         private Group group;
-        public GroupDetail(int id)
+        public GroupDetail(string id)
         {
             InitializeComponent();
             group = GroupService.getGroup(id);
@@ -32,22 +32,22 @@ namespace letmeknow_admin
         }
         private void loadGroupInfo()
         {
-            lblTitle.Content = string.Format("{0} (GroupID: {1})", group.groupName, group.groupId);
-            if (group.icon == null)
+            lblTitle.Content = string.Format("{0} (id: {1})", group.name, group.id);
+            if (group.sigil == null)
             {
                 GroupIcon.Source = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/groupicon.PNG", UriKind.Absolute));
                 tileDeleteIcon.Visibility = Visibility.Hidden;
             }
             else
             {
-                GroupIcon.Source = HttpHelper.getImage(group.icon);
+                GroupIcon.Source = HttpHelper.getImage(group.sigil);
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
-            lblCreateTime.Content = group.createdAt;
-            lblCategory.Content = group.category;
+            lblCreateTime.Content = group.createdDateString;
+            lblCategory.Content = group.publicity ? "PUBLIC" : "PRIVATE";
             lblStatus.Content = group.status.ToString();
             lblMaster.Content = group.master;
-            lblMemberNum.Content = group.members;
+            lblMemberNum.Content = group.memberNumbers;
             if (group.status == GroupStatus.BANNED)
             {
                 tileBan.Title = "解冻通知组";
@@ -67,7 +67,7 @@ namespace letmeknow_admin
                 tileDelete.Title = "删除通知组";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.SquaredCross;
             }
-            if (group.category == GroupCategory.PRIVATE)
+            if (!group.publicity)
             {
                 tileLiftup.Title = "设置为公开组";
                 tileLiftup.TitleFontSize = 14;
@@ -101,13 +101,13 @@ namespace letmeknow_admin
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", NotificationService.SearchNotificationByGroup(group.groupId));
+            NotificationList notificationList = new NotificationList(group.name + "内的通知", NotificationService.SearchNotificationByGroup(group.id));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
-            if (group.category == GroupCategory.PRIVATE)
+            if (!group.publicity)
                 GroupService.toPublic(ref group);
             else
                 GroupService.toPrivate(ref group);

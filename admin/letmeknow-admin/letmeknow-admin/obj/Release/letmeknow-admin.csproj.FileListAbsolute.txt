@@ -48,3 +48,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\letmeknow-admin.c
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\letmeknow-admin.exe
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\letmeknow-admin.pdb
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\letmeknow-admin.csprojResolveAssemblyReference.cache
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\SystemMessage.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Release\SystemMessage.baml

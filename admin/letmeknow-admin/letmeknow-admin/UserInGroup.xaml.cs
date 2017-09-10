@@ -26,8 +26,8 @@ namespace letmeknow_admin
         public UserInGroup(Group group)
         {
             InitializeComponent();
-            dataGrid.ItemsSource = GroupService.getGroupMembers(group.groupId);
-            lblTitle.Content = string.Format("\"{0}\"的成员", group.groupName);
+            dataGrid.ItemsSource = GroupService.getGroupMembers(group.id);
+            lblTitle.Content = string.Format("\"{0}\"的成员", group.name);
             dataGrid.Loaded += (sender, e) => bindActionToRows();
             dataGrid.Sorted += (sender, e) => bindActionToRows();
         }
@@ -54,7 +54,7 @@ namespace letmeknow_admin
                         row.FontWeight = FontWeights.Bold;
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
+                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).id);
                         userDetail.Show();
                     };
                 }

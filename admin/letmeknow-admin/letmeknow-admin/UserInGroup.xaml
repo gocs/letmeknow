@@ -7,12 +7,12 @@
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:localcontrols="clr-namespace:letmeknow_admin.Controls"
         mc:Ignorable="d"
-        Title="Letmeknow - 通知组成员" Height="300" Width="480">
+        Title="Letmeknow - 通知组成员" Height="300" Width="480" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="&quot;TestGroup&quot; 的成员" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
         <localcontrols:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.194,-0.392" Height="193" Width="452" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding userId}" ClipboardContentBinding="{x:Null}" Header="UID"/>
+                <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="UID"/>
                 <DataGridTextColumn Binding="{Binding username}" ClipboardContentBinding="{x:Null}" Header="名称"/>
             </DataGrid.Columns>
         </localcontrols:DataGridPlus>

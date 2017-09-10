@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
 using System.Collections.ObjectModel;
+using letmeknow_admin.Services;
 
 namespace letmeknow_admin
 {
@@ -41,13 +42,15 @@ namespace letmeknow_admin
                 lblGroup.Content = "";
                 lblTime.Content = "";
                 NotificationContent.Text = "";
+                dataGridOption.ItemsSource = null;
             }
             else
             {
-                lblSender.Content = notification.user_name;
-                lblGroup.Content = notification.group_name;
-                lblTime.Content = notification.time;
-                NotificationContent.Text = notification.content;
+                lblSender.Content = UserService.getUser(notification.addresserId).username;
+                lblGroup.Content = GroupService.getGroup(notification.houseId).name;
+                lblTime.Content = notification.createdDateString;
+                NotificationContent.Text = notification.description;
+                dataGridOption.ItemsSource = notification.optionPolls;
             }
         }
 
@@ -55,21 +58,25 @@ namespace letmeknow_admin
         {
             var notification = dataGrid.SelectedItem as Notification;
             if (notification == null) return;
-            var userDetail = new UserDetail(notification.user_id);
+            var userDetail = new UserDetail(notification.addresserId);
             userDetail.Show();
         }
 
         private void tileDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedIndex == -1) return;
-            dataList.RemoveAt(dataGrid.SelectedIndex);
+            var notification = dataGrid.SelectedItem as Notification;
+            if (notification == null) return;
+            MessageBoxResult r = MessageBox.Show("是否确认删除此条通知？", "删除确认", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (r == MessageBoxResult.No) return;
+            NotificationService.deleteNotification(notification);
+            dataList.Remove(notification);
         }
 
         private void tileGroup_Click(object sender, RoutedEventArgs e)
         {
             var notification = dataGrid.SelectedItem as Notification;
             if (notification == null) return;
-            var groupDetail = new GroupDetail(notification.user_id);
+            var groupDetail = new GroupDetail(notification.houseId);
             groupDetail.Show();
         }
     }

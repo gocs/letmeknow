@@ -75,8 +75,17 @@ namespace letmeknow_admin
             var window = (MetroWindow) Assembly.Load("letmeknow-admin")
                                                .CreateInstance("letmeknow_admin." + windowType);
             this.Hide();
-            window.ShowDialog();
+            try
+            {
+                window.ShowDialog();
+            }
+            catch {}
             this.Show();
+        }
+
+        private void tileSendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            openWindow("SystemMessage");
         }
     }
 }

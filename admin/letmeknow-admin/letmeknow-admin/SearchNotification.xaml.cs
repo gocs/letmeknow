@@ -28,6 +28,7 @@ namespace letmeknow_admin
 
         private void tileSearch_Click(object sender, RoutedEventArgs e)
         {
+            if (keyword.Text.Trim() == string.Empty) return;
             NotificationList notificationList = new NotificationList("搜索结果：" + keyword.Text,
                 NotificationService.SearchNotificationByKeyword(keyword.Text));
             this.Hide();

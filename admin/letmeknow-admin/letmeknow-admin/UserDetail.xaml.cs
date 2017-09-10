@@ -23,7 +23,7 @@ namespace letmeknow_admin
     public partial class UserDetail : MetroWindow
     {
         private User user;
-        public UserDetail(int UID)
+        public UserDetail(string UID)
         {
             InitializeComponent();
             user = UserService.getUser(UID);
@@ -32,7 +32,7 @@ namespace letmeknow_admin
 
         private void loadUserInfo()
         {
-            lblTitle.Content = string.Format("{0} (UID: {1})", user.username, user.userId);
+            lblTitle.Content = string.Format("{0} (UID: {1})", user.username, user.id);
             if (user.avatar == null)
             {
                 UserIcon.Source = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/usericon.PNG", UriKind.Absolute));
@@ -44,10 +44,10 @@ namespace letmeknow_admin
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
             lblRegisterTime.Content = user.created_at;
-            lblUserCategory.Content = user.is_admin.ToString();
+            lblUserCategory.Content = user.admin ? "ADMIN" : "USER";
             lblUserStatus.Content = user.status.ToString();
             lblEmail.Content = user.email;
-            lblPhone.Content = user.phone_num;
+            lblPhone.Content = user.phoneNumber;
             if (user.status == UserStatus.BANNED)
             {
                 tileBan.Title = "解封用户";
@@ -67,7 +67,7 @@ namespace letmeknow_admin
                 tileDelete.Title = "删除用户";
                 DeleteIcon.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.SquaredCross;
             }
-            if (user.is_admin == UserCategory.USER)
+            if (!user.admin)
             {
                 tileLiftup.Title = "提升为管理员";
                 tileLiftup.TitleFontSize = 14;
@@ -101,13 +101,13 @@ namespace letmeknow_admin
 
         private void tileNotifications_Click(object sender, RoutedEventArgs e)
         {
-            NotificationList notificationList = new NotificationList("Admin发送的通知", NotificationService.SearchNotificationByUser(user.userId));
+            NotificationList notificationList = new NotificationList("Admin发送的通知", NotificationService.SearchNotificationByUser(user.id));
             notificationList.Show();
         }
 
         private void tileLiftup_Click(object sender, RoutedEventArgs e)
         {
-            if (user.is_admin == UserCategory.USER)
+            if (!user.admin)
                 UserService.toAdmin(ref user);
             else
                 UserService.toNormalUser(ref user);
@@ -118,6 +118,11 @@ namespace letmeknow_admin
         {
             UserService.deleteIcon(ref user);
             loadUserInfo();
+        }
+
+        private void tileGroups_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

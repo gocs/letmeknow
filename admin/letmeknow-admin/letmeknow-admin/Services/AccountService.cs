@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace letmeknow_admin.Services
 {
@@ -16,14 +19,29 @@ namespace letmeknow_admin.Services
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters["username"] = username;
             parameters["password"] = password;
-            string JsonString = HttpHelper.Post(GeneralSetting.host + "login", parameters);
-            var result = (LoginResult)int.Parse(JObject.Parse(JsonString)["message"].ToString());
-            return result;
+            HttpStatusCode code;
+            
+            //HttpHelper.Post(GeneralSetting.host + "tokens", parameters, out code);
+            try
+            {
+                string JsonString = HttpHelper.Post(GeneralSetting.host + "tokens", parameters, out code);
+                string token = JObject.Parse(JsonString)["authentication"].ToString();
+                HttpHelper.token = token;
+
+            }
+            catch (WebException ex)
+            {
+                var response = ex.Response as HttpWebResponse;
+                if (response != null && response.StatusCode == HttpStatusCode.NotFound)
+                    return LoginResult.WRONG;
+                throw new Exception(ex.Message);
+            }
+            return LoginResult.SUCCESS;
         }
 
         public static void logout()
         {
-            string JsonString = HttpHelper.Post(GeneralSetting.host + "logout",string.Empty);
+            HttpHelper.Delete(GeneralSetting.host + "tokens");
         }
 
         public static Boolean changePassword(string oldPwd, string newPwd)

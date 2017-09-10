@@ -56,7 +56,7 @@
             	TiltFactor="2"
             	Width="100" Height="100" 
             	Margin="0"
-            	TitleFontSize="14" Canvas.Left="210" Canvas.Top="105">
+            	TitleFontSize="14" Canvas.Left="210" Canvas.Top="105" Click="tileSendMessage_Click">
                 <iconPacks:PackIconFontAwesome 
             		Width="30"
             		Height="30"

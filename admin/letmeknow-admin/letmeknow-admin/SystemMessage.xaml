@@ -1,0 +1,33 @@
+﻿<controls:MetroWindow x:Class="letmeknow_admin.SystemMessage"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:letmeknow_admin"
+        mc:Ignorable="d"
+        Title="Letmeknow - 发送系统消息" Height="400" Width="640">
+    <Grid>
+        <RadioButton x:Name="rbtnUser" Content="给一个用户发送系统消息" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Label x:Name="label" Content="发送系统消息" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <RadioButton x:Name="rbtnGroup" Content="给一个通知组全体成员发送系统消息" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbtnAll" Content="给全体用户发送系统消息" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="用户ID/通知组ID：" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" TextChanged="textBox_TextChanged" PreviewTextInput="textBox_PreviewTextInput"/>
+        <Label x:Name="label1_Copy" Content="用户名称/通知组名称：" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top"/>
+        <controls:Tile x:Name="tileDetail" Title="接收者信息" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Width="100" Height="100">
+            <iconPacks:PackIconMaterial Width="30"
+                                           Height="30"
+                                           Kind="Menu" />    
+        </controls:Tile>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="188" Margin="277,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <controls:Tile x:Name="tileSend" Title="发送" HorizontalAlignment="Left" Margin="522,256,0,0" VerticalAlignment="Top" Width="100" Height="100">
+            <iconPacks:PackIconFontAwesome Width="30"
+        		Height="30"
+        		Kind="PaperPlane" />
+        </controls:Tile>
+
+    </Grid>
+</controls:MetroWindow>

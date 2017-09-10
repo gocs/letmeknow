@@ -8,7 +8,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:localcontrols="clr-namespace:letmeknow_admin.Controls"
         mc:Ignorable="d"
-        Title="Letmeknow - 用户查询" Height="360" Width="640" MinWidth="640" MinHeight="360">
+        Title="Letmeknow - 用户查询" Height="360" Width="640" MinWidth="640" MinHeight="360" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
@@ -17,11 +17,11 @@
         <Label x:Name="label" Content="用户查询" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Grid.Column="0"/>
         <localcontrols:DataGridPlus x:Name="dataGrid" Margin="14,10,14,10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding userId}" ClipboardContentBinding="{x:Null}" Header="UID"/>
+                <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="UID"/>
                 <DataGridTextColumn Binding="{Binding username}" ClipboardContentBinding="{x:Null}" Header="用户名称" Width="Auto" CanUserResize="False"/>
             </DataGrid.Columns>
         </localcontrols:DataGridPlus>
-        <controls:Tile x:Name="tileSearchUserByUID" Title="根据UID查询" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <controls:Tile x:Name="tileSearchUserByUID" Title="根据UID查询" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"
         	Width="100" Height="100" 
             TitleFontSize="14"
         	Margin="18,203,0,0" Click="tileSearchUserByUID_Click">
@@ -38,7 +38,7 @@
         		Height="30"
         		Kind="Search" />
         </controls:Tile>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="18,71,0,0" TextWrapping="Wrap" Text="输入用户的ID或者名称，双击搜索结果以查看详细信息" VerticalAlignment="Top" Height="44" FontSize="16"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="18,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" FontSize="16"><Run Text="输入用户的"/><Run Text="名称，双击搜索结果以查看详细信息"/></TextBlock>
         <TextBox x:Name="usrInfo" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Margin="18,134,5,0" />
     </Grid>
 </controls:MetroWindow>

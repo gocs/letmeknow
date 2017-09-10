@@ -8,17 +8,15 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.NotificationList"
         mc:Ignorable="d"
-        Title="Letmeknow - 通知列表" Height="641.667" Width="800">
+        Title="Letmeknow - 通知列表" Height="641.667" Width="800" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="Admin发送的通知" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="772"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="535" Width="333" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+        <Controls:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="535" Width="333" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="通知ID"/>
-                <DataGridTextColumn Binding="{Binding time}" ClipboardContentBinding="{x:Null}" Header="发送时间"/>
-                <DataGridTextColumn Binding="{Binding group_name}" ClipboardContentBinding="{x:Null}" Header="通知组"/>
-                <DataGridTextColumn Binding="{Binding content}" ClipboardContentBinding="{x:Null}" Header="内容"/>
+                <DataGridTextColumn Binding="{Binding createdDateString}" ClipboardContentBinding="{x:Null}" Header="发送时间"/>
+                <DataGridTextColumn Binding="{Binding title}" ClipboardContentBinding="{x:Null}" Header="标题"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </Controls:DataGridPlus>
         <controls:Tile x:Name="tileDelete" Title="删除通知" 
 			TiltFactor="2"
 			Width="100" Height="100" 
@@ -54,18 +52,17 @@
         <controls:Tile x:Name="tileReceiver" Title="收到通知的人" 
 			TiltFactor="2"
 			Width="100" Height="100" 
-			Margin="682,186,10,325" TitleFontSize="14">
+			Margin="682,186,10,325" TitleFontSize="14" Visibility="Hidden">
             <iconPacks:PackIconFontAwesome Width="30"
 				Height="30"
 				Kind="PaperPlane" />
         </controls:Tile>
         <Label x:Name="label_Copy3" Content="回执列表：" HorizontalAlignment="Left" Margin="348,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.455,-0.093" FontSize="16"/>
 
-        <Controls:DataGridPlus x:Name="dataGridPlus" HorizontalAlignment="Left" Margin="348,447,0,0" VerticalAlignment="Top" Height="154" Width="329">
+        <Controls:DataGridPlus x:Name="dataGridOption" HorizontalAlignment="Left" Margin="348,447,0,0" VerticalAlignment="Top" Height="154" Width="329" AutoGenerateColumns="False">
             <Controls:DataGridPlus.Columns>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="类型"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="描述文字"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="选项"/>
+                <DataGridTextColumn Binding="{Binding type}" ClipboardContentBinding="{x:Null}" Header="类型"/>
+                <DataGridTextColumn Binding="{Binding str}" ClipboardContentBinding="{x:Null}" Header="描述文字"/>
             </Controls:DataGridPlus.Columns>
         </Controls:DataGridPlus>
 

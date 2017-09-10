@@ -15,6 +15,7 @@ using MahApps.Metro.Controls;
 using letmeknow_admin.Models;
 using System.Collections.ObjectModel;
 using letmeknow_admin.Services;
+using Group = System.Text.RegularExpressions.Group;
 
 namespace letmeknow_admin
 {
@@ -29,6 +30,11 @@ namespace letmeknow_admin
         {
             InitializeComponent();
             applicationList = ApplicationService.getAllApplications();
+            foreach (var i in applicationList)
+            {
+                i.manName = UserService.getUser(i.manId).username;
+                i.houseName = GroupService.getGroup(i.houseId).name;
+            }
             dataGrid.ItemsSource = applicationList;
         }
 
@@ -61,7 +67,7 @@ namespace letmeknow_admin
         {
             Models.Application selectedItem = dataGrid.SelectedItem as Models.Application;
             if (selectedItem == null) return;
-            GroupDetail groupDetail = new GroupDetail((int)selectedItem.groupId);
+            GroupDetail groupDetail = new GroupDetail(selectedItem.houseId);
             groupDetail.Show();
         }
     }

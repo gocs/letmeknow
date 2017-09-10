@@ -8,12 +8,12 @@ namespace letmeknow_admin.Models
 {
     class Application
     {
-        public int applicationId { set; get; }
-        public int applierId { set; get; }
-        public string applierName { set; get; }
+        public string id { set; get; }
+        public string manId { set; get; }
+        public string manName { set; get; }
         public string content { set; get; }
-        public int groupId { set; get; }
-        public string groupName { set; get; }
-        public DateTime createdAt { set; get; }
+        public string houseId { set; get; }
+        public string houseName { set; get; }
+        public string createdDateString { set; get; }
     }
 }

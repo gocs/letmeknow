@@ -42,7 +42,7 @@ namespace letmeknow_admin
                 {
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        var userDetail = new GroupDetail((((DataGridRow)_sender).Item as Models.Group).groupId);
+                        var userDetail = new GroupDetail((((DataGridRow)_sender).Item as Models.Group).id);
                         this.Hide();
                         userDetail.ShowDialog();
                         this.ShowDialog();
@@ -53,6 +53,7 @@ namespace letmeknow_admin
 
         private void tileSearchGroupByName_Click(object sender, RoutedEventArgs e)
         {
+            if (groupInfo.Text.Trim() == string.Empty) return;
             dataGrid.ItemsSource = GroupService.searchGroup(groupInfo.Text);
             bindActionToRows();
         }

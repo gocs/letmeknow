@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Letmeknow - 用户信息" Height="360" Width="640">
+        Title="Letmeknow - 用户信息" Height="360" Width="640" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="Admin (UID: 1)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="612"/>
         <Image x:Name="UserIcon" HorizontalAlignment="Left" Height="100" Margin="80,66,0,0" VerticalAlignment="Top" Width="100" Source="pack://siteoforigin:,,,/Resources/usericon.PNG"/>
@@ -29,7 +29,7 @@
         <controls:Tile x:Name="tileDelete" Title="删除用户" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,221,10,8" Click="tileDelete_Click">
+        	Margin="522,221,10,8" Click="tileDelete_Click" Visibility="Hidden">
             <iconPacks:PackIconEntypo x:Name="DeleteIcon"
                 Width="30"
         		Height="30"
@@ -47,7 +47,7 @@
         	TiltFactor="2"
         	Width="100" Height="100" 
             TitleFontSize="14"
-        	Margin="417,221,115,8">
+        	Margin="417,221,115,8" Click="tileGroups_Click" Visibility="Hidden">
             <iconPacks:PackIconFontAwesome Width="30"
         		Height="30"
         		Kind="Users" />

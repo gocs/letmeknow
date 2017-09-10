@@ -8,16 +8,14 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.ComplaintManager"
         mc:Ignorable="d"
-        Title="Letmeknow - 举报处理" Height="360" Width="640">
+        Title="Letmeknow - 举报处理" Height="360" Width="640" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="待处理的举报" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.26,0.038" FontSize="32" Width="612"/>
 
         <Controls:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="253" Width="324" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
             <Controls:DataGridPlus.Columns>
-                <DataGridTextColumn Binding="{Binding reportId}" ClipboardContentBinding="{x:Null}" Header="序号"/>
-                <DataGridTextColumn Binding="{Binding reporterName}" ClipboardContentBinding="{x:Null}" Header="举报人"/>
-                <DataGridTextColumn Binding="{Binding createdAt}" ClipboardContentBinding="{x:Null}" Header="举报时间"/>
-                <DataGridTextColumn Binding="{Binding categoryName}" ClipboardContentBinding="{x:Null}" Header="举报类型"/>
+                <DataGridTextColumn Binding="{Binding whistleblowerName}" ClipboardContentBinding="{x:Null}" Header="举报人"/>
+                <DataGridTextColumn Binding="{Binding createdDateString}" ClipboardContentBinding="{x:Null}" Header="举报时间"/>
             </Controls:DataGridPlus.Columns>
         </Controls:DataGridPlus>
         <controls:Tile x:Name="tileClose" Title="关闭举报" HorizontalAlignment="Left" Margin="522,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileClose_Click">

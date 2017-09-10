@@ -29,18 +29,19 @@ namespace letmeknow_admin
 
         private void tileSearchUserByUID_Click(object sender, RoutedEventArgs e)
         {
-            try {
+            /*try {
                 dataGrid.ItemsSource = UserService.searchUser(int.Parse(usrInfo.Text));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            bindActionToRows();
+            bindActionToRows();*/
         }
 
         private void tileSearchUserByName_Click(object sender, RoutedEventArgs e)
         {
+            if (usrInfo.Text.Trim() == string.Empty) return;
             dataGrid.ItemsSource = UserService.searchUser(usrInfo.Text);
             bindActionToRows();
         }
@@ -60,7 +61,7 @@ namespace letmeknow_admin
                 {
                     row.MouseDoubleClick += (_sender, _e) =>
                     {
-                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).userId);
+                        UserDetail userDetail = new UserDetail((((DataGridRow)_sender).Item as Models.User).id);
                         this.Hide();
                         userDetail.ShowDialog();
                         this.ShowDialog();

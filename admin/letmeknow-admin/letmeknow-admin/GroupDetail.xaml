@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Letmeknow - 通知组信息" Height="360" Width="640">
+        Title="Letmeknow - 通知组信息" Height="360" Width="640" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="TestGroup (id: 1)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="32" Width="612"/>
         <Image x:Name="GroupIcon" HorizontalAlignment="Left" Height="100" Margin="96,66,0,0" VerticalAlignment="Top" Width="100" Source="Resources/groupicon.png"/>
@@ -29,7 +29,7 @@
         <controls:Tile x:Name="tileDelete" Title="删除通知组" 
         	TiltFactor="2"
         	Width="100" Height="100" 
-        	Margin="522,221,10,8" Click="tileDelete_Click">
+        	Margin="522,221,10,8" Click="tileDelete_Click" Visibility="Hidden">
             <iconPacks:PackIconEntypo x:Name="DeleteIcon"
                 Width="30"
         		Height="30"

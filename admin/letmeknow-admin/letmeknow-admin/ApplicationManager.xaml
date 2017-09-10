@@ -8,16 +8,15 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:Controls="clr-namespace:letmeknow_admin.Controls" x:Class="letmeknow_admin.ApplicationManager"
         mc:Ignorable="d"
-        Title="Letmeknow - 申请审核" Height="360" Width="702.158">
+        Title="Letmeknow - 申请审核" Height="360" Width="702.158" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblTitle" Content="待处理的申请" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.26,0.038" FontSize="32" Width="612"/>
 
         <Controls:DataGridPlus x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="253" Width="324" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
             <Controls:DataGridPlus.Columns>
-                <DataGridTextColumn Binding="{Binding applicationId}" ClipboardContentBinding="{x:Null}" Header="序号"/>
-                <DataGridTextColumn Binding="{Binding applierName}" ClipboardContentBinding="{x:Null}" Header="申请人"/>
-                <DataGridTextColumn Binding="{Binding createdAt}" ClipboardContentBinding="{x:Null}" Header="申请时间"/>
-                <DataGridTextColumn Binding="{Binding groupName}" ClipboardContentBinding="{x:Null}" Header="申请通知组"/>
+                <DataGridTextColumn Binding="{Binding manName}" ClipboardContentBinding="{x:Null}" Header="申请人"/>
+                <DataGridTextColumn Binding="{Binding createdDateString}" ClipboardContentBinding="{x:Null}" Header="申请时间"/>
+                <DataGridTextColumn Binding="{Binding houseName}" ClipboardContentBinding="{x:Null}" Header="申请通知组"/>
             </Controls:DataGridPlus.Columns>
         </Controls:DataGridPlus>
         <controls:Tile x:Name="tileReject" Title="拒绝申请" HorizontalAlignment="Left" Margin="584,219,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="tileReject_Click">

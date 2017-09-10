@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:letmeknow_admin"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Letmeknow - 管理登录" Height="350" Width="525">
+        Title="Letmeknow - 管理登录" Height="350" Width="525" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="label" Content="用户名" HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.255,-0.112"/>
         <Label x:Name="label1" Content="密码" HorizontalAlignment="Left" Margin="39,219,0,0" VerticalAlignment="Top"/>

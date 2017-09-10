@@ -10,17 +10,17 @@ namespace letmeknow_admin.Services
 {
     class ComplaintService
     {
+        private static string attr = GeneralSetting.host + "whistleblowings/";
+
         public static ObservableCollection<Complaint> getAllComplaints()
         {
-            string JsonString = HttpHelper.Get(GeneralSetting.host + "allComplaints", string.Empty);
-            return JsonHelper.DeserializeJsonToObject<Dictionary<string, ObservableCollection<Complaint>>>(JsonString)["complaints"];
+            string JsonString = HttpHelper.Get(attr + "allWhistleBlowing");
+            return new ObservableCollection<Complaint>(JsonHelper.DeserializeJsonToList<Complaint>(JsonString));
         }
 
         public static void closeComplaint(Complaint complaint)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters["reportId"] = complaint.reportId.ToString();
-            HttpHelper.Post(GeneralSetting.host + "closeComplaint", parameters);
+            HttpHelper.Put(attr + "closeWhistleBlowing/" + complaint.id);
         }
     }
 }

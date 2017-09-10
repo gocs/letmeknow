@@ -43,6 +43,7 @@ namespace letmeknow_admin
                         i.categoryName = "用户";
                         break;
                 }
+                i.whistleblowerName = UserService.getUser(i.whistleblowerId).username;
             }
             dataGrid.ItemsSource = complaintList;
         }
@@ -62,13 +63,13 @@ namespace letmeknow_admin
                     lblName.Content = string.Format("通知组\"{0}\"", selectedItem.groupName);
                     break;
                 case ComplaintCategory.NOTIFICATION:
-                    lblName.Content = string.Format("由{0}发送的通知", selectedItem.notificationSender);
+                    lblName.Content = string.Format("由{0}发送的通知", selectedItem.ravenSender);
                     break;
                 case ComplaintCategory.USER:
                     lblName.Content = string.Format("用户\"{0}\"", selectedItem.username);
                     break;
             }
-            textBlock.Text = selectedItem.content;
+            textBlock.Text = selectedItem.description;
         }
 
         private void tileClose_Click(object sender, RoutedEventArgs e)
@@ -85,14 +86,16 @@ namespace letmeknow_admin
             switch (selectedItem.category)
             {
                 case ComplaintCategory.GROUP:
-                    GroupDetail groupDetail = new GroupDetail((int)selectedItem.groupId);
+                    GroupDetail groupDetail = new GroupDetail(selectedItem.groupId);
                     groupDetail.Show();
                     break;
                 case ComplaintCategory.NOTIFICATION:
-                    
+                    var t = NotificationService.GetNotificationById(selectedItem.ravenId);
+                    NotificationList notificationList = new NotificationList("通知详情", t);
+                    notificationList.Show();
                     break;
                 case ComplaintCategory.USER:
-                    UserDetail userDetail = new UserDetail((int)selectedItem.userId);
+                    UserDetail userDetail = new UserDetail(selectedItem.userId);
                     userDetail.Show();
                     break;
             }

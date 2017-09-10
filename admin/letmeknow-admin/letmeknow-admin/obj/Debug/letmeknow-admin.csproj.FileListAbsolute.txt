@@ -48,3 +48,5 @@ F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.g.
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ComplaintManager.baml
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ApplicationManager.g.cs
 F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\ApplicationManager.baml
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SystemMessage.g.cs
+F:\letmeknow\admin\letmeknow-admin\letmeknow-admin\obj\Debug\SystemMessage.baml
