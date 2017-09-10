@@ -43,7 +43,7 @@ namespace letmeknow_admin
                 UserIcon.Source = HttpHelper.getImage(user.avatar);
                 tileDeleteIcon.Visibility = Visibility.Visible;
             }
-            lblRegisterTime.Content = user.created_at;
+            lblRegisterTime.Content = user.createdDateString;
             lblUserCategory.Content = user.admin ? "ADMIN" : "USER";
             lblUserStatus.Content = user.status.ToString();
             lblEmail.Content = user.email;

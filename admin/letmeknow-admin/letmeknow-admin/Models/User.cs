@@ -14,7 +14,7 @@ namespace letmeknow_admin.Models
     {
         public string id { set; get; }
         public string username { set; get; }
-        public DateTime created_at { set; get; }
+        public string createdDateString { set; get; }
         public UserStatus status { set; get; }
         public bool admin { set; get; }
         public string avatar { set; get; }
@@ -32,17 +32,5 @@ namespace letmeknow_admin.Models
             this.username = username;
         }
 
-        public User(string id, string username, DateTime created_at, UserStatus status,
-            bool admin, string avatar, string email, string phoneNumber)
-        {
-            this.id = id;
-            this.username = username;
-            this.created_at = created_at;
-            this.status = status;
-            this.admin = admin;
-            this.avatar = avatar;
-            this.email = email;
-            this.phoneNumber = phoneNumber;
-        }
     }
 }

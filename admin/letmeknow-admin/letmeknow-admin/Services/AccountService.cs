@@ -32,8 +32,12 @@ namespace letmeknow_admin.Services
             catch (WebException ex)
             {
                 var response = ex.Response as HttpWebResponse;
-                if (response != null && response.StatusCode == HttpStatusCode.NotFound)
-                    return LoginResult.WRONG;
+                if (response != null){
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                        return LoginResult.WRONG;
+                    if (response.StatusCode == HttpStatusCode.Forbidden) ;
+                    return LoginResult.NOAUTH;
+                }
                 throw new Exception(ex.Message);
             }
             return LoginResult.SUCCESS;

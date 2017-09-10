@@ -20,12 +20,16 @@ namespace letmeknow_admin
             //request.Headers["X-AUTH"] = token;
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = Encoding.UTF8.GetByteCount(postStr);
+            //request.ContentLength = Encoding.UTF8.GetByteCount(postStr);
+            //request.ContentLength = postStr.Length;
             request.CookieContainer = cookie;
             Stream myRequestStream = request.GetRequestStream();
-            StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("gb2312"));
-            myStreamWriter.Write(postStr);
-            myStreamWriter.Close();
+            UTF8Encoding encoding = new UTF8Encoding();
+            byte[] bytes = encoding.GetBytes(postStr);
+            //StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("utf-8"));
+            myRequestStream.Write(bytes, 0, bytes.Length);
+            //myStreamWriter.Write(bytes);
+            //myStreamWriter.Close();
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
